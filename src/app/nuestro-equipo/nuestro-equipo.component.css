@@ -1,0 +1,1887 @@
+html {
+  overflow:auto;
+  padding:0;
+  margin:0;
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  background-image:linear-gradient(rgba(144, 207, 19, 0.5), rgba(144, 207, 19, 0.5)),  url("./../../assets/images/Backround_Lines.jpg");
+}
+.screen{
+  max-width: 1500px;
+  position: relative;
+  width:100%;
+  height:100%;
+  left: calc(50% - 750px);
+  background-color: white;
+}
+a {text-decoration: none;}
+@media all and (max-width: 1500px) {
+  html {
+    margin-left: 0%;
+    margin-right: 0%;
+    background-image: none;
+  }
+  .screen{
+    left: 0%;
+    background-color: white;
+  }
+}
+.bg-moco-menu{
+  background-color:#00758b!important;
+  padding: .0rem 0rem;
+  -webkit-box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+  -moz-box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+  box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+}
+  .navbar-moco .navbar-nav .nav-link{
+    color:rgba(255, 255, 255, 0.774);
+  }
+  /*News button styles*/
+.navbar-moco .navbar-nav .nav-link-news{
+  color:rgb(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(245,152,19);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-news:hover{
+  text-decoration:none
+}
+.navbar-moco .navbar-nav .nav-link-news:focus,
+.navbar-moco .navbar-nav .nav-link-news:hover{
+
+  background-color: rgba(245, 151, 19, 0.856);
+}
+/*Science button styles*/
+.navbar-moco .navbar-nav .nav-link-science{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(34,201,225);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-science:hover{
+  text-decoration:none
+}
+.navbar-moco .navbar-nav .nav-link-science:focus,
+.navbar-moco .navbar-nav .nav-link-science:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(34, 199, 225, 0.884);
+}
+/*Art button styles*/
+.navbar-moco .navbar-nav .nav-link-art{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(218,97,171);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-art:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-art:focus,
+.navbar-moco .navbar-nav .nav-link-art:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(218, 97, 172, 0.877);
+}
+/*Fun button styles*/
+.navbar-moco .navbar-nav .nav-link-fun{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(239,209,4);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-fun:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-fun:focus,
+.navbar-moco .navbar-nav .nav-link-fun:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(239, 208, 4, 0.877);
+}
+/*Find button styles*/
+.navbar-moco .navbar-nav .nav-link-find{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(168,101,202);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-find:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-find:focus,
+.navbar-moco .navbar-nav .nav-link-find:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(168, 101, 202, 0.863);
+}
+  
+  .navbar-moco .navbar-nav .nav-link-menu{
+    color:rgba(255, 255, 255, 0.774);
+    display: block;
+    padding:.9rem 1.5rem;
+    background-image: url("./../../assets/images/Home_WhiteIcon_Desactivado.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .navbar-moco .navbar-nav .nav-link-menu:focus,
+  .navbar-moco .navbar-nav .nav-link-menu:hover{
+    background-image: url("./../../assets/images/HomeOrangeIcon_MouseOver.png");
+  }
+  
+  
+  .navbar-moco .navbar-nav .nav-link-search{
+    color:rgba(255, 255, 255, 0.774);
+    display: block;
+    padding:1rem 1.5rem;
+    background-image: url("./../../assets/images/Lupa_Home.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  
+  .navbar-moco .navbar-nav .nav-link-moconauta{
+    color:rgb(255, 255, 255);
+    display: block;
+    padding:.4rem 2rem;
+    position: absolute;
+    margin: 0%;
+    font-family: 'Arial';
+    font-size: 100%;
+  }
+  .navbar-moco .navbar-nav .nav-link-moconauta .profile-pic{
+    height: 19.3167px;
+    width: 19.3167px;
+    position: absolute;
+    left: 0rem;
+    top: 6.4px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; 
+    border: 0.5px solid #ffffff;
+  }
+.navbar-moco .navbar-nav .nav-link-moconauta .opciones{
+  color:rgb(141, 150, 61);
+  font-family: 'Anaheim';
+  font-size: 120%;
+}
+  .nav-link-news:focus,.nav-link-moconauta:hover{
+    text-decoration:none
+  }
+  
+  
+  .navbar-moco .navbar-nav .active>.nav-link,.navbar-moco .navbar-nav .nav-link.active,.navbar-moco .navbar-nav .nav-link.show,.navbar-moco .navbar-nav .show>.nav-link{
+    color:#fff;
+    
+  }
+  .navbar-moco .navbar-toggler{
+  
+    display: none;
+  }
+  .navbar-moco .navbar-toggler-icon{
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+    .bg-moco-second-menu{
+      background-color:rgb(145, 211, 32)!important;
+      padding: .0rem 0rem;
+      display: none;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link{
+      color:rgba(255, 255, 255, 0.774);
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-quienes-somos,
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-shop,
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-app,
+    .navbar-moco-second-menu .navbar-nav .nav-link-revista-tri,
+    .navbar-moco-second-menu .navbar-nav .nav-link-mocotips-padres,
+    .navbar-moco-second-menu .navbar-nav .nav-link-contacto{
+      color:rgba(255, 255, 255, 0.774);
+      font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+      background-color: rgb(205,148,45);
+      display: block;
+      padding:.9rem 1.5rem;
+      padding-left: 3.6rem;
+      margin-top: .5rem;
+      margin-right: 1rem;
+      margin-left: 1rem;
+      border-radius: 15px;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    /*   */
+    .navbar-moco-second-menu .navbar-nav .nav-link-quienes-somos{
+      background-image: url("./../../assets/images/quienes_verde.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-shop{
+      background-image: url("./../../assets/images/carritobutton.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-app{
+      background-image: url("./../../assets/images/telefonobutton.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-revista-tri{
+      background-image: url("./../../assets/images/revistabutton.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-mocotips-padres{
+      background-image: url("./../../assets/images/focobutton.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-contacto{
+      background-image: url("./../../assets/images/correitobutton.png");
+      margin-bottom: 1rem;
+    }
+  
+    
+    
+    
+    .navbar-moco-second-menu .navbar-nav .active>.nav-link,.navbar-moco-second-menu .navbar-nav .nav-link.active,.navbar-moco-second-menu .navbar-nav .nav-link.show,.navbar-moco-second-menu .navbar-nav .show>.nav-link{
+      color:#fff;  
+    }
+    .navbar-moco-second-menu .navbar-toggler{
+      color:rgba(235, 220, 220, 0.5);
+      width: 100%;
+      float: none;
+      margin-right: 0;
+    }
+    .navbar-moco-second-menu .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  
+    }
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    .el-moco-banner {
+      height: 275px;
+      position: relative;
+      background-position: center;
+      background-size: 100%, 100%;
+      background-repeat: no-repeat; 
+      background-image:  url("./../../assets/images/banner-sin-moco.png");
+    }
+    .el-moco-banner .logo-hd{ 
+      position: absolute;
+      width:20%;
+      height:60%;
+      left: 40%;
+      bottom: 5%;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat; 
+      background-image:  url("./../../assets/images/Logo_ElMoco.png");
+    }
+  
+  .structure {
+    min-height: auto;
+    margin: 0px;
+  
+    display: -webkit-flex;
+    display:         flex;
+    -webkit-flex-flow: row;
+            flex-flow: row;
+            background-image: url("./../../assets/images/Backround_Lines.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%, 100%;
+            
+  }
+  .structure .first-news {
+  
+    position: relative;
+    -webkit-flex: 3 1 60%;
+            flex: 3 1 60%;
+    -webkit-order: 2;
+            order: 2;
+           
+  }
+  .structure .first-news .new-image-banner {
+
+    background-image: url("./../../assets/images/BarraDeSeccion.png");
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: center;
+    width:80%;
+    height:50%;
+    position: absolute;
+    bottom: 40%;
+    left: 15%;
+    border-radius: 20px;
+  }
+  .structure .first-news .new-line {
+    width:80%;
+    height:15%;
+    position: absolute;
+    top: 5%;
+    left: 15%;
+    color: rgb(83, 189, 22);
+    text-decoration: none; 
+    font-size:500%; 
+    align-content: center;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    text-align: center;
+  }
+  .structure .first-news .new-description {
+    width:80%;
+    height: 30%;
+    position: absolute;
+    bottom: -2%;
+    left: 15%;
+    color: rgb(0, 0, 0);
+    text-decoration: none; 
+    font-size:150%; 
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+  
+  
+  .structure .options{
+    margin: 4px;
+    padding: 5px;
+    position: relative;
+    -webkit-flex: 1 6 20%;
+            flex: 1 6 20%;
+    -webkit-order: 3;
+            order: 3;
+            
+           
+  }
+  .structure .options .vertical-menu{
+    width: 300px; 
+    margin-top: 35px;
+    margin-left: 0px;
+  }
+  .structure .options .vertical-menu a.options{
+    background-image: url("./../../assets/images/Barra_Desactivado.png");
+    color: rgb(255, 255, 255); 
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    display: block; 
+    padding: 18px; 
+    margin: 15px;
+    text-decoration: none; 
+    border-radius: 5px;
+    padding-left: 3.6rem;
+    position: relative;
+  }
+  .structure .options .vertical-menu a.options:hover{
+    background-image: url("./../../assets/images/Barra_MouseOver.png");
+  } 
+  
+  .structure .options .vertical-menu a.menu{
+    background-color: rgb(14, 71, 16); /* Add a green color to the "active/current" link */
+    color:rgb(114, 192, 25);
+    text-align: center;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    display: block;
+    padding: 18px; 
+    margin: 15px;
+    border-radius: 15px;
+    border-radius: 5px;
+    position: relative;
+  }
+  .structure .options .vertical-menu a.menu .first-moco{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("./../../assets/images/Moco_Sorprendido.png");
+    position: absolute; 
+    left: 5px;
+    top: -25%;
+    width: 18%;
+    height: 125%;
+  }
+  .structure .options .vertical-menu a.menu .second-moco{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("./../../assets/images/MocoDetalle.png");
+    position: absolute; 
+    right: 0px;
+    top: 0px;
+    width: 18%;
+    height: 100%;
+  }
+  
+  .structure .options .vertical-menu a.options .quienes,
+  .structure .options .vertical-menu a.options .moco-shop,
+  .structure .options .vertical-menu a.options .moco-app,
+  .structure .options .vertical-menu a.options .revista,
+  .structure .options .vertical-menu a.options .mocotips,
+  .structure .options .vertical-menu a.options .contacto{
+    background-repeat: no-repeat;
+    background-size: 50%, 50%;
+    background-position: center;
+    position: absolute; 
+    left: 0px;
+    top: 0px;
+    width: 18%;
+    height: 100%;
+  }
+  .structure .options .vertical-menu a.options .quienes{
+    background-image: url("./../../assets/images/BaraQuienesSomos_Perfil_Icono.png");
+  }
+  .structure .options .vertical-menu a.options .moco-shop{
+    background-image: url("./../../assets/images/Carrito_IconoBlanco.png");
+  }
+  .structure .options .vertical-menu a.options .moco-app{
+    background-image: url("./../../assets/images/Telefono_IconoBlanco.png");
+  }
+  .structure .options .vertical-menu a.options .revista{
+    background-image: url("./../../assets/images/Revista_IconoBlanco.png");
+  }
+  .structure .options .vertical-menu a.options .mocotips{
+    background-image: url("./../../assets/images/Foco_IconoBlanco.png");
+  }
+  .structure .options .vertical-menu a.options .contacto{
+    background-image: url("./../../assets/images/Correo_IconoBlanco.png");
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .banner{
+    display: block;
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom:  0px;
+    min-height: 32px;
+    
+  }
+  
+  .contact{
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    background-image: url("./../../assets/images/captura.png");
+    background-repeat: no-repeat;
+    background-size: 100%,100%;
+    
+  }
+  .footer{
+    min-height: 180px;
+    margin: 0px;
+    position: relative;
+    display: -webkit-flex;
+    display:         flex;
+    -webkit-flex-flow: row;
+            flex-flow: row;
+            background-image:url("./../../assets/images/Green_Footer.png");         
+  }
+  .footer .logo{ 
+    width:15rem;
+    height:60%;
+    position: absolute;
+    top: 10%;
+    right: 70%;
+    background-image:url("./../../assets/images/LogoMoco_Header.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+ 
+  .footer .redes-box{ 
+    width:20rem;
+    height:40%;
+    position: absolute;
+    top: 30%;
+    right: 8.5%;
+
+  }
+  .footer .redes-box .fb{ 
+    width:20%;
+    height:100%;
+    position: absolute;
+    left: 0%;
+    background-image:url("./../../assets/images/Facebook_Icon.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .footer .redes-box .tw{ 
+    width:20%;
+    height:100%;
+    position: absolute;
+    left: 27%;
+    background-image:url("./../../assets/images/Twitter_Icon.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .footer .redes-box .in{ 
+    width:20%;
+    height:100%;
+    position: absolute;
+    right: 27%;
+    background-image:url("./../../assets/images/Instagram_Icon.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .footer .redes-box .yt{ 
+    width:20%;
+    height:100%;
+    position: absolute;
+    right: 0%;
+    background-image:url("./../../assets/images/Youtube_Icon.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .footer .avisos-ter-box{ 
+    width:25rem;
+    height:10%;
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    color:rgba(255, 255, 255, 0.774);
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    text-align: center;
+    font-size: 120%;
+  }
+  .footer .text-box,
+  .footer .avisos-ter-box .avisos,
+  .footer .avisos-ter-box .terminos,
+  .footer .lema{
+    color:rgba(255, 255, 255, 0.774);
+    position: absolute;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    text-align: center;
+    font-size: 100%;
+  }
+
+  .footer .lema{ 
+    width:25rem;
+    height:10%;
+    position: absolute;
+    bottom: 10%;
+    right: 63%;
+
+    font-size: 120%;
+  }
+  .footer .text-box{ 
+    width:25rem;
+    height:10%;
+    top: 10%;
+    right: 5%;
+
+    font-size: 120%;
+  }
+  .footer .avisos-ter-box .avisos{ 
+    width:39%;
+    height:100%;
+    left:0%;
+  }
+  .footer .avisos-ter-box .franja{ 
+    width:1%;
+    height:100%;
+    position: absolute;
+    left: 39%;
+    background-color: rgb(45, 187, 2);
+  }
+  .footer .avisos-ter-box .terminos{ 
+    width:60%;
+    height:100%;
+    right: 0%;
+
+  }
+
+  .footer .avisos-ter-box .terminos:hover,
+  .footer .avisos-ter-box .avisos:hover{ 
+    color:rgba(250, 185, 8, 0.774);
+  }
+  /*Estilo inicial al entrar al sitio*/
+  .second-news{
+    display: block;
+    margin-top: 0px;
+    height: auto;
+    background-image: url("./../../assets/images/Backround_Lines.jpg");
+  }
+  .second-news .latest-news {
+    width: auto; 
+    height: auto;
+    margin-left: 5%;
+    margin-right:  5%;
+    display: flex;
+    
+  }
+  .second-news .latest-news .big-new { /** SI SE USA **/
+
+    margin-left: 65px;
+    margin-right: 35px;
+    margin-top: 4%;
+    text-decoration: none; 
+    border-radius: 10px;
+    width:75%;
+    height:auto;
+    position: relative;
+    padding-bottom: 100px;
+
+
+  }    
+  
+  
+  .second-news .latest-news .big-new .button-publish{
+  
+    background-image: url("./../../assets/images/Boton_Regresar.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width:30%;
+    height:5%;
+    border: none;
+    position: relative;
+    bottom:1%;
+    left: 35%;
+    color: rgb(255, 255, 255);
+  }
+  .second-news .latest-news .big-new .button-publish:hover{
+    background-image: url("./../../assets/images/Boton_Regresar02.png");
+  }
+  .second-news .latest-news .big-new .comments-opinion-text{
+
+    text-decoration: none; 
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    width:100%;
+    height:1%;
+    position: relative;
+    font-size:150%;
+    text-align: center;
+    color: rgb(118, 161, 43); 
+  }
+  .second-news .latest-news .big-new .comments-opinion-text-kids{
+
+    text-decoration: none; 
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    width:100%;
+    height:auto;
+    position: relative;
+    font-size:150%;
+    text-align: center;
+    color: rgb(0, 0, 0); 
+    margin-top: 20px;
+  }
+  .second-news .latest-news .big-new .colaboradores-box{
+
+    width:90%;
+    height:auto;
+    position: relative;
+    left: 5%;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+
+    display: block; 
+    width: 90%;
+    height: 220px;
+    position: relative;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1rem;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture1,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture2,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture3,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture4,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture5,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture6,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture7,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture8,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture9,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture10,
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture11{
+
+    width: 30%;
+    height: 80%;
+    position: absolute; 
+    top: 10%;
+    left: 10%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture1{
+    background-image: url("./../../assets/images/MiembroEquipo_4.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture2{
+    background-image: url("./../../assets/images/MiembroEquipo_3.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture3{
+    background-image: url("./../../assets/images/MiembroEquipo_2.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture4{
+    background-image: url("./../../assets/images/MiembroEquipo1.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture5{
+    background-image: url("./../../assets/images/MiembroEquipo6.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture6{
+    background-image: url("./../../assets/images/MiembroEquipo7.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture7{
+    background-image: url("./../../assets/images/MiembroEquipo8.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture8{
+    background-image: url("./../../assets/images/MiembroEquipo9.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture9{
+    background-image: url("./../../assets/images/MiembroEquipo10.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture10{
+    background-image: url("./../../assets/images/MiembroEquipo11.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .picture11{
+    background-image: url("./../../assets/images/MiembroEquipo12.png");
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box{
+
+    width: 60%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    right: 0%;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+
+    width: 90%;
+    height: 15%;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    font-size:150%;
+    color: rgb(118, 161, 43); 
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+
+    width: 90%;
+    height: 15%;
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    font-size:120%;
+    color: rgb(204, 125, 22); 
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+
+    width: 90%;
+    height: 60%;
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    font-size:100%;
+    color: rgb(0, 0, 0); 
+  }
+  .second-news .latest-news .big-new .comments-opinion-text .green-comment{
+  
+    color: rgb(139, 191, 52); 
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  .second-news .latest-news .options{
+    margin: 4px;
+    padding: 5px;
+    position: relative;
+    width: 25%;
+    -webkit-order: 3;
+            order: 3;        
+  }
+  
+  .second-news .latest-news .options .quienes-somos-box{
+    background-image: url("./../../assets/images/BotonNuestraHistoria.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    color: rgb(0, 0, 0); 
+    position: relative;
+    text-decoration: none;
+    border-radius: 10px;
+    width:100%;
+    height:12%; 
+   }
+   .second-news .latest-news .options .quienes-somos-box:hover{
+    background-image: url("./../../assets/images/BotonNuestraHistoria_MouseOver.png");
+   }
+
+   .second-news .latest-news .options .quienes-somos-box .quienes-name{ 
+    background-image: linear-gradient(to right, rgba(135,163,45),rgba(154,185,56),rgba(135,163,45));
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width:100%;
+    height:50%;
+    bottom: 0px; 
+    position: absolute;
+  }
+  .second-news .latest-news .options .quienes-somos-box .quienes-image{
+    
+    background-image: url("./../../assets/images/Banner_Equipo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width:100%;
+    height:40%;
+    top: 10%; 
+    position: absolute;
+    text-align: center;
+  
+  }
+  .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+    text-decoration: none; 
+    font-family: 'Varela Round'; 
+    width:60%;
+    height:40%;
+    position: absolute;
+    font-size:200%;
+    text-align: left;
+    color: rgb(255, 255, 255); 
+    top:5%;
+    left: 20%;
+  }
+  .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+    text-decoration: none; 
+    font-family: 'Varela Round'; 
+    width:60%;
+    height:50%;
+    position: absolute;
+    font-size:150%;
+    text-align: left;
+    color: rgb(255, 255, 255); 
+    top:50%;
+    left: 20%;
+    margin: 0px;
+  }
+  
+  
+
+  @media all and (max-width: 1400px) {
+    .structure .options .vertical-menu a.options{  
+      padding: 17px; 
+      margin: 14px;
+      padding-left: 3.6rem;
+    }
+    .structure .options .vertical-menu a.menu{
+      padding: 17px; 
+      margin: 14px;
+    }
+    .structure .options .vertical-menu{
+      margin-top: 10px;
+    }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:198%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:148%;
+    }
+  }
+
+
+  @media all and (max-width: 1300px) {
+    .el-moco-banner {
+      height: 250px;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:190%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:135%;
+    }
+
+     
+  }
+  @media all and (max-width: 1260px) {
+    .el-moco-banner {
+      height: 230px;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:180%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:125%;
+    }
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:145%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:118%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:95%;
+      }
+  }
+  @media all and (max-width: 1230px) {
+    .structure .options .vertical-menu a.options{  
+      padding: 16px; 
+      margin: 13px;
+      padding-left: 3.6rem;
+    }
+    .structure .options .vertical-menu a.menu{
+      padding: 16px; 
+      margin: 13px;
+    }
+    .structure .options .vertical-menu{
+      margin-top: 10px;
+    }
+  }
+  
+  @media all and (max-width: 1180px) {
+    .structure .options .vertical-menu a.options{  
+      padding: 15px; 
+      margin: 12px;
+      padding-left: 3.6rem;
+    }
+    .structure .options .vertical-menu a.menu{
+      padding: 15px; 
+      margin: 12px;
+    }
+    .structure .options .vertical-menu{
+      margin-top: 10px;
+    }
+
+     .structure .first-news .new-description {
+        font-size:145%; 
+      }
+  }
+  @media all and (max-width: 1150px) {
+    .el-moco-banner {
+      height: 210px;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:165%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:110%;
+    }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:140%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:115%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:90%;
+      }
+  }
+
+  @media all and (max-width: 1120px) {
+    .structure .options .vertical-menu a.options{  
+      padding: 14px; 
+      margin: 11px;
+      padding-left: 3.6rem;
+    }
+    .structure .options .vertical-menu a.menu{
+      padding: 14px; 
+      margin: 11px;
+    }
+    .structure .options .vertical-menu{
+      margin-top: 10px;
+    }
+
+     .structure .first-news .new-description {
+        font-size:135%; 
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+        height: 200px;
+      }
+  }
+  @media all and (max-width: 1080px) {
+  .footer .logo{ 
+    right: 65%;
+  }
+  .footer .lema{ 
+    right: 58%;
+  }
+}
+@media all and (max-width: 1060px) {
+  .structure .options .vertical-menu a.options{  
+    padding: 12px; 
+    margin: 10px;
+    padding-left: 3.6rem;
+  }
+  .structure .options .vertical-menu a.menu{
+    padding: 12px; 
+    margin: 10px;
+  }
+  .structure .options .vertical-menu{
+    margin-top: 10px;
+  }
+
+   .second-news .latest-news .big-new .comments-opinion-text,
+   .second-news .latest-news .big-new .comments-opinion-text-kids
+   {
+    font-size:140%;
+  }
+  .structure .first-news .new-description {
+    font-size:130%; 
+  }
+  
+  }
+  @media all and (max-width: 1050px) {
+    .el-moco-banner {
+      height: 190px;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:155%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:100%;
+    } 
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:135%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:110%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:85%;
+      }
+      .structure .first-news .new-description {
+        font-size:125%; 
+      }
+  }
+    
+  @media all and (max-width: 991px) {
+    .navbar-moco .navbar-nav .nav-link-moconauta{
+      position: static;
+    }
+    .navbar-moco .navbar-nav .nav-link-moconauta .profile-pic{
+      position: relative;
+      left: -1.5rem;
+      top: 18px;
+    }
+    .navbar-moco .navbar-toggler{
+      color: rgb(255, 255, 255);
+      text-decoration: none; 
+      font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+      font-size:150%;
+      width: 100%;
+      float: none;
+      margin-right: 0;
+      height: 40px;
+      background-image: url("./../../assets/images/Moco_Sorprendido.png");
+      background-position-x: 25%;
+      background-position-y: 50%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      display: block;
+  }
+  .el-moco-banner {
+    height: 210px;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+    height: 320px;
+  }
+  .bg-moco-second-menu{
+    background-color:rgb(145, 211, 32)!important;
+    padding: .0rem 0rem;
+    display: block;
+  }
+  .structure .options .vertical-menu{
+    width: 100%; 
+    -webkit-order: 0;
+            order: 0;
+    display: none;
+
+   }
+   .structure .options{
+    display: none;
+   }
+   .navbar-moco-second-menu .navbar-toggler{
+    display: block;
+   }
+   .structure .first-news{
+       -webkit-order: 0;
+               order: 0;
+      background-size: contain;
+      height: 380px;
+      }
+      .structure {
+                background-size: cover;             
+      }
+      .structure .first-news .new-image-banner, .structure .first-news .new-line {
+        left: 10%;
+        font-size: 350%;
+      }
+      .structure .first-news .new-description {
+        left: 10%;
+      }
+  }
+  @media all and (max-width: 950px) {
+    .el-moco-banner {
+      height: 170px;
+    }
+    .second-news .latest-news .options .quienes-somos-box{
+      height:30%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:145%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:85%;
+    }
+    .second-news .latest-news .big-new .comments-opinion-text,
+    .second-news .latest-news .big-new .comments-opinion-text-kids{
+      font-size:130%;
+    }
+      .footer{
+        min-height: 360px;           
+      }
+      .footer .logo{ 
+        width:15rem;
+        height:30%;
+        position: absolute;
+        top: 10%;
+        right: 35%;
+    
+      }
+      .footer .lema{ 
+        width:25rem;
+        height:5%;
+        top: 40%;
+        right: 25%;
+      }
+      .footer .redes-box{ 
+        width:20rem;
+        height:20%;
+        top: 60%;
+        right: 29%;
+      }   
+      .footer .avisos-ter-box{ 
+        width:25rem;
+        height:5%;
+        position: absolute;
+        bottom: 7%;
+        right: 25%;
+      }
+      .footer .text-box{ 
+        width:25rem;
+        height:5%;
+        top: 50%;
+        right: 25%;
+        font-size: 120%;
+      }
+       
+
+    
+          .structure .first-news .new-name {
+              font-size:100%;
+            }
+            .structure .first-news .new-post-info .text{
+              font-size:50%;
+          
+            }
+            
+            .structure {
+              background-image: url("./../../assets/images/Backround_Lines.jpg");
+              background-size: 200%, 100%;  
+          }
+          .structure .first-news .new-description {
+              font-size: 145%;
+              text-align: center;
+            }
+    
+          /*Área con las 5 noticias más recientes de cada sección*/
+          .second-news{
+            margin-top: 0px;
+          }
+         .second-news .latest-news {
+          width: auto; 
+          height: auto;       
+          -webkit-order: 0;
+               order: 0;
+               display: block;
+          padding-bottom: 30px;
+         }
+         .second-news .latest-news .big-new { /** SI SE USA **/
+          display: block;
+          margin: 0px;    
+          width: auto; 
+        } 
+         .second-news .latest-news .options{
+          width: 70%; 
+          height: 350px;
+          -webkit-order: 0;
+               order: 0;
+               display: block;
+               margin-top: 50px;
+               margin-left: 15%;     
+         }
+         .second-news .latest-news .options .quienes-somos-box{
+    
+          position: relative;
+          left: 15%;
+          width:70%;
+          height:100%; 
+         }
+         .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+          font-size:180%;
+        }
+        .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+          font-size:135%;
+        }
+        .second-news .latest-news .big-new .comments-opinion-text,
+        .second-news .latest-news .big-new .comments-opinion-text-kids{
+          font-size:150%;
+        }
+        .second-news .latest-news .big-new .button-publish{
+          height:5%;
+          bottom:5%;
+        }
+        .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+          font-size:180%;
+        }
+        .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+          font-size:150%;
+        }
+        .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+          font-size:115%;
+        }
+        .structure .first-news .new-description {
+          font-size:125%; 
+        }
+         .second-news .latest-news a{
+          width: auto; 
+          height: 300px;
+          display: block;
+          margin-top: 0px;
+              
+         }
+
+  }
+  @media all and (max-width: 850px) {
+    .el-moco-banner {
+      height: 150px;
+    }
+    .second-news .latest-news .options .quienes-somos-box{
+      height:100%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:135%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:75%;
+    }
+    .second-news .latest-news .big-new .comments-opinion-text,
+    .second-news .latest-news .big-new .comments-opinion-text-kids{
+      font-size:120%;
+    }
+    .second-news .latest-news .big-new .button-publish{
+    width:40%;
+    height:2%;
+    position: absolute;
+    bottom:0%;
+    left: 30%;
+    }
+    .structure {
+      background-size: 130%, 100%;  
+    }
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+      height: 300px;
+    }
+  }
+  @media all and (max-width: 820px) {
+    .second-news .latest-news .big-new .button-publish{
+      bottom:0%;
+      }
+      .second-news .latest-news .options .quienes-somos-box{
+        top: -15%;
+       }
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:175%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:145%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:110%;
+      } 
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+        height: 280px;
+      }
+   }
+   @media all and (max-width: 770px) {
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+      font-size:140%;
+    }
+   }
+  @media all and (max-width: 750px) {
+    .el-moco-banner {
+      height: 130px;
+    }
+
+    .second-news .latest-news .options .quienes-somos-box{
+      height:100%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:115%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:62%;
+    }
+    .second-news .latest-news .big-new .comments-opinion-text,
+    .second-news .latest-news .big-new .comments-opinion-text-kids{
+      font-size:110%;
+    }
+    .structure {
+  
+      background-image: url("./../../assets/images/Backround_Lines.jpg");
+      background-size: 200%, 100%; 
+  }
+  }
+
+  @media all and (max-width: 745px) {
+
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:160%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:120%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:100%;
+      }  
+   }
+  @media all and (max-width: 700px) {
+    .second-news .latest-news .options .quienes-somos-box{
+      height:100%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:100%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:52%;
+    }
+    .structure .first-news{
+     height: 360px;
+     }
+     .footer .logo{ 
+      right: 32%;
+    }
+    .footer .lema{ 
+      right: 20%;
+    }
+    .footer .redes-box{ 
+      right: 24%;
+    }   
+    .footer .avisos-ter-box{ 
+      right: 20%;
+    }
+    .footer .text-box{ 
+      right: 20%;
+    }
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+      height: 270px;
+    }
+  }
+  @media all and (max-width: 690px) {
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:150%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:110%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:90%;
+      }  
+      .structure .first-news .new-description {
+        font-size:110%; 
+      }
+      .second-news .latest-news .big-new .button-publish{
+        width:40%;
+        height:5%;
+        position: absolute;
+        left: 30%;
+        }
+
+   }
+  @media all and (max-width: 650px) {
+    .el-moco-banner {
+      height: 170px;
+      background-image:  url("./../../assets/images/banner-sin-moco-pequeño.png");
+  }
+  .el-moco-banner .logo-hd{ 
+    position: absolute;
+    width:30%;
+    height:70%;
+    left: 35%;
+    bottom: 5%;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+    height: 260px;
+  }
+  }
+  @media all and (max-width: 608px) {
+  .footer .logo{ 
+    right: 27%;
+  }
+  .footer .lema{ 
+    right: 15%;
+  }
+  .footer .redes-box{ 
+    right: 19%;
+  }   
+  .footer .avisos-ter-box{ 
+    right: 15%;
+  }
+  .footer .text-box{ 
+    right: 15%;
+  }
+}
+@media all and (max-width: 580px) {
+  .second-news .latest-news .options .quienes-somos-box{
+    height:90%; 
+   }
+   .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+    font-size:170%;
+  }
+  .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+    font-size:125%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text,
+  .second-news .latest-news .big-new .comments-opinion-text-kids{
+    font-size:140%;
+  }
+  .structure {
+    background-size: 220%, 100%;  
+}
+.second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+  font-size:140%;
+}
+.second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+  font-size:100%;
+}
+.second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+  font-size:80%;
+}   
+.structure .first-news .new-image-banner {
+  width:90%;
+  left: 5%;
+}
+.structure .first-news .new-description {
+  width:90%;
+  left: 5%;
+  font-size:110%; 
+}
+.second-news .latest-news .big-new .colaboradores-box a.colaborador{
+  height: 250px;
+}
+ }
+  @media all and (max-width: 575px) {
+    .el-moco-banner {
+      height: 160px;
+    }
+  }
+  @media all and (max-width: 550px) {
+    .second-news .latest-news .options .quienes-somos-box{
+      height:85%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:170%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:115%;
+    }
+    .footer .logo{ 
+      right: 25%;
+    }
+    .footer .lema{ 
+      right: 10%;
+    }
+    .footer .redes-box{ 
+      right: 14%;
+    }   
+    .footer .avisos-ter-box{ 
+      right: 10%;
+    }
+    .footer .text-box{ 
+      right: 10%;
+    }
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+      height: 200px;
+    }
+   }
+
+   @media all and (max-width: 515px) {
+
+    .second-news .latest-news .big-new .comments-opinion-text,
+    .second-news .latest-news .big-new .comments-opinion-text-kids{
+      top: 0.5%;
+    }
+    .second-news .latest-news .options .quienes-somos-box{
+      height:80%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:160%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:105%;
+    }
+    .second-news .latest-news .big-new .comments-opinion-text,
+    .second-news .latest-news .big-new .comments-opinion-text-kids{
+      font-size:130%;
+    }
+    .structure {
+      background-size: 240%, 100%;  
+  }
+
+  .second-news .latest-news .big-new .colaboradores-box{
+    width:100%;
+    left: 0%;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+    font-size:130%;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+    font-size:90%;
+  }
+  .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+    font-size:70%;
+  }  
+  
+   }
+  @media all and (max-width: 500px) {
+    .el-moco-banner {
+      height: 150px;
+    }
+    .second-news .latest-news .big-new { /** SI SE USA **/
+      margin-left: 0%;
+      margin-right: 0%;
+    } 
+
+  }
+
+  @media all and (max-width: 480px) {
+    .second-news .latest-news .options .quienes-somos-box{
+      height:100%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:150%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:95%;
+    }
+
+    .structure {
+      background-size: 260%, 100%;  
+  } 
+  .second-news .latest-news .big-new .button-publish{
+    bottom:0%;
+    height: 2%;
+    }
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 0%;
+      }
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:120%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:85%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:65%;
+      }   
+      .second-news .latest-news .big-new .comments-opinion-text,
+      .second-news .latest-news .big-new .comments-opinion-text-kids{
+        font-size:100%;
+      }
+      .structure .first-news .new-line {
+        font-size: 200%;
+      }
+      .structure .first-news .new-description{
+        font-size: 100%;
+      }
+      .footer .logo{ 
+        right: 25%;
+      }
+      .footer .lema{ 
+        right: 7%;
+     
+      }
+      .footer .redes-box{ 
+        right: 13%;
+      }   
+      .footer .avisos-ter-box{ 
+        right: 7%;   
+      }
+      .footer .text-box{ 
+        right: 7%;
+      }
+      .second-news .latest-news .options{
+
+             margin-top: 0px;
+    
+       }
+   }
+  @media all and (max-width: 450px) {
+    .el-moco-banner {
+      height: 140px;
+    }
+    .el-moco-banner .logo-hd{ 
+      position: absolute;
+      width:40%;
+      left: 30%;
+      bottom: 5%;
+    }
+
+.footer .logo{ 
+  width:10rem;
+  height:30%;
+  position: absolute;
+  top: 10%;
+  right: 30%;
+
+}
+.footer .lema{ 
+  width:20rem;
+  height:5%;
+  top: 40%;
+  right: 10%;
+  font-size: 100%;
+}
+.footer .redes-box{ 
+  width:15rem;
+  height:20%;
+  top: 60%;
+  right: 20%;
+}   
+.footer .avisos-ter-box{ 
+  width:20rem;
+  height:5%;
+  position: absolute;
+  bottom: 7%;
+  right: 10%;
+}
+.footer .text-box{ 
+  width:20rem;
+  height:5%;
+  top: 50%;
+  right: 10%;
+  font-size: 120%;
+}
+.footer .avisos-ter-box .franja{ 
+  background-color: rgba(0, 0, 0, 0);
+}
+  }
+
+  
+  @media all and (max-width: 440px) {
+    .second-news .latest-news .options .quienes-somos-box{
+      height:100%;
+      top: 10%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:140%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:85%;
+    }
+
+      .second-news .latest-news .big-new .button-publish{
+        width:50%;
+        height:2%;
+        position: absolute;
+        left: 25%;
+        bottom: 0%;
+        }
+        .structure {
+          background-size: 280%, 100%;  
+      }
+      .structure .first-news .new-description {
+        font-size:100%; 
+      }
+      .second-news .latest-news .options{ 
+        height: 250px;   
+       }
+       .structure .first-news .new-description {
+        bottom: 10%;
+        }
+        .second-news .latest-news .big-new .colaboradores-box a.colaborador{
+          height: 180px;
+        } 
+   }
+   @media all and (max-width: 410px) {
+    .second-news .latest-news .options .quienes-somos-box{
+      height:100%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:130%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:75%;
+    }
+    .structure {
+      background-size: 300%, 100%;  
+  }
+  .structure .first-news .new-line {
+    font-size: 200%;
+    top: 10%;
+  }
+   }
+  @media all and (max-width: 400px) {
+    .el-moco-banner {
+      height: 130px;
+    }
+
+.footer .logo{ 
+  right: 25%;
+}
+.footer .lema{ 
+  right: 5%;
+
+}
+.footer .redes-box{ 
+  right: 15%;
+}   
+.footer .avisos-ter-box{ 
+  right: 5%;   
+}
+.footer .text-box{ 
+  right: 5%;
+}
+
+  }
+
+  @media all and (max-width: 380px) {
+  
+    .second-news .latest-news .options .quienes-somos-box{
+      height:100%; 
+      top: 0%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:120%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:65%;
+    }
+
+      .structure {
+        background-size: 320%, 100%;  
+    }
+    .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:100%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:80%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:60%;
+      }  
+      .structure .first-news .new-description {
+        font-size:90%; 
+      }
+   }
+  @media all and (max-width: 350px) {
+    .el-moco-banner {
+      height: 120px;
+    }
+    .footer .logo{ 
+      right: 22%;
+    }
+    .footer .lema{ 
+      right: 10%;
+      width:16rem;
+   
+    }
+    .footer .redes-box{ 
+      right: 15%;
+    }   
+    .footer .avisos-ter-box{ 
+      right: 10%;
+      font-size: 80%; 
+      width:16rem; 
+    }
+    .footer .text-box{ 
+      right: 10%;
+      width:16rem;
+    }
+  }
+
+   @media all and (max-width: 320px) {
+    .second-news .latest-news .options .quienes-somos-box{
+      height:100%; 
+     }
+     .second-news .latest-news .options .quienes-somos-box .quienes-name .first-text{
+      font-size:110%;
+    }
+    .second-news .latest-news .options .quienes-somos-box .quienes-name .second-text{
+      font-size:55%;
+    }  
+    .structure .first-news .new-description {
+    bottom: 10%;
+    }
+        .structure .first-news .new-line {
+          font-size: 200%;
+        }
+        .structure {
+          background-size: 340%, 100%;  
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text1{
+        font-size:90%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text2{
+        font-size:70%;
+      }
+      .second-news .latest-news .big-new .colaboradores-box a.colaborador .text-box .text3{
+        font-size:50%;
+      } 
+   }

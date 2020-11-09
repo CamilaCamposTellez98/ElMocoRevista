@@ -1,0 +1,346 @@
+<html lang="en" style="overflow-y:auto" #scroll>
+
+<head>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0" nonce="UPFAi94m"></script>
+</head>
+
+<div class="screen">
+  <div class="el-moco-banner">
+    <div class="logo-hd"><a style="width: 100%; height: 100%; display: block;" (click)="redirectTo()"></a></div>
+  </div>
+
+  
+  
+  <div class="banner">
+
+
+    <nav class="navbar navbar-expand-lg navbar-moco bg-moco-menu ">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        SECCIONES
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link-menu" (click)="redirectTo()"></a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link-news" routerLink="/home" [queryParams]="{ news: 'noticias'}">NOTICIAS</a>
+          </li>
+          <li class="nav-item-2">
+              <a class="nav-link-science" routerLink="/home" [queryParams]="{ news: 'ciencia'}">CIENCIA</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link-art" routerLink="/home" [queryParams]="{ news: 'arte'}">ARTE</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link-fun" routerLink="/home" [queryParams]="{ news: 'ocio'}">OCIO</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link-find" routerLink="/home" [queryParams]="{ news: 'descubre'}">DESCUBRE</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link-search" routerLink="/buscador"></a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link-moconauta" routerLink="/ingreso">
+                  <div class="profile-pic" [style.background-image]="'url(' + userPicture + ')'"></div>
+                  {{Moconauta}} <span class="opciones">{{Ingreso}}</span>
+              </a>
+          </li>
+      </ul>
+      </div>
+    </nav>
+    <!--SEGUNDO MENU VERDE RESPONSIVO, NO SE MUESTRA SI LA RESOLUCIÓN NO ES LA DE UN TELÉFONO-->
+    <nav class="navbar navbar-expand-lg navbar-moco-second-menu bg-moco-second-menu ">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav2"
+        aria-controls="navbarNav2" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav2">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link-quienes-somos" routerLink="/quienes-somos">QUIÉNES SOMOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-moco-shop" href="https://www.mocoshop.mx/" target="_blank">MOCO SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-moco-app" routerLink="/moco-app">MOCO APP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-revista-tri" routerLink="/revista-trimestral">REVISTA TRIMESTRAL</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-mocotips-padres" routerLink="/mocotips-padres">MOCOTIPS PARA PADRES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-contacto" routerLink="/contactanos">CONTACTO</a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+
+  </div>
+  <div class="structure-news-selected">
+    <!--Aquí se cambia la clase dependiendo de la opción seleccionada en el navbar-->
+    <article class="first-news">
+      <div class="new-line">
+       
+        <div class="row h-100">
+          <div class="col-sm-12 my-auto">
+           ESPECIAL DEL MES
+          </div>
+        </div>
+       
+      </div>
+
+      <div class="new-post-info">
+
+        <div class="date-icon"></div>
+        <div class="text">
+          <div class="row h-100">
+            <div class="col-sm-12 my-auto">
+              {{fecha}}
+            </div>
+          </div>
+        </div>
+        <div class="profile-icon"></div>
+        <div class="text">
+          <div class="row h-100">
+            <div class="col-sm-12 my-auto">
+              {{autor}}
+            </div>
+          </div>
+        </div>
+        <div class="section-icon"></div>
+        <div class="text">
+          <div class="row h-100">
+            <div class="col-sm-12 my-auto">
+              Especial del mes
+            </div>
+          </div>
+        </div>
+        <div class="commentaries-icon"></div>
+        <div class="text">
+          <div class="row h-100">
+            <div class="col-sm-12 my-auto">
+              {{numComentarios}}
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="new-image-banner">
+        <img [src]="especialDelMesPortada1" style="float:left; width:100%; max-height:1000px;" />
+      </div>
+    </article>
+    <div class="options">
+
+
+
+      <div class="vertical-menu">
+        <a class="menu">
+          <div class="first-moco"></div> MENÚ <div class="second-moco"></div>
+        </a>
+        <a class="options" routerLink="/quienes-somos">
+          <div class="quienes"></div>QUIÉNES SOMOS
+        </a>
+        <a class="options" href="https://www.mocoshop.mx/" target="_blank">
+          <div class="moco-shop"></div>MOCO SHOP
+        </a>
+        <a class="options" routerLink="/moco-app">
+          <div class="moco-app"></div>MOCO APP
+        </a>
+        <a class="options" routerLink="/revista-trimestral">
+          <div class="revista"></div>REVISTA TRIMESTRAL
+        </a>
+        <a class="options" routerLink="/mocotips-padres">
+          <div class="mocotips"></div>MOCOTIPS PARA PADRES
+        </a>
+        <a class="options" routerLink="/contactanos">
+          <div class="contacto"></div>CONTACTO
+        </a>
+      </div>
+
+
+      <div class="social-network">
+        <div class="share-text">
+          <div class="row h-100">
+            <div class="col-sm-12 my-auto">
+              Compartir en tus redes
+            </div>
+          </div> 
+        </div>
+        <div class="share-icons">
+          <div class="facebook" (click)="fb()"></div>
+          
+            <div class="twitter" (click)="tw()"></div>
+            
+            <div class="mail" (click)="mail()"></div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="second-news" [ngStyle]="{'background-image': 'url(' + photo + ')' }">
+    <div class="latest-news">
+      <div class="notices">
+        <a class="big-new" style="background-color: rgba(255, 255, 255, 0); box-shadow: none;">
+
+
+        <div class="new-image-banner2">
+          <img [src]="especialDelMesPortada1" style="float:left; width:100%; max-height:1200px;" />
+        </div>
+      </a>
+      <a class="big-new" style="padding-bottom: 30px;">
+        <div  class="new-data">
+        
+          <div class="first-part-notice" [innerHTML]="descripcion | safeHtml"></div>
+        </div>
+        <div class="flechas-box">
+          <a *ngIf="anterior" class="flecha-atras" routerLink="/especial-mes" [queryParams]="{ news: queryParam, id:  especialPrevious[1].$key}" (click)="scrollToTop()"></a>
+          <a *ngIf="siguiente" class="flecha-adelante" routerLink="/especial-mes" [queryParams]="{ news: queryParam, id:  especialNext[0].$key}" (click)="scrollToTop()"></a>
+         
+        </div>
+      </a>
+      <a class="big-new">
+        <div class="comments-data">
+          <div class="comments-moconauta-text" (click)="app()">{{MoconautaSuscribeteComentario}}</div>
+          <div class="comments-opinion-text">
+            <div class="row h-100">
+              <div class="col-sm-12 my-auto">
+                {{Suscribetee}}
+              </div>
+            </div>
+          </div>
+          <textarea class="textarea-comments" type="text" maxlength="1000" [disabled]="!comentariosAllow" [(ngModel)]="comentarioTextArea"></textarea>
+         <!--
+          <div class="name-input-text">Nombre</div>
+          <input class="input-comments" type="text" [disabled]="!comentariosAllow">
+          <div class="mail-input-text" >Email</div>
+          <input class="input-comments2" type="text" [disabled]="!comentariosAllow">
+        -->
+          <button class="button-publish" [hidden]="!repCaptcha" (click)="publicarComentario()">Publicar comentario</button>
+          <div class="captcha-box" [hidden]="!comentariosAllow">
+           
+            
+            <form [formGroup]="aFormGroup">
+              <ngx-recaptcha2 #captchaElem
+                [siteKey]="siteKey"
+                [size]="size"
+                formControlName="recaptcha"
+                (success)="resolved($event)"
+              
+             
+               >
+              </ngx-recaptcha2>
+            </form>
+         
+          </div>
+          <div class="moco-icon-coffe-cup"></div>
+        </div>
+
+      </a>
+      <a class="big-new" style="box-shadow: none; background-color: rgb(255, 255, 255,0);">
+        <div class="comments-text-green">
+          Comentarios
+        </div>
+        <div class="comments-border-green"></div>
+      </a>
+   
+   
+      <a class="big-new" *ngFor="let comentario of comentariosList; let i=index" >
+        <div class="comments-made-data">
+           <div class="user-name">{{comentariosList[i].username}}</div>
+          <div class="comment-date">{{comentariosList[i].date}}</div>
+          <div class="user-profile-pic" (resized)="onResized($event)" [style.background-image]="'url(' + comentariosList[i].userPicture + ')'" [style.height]="height+'px'" [style.top]="porcentajeTop+'px'"></div>
+          <div class="full-comment-made">{{comentariosList[i].comment}}
+          </div>
+          <div class="comment-reply" [hidden]="!comentariosAllow" (click)="responderComentario(i)">RESPONDER</div>
+          <div  class="comment-delete" [style.display]="comentariosEliminar[i]" (click)="eliminarComentario(i)">X ELIMINAR COMENTARIO</div>
+
+        </div>
+      </a>
+    </div>
+      <!--
+  <div [className]="topLineClass">{{autor}}</div>
+  <div [className]="phraseClass" [innerHTML]="phrase_new | safeHtml"></div>
+  <div class="first-part-notice" [innerHTML]="noticia1_new | safeHtml"></div>
+  <div [className]="secondPartNotice" [innerHTML]="noticia2_new | safeHtml"></div>
+  <div class="third-part-notice" [innerHTML]="noticia3_new | safeHtml">
+
+
+
+
+
+
+    <div *ngIf="publicarplantilla1" class="publicarButton" (click)="onSubmit(1)">1</div>
+  <div *ngIf="publicarplantilla2" class="publicarButton" (click)="onSubmit(2)">2</div>
+  <div *ngIf="publicarplantilla3" class="publicarButton" (click)="onSubmit(3)">3</div>
+  <div *ngIf="publicarplantilla4" class="publicarButton" (click)="onSubmit(4)">4</div>
+  <div *ngIf="publicarplantilla5" class="publicarButton" (click)="onSubmit(5)">5</div>
+ -->
+
+      <div class="options">
+
+        <div class="vertical-menu">
+
+          <a *ngIf="visibility1" routerLink="/especial-mes" [queryParams]="{ news: queryParam, id:  especial1key}" (click)="scrollToTop()">
+            
+            <div class="especial-box" [style.background-image]="'url(' + especial1image + ')'"></div>
+          </a>
+          <a *ngIf="visibility2" routerLink="/especial-mes" [queryParams]="{ news: queryParam, id:  especial2key}" (click)="scrollToTop()" >
+           
+            <div class="especial-box" [style.background-image]="'url(' + especial2image + ')'"></div>
+          </a>
+          <a *ngIf="visibility3" routerLink="/especial-mes" [queryParams]="{ news: queryParam, id:  especial3key}" (click)="scrollToTop()">
+            
+            <div class="especial-box" [style.background-image]="'url(' + especial3image + ')'"></div>
+          </a>
+
+
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+    </div>
+
+
+   
+  </div>
+
+  <div class="footer1">
+    <!--Aquí se cambia la clase dependiendo de la opción seleccionada en el navbar-->
+    <div class="logo"> <a style="width: 100%; height: 100%; display: block;" (click)="redirectTo()"></a> </div>
+    <div class="lema">EL MOCO, SI LO LEES SE TE PEGA &#174; 2020</div>
+    <div class="redes-box">
+      <a class="fb" href="https://www.facebook.com/elmoco.mx" target="_blank"></a>
+      <a class="tw" href="https://twitter.com/elmocomx" target="_blank"></a>
+      <a class="in" href="https://www.instagram.com/elmocomx/" target="_blank"></a>
+      <a class="yt" href="https://www.youtube.com/channel/UCFEUx_LMDk2t1pptPR3gRow" target="_blank"></a>
+    </div>
+    <div class="text-box">SÍGUENOS EN</div>
+
+    <div class="avisos-ter-box">
+      <div class="avisos" routerLink="/avisos">AVISOS LEGALES</div>
+      <div class="franja"></div>
+      <a class="terminos" routerLink="/terminos">TÉRMINOS Y CONDICIONES</a>
+    </div>
+  </div>
+</div>
+
+</html>

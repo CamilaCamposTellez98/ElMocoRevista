@@ -1,0 +1,710 @@
+
+.bg-moco-menu{
+  background-color:#00758b!important;
+  padding: .0rem 0rem;
+  -webkit-box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+  -moz-box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+  box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+}
+  .navbar-moco .navbar-nav .nav-link{
+    color:rgba(255, 255, 255, 0.774);
+  }
+  /*News button styles*/
+.navbar-moco .navbar-nav .nav-link-news{
+  color:rgb(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(245,152,19);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-news:hover{
+  text-decoration:none
+}
+.navbar-moco .navbar-nav .nav-link-news:focus,
+.navbar-moco .navbar-nav .nav-link-news:hover{
+
+  background-color: rgba(245, 151, 19, 0.856);
+}
+/*Science button styles*/
+.navbar-moco .navbar-nav .nav-link-science{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(34,201,225);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-science:hover{
+  text-decoration:none
+}
+.navbar-moco .navbar-nav .nav-link-science:focus,
+.navbar-moco .navbar-nav .nav-link-science:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(34, 199, 225, 0.884);
+}
+/*Art button styles*/
+.navbar-moco .navbar-nav .nav-link-art{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(218,97,171);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-art:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-art:focus,
+.navbar-moco .navbar-nav .nav-link-art:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(218, 97, 172, 0.877);
+}
+/*Fun button styles*/
+.navbar-moco .navbar-nav .nav-link-fun{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(239,209,4);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-fun:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-fun:focus,
+.navbar-moco .navbar-nav .nav-link-fun:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(239, 208, 4, 0.877);
+}
+/*Find button styles*/
+.navbar-moco .navbar-nav .nav-link-find{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(168,101,202);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-find:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-find:focus,
+.navbar-moco .navbar-nav .nav-link-find:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(168, 101, 202, 0.863);
+}
+  
+  .navbar-moco .navbar-nav .nav-link-menu{
+    color:rgba(255, 255, 255, 0.774);
+    display: block;
+    padding:.9rem 1.5rem;
+    background-image: url("./../../assets/images/Home_WhiteIcon_Desactivado.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .navbar-moco .navbar-nav .nav-link-menu:focus,
+  .navbar-moco .navbar-nav .nav-link-menu:hover{
+    background-image: url("./../../assets/images/HomeOrangeIcon_MouseOver.png");
+  }
+  
+  
+  .navbar-moco .navbar-nav .nav-link-search{
+    color:rgba(255, 255, 255, 0.774);
+    display: block;
+    padding:1rem 1.5rem;
+    background-image: url("./../../assets/images/Lupa_Home.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  
+  .navbar-moco .navbar-nav .nav-link-moconauta{
+    color:rgb(255, 255, 255);
+    display: block;
+    padding:.4rem 2rem;
+    position: absolute;
+    margin: 0%;
+    font-family: 'Arial';
+    font-size: 100%;
+  }
+  .navbar-moco .navbar-nav .nav-link-moconauta .profile-pic{
+    height: 19.3167px;
+    width: 19.3167px;
+    position: absolute;
+    left: 0rem;
+    top: 6.4px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; 
+    border: 0.5px solid #ffffff;
+  }
+.navbar-moco .navbar-nav .nav-link-moconauta .opciones{
+  color:rgb(141, 150, 61);
+  font-family: 'Anaheim';
+  font-size: 120%;
+}
+  .nav-link-news:focus,.nav-link-moconauta:hover{
+    text-decoration:none
+  }
+  
+  
+  .navbar-moco .navbar-nav .active>.nav-link,.navbar-moco .navbar-nav .nav-link.active,.navbar-moco .navbar-nav .nav-link.show,.navbar-moco .navbar-nav .show>.nav-link{
+    color:#fff;
+    
+  }
+  .navbar-moco .navbar-toggler{
+    color:rgba(235, 220, 220, 0.5);
+    border-color:#307185;
+  }
+  .navbar-moco .navbar-toggler-icon{
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+  
+  
+  
+  
+  
+  
+    .bg-moco-second-menu{
+      background-color:rgb(145, 211, 32)!important;
+      padding: .0rem 0rem;
+      display: none;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link{
+      color:rgba(255, 255, 255, 0.774);
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-quienes-somos,
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-shop,
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-app,
+    .navbar-moco-second-menu .navbar-nav .nav-link-revista-tri,
+    .navbar-moco-second-menu .navbar-nav .nav-link-mocotips-padres,
+    .navbar-moco-second-menu .navbar-nav .nav-link-contacto{
+      color:rgba(255, 255, 255, 0.774);
+      font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+      background-color: rgb(122, 179, 25);
+      display: block;
+      padding:.9rem 1.5rem;
+      padding-left: 3.6rem;
+      margin-top: .5rem;
+      margin-right: 1rem;
+      margin-left: 1rem;
+      border-radius: 15px;
+      background-repeat: no-repeat;
+      background-size: auto;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-quienes-somos{
+      background-image: url("./../../assets/images/BaraQuienesSomos_Perfil_Icono.png");
+      background-position-x: 1.5rem;
+      background-position-y: 50%;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-shop{
+      background-image: url("./../../assets/images/Carrito_IconoBlanco.png");
+      background-position-x: 1.5rem;
+      background-position-y: 50%;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-app{
+      background-image: url("./../../assets/images/Telefono_IconoBlanco.png");
+      background-position-x: 1.5rem;
+      background-position-y: 50%;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-revista-tri{
+      background-image: url("./../../assets/images/Revista_IconoBlanco.png");
+      background-position-x: 1.5rem;
+      background-position-y: 50%;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-mocotips-padres{
+      background-image: url("./../../assets/images/Foco_IconoBlanco.png");
+      background-position-x: 1.5rem;
+      background-position-y: 50%;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-contacto{
+      background-image: url("./../../assets/images/Correo_IconoBlanco.png");
+      background-position-x: 1.5rem;
+      background-position-y: 50%;
+      margin-bottom: 1rem;
+    }
+  
+    
+    
+    
+    .navbar-moco-second-menu .navbar-nav .active>.nav-link,.navbar-moco-second-menu .navbar-nav .nav-link.active,.navbar-moco-second-menu .navbar-nav .nav-link.show,.navbar-moco-second-menu .navbar-nav .show>.nav-link{
+      color:#fff;  
+    }
+    .navbar-moco-second-menu .navbar-toggler{
+      color:rgba(235, 220, 220, 0.5);
+      border-color:rgb(145, 211, 32);
+    }
+    .navbar-moco-second-menu .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .el-moco-banner {
+
+    height: 45%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+  /*********************************************************/
+  /*Estilos para el banner de noticias que cambia a naranja*/
+  /*********************************************************/
+  .structure-news-selected {
+    height: auto;
+    margin: 0px;
+    display: -webkit-flex;
+    display:         flex;
+    -webkit-flex-flow: row;
+    flex-flow: row;
+    background-image:linear-gradient(rgba(245,152,19, 0.85), rgba(245,152,19, 0.85)),  url("./../../assets/images/Barrafranjas_Header.png");
+    }
+  .structure-news-selected .first-news {
+    min-height: 1800px;
+    position: relative;
+    -webkit-flex: 3 1 60%;
+            flex: 3 1 60%;
+    -webkit-order: 2;
+            order: 2;      
+  }
+  .structure-news-selected .first-news .shop-container{
+    background-color: mediumaquamarine;
+    width:80%;
+    height:1700px; /* -------------------------- CAMBIAR A PORCENTAJE ------------------------*/
+    position: absolute;
+    left: 10%;
+    border-radius: 20px;
+    top: 35px;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-banner{
+    background-color: rgb(142, 102, 205);
+    width:100%;
+    height:25%; 
+    top:0px;
+    position: absolute;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-best,
+  .structure-news-selected .first-news .shop-container .moco-shop-magazine,
+  .structure-news-selected .first-news .shop-container .moco-shop-books,
+  .structure-news-selected .first-news .shop-container .moco-shop-products{ 
+    width:100%;
+    height:18%; 
+    position: absolute;
+    display: bock;
+    padding: 3%;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-best{
+    background-color: rgb(221, 152, 212);
+    top:25%;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-magazine{
+    background-color: rgb(152, 221, 189);
+    top: 45%;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-books{
+    background-color: rgb(152, 180, 221);
+    top: 65%;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-products{
+    background-color: rgb(188, 152, 221);
+    top:85%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-best .article1{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-best .article2{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+    left:35%;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-best .article3{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+    left:66%;
+  }
+  
+
+
+
+
+
+
+
+  .structure-news-selected .first-news .shop-container .moco-shop-magazine .article1{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-magazine .article2{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+    left:35%;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-magazine .article3{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+    left:66%;
+  }
+
+
+
+
+
+
+
+  .structure-news-selected .first-news .shop-container .moco-shop-books .article1{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-books .article2{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+    left:35%;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-books .article3{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+    left:66%;
+  }
+
+
+
+
+
+
+
+
+
+  .structure-news-selected .first-news .shop-container .moco-shop-products .article1{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-products .article2{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+    left:35%;
+  }
+  .structure-news-selected .first-news .shop-container .moco-shop-products .article3{
+    background-color: rgb(196, 124, 186);
+    width:30%;
+    height:80%; 
+    position: absolute;
+    border-radius: 20px;
+    left:66%;
+  }
+
+
+
+
+
+
+
+  
+  
+  
+  .structure-news-selected .options{
+    background-color: purple;
+      position: relative;
+      -webkit-flex: 1 6 20%;
+              flex: 1 6 20%;
+      -webkit-order: 3;
+              order: 3;        
+  }
+  .structure-news-selected .options .vertical-menu {
+    background-color: red;
+    margin-top: 35px;
+  }
+  .structure-news-selected .options .vertical-menu a {
+    background-color: rgb(139, 191, 52); /* Grey background color */
+    color: rgb(255, 255, 255); /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 18px; /* Add some padding */
+    margin: 15px;
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 5px;
+  }
+  .structure-news-selected .options .vertical-menu a:hover {
+    background-color: #ccc; /* Dark grey background on mouse-over */
+  }
+  .structure-news-selected .options .vertical-menu a.active {
+    background-color: #4CAF50; /* Add a green color to the "active/current" link */
+    color: white;
+  }
+ 
+  
+  
+
+  
+  
+
+  
+  
+  .banner{
+    display: block;
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom:  0px;
+    min-height: 32px;
+    
+  }
+  
+  .contact{
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    background-image: url("./../../assets/images/captura.png");
+    background-repeat: no-repeat;
+    background-size: 100%,100%;
+    
+  }
+  .contact2{
+    display: block;
+    width: 100%;
+    min-height: 180px;
+    background-image: url("./../../assets/images/captura2.png");
+    background-repeat: no-repeat;
+    background-size: 100%,100%;
+    
+  }
+  /*Estilo inicial al entrar al sitio*/
+  .second-news{
+    display: block;
+    margin-top: 0px;
+    height: auto;
+  }
+  .second-news .latest-news {
+    background-color: peru;
+    width: auto; 
+    height: auto;
+    margin-left: 45px;
+    margin-right: 45px;
+    display: flex;
+  }
+  
+  .second-news .latest-news .options{
+    background-color: pink;
+           
+              height: 2000px;
+              display: block;
+              margin: 0px;
+             
+    }
+    .second-news .latest-news .options .vertical-menu {
+      width: 300px; 
+      margin-top: 35px;
+      margin-left: 0px;
+    }
+    
+    .second-news .latest-news .options .vertical-menu a {
+      color: rgb(255, 255, 255); 
+      display: block; 
+      text-decoration: none; 
+      border-radius: 5px;
+    }
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @media all and (max-width: 640px) {
+  
+  
+  
+    .bg-moco-second-menu{
+      background-color:rgb(145, 211, 32)!important;
+      padding: .0rem 0rem;
+      display: block;
+    }
+  
+       /*Cambiar el banner a color naranja*/
+  
+  
+       .structure-news-selected, #page {
+        -webkit-flex-flow: column;
+        flex-flow: column;
+        padding-left: 30px;
+        padding-right: 30px;
+        height: auto;
+        }
+        .structure-news-selected .options{
+            display: none; 
+        }
+  
+       .structure-news-selected .options .vertical-menu{
+        width: 100%; 
+        -webkit-order: 0;
+                order: 0;
+        display: none;
+        background-color: rgb(105, 170, 44);
+       }
+       .structure-news-selected .options .vertical-menu a{
+        width: 30%;
+        display: flex;
+        background-color: rgb(202, 124, 16);
+       }
+       .structure-news-selected .options .vertical-menu a.active{
+        width: 30%;
+        display: flex;
+        background-color: rgb(16, 202, 78);
+       }
+       .structure-news-selected .first-news{
+        -webkit-order: 0;
+        order: 0;
+        background-size: contain;
+        height: auto;
+        margin-top: 0px;
+          }
+        .structure-news-selected .first-news{
+            margin-top: 35px;
+            margin-bottom: 35px;
+          }
+  
+     
+  
+        /*Área con las 5 noticias más recientes de cada sección*/
+       .second-news .latest-news {
+        width: auto; 
+        height: auto;
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+       }
+       .second-news .latest-news {
+        width: auto; 
+        height: auto;
+        display: block;
+        padding-top: 20px;
+       }
+       .second-news .latest-news a{
+        width: auto; 
+        height: 300px;
+        display: block;
+        margin-top: 0px;
+       }
+  
+       .second-news .latest-news .big-new{ /*** SI SE USA ***/
+          width: auto; 
+          height: 2000px;
+          display: block;
+          margin: 0px;      
+         }
+  
+        /*Área con las 5 noticias más recientes de la sección seleccionada, incluye un elemento para cambiar de página*/
+       .second-news-section-selected .latest-news {
+        width: auto; 
+        height: auto;
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+       }
+  
+      
+       .second-news-section-selected .latest-news a{
+        width: auto; 
+        height: 300px;
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+       }
+  
+       .second-news-section-selected .latest-news .big-new{
+        width: auto; 
+        height: 300px;
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+       }
+  
+  
+       .contact{
+        display: block;
+        width: 100%;
+        min-height: 80px;
+        background-image: url("./../../assets/images/captura.png");
+        background-repeat: no-repeat;
+        background-size: 100%,100%;
+        
+      }
+      .contact2{
+        display: block;
+        width: 100%;
+        min-height: 50px;
+        background-image: url("./../../assets/images/captura2.png");
+        background-repeat: no-repeat;
+        background-size: 100%,100%;
+        
+      }
+
+
+      .structure-news-selected .first-news .new-post-info .text{
+        font-size:50%;
+    
+      }
+      .structure-news-selected .first-news{
+        margin-top: 35px;
+      }
+   }
+  

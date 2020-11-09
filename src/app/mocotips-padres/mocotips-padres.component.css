@@ -1,0 +1,1889 @@
+html {
+  overflow:auto;
+  padding:0;
+  margin:0;
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  background-image:linear-gradient(rgba(144, 207, 19, 0.5), rgba(144, 207, 19, 0.5)),  url("./../../assets/images/Backround_Lines.jpg");
+}
+.screen{
+  max-width: 1500px;
+  position: relative;
+  width:100%;
+  height:100%;
+  left: calc(50% - 750px);
+  background-color: white;
+}
+a {text-decoration: none;}
+@media all and (max-width: 1500px) {
+  html {
+    margin-left: 0%;
+    margin-right: 0%;
+    background-image: none;
+  }
+  .screen{
+    left: 0%;
+    background-color: white;
+  }
+}
+.bg-moco-menu{
+  background-color:#00758b!important;
+  padding: .0rem 0rem;
+  -webkit-box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+  -moz-box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+  box-shadow: inset -12px 4px 56px -13px rgba(0,0,0,0.35);
+}
+.navbar-moco .navbar-nav .nav-link{
+    color:rgba(255, 255, 255, 0.774);
+}
+/*News button styles*/
+.navbar-moco .navbar-nav .nav-link-news{
+  color:rgb(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(245,152,19);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-news:hover{
+  text-decoration:none
+}
+.navbar-moco .navbar-nav .nav-link-news:focus,
+.navbar-moco .navbar-nav .nav-link-news:hover{
+
+  background-color: rgba(245, 151, 19, 0.856);
+}
+/*Science button styles*/
+.navbar-moco .navbar-nav .nav-link-science{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(34,201,225);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-science:hover{
+  text-decoration:none
+}
+.navbar-moco .navbar-nav .nav-link-science:focus,
+.navbar-moco .navbar-nav .nav-link-science:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(34, 199, 225, 0.884);
+}
+/*Art button styles*/
+.navbar-moco .navbar-nav .nav-link-art{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(218,97,171);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-art:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-art:focus,
+.navbar-moco .navbar-nav .nav-link-art:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(218, 97, 172, 0.877);
+}
+/*Fun button styles*/
+.navbar-moco .navbar-nav .nav-link-fun{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(239,209,4);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-fun:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-fun:focus,
+.navbar-moco .navbar-nav .nav-link-fun:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(239, 208, 4, 0.877);
+}
+/*Find button styles*/
+.navbar-moco .navbar-nav .nav-link-find{
+  color:rgba(255, 255, 255);
+  display: block;
+  padding:.5rem 1.5rem;
+  background-color: rgb(168,101,202);
+  font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,.nav-link-find:hover{
+  text-decoration:none
+}
+
+.navbar-moco .navbar-nav .nav-link-find:focus,
+.navbar-moco .navbar-nav .nav-link-find:hover{
+  color:rgba(255,255,255);
+  background-color: rgba(168, 101, 202, 0.863);
+}
+
+.navbar-moco .navbar-nav .nav-link-menu{
+    color:rgba(255, 255, 255, 0.774);
+    display: block;
+    padding:.9rem 1.5rem;
+    background-image: url("./../../assets/images/Home_WhiteIcon_Desactivado.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.navbar-moco .navbar-nav .nav-link-menu:focus,
+.navbar-moco .navbar-nav .nav-link-menu:hover{
+    background-image: url("./../../assets/images/HomeOrangeIcon_MouseOver.png");
+}
+.navbar-moco .navbar-nav .nav-link-search{
+    color:rgba(255, 255, 255, 0.774);
+    display: block;
+    padding:1rem 1.5rem;
+    background-image: url("./../../assets/images/Lupa_Home.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.navbar-moco .navbar-nav .nav-link-moconauta{
+  color:rgb(255, 255, 255);
+  display: block;
+  padding:.4rem 2rem;
+  position: absolute;
+  margin: 0%;
+  font-family: 'Arial';
+  font-size: 100%;
+}
+.navbar-moco .navbar-nav .nav-link-moconauta .profile-pic{
+  height: 19.3167px;
+  width: 19.3167px;
+  position: absolute;
+  left: 0rem;
+  top: 6.4px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; 
+  border: 0.5px solid #ffffff;
+}
+.navbar-moco .navbar-nav .nav-link-moconauta .opciones{
+color:rgb(141, 150, 61);
+font-family: 'Anaheim';
+font-size: 120%;
+}
+.nav-link-news:focus,.nav-link-moconauta:hover{
+    text-decoration:none
+}
+.navbar-moco .navbar-nav .active>.nav-link,.navbar-moco .navbar-nav .nav-link.active,.navbar-moco .navbar-nav .nav-link.show,.navbar-moco .navbar-nav .show>.nav-link{
+    color:#fff;  
+}
+.navbar-moco .navbar-toggler{
+    color:rgba(255,255,255,.5);
+    border-color:rgba(255,255,255,.1)
+}
+.navbar-moco .navbar-toggler-icon{
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+
+
+
+
+
+
+
+    .bg-moco-second-menu{
+      background-color:rgb(145, 211, 32)!important;
+      padding: .0rem 0rem;
+      display: none;
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link{
+      color:rgba(255, 255, 255, 0.774);
+    }
+
+
+    .navbar-moco-second-menu .navbar-nav .nav-link-quienes-somos,
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-shop,
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-app,
+    .navbar-moco-second-menu .navbar-nav .nav-link-revista-tri,
+    .navbar-moco-second-menu .navbar-nav .nav-link-mocotips-padres,
+    .navbar-moco-second-menu .navbar-nav .nav-link-contacto{
+      color:rgba(255, 255, 255, 0.774);
+      font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+      background-color: rgb(205,148,45);
+      display: block;
+      padding:.9rem 1.5rem;
+      padding-left: 3.6rem;
+      margin-top: .5rem;
+      margin-right: 1rem;
+      margin-left: 1rem;
+      border-radius: 15px;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    /*   */
+    .navbar-moco-second-menu .navbar-nav .nav-link-quienes-somos{
+      background-image: url("./../../assets/images/quienes_verde.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-shop{
+      background-image: url("./../../assets/images/carritobutton.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-moco-app{
+      background-image: url("./../../assets/images/telefonobutton.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-revista-tri{
+      background-image: url("./../../assets/images/revistabutton.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-mocotips-padres{
+      background-image: url("./../../assets/images/focobutton.png");
+    }
+    .navbar-moco-second-menu .navbar-nav .nav-link-contacto{
+      background-image: url("./../../assets/images/correitobutton.png");
+      margin-bottom: 1rem;
+    }
+  
+  
+    
+    
+    
+    .navbar-moco-second-menu .navbar-nav .active>.nav-link,.navbar-moco-second-menu .navbar-nav .nav-link.active,.navbar-moco-second-menu .navbar-nav .nav-link.show,.navbar-moco-second-menu .navbar-nav .show>.nav-link{
+      color:#fff;  
+    }
+    .navbar-moco-second-menu .navbar-toggler{
+      color:rgba(235, 220, 220, 0.5);
+      width: 100%;
+      float: none;
+      margin-right: 0;
+    }
+    .navbar-moco-second-menu .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+ 
+    }
+
+
+/****  ***/
+.second-menu {
+    background-image:linear-gradient(rgba(226, 238, 202, 0.5), rgba(226, 238, 202,0.5)),  url("./../../assets/images/Barrafranjas_Header.png");
+    height: 60%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+
+  .el-moco-banner {
+    height: 275px;
+    position: relative;
+    background-position: center;
+    background-size: 100%, 100%;
+    background-repeat: no-repeat; 
+    background-image:  url("./../../assets/images/banner-sin-moco.png");
+  }
+  .el-moco-banner .logo-hd{ 
+    position: absolute;
+    width:20%;
+    height:60%;
+    left: 40%;
+    bottom: 5%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; 
+    background-image:  url("./../../assets/images/Logo_ElMoco.png");
+  }
+
+  .footer{
+    min-height: 180px;
+    margin: 0px;
+    position: relative;
+    display: -webkit-flex;
+    display:         flex;
+    -webkit-flex-flow: row;
+            flex-flow: row;
+            background-image:url("./../../assets/images/Green_Footer.png");         
+  }
+  .footer .logo{ 
+    width:15rem;
+    height:60%;
+    position: absolute;
+    top: 10%;
+    right: 70%;
+    background-image:url("./../../assets/images/LogoMoco_Header.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+ 
+  .footer .redes-box{ 
+    width:20rem;
+    height:40%;
+    position: absolute;
+    top: 30%;
+    right: 8.5%;
+
+  }
+  .footer .redes-box .fb{ 
+    width:20%;
+    height:100%;
+    position: absolute;
+    left: 0%;
+    background-image:url("./../../assets/images/Facebook_Icon.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .footer .redes-box .tw{ 
+    width:20%;
+    height:100%;
+    position: absolute;
+    left: 27%;
+    background-image:url("./../../assets/images/Twitter_Icon.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .footer .redes-box .in{ 
+    width:20%;
+    height:100%;
+    position: absolute;
+    right: 27%;
+    background-image:url("./../../assets/images/Instagram_Icon.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .footer .redes-box .yt{ 
+    width:20%;
+    height:100%;
+    position: absolute;
+    right: 0%;
+    background-image:url("./../../assets/images/Youtube_Icon.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .footer .avisos-ter-box{ 
+    width:25rem;
+    height:10%;
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    color:rgba(255, 255, 255, 0.774);
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    text-align: center;
+    font-size: 120%;
+  }
+  .footer .text-box,
+  .footer .avisos-ter-box .avisos,
+  .footer .avisos-ter-box .terminos,
+  .footer .lema{
+    color:rgba(255, 255, 255, 0.774);
+    position: absolute;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    text-align: center;
+    font-size: 100%;
+  }
+
+  .footer .lema{ 
+    width:25rem;
+    height:10%;
+    position: absolute;
+    bottom: 10%;
+    right: 63%;
+
+    font-size: 120%;
+  }
+  .footer .text-box{ 
+    width:25rem;
+    height:10%;
+    top: 10%;
+    right: 5%;
+
+    font-size: 120%;
+  }
+  .footer .avisos-ter-box .avisos{ 
+    width:39%;
+    height:100%;
+    left:0%;
+  }
+  .footer .avisos-ter-box .franja{ 
+    width:1%;
+    height:100%;
+    position: absolute;
+    left: 39%;
+    background-color: rgb(45, 187, 2);
+  }
+  .footer .avisos-ter-box .terminos{ 
+    width:60%;
+    height:100%;
+    right: 0%;
+
+  }
+
+  .footer .avisos-ter-box .terminos:hover,
+  .footer .avisos-ter-box .avisos:hover{ 
+    color:rgba(250, 185, 8, 0.774);
+  }
+
+
+
+
+  .structure,
+  .structure-news-selected,
+  .structure-science-selected,
+  .structure-art-selected,
+  .structure-fun-selected,
+  .structure-find-selected{
+    min-height: 550px;
+    margin: 0px;
+    display: -webkit-flex;
+    display:         flex;
+    -webkit-flex-flow: row;
+            flex-flow: row;
+            background-image:linear-gradient(rgba(226, 238, 202, 0.5), rgba(226, 238, 202,0.5)),  url("./../../assets/images/Barrafranjas_Header.png");         
+  }
+  .structure .first-news,
+  .structure-news-selected .first-news,
+  .structure-science-selected .first-news,
+  .structure-art-selected .first-news,
+  .structure-fun-selected .first-news,
+  .structure-find-selected .first-news{
+    -webkit-flex: 3 1 60%;
+            flex: 3 1 60%;
+    -webkit-order: 2;
+            order: 2; 
+            position: relative;      
+  }
+  .structure .options,
+  .structure-news-selected .options,
+  .structure-science-selected .options,
+  .structure-art-selected .options,
+  .structure-fun-selected .options,
+  .structure-find-selected .options{
+    margin: 4px;
+    padding: 5px;
+    -webkit-flex: 1 6 20%;
+            flex: 1 6 20%;
+    -webkit-order: 3;
+            order: 3;       
+  }
+  .structure .options .vertical-menu,
+  .structure-news-selected .options .vertical-menu,
+  .structure-science-selected .options .vertical-menu,
+  .structure-art-selected .options .vertical-menu,
+  .structure-fun-selected .options .vertical-menu,
+  .structure-find-selected .options .vertical-menu{
+    width: 300px; 
+    margin-top: 35px;
+    margin-left: 0px;
+  }
+  .structure .options .vertical-menu a.options,
+  .structure-news-selected .options .vertical-menu a.options,
+  .structure-science-selected .options .vertical-menu a.options,
+  .structure-art-selected .options .vertical-menu a.options,
+  .structure-fun-selected .options .vertical-menu a.options,
+  .structure-find-selected .options .vertical-menu a.options {
+    background-image: url("./../../assets/images/Barra_Desactivado.png");
+    color: rgb(255, 255, 255); 
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    display: block; 
+    padding: 18px; 
+    margin: 15px;
+    text-decoration: none; 
+    border-radius: 5px;
+    padding-left: 3.6rem;
+    position: relative;
+  }
+  .structure .options .vertical-menu a.options:hover,
+  .structure-news-selected .options .vertical-menu a.options:hover,
+  .structure-science-selected .options .vertical-menu a.options:hover,
+  .structure-art-selected .options .vertical-menu a.options:hover,
+  .structure-fun-selected .options .vertical-menu a.options:hover,
+  .structure-find-selected .options .vertical-menu a.options:hover {
+    background-image: url("./../../assets/images/Barra_MouseOver.png");
+  } 
+
+  .structure .options .vertical-menu a.menu,
+  .structure-news-selected .options .vertical-menu a.menu,
+  .structure-science-selected .options .vertical-menu a.menu,
+  .structure-art-selected .options .vertical-menu a.menu,
+  .structure-fun-selected .options .vertical-menu a.menu,
+  .structure-find-selected .options .vertical-menu a.menu {
+    background-color: rgb(14, 71, 16); /* Add a green color to the "active/current" link */
+    color:rgb(114, 192, 25);
+    text-align: center;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    display: block;
+    padding: 18px; 
+    margin: 15px;
+    border-radius: 15px;
+    border-radius: 5px;
+    position: relative;
+  }
+  .structure .options .vertical-menu a.menu .first-moco,
+  .structure-news-selected .options .vertical-menu a.menu .first-moco,
+  .structure-science-selected .options .vertical-menu a.menu .first-moco,
+  .structure-art-selected .options .vertical-menu a.menu .first-moco,
+  .structure-fun-selected .options .vertical-menu a.menu .first-moco,
+  .structure-find-selected .options .vertical-menu a.menu .first-moco{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("./../../assets/images/Moco_Sorprendido.png");
+    position: absolute; 
+    left: 5px;
+    top: -25%;
+    width: 18%;
+    height: 125%;
+  }
+  .structure .options .vertical-menu a.menu .second-moco,
+  .structure-news-selected .options .vertical-menu a.menu .second-moco,
+  .structure-science-selected .options .vertical-menu a.menu .second-moco,
+  .structure-art-selected .options .vertical-menu a.menu .second-moco,
+  .structure-fun-selected .options .vertical-menu a.menu .second-moco,
+  .structure-find-selected .options .vertical-menu a.menu .second-moco{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("./../../assets/images/MocoDetalle.png");
+    position: absolute; 
+    right: 0px;
+    top: 0px;
+    width: 18%;
+    height: 100%;
+  }
+
+  .structure .options .vertical-menu a.options .quienes,
+  .structure .options .vertical-menu a.options .moco-shop,
+  .structure .options .vertical-menu a.options .moco-app,
+  .structure .options .vertical-menu a.options .revista,
+  .structure .options .vertical-menu a.options .mocotips,
+  .structure .options .vertical-menu a.options .contacto,
+  
+  
+  .structure-news-selected .options .vertical-menu a.options .quienes,
+  .structure-news-selected .options .vertical-menu a.options .moco-shop,
+  .structure-news-selected .options .vertical-menu a.options .moco-app,
+  .structure-news-selected .options .vertical-menu a.options .revista,
+  .structure-news-selected .options .vertical-menu a.options .mocotips,
+  .structure-news-selected .options .vertical-menu a.options .contacto,
+  
+  
+  .structure-science-selected .options .vertical-menu a.options .quienes,
+  .structure-science-selected .options .vertical-menu a.options .moco-shop,
+  .structure-science-selected .options .vertical-menu a.options .moco-app,
+  .structure-science-selected .options .vertical-menu a.options .revista,
+  .structure-science-selected .options .vertical-menu a.options .mocotips,
+  .structure-science-selected .options .vertical-menu a.options .contacto,
+  
+  
+  .structure-art-selected .options .vertical-menu a.options .quienes,
+  .structure-art-selected .options .vertical-menu a.options .moco-shop,
+  .structure-art-selected .options .vertical-menu a.options .moco-app,
+  .structure-art-selected .options .vertical-menu a.options .revista,
+  .structure-art-selected .options .vertical-menu a.options .mocotips,
+  .structure-art-selected .options .vertical-menu a.options .contacto,
+  
+  
+  .structure-fun-selected .options .vertical-menu a.options .quienes,
+  .structure-fun-selected .options .vertical-menu a.options .moco-shop,
+  .structure-fun-selected .options .vertical-menu a.options .moco-app,
+  .structure-fun-selected .options .vertical-menu a.options .revista,
+  .structure-fun-selected .options .vertical-menu a.options .mocotips,
+  .structure-fun-selected .options .vertical-menu a.options .contacto,
+  
+  
+  .structure-find-selected .options .vertical-menu a.options .quienes,
+  .structure-find-selected .options .vertical-menu a.options .moco-shop,
+  .structure-find-selected .options .vertical-menu a.options .moco-app,
+  .structure-find-selected .options .vertical-menu a.options .revista,
+  .structure-find-selected .options .vertical-menu a.options .mocotips,
+  .structure-find-selected .options .vertical-menu a.options .contacto{
+    background-repeat: no-repeat;
+    background-size: 50%, 50%;
+    background-position: center;
+    position: absolute; 
+    left: 0px;
+    top: 0px;
+    width: 18%;
+    height: 100%;
+  }
+  .structure .options .vertical-menu a.options .quienes,
+  .structure-news-selected .options .vertical-menu a.options .quienes,
+  .structure-science-selected .options .vertical-menu a.options .quienes,
+  .structure-art-selected .options .vertical-menu a.options .quienes,
+  .structure-fun-selected .options .vertical-menu a.options .quienes,
+  .structure-find-selected .options .vertical-menu a.options .quienes{
+    background-image: url("./../../assets/images/BaraQuienesSomos_Perfil_Icono.png");
+  }
+  .structure .options .vertical-menu a.options .moco-shop,
+  .structure-news-selected .options .vertical-menu a.options .moco-shop,
+  .structure-science-selected .options .vertical-menu a.options .moco-shop,
+  .structure-art-selected .options .vertical-menu a.options .moco-shop,
+  .structure-fun-selected .options .vertical-menu a.options .moco-shop,
+  .structure-find-selected .options .vertical-menu a.options .moco-shop{
+    background-image: url("./../../assets/images/Carrito_IconoBlanco.png");
+  }
+  .structure .options .vertical-menu a.options .moco-app,
+  .structure-news-selected .options .vertical-menu a.options .moco-app,
+  .structure-science-selected .options .vertical-menu a.options .moco-app,
+  .structure-art-selected .options .vertical-menu a.options .moco-app,
+  .structure-fun-selected .options .vertical-menu a.options .moco-app,
+  .structure-find-selected .options .vertical-menu a.options .moco-app{
+    background-image: url("./../../assets/images/Telefono_IconoBlanco.png");
+  }
+  .structure .options .vertical-menu a.options .revista,
+  .structure-news-selected .options .vertical-menu a.options .revista,
+  .structure-science-selected .options .vertical-menu a.options .revista,
+  .structure-art-selected .options .vertical-menu a.options .revista,
+  .structure-fun-selected .options .vertical-menu a.options .revista,
+  .structure-find-selected .options .vertical-menu a.options .revista{
+    background-image: url("./../../assets/images/Revista_IconoBlanco.png");
+  }
+  .structure .options .vertical-menu a.options .mocotips,
+  .structure-news-selected .options .vertical-menu a.options .mocotips,
+  .structure-science-selected .options .vertical-menu a.options .mocotips,
+  .structure-art-selected .options .vertical-menu a.options .mocotips,
+  .structure-fun-selected .options .vertical-menu a.options .mocotips,
+  .structure-find-selected .options .vertical-menu a.options .mocotips{
+    background-image: url("./../../assets/images/Foco_IconoBlanco.png");
+  }
+  .structure .options .vertical-menu a.options .contacto,
+  .structure-news-selected .options .vertical-menu a.options .contacto,
+  .structure-science-selected .options .vertical-menu a.options .contacto,
+  .structure-art-selected .options .vertical-menu a.options .contacto,
+  .structure-fun-selected .options .vertical-menu a.options .contacto,
+  .structure-find-selected .options .vertical-menu a.options .contacto{
+    background-image: url("./../../assets/images/Correo_IconoBlanco.png");
+  }
+  .structure .first-news .new-image-banner,
+  .structure-news-selected .first-news .new-image-banner,
+  .structure-science-selected .first-news .new-image-banner,
+  .structure-art-selected .first-news .new-image-banner,
+  .structure-fun-selected .first-news .new-image-banner,
+  .structure-find-selected .first-news .new-image-banner{ 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width:80%;
+    height:90%;
+    position: absolute;
+    border-radius: 35px;
+    bottom: 5%;
+    left: 10%;
+    -webkit-box-shadow: -5px 10px 40px -3px rgb(46, 45, 45);
+    -moz-box-shadow: -5px 10px 40px -3px rgb(46, 45, 45);
+    box-shadow: -5px 10px 40px -3px rgb(46, 45, 45);
+  }
+  .structure .first-news .new-image-banner{
+    background-image: url("./../../assets/images/ImagenAgua_Bloque2.png");
+  }
+  .structure .first-news .new-image-banner .image-hover{
+    width:100%;
+    height:100%;
+    font-size: 0px;
+    
+  }
+
+  .structure .first-news .new-image-banner .image-hover:hover{
+    width:100%;
+    height:100%;
+    border-radius: 35px;
+    background-color: rgba(27, 226, 233, 0.651);
+    font-family: 'Helvetica Rounded LT Std';
+    font-size: 150%;
+    color: rgb(255, 255, 255); /* Black text color */
+    text-decoration: none; /* Remove underline from links */
+    text-align: center;
+    padding: 12%;
+  }
+  .structure .first-news .new-image-banner .image-hover:hover .text{
+    font-family: 'Helvetica Rounded LT Std';
+    font-size: 300%;
+    color: rgb(255, 255, 255); /* Black text color */
+    text-decoration: none; /* Remove underline from links */
+    text-align: center;
+  }
+  .structure .first-news .new-image-banner .image-hover:hover .text2{
+    font-family: 'Helvetica Rounded LT Std';
+    color: rgb(255, 255, 255); /* Black text color */
+    text-decoration: none; /* Remove underline from links */
+    text-align: center;
+    font-size: 170%;
+
+  }
+
+
+  .structure .first-news .new-image-banner .franja-new{
+    background-image: url("./../../assets/images/FranjaAzulVertical_Ciencia1.png"); /*ESTE DEBE CAMBIAR Y HACERSE DINÁMICO*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:10%;
+    height:100%;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    border-bottom-right-radius: 35px;
+    border-top-right-radius: 35px;
+  }
+  .structure .first-news .new-image-banner .franja-new .moco-top{
+    background-image: url("./../../assets/images/DoctorMoco.png"); /*ESTE DEBE CAMBIAR Y HACERSE DINÁMICO*/
+    background-repeat: no-repeat;
+    background-size: contain; 
+    width:105%;
+    height:15%;
+    position: absolute;
+    left: 0%;
+    top: 3%;  
+    -moz-transform: scaleX(-1); /* Firefox */
+    -o-transform: scaleX(-1); /* Opera */
+    -webkit-transform: scaleX(-1); /* Chrome y Safari */
+    transform: scaleX(-1); /* w3org */
+    filter: FlipH; /* Internet Explorer */
+    z-index:2;
+  }
+  /*Estilos para el banner de mocotips para padres*/
+  .structure-news-selected {
+    background-image:linear-gradient(rgba(192, 236, 71, 0.623), rgba(192, 236, 71, 0.623)),  url("./../../assets/images/Barrafranjas_Header.png");  
+  }
+  .structure-news-selected .first-news .new-image-banner{
+    background-image: url("./../../assets/images/Mocotips_Slide.png"); 
+  }
+ 
+
+
+
+
+
+  .banner{
+    display: block;
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom:  0px;
+    min-height: 32px;
+    
+  }
+  /*Estilo inicial al entrar al sitio*/
+  .second-news{
+    display: block;
+ 
+
+  }
+  .second-news .latest-news {
+    width: auto; 
+    margin-left: 45px;
+    margin-right: 45px;
+    display: flex;
+  }
+
+  .second-news .latest-news a  .read-orange-hover{
+    width:100%;
+    height:90%;
+    position: absolute;
+    top: 10%;
+    font-size: 0px;
+  }
+  .second-news .latest-news a  .read-orange-hover:hover{   
+    border-radius: 10px;
+    width:100%;
+    height:90%;
+    position: absolute;
+    top: 10%;
+    font-family: 'Helvetica Rounded LT Std';
+    font-size: 500%;
+    color: rgb(255, 255, 255); /* Black text color */
+    text-decoration: none; /* Remove underline from links */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 380px;   
+  }
+  .second-news .latest-news a  .read-orange-hover:hover{
+    background-color:rgba(207, 129, 20, 0.85); /* Dark grey background on mouse-over */
+  }
+
+
+  .second-news .latest-news a {
+    
+    color: rgb(0, 0, 0); /* Black text color */
+    position: relative;
+    margin: 15px;
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 10px;
+    width:350px;
+    height:420px;
+  }
+  .second-news .latest-news .paginacion{
+    position: relative;
+    left: 20%;
+    margin: 15px;
+    border-radius: 10px;
+    width:60%;
+    height:100px;
+  }
+  .second-news .latest-news .paginacion .anteriores,
+  .second-news .latest-news .paginacion .siguientes,
+  .second-news .latest-news .paginacion .paginas{  
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    width:30%;
+    height:100px;
+  }
+  .second-news .latest-news .paginacion .anteriores{   
+    background-image: url("./../../assets/images/anteriores.png");
+    left: 0%;
+  }
+  .second-news .latest-news .paginacion .siguientes{
+    background-image: url("./../../assets/images/siguientes.png");
+    right: 0%;
+  }
+  .second-news .latest-news .paginacion .paginas{
+    right: 35%;
+    display: flex;
+
+  }
+  .second-news .latest-news .paginacion .paginas .numeros-box{
+    position: absolute;
+    top: 25%;
+    width:100%;
+    height:50%;
+    display: flex;
+  }
+  .second-news .latest-news .paginacion .paginas .numeros-box .numeros{
+    background-image: url("./../../assets/images/BotonCircularVerde_Numeros.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width:33.3%;
+    height:100%;
+    font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+    font-size: 300%;
+    color: rgb(111, 199, 29); /* Black text color */
+    text-decoration: none; /* Remove underline from links */
+    text-align: center;
+  }
+
+  .second-news .latest-news a .new-name{
+    background-color: rgb(227,241,235); 
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width:100%;
+    height:43%;
+    bottom: 0px; 
+    position: absolute;
+    -webkit-box-shadow: -5px 10px 41px -3px rgba(44,84,29,1);
+    -moz-box-shadow: -5px 10px 41px -3px rgba(44,84,29,1);
+    box-shadow: -5px 10px 41px -3px rgba(44,84,29,1);
+  }
+  .second-news .latest-news a .new-name .new-name-text{
+    color: rgb(0, 0, 0); /* Black text color */
+    text-decoration: none; /* Remove underline from links */
+    width:100%;
+    height:80%;
+    top: 10%; 
+    position: absolute;
+    text-align: center;
+    font-family: 'Helvetica Rounded LT Std';
+    font-size:200%;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+  .second-news .latest-news a .new-image{
+    -webkit-box-shadow: -5px 10px 41px -3px rgba(44,84,29,1);
+    -moz-box-shadow: -5px 10px 41px -3px rgba(44,84,29,1);
+    box-shadow: -5px 10px 41px -3px rgba(44,84,29,1);
+    color: rgb(255, 255, 255); 
+    text-decoration: none; 
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width:100%;
+    height:47%;
+    top: 10%; 
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px; 
+  }
+  /*Estilos para las noticia NOTICIAs en el MOCOTIPS PARA PADRES*/
+  .second-news .latest-news a .padres-top-design-new{
+    background-image: url("./../../assets/images/franja_cafe.png");  
+    background-repeat: no-repeat;
+    background-size: 100%, 100%;
+    width:100%;
+    height:15%;
+    position: absolute;
+    top: 10%;
+  }
+
+
+  .second-news .latest-news .big-new {
+    border-radius: 10px;
+    width:750px;
+    height:420px;
+    position: relative; /*uwu*/
+  }
+  .second-news .latest-news .big-new .month-new{
+    background-image: url("./../../assets/images/Infografia_Fondo.png");  
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(0, 0, 0); /* Black text color */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 10px;
+    width:100%;
+    height:90%;
+    bottom: 0px; 
+    position: absolute;
+  }
+
+
+  .second-news{
+    display: block;
+ 
+
+  }
+
+
+  @media all and (max-width: 991px) {
+    .navbar-moco .navbar-nav .nav-link-moconauta{
+      position: static;
+    }
+    .navbar-moco .navbar-nav .nav-link-moconauta .profile-pic{
+      position: relative;
+      left: -1.5rem;
+      top: 18px;
+    }
+
+    .navbar-moco .navbar-toggler{
+      color: rgb(255, 255, 255);
+      text-decoration: none; 
+      font-family: 'Varela Round'; /*fuente personalizada importada con @font-face*/
+      font-size:150%;
+      width: 100%;
+      float: none;
+      margin-right: 0;
+      height: 40px;
+      background-image: url("./../../assets/images/Moco_Sorprendido.png");
+      background-position-x: 25%;
+      background-position-y: 50%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      display: block;
+  }
+
+  }
+
+@media all and (max-width: 1400px) {
+  /*Cambios de tamaño en los elementos que contienen las noticias*/
+   .second-news .latest-news a{
+    height:380px;
+   }
+   .second-news .latest-news a .new-name .new-name-text{
+    font-size:190%;
+  }
+  .second-news .latest-news .big-new {
+    height:375px;
+  }
+  .structure .first-news .new-image-banner,
+  .structure-news-selected .first-news .new-image-banner,
+  .structure-science-selected .first-news .new-image-banner,
+  .structure-art-selected .first-news .new-image-banner,
+  .structure-fun-selected .first-news .new-image-banner,
+  .structure-find-selected .first-news .new-image-banner{
+    width:78%;
+    height:87%;
+  }
+  .second-news .latest-news a  .read-orange-hover:hover,
+  .second-news .latest-news a  .read-blue-hover:hover,
+  .second-news .latest-news a  .read-pink-hover:hover,
+  .second-news .latest-news a  .read-yellow-hover:hover,
+  .second-news .latest-news a  .read-purple-hover:hover{   
+    line-height: 350px;   
+  }
+
+
+  }
+  @media all and (max-width: 1300px) {
+    /*Cambios de tamaño en los elementos que contienen las noticias*/
+     .second-news .latest-news a{
+      height:350px;
+     }
+     .second-news .latest-news a .new-name .new-name-text{
+      font-size:180%;
+    }
+    .second-news .latest-news .big-new {
+      height:345px;
+    }
+    .structure .first-news .new-image-banner,
+    .structure-news-selected .first-news .new-image-banner,
+    .structure-science-selected .first-news .new-image-banner,
+    .structure-art-selected .first-news .new-image-banner,
+    .structure-fun-selected .first-news .new-image-banner,
+    .structure-find-selected .first-news .new-image-banner{
+      width:80%;
+      height:84%;
+    }
+    .second-news .latest-news a  .read-orange-hover:hover,
+    .second-news .latest-news a  .read-blue-hover:hover,
+    .second-news .latest-news a  .read-pink-hover:hover,
+    .second-news .latest-news a  .read-yellow-hover:hover,
+    .second-news .latest-news a  .read-purple-hover:hover{   
+      line-height: 325px;   
+    }
+
+  
+    }
+    @media all and (max-width: 1300px) {
+      .el-moco-banner {
+        height: 250px;
+      }
+    }
+    @media all and (max-width: 1260px) {
+      .el-moco-banner {
+        height: 230px;
+      }
+    }
+    @media all and (max-width: 1150px) {
+      .el-moco-banner {
+        height: 210px;
+      }
+    }
+    @media all and (max-width: 1050px) {
+      .el-moco-banner {
+        height: 190px;
+      }
+    }
+    @media all and (max-width: 950px) {
+      .el-moco-banner {
+        height: 170px;
+      }
+    }
+    @media all and (max-width: 850px) {
+      .el-moco-banner {
+        height: 150px;
+      }
+    }
+    @media all and (max-width: 750px) {
+      .el-moco-banner {
+        height: 130px;
+      }
+    }
+    @media all and (max-width: 650px) {
+      .el-moco-banner {
+        height: 170px;
+        background-image:  url("./../../assets/images/banner-sin-moco-pequeño.png");
+    }
+    .el-moco-banner .logo-hd{ 
+      position: absolute;
+      width:30%;
+      height:70%;
+      left: 35%;
+      bottom: 5%;
+    }
+    }
+    @media all and (max-width: 575px) {
+      .el-moco-banner {
+        height: 160px;
+      }
+    }
+    @media all and (max-width: 500px) {
+      .el-moco-banner {
+        height: 150px;
+      }
+    }
+    @media all and (max-width: 450px) {
+      .el-moco-banner {
+        height: 140px;
+      }
+      .el-moco-banner .logo-hd{ 
+        position: absolute;
+        width:40%;
+        left: 30%;
+        bottom: 5%;
+      }
+    }
+    @media all and (max-width: 400px) {
+      .el-moco-banner {
+        height: 130px;
+      }
+    }
+    @media all and (max-width: 350px) {
+      .el-moco-banner {
+        height: 120px;
+      }
+    }
+  
+
+
+
+
+  @media all and (max-width: 1200px) {
+    /*Cambios de tamaño en los elementos que contienen las noticias*/
+     .second-news .latest-news a{
+      height:310px;
+     }
+     .second-news .latest-news a .new-name .new-name-text{
+      font-size:170%;
+    }
+    .second-news .latest-news .big-new {
+      height:310px;
+    }
+    .structure .first-news .new-image-banner,
+    .structure-news-selected .first-news .new-image-banner,
+    .structure-science-selected .first-news .new-image-banner,
+    .structure-art-selected .first-news .new-image-banner,
+    .structure-fun-selected .first-news .new-image-banner,
+    .structure-find-selected .first-news .new-image-banner{
+      width:85%;
+      height:75%;
+      bottom: 15%;
+    }
+    .second-news .latest-news a  .read-orange-hover:hover,
+    .second-news .latest-news a  .read-blue-hover:hover,
+    .second-news .latest-news a  .read-pink-hover:hover,
+    .second-news .latest-news a  .read-yellow-hover:hover,
+    .second-news .latest-news a  .read-purple-hover:hover{   
+      font-size: 450%;
+      line-height: 300px;   
+    }
+    .structure .first-news .new-image-banner .image-hover:hover .text{   
+      font-size: 280%;
+    }
+    .structure .first-news .new-image-banner .image-hover:hover .text2{
+      font-size: 160%; 
+    }
+    .second-news .latest-news a .new-image{
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+    }
+  @media all and (max-width: 1080px) {
+      /*Cambios de tamaño en los elementos que contienen las noticias*/
+       .second-news .latest-news a{
+        height:280px;
+       }
+       .second-news .latest-news a .new-name .new-name-text{
+        font-size:160%;
+      }
+      .second-news .latest-news .big-new {
+        height:280px;
+      }
+      .structure .first-news .new-image-banner,
+      .structure-news-selected .first-news .new-image-banner,
+      .structure-science-selected .first-news .new-image-banner,
+      .structure-art-selected .first-news .new-image-banner,
+      .structure-fun-selected .first-news .new-image-banner,
+      .structure-find-selected .first-news .new-image-banner{
+        width:85%;
+        height:70%;
+        bottom: 15%;
+      }
+      .second-news .latest-news a  .read-orange-hover:hover,
+      .second-news .latest-news a  .read-blue-hover:hover,
+      .second-news .latest-news a  .read-pink-hover:hover,
+      .second-news .latest-news a  .read-yellow-hover:hover,
+      .second-news .latest-news a  .read-purple-hover:hover{   
+        line-height: 270px;   
+      }
+      .second-news .latest-news .paginacion{
+       width: 70%;
+       left: 15%;
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text{   
+        font-size: 260%;
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text2{
+        font-size: 130%; 
+      }
+      .footer .logo{ 
+        right: 65%;
+      }
+      .footer .lema{ 
+        right: 58%;
+      }
+      }
+  @media all and (max-width: 1024px) {
+      /*Cambios de tamaño en los elementos que contienen las noticias*/
+      .second-news .latest-news a{
+      height:250px;
+      }
+      .second-news .latest-news a .new-name .new-name-text{
+        font-size:140%;
+      }
+      .second-news .latest-news .big-new {
+        height:250px;
+      }
+      .structure .first-news .new-image-banner,
+      .structure-news-selected .first-news .new-image-banner,
+      .structure-science-selected .first-news .new-image-banner,
+      .structure-art-selected .first-news .new-image-banner,
+      .structure-fun-selected .first-news .new-image-banner,
+      .structure-find-selected .first-news .new-image-banner{
+        width:82%;
+        height:60%;
+        bottom: 20%;
+      }
+      .second-news .latest-news a  .read-orange-hover:hover,
+      .second-news .latest-news a  .read-blue-hover:hover,
+      .second-news .latest-news a  .read-pink-hover:hover,
+      .second-news .latest-news a  .read-yellow-hover:hover,
+      .second-news .latest-news a  .read-purple-hover:hover{   
+        font-size: 400%;
+        line-height: 230px;   
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text{   
+        font-size: 200%;
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text2{
+        font-size: 100%; 
+      }
+     }
+  @media all and (max-width: 950px) {
+      /*Cambios de tamaño en los elementos que contienen las noticias*/
+      .second-news .latest-news a{
+      height:220px;
+      }
+      .second-news .latest-news a .new-name .new-name-text{
+        font-size:115%;
+      }
+      .second-news .latest-news .big-new {
+        height:220px;
+      }
+      .structure .first-news .new-image-banner,
+      .structure-news-selected .first-news .new-image-banner,
+      .structure-science-selected .first-news .new-image-banner,
+      .structure-art-selected .first-news .new-image-banner,
+      .structure-fun-selected .first-news .new-image-banner,
+      .structure-find-selected .first-news .new-image-banner{
+        width:80%;
+        height:55%;
+        bottom: 23%;
+      }
+      .second-news .latest-news a  .read-orange-hover:hover,
+      .second-news .latest-news a  .read-blue-hover:hover,
+      .second-news .latest-news a  .read-pink-hover:hover,
+      .second-news .latest-news a  .read-yellow-hover:hover,
+      .second-news .latest-news a  .read-purple-hover:hover{   
+        font-size: 350%;
+        line-height: 200px;   
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text{   
+        font-size: 180%;
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text2{
+        font-size: 100%; 
+      }
+
+      .second-news .latest-news .paginacion{
+        width: 75%;
+        left: 12.5%;
+       }
+       .second-news .latest-news a .new-image{
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+      .footer{
+        min-height: 360px;           
+      }
+
+
+      .footer .logo{ 
+        width:15rem;
+        height:30%;
+        position: absolute;
+        top: 10%;
+        right: 35%;
+
+      }
+      .footer .lema{ 
+        width:25rem;
+        height:5%;
+        top: 40%;
+        right: 25%;
+      }
+      .footer .redes-box{ 
+        width:20rem;
+        height:20%;
+        top: 60%;
+        right: 29%;
+      }   
+      .footer .avisos-ter-box{ 
+        width:25rem;
+        height:5%;
+        position: absolute;
+        bottom: 7%;
+        right: 25%;
+      }
+      .footer .text-box{ 
+        width:25rem;
+        height:5%;
+        top: 50%;
+        right: 25%;
+        font-size: 120%;
+      }
+
+
+    
+     }
+   
+   @media all and (max-width: 860px) {
+      /*Cambios de tamaño en los elementos que contienen las noticias*/
+      .second-news .latest-news a{
+      height:190px;
+      }
+      .second-news .latest-news a .new-name .new-name-text{
+        font-size:100%;
+      }
+      .second-news .latest-news .big-new {
+        height:190px;
+      }
+      .structure .first-news .new-image-banner,
+      .structure-news-selected .first-news .new-image-banner,
+      .structure-science-selected .first-news .new-image-banner,
+      .structure-art-selected .first-news .new-image-banner,
+      .structure-fun-selected .first-news .new-image-banner,
+      .structure-find-selected .first-news .new-image-banner{
+        width:80%;
+        height:45%;
+        bottom: 27%;
+      }
+      .second-news .latest-news a  .read-orange-hover:hover,
+      .second-news .latest-news a  .read-blue-hover:hover,
+      .second-news .latest-news a  .read-pink-hover:hover,
+      .second-news .latest-news a  .read-yellow-hover:hover,
+      .second-news .latest-news a  .read-purple-hover:hover{   
+        font-size: 300%;
+        line-height: 170px;   
+      }
+      .second-news .latest-news .paginacion{
+        width: 90%;
+        left: 5%;
+       }
+       .structure .first-news .new-image-banner .image-hover:hover .text{   
+        font-size: 150%;
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text2{
+        font-size: 90%; 
+      }
+     }
+  @media all and (max-width: 760px) {
+    .bg-moco-second-menu{
+      background-color:rgb(145, 211, 32)!important;
+      padding: .0rem 0rem;
+      display: block;
+    }
+        .structure, #page,
+        .structure-news-selected, #page,
+        .structure-science-selected, #page,
+        .structure-art-selected, #page,
+        .structure-fun-selected, #page,
+        .structure-find-selected, #page {
+        -webkit-flex-flow: column;
+        flex-flow: column;
+        padding-left: 30px;
+        padding-right: 30px;
+        min-height: 500px;
+        }
+        .structure .first-news .new-image-banner,
+        .structure-news-selected .first-news .new-image-banner,
+        .structure-science-selected .first-news .new-image-banner,
+        .structure-art-selected .first-news .new-image-banner,
+        .structure-fun-selected .first-news .new-image-banner,
+        .structure-find-selected .first-news .new-image-banner{ 
+        width:100%;
+        height:95%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        }
+        .structure .options,
+        .structure .options .vertical-menu,
+        .structure-news-selected .options,
+        .structure-news-selected .options .vertical-menu,
+        .structure-science-selected .options,
+        .structure-science-selected .options .vertical-menu,
+        .structure-art-selected .options,
+        .structure-art-selected .options .vertical-menu,
+        .structure-fun-selected .options,
+        .structure-fun-selected .options .vertical-menu,
+        .structure-find-selected .options,
+        .structure-find-selected .options .vertical-menu{
+         width: auto; 
+        -webkit-order: 0;
+             order: 0;
+             margin-top: 0px;
+             display: none;
+        }
+        .second-news .latest-news a .new-name .new-name-text{
+          font-size: 300%;
+        }
+        .structure .first-news,
+        .structure-news-selected .first-news,
+        .structure-science-selected .first-news,
+        .structure-art-selected .first-news,
+        .structure-fun-selected .first-news,
+        .structure-find-selected .first-news{
+        -webkit-order: 0;
+                order: 0;
+        background-size: contain;
+        max-height: 400px;
+        margin-top: 8%;
+       }
+       .structure .first-news .new-image-banner .image-hover:hover .text{   
+        font-size: 200%;
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text2{
+        font-size: 100%; 
+      }
+       .second-news .latest-news a  .read-orange-hover:hover,
+       .second-news .latest-news a  .read-blue-hover:hover,
+       .second-news .latest-news a  .read-pink-hover:hover,
+       .second-news .latest-news a  .read-yellow-hover:hover,
+       .second-news .latest-news a  .read-purple-hover:hover{   
+         font-size: 500%;
+         line-height: 600px;   
+       }
+       
+       .second-news .latest-news a .new-image{
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+      }
+       .second-news .latest-news {
+        width: auto; 
+        height: auto;       
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+        padding-bottom: 30px;
+       }   
+       .second-news .latest-news a{
+        width: 70%; 
+        height: 600px;
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+             margin-top: 0px;
+             margin-left: 15%;
+       }
+       .second-news .latest-news .big-new{
+        width: 70%;  
+        height: 300px;
+        -webkit-order: 0;
+             order: 0;
+             display: block;    
+       }
+        /*Área con las 5 noticias más recientes de la sección seleccionada, incluye un elemento para cambiar de página*/
+       .second-news-section-selected .latest-news {
+        width: auto; 
+        height: auto;
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+       }    
+       .second-news-section-selected .latest-news a{
+        width: auto; 
+        height: 300px;
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+       }
+       .second-news-section-selected .latest-news .big-new{
+        width: auto; 
+        height: 300px;
+        -webkit-order: 0;
+             order: 0;
+             display: block;
+       }
+
+        .second-news .latest-news .paginacion{
+          width: 90%;
+          left: 5%;
+          margin: 0;
+         }
+         .second-news .latest-news .paginacion .paginas .numeros-box .numeros{
+          width:25%;
+          margin-left: 4%;
+          margin-right: 4%;
+          height:100%;
+        }
+   }
+   @media all and (max-width: 700px) {
+    .second-news .latest-news a{
+      height: 550px;
+     }
+
+     .second-news .latest-news a .new-name .new-name-text{
+      font-size: 250%;
+    }
+    .second-news .latest-news a  .read-orange-hover:hover,
+       .second-news .latest-news a  .read-blue-hover:hover,
+       .second-news .latest-news a  .read-pink-hover:hover,
+       .second-news .latest-news a  .read-yellow-hover:hover,
+       .second-news .latest-news a  .read-purple-hover:hover{   
+         line-height: 550px;   
+       }
+       .second-news .latest-news .paginacion .paginas .numeros-box .numeros{
+        font-size: 280%;
+        line-height: 50px;   
+      }
+
+      .footer .logo{ 
+        right: 32%;
+      }
+      .footer .lema{ 
+        right: 20%;
+      }
+      .footer .redes-box{ 
+        right: 24%;
+      }   
+      .footer .avisos-ter-box{ 
+        right: 20%;
+      }
+      .footer .text-box{ 
+        right: 20%;
+      }
+   }
+   @media all and (max-width: 650px) {
+    .second-news .latest-news a{
+      height: 500px;
+     }
+
+       .second-news .latest-news a  .read-orange-hover:hover,
+       .second-news .latest-news a  .read-blue-hover:hover,
+       .second-news .latest-news a  .read-pink-hover:hover,
+       .second-news .latest-news a  .read-yellow-hover:hover,
+       .second-news .latest-news a  .read-purple-hover:hover{   
+         line-height: 500px;   
+       }
+       .second-news .latest-news .paginacion .paginas .numeros-box .numeros{
+        font-size: 250%;  
+      }
+   }
+   @media all and (max-width: 608px) {
+    .second-news .latest-news a{
+      height: 450px;
+     }
+     .second-news .latest-news a .new-name .new-name-text{
+      font-size: 200%;
+    }
+    .structure .first-news,
+    .structure-news-selected .first-news,
+    .structure-science-selected .first-news,
+    .structure-art-selected .first-news,
+    .structure-fun-selected .first-news,
+    .structure-find-selected .first-news{
+    max-height: 350px;
+    margin-top: 8%;
+   }
+   .structure, #page,
+   .structure-news-selected, #page,
+   .structure-science-selected, #page,
+   .structure-art-selected, #page,
+   .structure-fun-selected, #page,
+   .structure-find-selected, #page {
+   min-height: 430px;
+   }
+       .second-news .latest-news a  .read-orange-hover:hover,
+       .second-news .latest-news a  .read-blue-hover:hover,
+       .second-news .latest-news a  .read-pink-hover:hover,
+       .second-news .latest-news a  .read-yellow-hover:hover,
+       .second-news .latest-news a  .read-purple-hover:hover{   
+         font-size: 450%;
+         line-height: 450px;   
+       }
+       .second-news .latest-news .paginacion .paginas .numeros-box .numeros{
+        font-size: 150%;  
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text{   
+        font-size: 150%;
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text2{
+        font-size: 100%; 
+      }
+      .footer .logo{ 
+        right: 27%;
+      }
+      .footer .lema{ 
+        right: 15%;
+      }
+      .footer .redes-box{ 
+        right: 19%;
+      }   
+      .footer .avisos-ter-box{ 
+        right: 15%;
+      }
+      .footer .text-box{ 
+        right: 15%;
+      }
+   }
+   @media all and (max-width: 550px) {
+    .second-news .latest-news a{
+      height: 410px;
+     }
+     .structure .first-news,
+     .structure-news-selected .first-news,
+     .structure-science-selected .first-news,
+     .structure-art-selected .first-news,
+     .structure-fun-selected .first-news,
+     .structure-find-selected .first-news{
+     max-height: 300px;
+     margin-top: 8%;
+    }
+    .structure, #page,
+    .structure-news-selected, #page,
+    .structure-science-selected, #page,
+    .structure-art-selected, #page,
+    .structure-fun-selected, #page,
+    .structure-find-selected, #page {
+    min-height: 380px;
+    }
+    .second-news .latest-news a  .read-orange-hover:hover,
+       .second-news .latest-news a  .read-blue-hover:hover,
+       .second-news .latest-news a  .read-pink-hover:hover,
+       .second-news .latest-news a  .read-yellow-hover:hover,
+       .second-news .latest-news a  .read-purple-hover:hover{   
+         line-height: 400px;   
+       }
+       .second-news .latest-news .paginacion .paginas .numeros-box .numeros{
+        font-size: 130%;  
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text{   
+        font-size: 130%;
+      }
+      .structure .first-news .new-image-banner .image-hover:hover .text2{
+        font-size: 90%; 
+      }
+      .footer .logo{ 
+        right: 25%;
+      }
+      .footer .lema{ 
+        right: 10%;
+      }
+      .footer .redes-box{ 
+        right: 14%;
+      }   
+      .footer .avisos-ter-box{ 
+        right: 10%;
+      }
+      .footer .text-box{ 
+        right: 10%;
+      }
+   }
+   @media all and (max-width: 508px) {
+    .second-news .latest-news a{
+      height: 380px;
+     }
+     .second-news .latest-news a  .read-orange-hover:hover,
+       .second-news .latest-news a  .read-blue-hover:hover,
+       .second-news .latest-news a  .read-pink-hover:hover,
+       .second-news .latest-news a  .read-yellow-hover:hover,
+       .second-news .latest-news a  .read-purple-hover:hover{   
+         line-height: 380px;   
+       }
+       .second-news .latest-news .paginacion .paginas .numeros-box .numeros{
+        font-size: 100%;  
+      }
+
+   }
+   @media all and (max-width: 480px) {
+    .second-news .latest-news a{
+      height: 300px;
+     }
+     .second-news .latest-news a .new-name .new-name-text{
+      font-size: 160%;
+    }
+    .structure .first-news,
+    .structure-news-selected .first-news,
+    .structure-science-selected .first-news,
+    .structure-art-selected .first-news,
+    .structure-fun-selected .first-news,
+    .structure-find-selected .first-news{
+    max-height: 250px;
+    margin-top: 8%;
+   }
+   .structure, #page,
+   .structure-news-selected, #page,
+   .structure-science-selected, #page,
+   .structure-art-selected, #page,
+   .structure-fun-selected, #page,
+   .structure-find-selected, #page {
+   min-height: 300px;
+   }
+   .second-news .latest-news a  .read-orange-hover:hover,
+       .second-news .latest-news a  .read-blue-hover:hover,
+       .second-news .latest-news a  .read-pink-hover:hover,
+       .second-news .latest-news a  .read-yellow-hover:hover,
+       .second-news .latest-news a  .read-purple-hover:hover{   
+        font-size: 350%; 
+        line-height: 300px;   
+       }
+       .second-news .latest-news .paginacion .paginas .numeros-box .numeros{
+        font-size: 80%;  
+      }
+    .footer .logo{ 
+        right: 25%;
+      }
+      .footer .lema{ 
+        right: 7%;
+     
+      }
+      .footer .redes-box{ 
+        right: 13%;
+      }   
+      .footer .avisos-ter-box{ 
+        right: 7%;   
+      }
+      .footer .text-box{ 
+        right: 7%;
+      }
+   }
+   @media all and (max-width: 450px) {
+    .footer .logo{ 
+      width:10rem;
+      height:30%;
+      position: absolute;
+      top: 10%;
+      right: 30%;
+
+    }
+    .footer .lema{ 
+      width:20rem;
+      height:5%;
+      top: 40%;
+      right: 10%;
+      font-size: 100%;
+    }
+    .footer .redes-box{ 
+      width:15rem;
+      height:20%;
+      top: 60%;
+      right: 20%;
+    }   
+    .footer .avisos-ter-box{ 
+      width:20rem;
+      height:5%;
+      position: absolute;
+      bottom: 7%;
+      right: 10%;
+    }
+    .footer .text-box{ 
+      width:20rem;
+      height:5%;
+      top: 50%;
+      right: 10%;
+      font-size: 120%;
+    }
+    .footer .avisos-ter-box .franja{ 
+      background-color: rgba(0, 0, 0, 0);
+    }
+   }
+   @media all and (max-width: 400px) {
+    .second-news .latest-news a{
+      height: 250px;
+     }
+     .second-news .latest-news a .new-name .new-name-text{
+      font-size: 130%;
+    }
+    .structure .first-news,
+    .structure-news-selected .first-news,
+    .structure-science-selected .first-news,
+    .structure-art-selected .first-news,
+    .structure-fun-selected .first-news,
+    .structure-find-selected .first-news{
+    max-height: 210px;
+    margin-top: 8%;
+   }
+   .structure, #page,
+   .structure-news-selected, #page,
+   .structure-science-selected, #page,
+   .structure-art-selected, #page,
+   .structure-fun-selected, #page,
+   .structure-find-selected, #page {
+   min-height: 260px;
+   }
+   .second-news .latest-news a  .read-orange-hover:hover,
+   .second-news .latest-news a  .read-blue-hover:hover,
+   .second-news .latest-news a  .read-pink-hover:hover,
+   .second-news .latest-news a  .read-yellow-hover:hover,
+   .second-news .latest-news a  .read-purple-hover:hover{    
+    line-height: 250px;   
+   }
+   .structure .first-news .new-image-banner .image-hover:hover .text{   
+    font-size: 100%;
+  }
+  .structure .first-news .new-image-banner .image-hover:hover .text2{
+    font-size: 70%; 
+  }
+  .footer .logo{ 
+    right: 25%;
+  }
+  .footer .lema{ 
+    right: 5%;
+ 
+  }
+  .footer .redes-box{ 
+    right: 15%;
+  }   
+  .footer .avisos-ter-box{ 
+    right: 5%;   
+  }
+  .footer .text-box{ 
+    right: 5%;
+  }
+   }
+   @media all and (max-width: 350px) {
+    .second-news .latest-news a{
+      height: 200px;
+     }
+     .second-news .latest-news a .new-name .new-name-text{
+      font-size: 100%;
+    }
+    .structure .first-news,
+    .structure-news-selected .first-news,
+    .structure-science-selected .first-news,
+    .structure-art-selected .first-news,
+    .structure-fun-selected .first-news,
+    .structure-find-selected .first-news{
+    max-height: 180px;
+    margin-top: 8%;
+   }
+   .structure, #page,
+   .structure-news-selected, #page,
+   .structure-science-selected, #page,
+   .structure-art-selected, #page,
+   .structure-fun-selected, #page,
+   .structure-find-selected, #page {
+   min-height: 230px;
+   }
+   .second-news .latest-news a  .read-orange-hover:hover,
+   .second-news .latest-news a  .read-blue-hover:hover,
+   .second-news .latest-news a  .read-pink-hover:hover,
+   .second-news .latest-news a  .read-yellow-hover:hover,
+   .second-news .latest-news a  .read-purple-hover:hover{   
+    font-size: 300%; 
+    line-height: 200px;   
+   }
+   .structure .first-news .new-image-banner .image-hover:hover .text{   
+    font-size: 90%;
+  }
+  .structure .first-news .new-image-banner .image-hover:hover .text2{
+    font-size: 60%; 
+  }
+  .footer .logo{ 
+    right: 22%;
+  }
+  .footer .lema{ 
+    right: 10%;
+    width:16rem;
+ 
+  }
+  .footer .redes-box{ 
+    right: 15%;
+  }   
+  .footer .avisos-ter-box{ 
+    right: 10%;
+    font-size: 80%; 
+    width:16rem; 
+  }
+  .footer .text-box{ 
+    right: 10%;
+    width:16rem;
+  }
+   }
