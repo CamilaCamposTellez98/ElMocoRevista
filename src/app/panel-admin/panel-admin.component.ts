@@ -8,7 +8,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 import { noticiasNodoGeneral } from '../models/noticiasNodoGeneral';
-import { Noticias } from '../models/noticias';
+import { Noticias, NoticiasPlantilla6 } from '../models/noticias';
 import { NoticiasNodoGeneralInterface } from '../interfaces/NoticiasNodoGeneral';
 import { revistaDigitalInterface } from '../interfaces/RevistasDigital';
 import { EspecialDelMesInterface } from '../interfaces/EspecialDelMes';
@@ -353,7 +353,7 @@ export class PanelAdminComponent implements OnInit {
   permisoEliminarRevista: boolean[] = [false, false, false, false, false, false, false, false, false, false,];
   image1UploadPercent: Observable<number>;
 
-  revistaMocotips1 : boolean = false;
+  revistaMocotips1: boolean = false;
   statusUploadImage1: string = "";
 
   buttondisabled: string = "";
@@ -368,12 +368,12 @@ export class PanelAdminComponent implements OnInit {
   eliminandoRevistas: string = "Revistas digitales (imágenes)";
   eliminandoRevistasMocotips: string = "Revistas digitales (mocotips)";
 
-  actualizarMocotip : boolean = false;
+  actualizarMocotip: boolean = false;
 
   numeroDeImagenesRevistaDigital: number = 1;
 
   mensajeError: string = "";
-  olvidarcontra : boolean = false;
+  olvidarcontra: boolean = false;
 
   editorStyle = {
     height: '300px'
@@ -469,8 +469,9 @@ export class PanelAdminComponent implements OnInit {
 
   noticiasNodoGeneralList: noticiasNodoGeneral[];
   notaParaEditar: Noticias[];
+  notaParaEditar6: NoticiasPlantilla6[];
   userData = [];
-  
+
   revistaDigital: revistaDigital[];
   revistaDigitalMocotips: revistaDigital[];
 
@@ -495,12 +496,13 @@ export class PanelAdminComponent implements OnInit {
     this.authService.checkAuthStatus();
     if (cookie === true) {
       this.usuarioLogueado = false;
-      this.ingresoSesion = "CERRAR SESIÓN"
+      this.ingresoSesion = "CERRAR SESIÓN";
       console.log("si entro")
     }
     else {
       this.usuarioLogueado = true;
-      this.ingresoSesion = "INICIAR SESIÓN"
+      this.ingresoSesion = "INICIAR SESIÓN";
+      this.authService.SignOut();
     }
     this.currentYear = this.myDate.getFullYear();
     this.currentMonth = this.myDate.getMonth() + 1;
@@ -529,32 +531,33 @@ export class PanelAdminComponent implements OnInit {
   register(e: any) {
     this.usuario = e.target.user_name.value;
     this.contra = e.target.pass_name.value;
-      this.authService.loggeo(this.usuario, this.contra).then(r => this.getUserUid());
+    this.authService.loggeo(this.usuario, this.contra).then(r => this.getUserUid());
   }
-  reestablecerContra(){
+  reestablecerContra() {
     console.log(this.usuario);
     this.authService.resetPassword(this.usuario);
     this.olvidarcontra = false;
     this.mensajeError = "Correo enviado"
   }
-  getUserUid(){
+  getUserUid() {
     var uID;
-    if(this.authService.getUid() === "no"){
+    if (this.authService.getUid() === "no") {
       console.log("NO existo");
       this.mensajeError = "Correo o contraseña incorrectos";
       this.olvidarcontra = true;
     }
-    else{
-      
+    else {
+
       uID = this.authService.getUid();
       console.log(uID);
       this.mensajeError = "Cargando...";
-          this.cookie.set("loggin-status", "true");
-          window.location.reload();
+      this.cookie.set("loggin-status", "true");
+      window.location.reload();
     }
   }
   cerrarSesion() {
     if (this.usuarioLogueado === false) {
+      this.authService.SignOut();
       this.cookie.deleteAll();
       window.location.reload();
     }
@@ -720,7 +723,7 @@ export class PanelAdminComponent implements OnInit {
         'editorRevista10': new FormControl(null)
       })
       this.variableSinUsoMenu();
-     
+
       this.revistaMocotips = true;
       this.cloudfirestore.getRevistasMocotips().subscribe(item => {
         console.log("olita")
@@ -1567,37 +1570,18 @@ export class PanelAdminComponent implements OnInit {
     console.log("NODO GENERAL");
     console.log(this.nodoGeneralSelected[0]);
     if (window.confirm("¿Estás seguro de eliminar la revista ?")) {
-    this.eliminandoRevistas = "Eliminando revista ...";
-    this.cloudfirestore.getSeccionPuroCuento(this.nodoGeneralSelected[0]).subscribe(item => {
-      if (item.length !== 0) {
-        console.log("si se va a eliminar 1")
-          var idSeccion;
-          item.forEach((revista: any) => {
-            idSeccion = revista.payload.doc.id;
-          })
-        this.cloudfirestore.getSeccionPuroCuentoImages(idSeccion).subscribe(item => {
-          for (let x = 0; x < 30; x++) {
-            if (item.payload.data()['image' + x] === undefined) {
-              this.cloudfirestore.deleteSeccionPuroCuento(idSeccion);
-              break;
-            }
-            else {
-              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-            }
-          }
-        })
-      }
-      this.cloudfirestore.getSeccionEcoMoco(this.nodoGeneralSelected[0]).subscribe(item => {
+      this.eliminandoRevistas = "Eliminando revista ...";
+      this.cloudfirestore.getSeccionPuroCuento(this.nodoGeneralSelected[0]).subscribe(item => {
         if (item.length !== 0) {
-          console.log("si se va a eliminar 2")
+          console.log("si se va a eliminar 1")
           var idSeccion;
           item.forEach((revista: any) => {
             idSeccion = revista.payload.doc.id;
           })
-          this.cloudfirestore.getSeccionEcoMocoImages(idSeccion).subscribe(item => {
+          this.cloudfirestore.getSeccionPuroCuentoImages(idSeccion).subscribe(item => {
             for (let x = 0; x < 30; x++) {
               if (item.payload.data()['image' + x] === undefined) {
-                this.cloudfirestore.deleteSeccionEcoMoco(idSeccion);
+                this.cloudfirestore.deleteSeccionPuroCuento(idSeccion);
                 break;
               }
               else {
@@ -1606,18 +1590,17 @@ export class PanelAdminComponent implements OnInit {
             }
           })
         }
-       this.cloudfirestore.getSeccionSePega(this.nodoGeneralSelected[0]).subscribe(item => {
+        this.cloudfirestore.getSeccionEcoMoco(this.nodoGeneralSelected[0]).subscribe(item => {
           if (item.length !== 0) {
-            console.log("si se va a eliminar 3")
+            console.log("si se va a eliminar 2")
             var idSeccion;
-          item.forEach((revista: any) => {
-            idSeccion = revista.payload.doc.id;
-          })
-            
-            this.cloudfirestore.getSeccionSePegaImages(idSeccion).subscribe(item => {
+            item.forEach((revista: any) => {
+              idSeccion = revista.payload.doc.id;
+            })
+            this.cloudfirestore.getSeccionEcoMocoImages(idSeccion).subscribe(item => {
               for (let x = 0; x < 30; x++) {
                 if (item.payload.data()['image' + x] === undefined) {
-                  this.cloudfirestore.deleteSeccionSePega(idSeccion);
+                  this.cloudfirestore.deleteSeccionEcoMoco(idSeccion);
                   break;
                 }
                 else {
@@ -1626,17 +1609,18 @@ export class PanelAdminComponent implements OnInit {
               }
             })
           }
-          this.cloudfirestore.getSeccionHurgaDatos(this.nodoGeneralSelected[0]).subscribe(item => {
+          this.cloudfirestore.getSeccionSePega(this.nodoGeneralSelected[0]).subscribe(item => {
             if (item.length !== 0) {
-              console.log("si se va a eliminar 4")
+              console.log("si se va a eliminar 3")
               var idSeccion;
-          item.forEach((revista: any) => {
-            idSeccion = revista.payload.doc.id;
-          })
-              this.cloudfirestore.getSeccionHurgaDatosImages(idSeccion).subscribe(item => {
+              item.forEach((revista: any) => {
+                idSeccion = revista.payload.doc.id;
+              })
+
+              this.cloudfirestore.getSeccionSePegaImages(idSeccion).subscribe(item => {
                 for (let x = 0; x < 30; x++) {
                   if (item.payload.data()['image' + x] === undefined) {
-                    this.cloudfirestore.deleteSeccionHurgaDatos(idSeccion);
+                    this.cloudfirestore.deleteSeccionSePega(idSeccion);
                     break;
                   }
                   else {
@@ -1645,17 +1629,17 @@ export class PanelAdminComponent implements OnInit {
                 }
               })
             }
-            this.cloudfirestore.getSeccionEspacio(this.nodoGeneralSelected[0]).subscribe(item => {
+            this.cloudfirestore.getSeccionHurgaDatos(this.nodoGeneralSelected[0]).subscribe(item => {
               if (item.length !== 0) {
-                console.log("si se va a eliminar 5")
+                console.log("si se va a eliminar 4")
                 var idSeccion;
-          item.forEach((revista: any) => {
-            idSeccion = revista.payload.doc.id;
-          })
-                this.cloudfirestore.getSeccionEspacioImages(idSeccion).subscribe(item => {
+                item.forEach((revista: any) => {
+                  idSeccion = revista.payload.doc.id;
+                })
+                this.cloudfirestore.getSeccionHurgaDatosImages(idSeccion).subscribe(item => {
                   for (let x = 0; x < 30; x++) {
                     if (item.payload.data()['image' + x] === undefined) {
-                      this.cloudfirestore.deleteSeccionEspacio(idSeccion);
+                      this.cloudfirestore.deleteSeccionHurgaDatos(idSeccion);
                       break;
                     }
                     else {
@@ -1664,17 +1648,17 @@ export class PanelAdminComponent implements OnInit {
                   }
                 })
               }
-              this.cloudfirestore.getSeccionBioAventura(this.nodoGeneralSelected[0]).subscribe(item => {
+              this.cloudfirestore.getSeccionEspacio(this.nodoGeneralSelected[0]).subscribe(item => {
                 if (item.length !== 0) {
-                  console.log("si se va a eliminar 6")
+                  console.log("si se va a eliminar 5")
                   var idSeccion;
-          item.forEach((revista: any) => {
-            idSeccion = revista.payload.doc.id;
-          })
-                  this.cloudfirestore.getSeccionBioAventuraImages(idSeccion).subscribe(item => {
+                  item.forEach((revista: any) => {
+                    idSeccion = revista.payload.doc.id;
+                  })
+                  this.cloudfirestore.getSeccionEspacioImages(idSeccion).subscribe(item => {
                     for (let x = 0; x < 30; x++) {
                       if (item.payload.data()['image' + x] === undefined) {
-                        this.cloudfirestore.deleteSeccionBioAventura(idSeccion);
+                        this.cloudfirestore.deleteSeccionEspacio(idSeccion);
                         break;
                       }
                       else {
@@ -1683,18 +1667,17 @@ export class PanelAdminComponent implements OnInit {
                     }
                   })
                 }
-                
-                this.cloudfirestore.getSeccionPromos(this.nodoGeneralSelected[0]).subscribe(item => {
+                this.cloudfirestore.getSeccionBioAventura(this.nodoGeneralSelected[0]).subscribe(item => {
                   if (item.length !== 0) {
-                    console.log("si se va a eliminar 7");
+                    console.log("si se va a eliminar 6")
                     var idSeccion;
                     item.forEach((revista: any) => {
                       idSeccion = revista.payload.doc.id;
                     })
-                    this.cloudfirestore.getSeccionPromosImages(idSeccion).subscribe(item => {
+                    this.cloudfirestore.getSeccionBioAventuraImages(idSeccion).subscribe(item => {
                       for (let x = 0; x < 30; x++) {
                         if (item.payload.data()['image' + x] === undefined) {
-                          this.cloudfirestore.deleteSeccionPromos(idSeccion);
+                          this.cloudfirestore.deleteSeccionBioAventura(idSeccion);
                           break;
                         }
                         else {
@@ -1703,17 +1686,18 @@ export class PanelAdminComponent implements OnInit {
                       }
                     })
                   }
-                  this.cloudfirestore.getSeccionArte(this.nodoGeneralSelected[0]).subscribe(item => {
+
+                  this.cloudfirestore.getSeccionPromos(this.nodoGeneralSelected[0]).subscribe(item => {
                     if (item.length !== 0) {
-                      console.log("si se va a eliminar 8")
+                      console.log("si se va a eliminar 7");
                       var idSeccion;
-          item.forEach((revista: any) => {
-            idSeccion = revista.payload.doc.id;
-          })
-                      this.cloudfirestore.getSeccionArteImages(idSeccion).subscribe(item => {
+                      item.forEach((revista: any) => {
+                        idSeccion = revista.payload.doc.id;
+                      })
+                      this.cloudfirestore.getSeccionPromosImages(idSeccion).subscribe(item => {
                         for (let x = 0; x < 30; x++) {
                           if (item.payload.data()['image' + x] === undefined) {
-                            this.cloudfirestore.deleteSeccionArte(idSeccion);
+                            this.cloudfirestore.deleteSeccionPromos(idSeccion);
                             break;
                           }
                           else {
@@ -1722,17 +1706,17 @@ export class PanelAdminComponent implements OnInit {
                         }
                       })
                     }
-                    this.cloudfirestore.getSeccionEspecial(this.nodoGeneralSelected[0]).subscribe(item => {
+                    this.cloudfirestore.getSeccionArte(this.nodoGeneralSelected[0]).subscribe(item => {
                       if (item.length !== 0) {
-                        console.log("si se va a eliminar 9")
+                        console.log("si se va a eliminar 8")
                         var idSeccion;
-          item.forEach((revista: any) => {
-            idSeccion = revista.payload.doc.id;
-          })
-                        this.cloudfirestore.getSeccionEspecialImages(idSeccion).subscribe(item => {
+                        item.forEach((revista: any) => {
+                          idSeccion = revista.payload.doc.id;
+                        })
+                        this.cloudfirestore.getSeccionArteImages(idSeccion).subscribe(item => {
                           for (let x = 0; x < 30; x++) {
                             if (item.payload.data()['image' + x] === undefined) {
-                              this.cloudfirestore.deleteSeccionEspecial(idSeccion);
+                              this.cloudfirestore.deleteSeccionArte(idSeccion);
                               break;
                             }
                             else {
@@ -1741,17 +1725,17 @@ export class PanelAdminComponent implements OnInit {
                           }
                         })
                       }
-                      this.cloudfirestore.getSeccionDoctor(this.nodoGeneralSelected[0]).subscribe(item => {
+                      this.cloudfirestore.getSeccionEspecial(this.nodoGeneralSelected[0]).subscribe(item => {
                         if (item.length !== 0) {
-                          console.log("si se va a eliminar 10")
+                          console.log("si se va a eliminar 9")
                           var idSeccion;
-          item.forEach((revista: any) => {
-            idSeccion = revista.payload.doc.id;
-          })
-                          this.cloudfirestore.getSeccionDoctorImages(idSeccion).subscribe(item => {
+                          item.forEach((revista: any) => {
+                            idSeccion = revista.payload.doc.id;
+                          })
+                          this.cloudfirestore.getSeccionEspecialImages(idSeccion).subscribe(item => {
                             for (let x = 0; x < 30; x++) {
                               if (item.payload.data()['image' + x] === undefined) {
-                                this.cloudfirestore.deleteSeccionDoctor(idSeccion);
+                                this.cloudfirestore.deleteSeccionEspecial(idSeccion);
                                 break;
                               }
                               else {
@@ -1759,14 +1743,34 @@ export class PanelAdminComponent implements OnInit {
                               }
                             }
                           })
-                        } 
-                        this.cloudfirestore.deleteRevistaDigital(this.revistastKey[0]);
-                        window.alert('Revista eliminada con éxito');
-                        this.restartAll();
-                        this.eliminandoRevistas = "Revistas digitales (imágenes)";
-                        this.changeSection("R");
+                        }
+                        this.cloudfirestore.getSeccionDoctor(this.nodoGeneralSelected[0]).subscribe(item => {
+                          if (item.length !== 0) {
+                            console.log("si se va a eliminar 10")
+                            var idSeccion;
+                            item.forEach((revista: any) => {
+                              idSeccion = revista.payload.doc.id;
+                            })
+                            this.cloudfirestore.getSeccionDoctorImages(idSeccion).subscribe(item => {
+                              for (let x = 0; x < 30; x++) {
+                                if (item.payload.data()['image' + x] === undefined) {
+                                  this.cloudfirestore.deleteSeccionDoctor(idSeccion);
+                                  break;
+                                }
+                                else {
+                                  this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+                                }
+                              }
+                            })
+                          }
+                          this.cloudfirestore.deleteRevistaDigital(this.revistastKey[0]);
+                          window.alert('Revista eliminada con éxito');
+                          this.restartAll();
+                          this.eliminandoRevistas = "Revistas digitales (imágenes)";
+                          this.changeSection("R");
+                        })
                       })
-                   })
+                    })
                   })
                 })
               })
@@ -1774,8 +1778,7 @@ export class PanelAdminComponent implements OnInit {
           })
         })
       })
-    })
-  }
+    }
   }
   eliminarRevistaMocotips() {
 
@@ -1784,87 +1787,88 @@ export class PanelAdminComponent implements OnInit {
     console.log(this.nodoGeneralSelected[0]);
     if (window.confirm("¿Estás seguro de eliminar la revista ?")) {
       this.eliminandoRevistasMocotips = "Eliminando revista ...";
-    this.cloudfirestore.getSeccionPuroCuentoTips(this.nodoGeneralSelected[0]).subscribe(item => {
-      var id;
-      if (item.length !== 0) {
-        item.forEach((revista: any) => {
-          id = revista.payload.doc.id;
-        })
-        this.cloudfirestore.deleteRevistaPuroCuento(id);
-      }
-      this.cloudfirestore.getSeccionEcoMocoTips(this.nodoGeneralSelected[0]).subscribe(item => {
+      this.cloudfirestore.getSeccionPuroCuentoTips(this.nodoGeneralSelected[0]).subscribe(item => {
+        var id;
         if (item.length !== 0) {
           item.forEach((revista: any) => {
             id = revista.payload.doc.id;
           })
-          this.cloudfirestore.deleteRevistaEcoMoco(id);
+          this.cloudfirestore.deleteRevistaPuroCuento(id);
         }
-        this.cloudfirestore.getSeccionSePegaTips(this.nodoGeneralSelected[0]).subscribe(item => {
+        this.cloudfirestore.getSeccionEcoMocoTips(this.nodoGeneralSelected[0]).subscribe(item => {
           if (item.length !== 0) {
             item.forEach((revista: any) => {
               id = revista.payload.doc.id;
             })
-            this.cloudfirestore.deleteRevistaSePega(id);
+            this.cloudfirestore.deleteRevistaEcoMoco(id);
           }
-          this.cloudfirestore.getSeccionHurgaDatosTips(this.nodoGeneralSelected[0]).subscribe(item => {
+          this.cloudfirestore.getSeccionSePegaTips(this.nodoGeneralSelected[0]).subscribe(item => {
             if (item.length !== 0) {
               item.forEach((revista: any) => {
                 id = revista.payload.doc.id;
               })
-              this.cloudfirestore.deleteRevistaHurgaDatos(id);
+              this.cloudfirestore.deleteRevistaSePega(id);
             }
-            this.cloudfirestore.getSeccionConclusionTips(this.nodoGeneralSelected[0]).subscribe(item => {
+            this.cloudfirestore.getSeccionHurgaDatosTips(this.nodoGeneralSelected[0]).subscribe(item => {
               if (item.length !== 0) {
                 item.forEach((revista: any) => {
                   id = revista.payload.doc.id;
                 })
-                this.cloudfirestore.deleteRevistaConclusion(id);
+                this.cloudfirestore.deleteRevistaHurgaDatos(id);
               }
-              else {
-                this.permisoEliminarRevista[4] = true;
-              }
-              this.cloudfirestore.getSeccionBioAventuraTips(this.nodoGeneralSelected[0]).subscribe(item => {
+              this.cloudfirestore.getSeccionConclusionTips(this.nodoGeneralSelected[0]).subscribe(item => {
                 if (item.length !== 0) {
                   item.forEach((revista: any) => {
                     id = revista.payload.doc.id;
                   })
-                  this.cloudfirestore.deleteRevistaBioAventura(id);
+                  this.cloudfirestore.deleteRevistaConclusion(id);
                 }
-                this.cloudfirestore.getSeccionIntroTips(this.nodoGeneralSelected[0]).subscribe(item => {
+                else {
+                  this.permisoEliminarRevista[4] = true;
+                }
+                this.cloudfirestore.getSeccionBioAventuraTips(this.nodoGeneralSelected[0]).subscribe(item => {
                   if (item.length !== 0) {
                     item.forEach((revista: any) => {
                       id = revista.payload.doc.id;
                     })
-                    this.cloudfirestore.deleteRevistaIntro(id);
+                    this.cloudfirestore.deleteRevistaBioAventura(id);
                   }
-                  this.cloudfirestore.getSeccionArteTips(this.nodoGeneralSelected[0]).subscribe(item => {
+                  this.cloudfirestore.getSeccionIntroTips(this.nodoGeneralSelected[0]).subscribe(item => {
                     if (item.length !== 0) {
                       item.forEach((revista: any) => {
                         id = revista.payload.doc.id;
                       })
-                      this.cloudfirestore.deleteRevistaArte(id); 
+                      this.cloudfirestore.deleteRevistaIntro(id);
                     }
-                    this.cloudfirestore.getSeccionEspecialTips(this.nodoGeneralSelected[0]).subscribe(item => {
+                    this.cloudfirestore.getSeccionArteTips(this.nodoGeneralSelected[0]).subscribe(item => {
                       if (item.length !== 0) {
                         item.forEach((revista: any) => {
                           id = revista.payload.doc.id;
                         })
-                        this.cloudfirestore.deleteRevistaEspecial(id); 
+                        this.cloudfirestore.deleteRevistaArte(id);
                       }
-                      this.cloudfirestore.getSeccionDoctorTips(this.nodoGeneralSelected[0]).subscribe(item => {
+                      this.cloudfirestore.getSeccionEspecialTips(this.nodoGeneralSelected[0]).subscribe(item => {
                         if (item.length !== 0) {
                           item.forEach((revista: any) => {
                             id = revista.payload.doc.id;
                           })
-                          this.cloudfirestore.deleteRevistaDoctor(id);  
+                          this.cloudfirestore.deleteRevistaEspecial(id);
                         }
+                        this.cloudfirestore.getSeccionDoctorTips(this.nodoGeneralSelected[0]).subscribe(item => {
+                          if (item.length !== 0) {
+                            item.forEach((revista: any) => {
+                              id = revista.payload.doc.id;
+                            })
+                            this.cloudfirestore.deleteRevistaDoctor(id);
+                          }
                           this.cloudfirestore.deleteRevistaDigitalMocotips(this.revistastKey[0]);
                           window.alert('Revista eliminada con éxito');
                           this.restartAll();
                           this.eliminandoRevistasMocotips = "Revistas digitales (mocotips)";
                           this.changeSection("P");
-                         
-                        
+
+
+                        })
                       })
                     })
                   })
@@ -1874,8 +1878,7 @@ export class PanelAdminComponent implements OnInit {
           })
         })
       })
-    })
-  }
+    }
   }
   revistaSeccion(section: string) {
     window.alert('SE INICIARÁ UNA GALERÍA NUEVA');
@@ -1904,172 +1907,172 @@ export class PanelAdminComponent implements OnInit {
     if (section === '1') {
       this.actualRevistaDigitalSection = "puro";
       this.actualRevistaDigital = "Puro cuento";
-      if(this.idImagenesRevistaDig[0] !== ""){
-      this.cloudfirestore.getSeccionPuroCuentoImages(this.idImagenesRevistaDig[0]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionPuroCuento(this.idImagenesRevistaDig[0]);
-            break;
+      if (this.idImagenesRevistaDig[0] !== "") {
+        this.cloudfirestore.getSeccionPuroCuentoImages(this.idImagenesRevistaDig[0]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionPuroCuento(this.idImagenesRevistaDig[0]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     else if (section === '2') {
       this.actualRevistaDigitalSection = "eco";
       this.actualRevistaDigital = "Eco moco";
-      if(this.idImagenesRevistaDig[1] !== ""){
-      this.cloudfirestore.getSeccionEcoMocoImages(this.idImagenesRevistaDig[1]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionEcoMoco(this.idImagenesRevistaDig[1]);
-            break;
+      if (this.idImagenesRevistaDig[1] !== "") {
+        this.cloudfirestore.getSeccionEcoMocoImages(this.idImagenesRevistaDig[1]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionEcoMoco(this.idImagenesRevistaDig[1]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     else if (section === '3') {
       this.actualRevistaDigitalSection = "pega";
       this.actualRevistaDigital = "Lo que se pega";
-      if(this.idImagenesRevistaDig[2] !== ""){
-      this.cloudfirestore.getSeccionSePegaImages(this.idImagenesRevistaDig[2]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionSePega(this.idImagenesRevistaDig[2]);
-            break;
+      if (this.idImagenesRevistaDig[2] !== "") {
+        this.cloudfirestore.getSeccionSePegaImages(this.idImagenesRevistaDig[2]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionSePega(this.idImagenesRevistaDig[2]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     else if (section === '4') {
       this.actualRevistaDigitalSection = "hurga";
       this.actualRevistaDigital = "Hurga datos";
-      if(this.idImagenesRevistaDig[3] !== ""){
-      this.cloudfirestore.getSeccionHurgaDatosImages(this.idImagenesRevistaDig[3]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionHurgaDatos(this.idImagenesRevistaDig[3]);
-            break;
+      if (this.idImagenesRevistaDig[3] !== "") {
+        this.cloudfirestore.getSeccionHurgaDatosImages(this.idImagenesRevistaDig[3]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionHurgaDatos(this.idImagenesRevistaDig[3]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     else if (section === '5') {
       this.actualRevistaDigitalSection = "espacio";
       this.actualRevistaDigital = "Tu espacio";
-      if(this.idImagenesRevistaDig[4] !== ""){
-      this.cloudfirestore.getSeccionEspacioImages(this.idImagenesRevistaDig[4]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionEspacio(this.idImagenesRevistaDig[4]);
-            break;
+      if (this.idImagenesRevistaDig[4] !== "") {
+        this.cloudfirestore.getSeccionEspacioImages(this.idImagenesRevistaDig[4]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionEspacio(this.idImagenesRevistaDig[4]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     else if (section === '6') {
       this.actualRevistaDigitalSection = "bio";
       this.actualRevistaDigital = "Bio aventura";
-      if(this.idImagenesRevistaDig[5] !== ""){
-      this.cloudfirestore.getSeccionBioAventuraImages(this.idImagenesRevistaDig[5]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionBioAventura(this.idImagenesRevistaDig[5]);
-            break;
+      if (this.idImagenesRevistaDig[5] !== "") {
+        this.cloudfirestore.getSeccionBioAventuraImages(this.idImagenesRevistaDig[5]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionBioAventura(this.idImagenesRevistaDig[5]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     else if (section === '7') {
       this.actualRevistaDigitalSection = "promo";
       this.actualRevistaDigital = "Anuncios y promociones";
-      if(this.idImagenesRevistaDig[6] !== ""){
-      this.cloudfirestore.getSeccionPromosImages(this.idImagenesRevistaDig[6]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionPromos(this.idImagenesRevistaDig[6]);
-            break;
+      if (this.idImagenesRevistaDig[6] !== "") {
+        this.cloudfirestore.getSeccionPromosImages(this.idImagenesRevistaDig[6]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionPromos(this.idImagenesRevistaDig[6]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     else if (section === '8') {
       this.actualRevistaDigitalSection = "arte";
       this.actualRevistaDigital = "Arte y mañas";
-      if(this.idImagenesRevistaDig[7] !== ""){
-      this.cloudfirestore.getSeccionArteImages(this.idImagenesRevistaDig[7]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionArte(this.idImagenesRevistaDig[7]);
-            break;
+      if (this.idImagenesRevistaDig[7] !== "") {
+        this.cloudfirestore.getSeccionArteImages(this.idImagenesRevistaDig[7]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionArte(this.idImagenesRevistaDig[7]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     else if (section === '9') {
       this.actualRevistaDigitalSection = "especial";
       this.actualRevistaDigital = "Especial";
-      if(this.idImagenesRevistaDig[8] !== ""){
-      this.cloudfirestore.getSeccionEspecialImages(this.idImagenesRevistaDig[8]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionEspecial(this.idImagenesRevistaDig[8]);
-            break;
+      if (this.idImagenesRevistaDig[8] !== "") {
+        this.cloudfirestore.getSeccionEspecialImages(this.idImagenesRevistaDig[8]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionEspecial(this.idImagenesRevistaDig[8]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
+        })
       }
     }
     else if (section === '10') {
       this.actualRevistaDigitalSection = "dr";
       this.actualRevistaDigital = "Dr. Bakterium";
-      if(this.idImagenesRevistaDig[9] !== ""){
-      this.cloudfirestore.getSeccionDoctorImages(this.idImagenesRevistaDig[9]).subscribe(item => {
-        for (let x = 0; x < 30; x++) {
-          if (item.payload.data()['image' + x] === undefined) {
-            this.cloudfirestore.deleteSeccionDoctor(this.idImagenesRevistaDig[9]);
-            break;
+      if (this.idImagenesRevistaDig[9] !== "") {
+        this.cloudfirestore.getSeccionDoctorImages(this.idImagenesRevistaDig[9]).subscribe(item => {
+          for (let x = 0; x < 30; x++) {
+            if (item.payload.data()['image' + x] === undefined) {
+              this.cloudfirestore.deleteSeccionDoctor(this.idImagenesRevistaDig[9]);
+              break;
+            }
+            else {
+              this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
+            }
           }
-          else {
-            this.storage.storage.refFromURL(item.payload.data()['image' + x]).delete();
-          }
-        }
-      })
-    }
+        })
+      }
     }
     console.log(this.actualRevistaDigitalSection)
   }
@@ -2636,7 +2639,7 @@ export class PanelAdminComponent implements OnInit {
 
         });
       })
-    ).subscribe(); 
+    ).subscribe();
   }
   publicarRevistaDigitalMocotips() {
     this.revistaDigitalObject.tittle = this.tituloRevistaMocotipsPrincipal;
@@ -2697,6 +2700,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent2 = this.editorForm2.get('editor2').value;
       this.editorContent3 = this.editorForm3.get('editor3').value;
       this.editorContent4 = this.editorForm4.get('editor4').value;
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
       this.noticiasObject.tittle = this.titulo;
       this.noticiasObject.autor = this.autor;
       this.noticiasObject.part3 = this.editorContent4;
@@ -2813,6 +2822,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent = this.editorForm.get('editor').value;
       this.editorContent2 = this.editorForm2.get('editor2').value;
       this.editorContent3 = this.editorForm3.get('editor3').value;
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
       this.noticiasObject.tittle = this.titulo2;
       this.noticiasObject.plantilla = '2';
       this.noticiasObject.autor = this.autor2;
@@ -2975,6 +2990,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent3 = this.editorForm3.get('editor3').value;
       this.editorContent4 = this.editorForm4.get('editor4').value;
       this.editorContent5 = this.editorForm5.get('editor5').value;
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
       this.noticiasObject.tittle = this.titulo3;
       this.noticiasObject.part2 = this.editorContent3;
       this.noticiasObject.part4 = this.editorContent5;
@@ -3118,7 +3139,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent5 = this.editorForm5.get('editor5').value;
       this.editorContent6 = this.editorForm6.get('editor6').value;
       this.noticiasObject.tittle = this.titulo4;
-      this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
       this.noticiasObject.phrase = this.editorContent;
       this.noticiasObject.part1 = this.editorContent2;
       this.noticiasObject.part5 = this.editorContent6;
@@ -3282,6 +3308,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent3 = this.editorForm3.get('editor3').value;
       this.editorContent4 = this.editorForm4.get('editor4').value;
       this.editorContent5 = this.editorForm5.get('editor5').value;
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
       this.noticiasObject.tittle = this.titulo5;
       this.editorContent2 = this.editorContent2;
       this.noticiasObject.part1 = this.editorContent2;
@@ -3424,7 +3456,6 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent6 = this.editorForm6.get('editor6').value;
       this.editorContent7 = this.editorForm7.get('editor7').value;
       this.editorContent8 = this.editorForm8.get('editor8').value;
-      console.log("editor 6: " + this.editorContent6)
       this.noticiasObjectPlantilla6.tittle = this.titulo6;
       if (this.titulo_youtube !== "") {
         this.noticiasObjectPlantilla6.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
@@ -3871,14 +3902,7 @@ export class PanelAdminComponent implements OnInit {
       this.plantillaSubirImagen5 = false;
       this.plantillaSubirImagen6 = true;
 
-      this.editorContent = this.editorForm.get('editor').value;
-      this.editorContent2 = this.editorForm2.get('editor2').value;
-      this.editorContent3 = this.editorForm3.get('editor3').value;
-      this.editorContent4 = this.editorForm4.get('editor4').value;
-      this.editorContent5 = this.editorForm5.get('editor5').value;
-      this.editorContent6 = this.editorForm6.get('editor6').value;
-      this.editorContent7 = this.editorForm7.get('editor7').value;
-      this.editorContent8 = this.editorForm8.get('editor8').value;
+
 
     }
     else if (plantilla === 7) {
@@ -3891,9 +3915,9 @@ export class PanelAdminComponent implements OnInit {
       this.plantillaSubirImagen6 = false;
       this.especialDelMes = false;
       this.especialDelMesSubirImagen = true;
-      
+
     }
-    
+
   }
   cleanSpacesEditor1(editor1: string) {
     var posicion = editor1.search("&nbsp;");
@@ -4346,7 +4370,7 @@ export class PanelAdminComponent implements OnInit {
       this.seccionRevista7 = false;
       this.seccionRevista8 = false;
       this.seccionRevista9 = false;
-      this.seccionRevista10 = false;   
+      this.seccionRevista10 = false;
       this.parteRevistaMocotips = 'Hurga Datos';
       this.cloudfirestore.getSeccionHurgaDatosTips(this.nodoGeneralSelected[0]).subscribe(item => {
         var id;
@@ -4414,7 +4438,7 @@ export class PanelAdminComponent implements OnInit {
       this.seccionRevista7 = false;
       this.seccionRevista8 = false;
       this.seccionRevista9 = false;
-      this.seccionRevista10 = false;   
+      this.seccionRevista10 = false;
       this.parteRevistaMocotips = 'Eco Moco';
       this.cloudfirestore.getSeccionEcoMocoTips(this.nodoGeneralSelected[0]).subscribe(item => {
         var id;
@@ -4654,7 +4678,7 @@ export class PanelAdminComponent implements OnInit {
       this.parteRevistaMocotips = 'Conclusión';
     }
   */
-  continueDatosMocotips(part : number) {
+  continueDatosMocotips(part: number) {
     if (part === 1) {
       this.mocotipsObject.contenido = this.editorFormRevista.get('editorRevista').value;
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
@@ -4729,15 +4753,15 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.contenido = this.editorFormRevista6.get('editorRevista6').value;
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips6;
-       this.cloudfirestore.registerRevistaArte(this.mocotipsObject).then(response => {
+      this.cloudfirestore.registerRevistaArte(this.mocotipsObject).then(response => {
         console.log(response);
         this.restartAll();
-        this.changeSection("P"); 
+        this.changeSection("P");
       }, error => {
         console.log(error)
         this.restartAll();
-        this.changeSection("P"); 
-      }) 
+        this.changeSection("P");
+      })
     }
     else if (part === 7) {
       this.mocotipsObject.contenido = this.editorFormRevista7.get('editorRevista7').value;
@@ -4796,7 +4820,7 @@ export class PanelAdminComponent implements OnInit {
       })
     }
   }
-  actualizarDatosMocotips(part : number) {
+  actualizarDatosMocotips(part: number) {
     if (part === 1) {
       this.mocotipsObject.contenido = this.editorFormRevista.get('editorRevista').value;
       this.mocotipsObject.tittle = this.tituloRevistaMocotips;
@@ -5091,8 +5115,8 @@ export class PanelAdminComponent implements OnInit {
       }
 
     }
-    console.log("key: "+this.revistastKey);
-    console.log("key nodo: "+this.nodoGeneralSelected);
+    console.log("key: " + this.revistastKey);
+    console.log("key nodo: " + this.nodoGeneralSelected);
   }
   selectRowEspecial($event, datatSourceEspecial) {
 
@@ -5331,7 +5355,7 @@ export class PanelAdminComponent implements OnInit {
       this.fileToUpload1Name1 = "Imagen ya cargada";
     })
   }
-  updateRevista(option : number) {
+  updateRevista(option: number) {
     console.log(option)
     console.log(this.revistastKey[0]);
     this.revistaDigitalObject.tittle = this.tituloRevistaMocotipsPrincipal;
@@ -5345,14 +5369,14 @@ export class PanelAdminComponent implements OnInit {
     if (this.fileToUpload1Name1 === "Imagen ya cargada") {
       this.revistaDigitalObject.imagenPrincipal = this.revistaDigitalParaEditar[0].imagenPrincipal;
       console.log("ola 1")
-      if(option === 1){
+      if (option === 1) {
         this.cloudfirestore.updateRevistaDigital(this.revistaDigitalObject, this.revistastKey[0]).then(response => {
           window.alert('Revista actualizada con éxito');
           this.restartAll();
           this.changeSection("R");
         })
       }
-      else if (option === 2){
+      else if (option === 2) {
         this.cloudfirestore.updateRevistaDigitalMocotips(this.revistaDigitalObject, this.revistastKey[0]).then(response => {
           window.alert('Revista mocotips actualizada con éxito');
           this.restartAll();
@@ -5375,14 +5399,14 @@ export class PanelAdminComponent implements OnInit {
             this.urlImage1 = url;
             this.revistaDigitalObject.imagenPrincipal = this.urlImage1;
 
-            if(option === 1){
+            if (option === 1) {
               this.cloudfirestore.updateRevistaDigital(this.revistaDigitalObject, this.revistastKey[0]).then(response => {
                 window.alert('Revista actualizada con éxito');
                 this.restartAll();
                 this.changeSection("R");
               })
             }
-            else if(option === 2){
+            else if (option === 2) {
               this.cloudfirestore.updateRevistaDigitalMocotips(this.revistaDigitalObject, this.revistastKey[0]).then(response => {
                 window.alert('Revista mocotips actualizada con éxito');
                 this.restartAll();
@@ -5411,6 +5435,14 @@ export class PanelAdminComponent implements OnInit {
           this.buttonActualizaDisabled = "block";
           console.log(this.buttonActualizaDisabled)
           this.titulo = this.notaParaEditar[0].tittle;
+          var youtubelimpieza = this.notaParaEditar[0].youtube.search("embed/");
+          if (youtubelimpieza !== -1) {
+            var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
+            this.titulo_youtube = youtubecleaned;
+          }
+          else{
+            this.titulo_youtube = this.notaParaEditar[0].youtube;
+          }  
           this.selectSeccionNotaDisabled = true;
 
           var part2limpieza = this.notaParaEditar[0].part1.search("<div class=");
@@ -5460,6 +5492,14 @@ export class PanelAdminComponent implements OnInit {
           this.buttondisabled = "none";
           this.buttonActualizaDisabled = "block";
           this.titulo2 = this.notaParaEditar[0].tittle;
+          var youtubelimpieza = this.notaParaEditar[0].youtube.search("embed/");
+          if (youtubelimpieza !== -1) {
+            var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
+            this.titulo_youtube = youtubecleaned;
+          }
+          else{
+            this.titulo_youtube = this.notaParaEditar[0].youtube;
+          }  
           this.selectSeccionNotaDisabled = true;
 
           console.log(this.notaParaEditar[0].part2);
@@ -5502,6 +5542,14 @@ export class PanelAdminComponent implements OnInit {
           this.buttondisabled = "none";
           this.buttonActualizaDisabled = "block";
           this.titulo3 = this.notaParaEditar[0].tittle;
+          var youtubelimpieza = this.notaParaEditar[0].youtube.search("embed/");
+          if (youtubelimpieza !== -1) {
+            var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
+            this.titulo_youtube = youtubecleaned;
+          }
+          else{
+            this.titulo_youtube = this.notaParaEditar[0].youtube;
+          }  
           this.selectSeccionNotaDisabled = true;
           console.log(this.notaParaEditar[0]);
 
@@ -5550,12 +5598,14 @@ export class PanelAdminComponent implements OnInit {
           this.buttonActualizaDisabled = "block";
           this.titulo4 = this.notaParaEditar[0].tittle;
           var youtubelimpieza = this.notaParaEditar[0].youtube.search("embed/");
-          var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
-
-          this.titulo_youtube = youtubecleaned;
+          if (youtubelimpieza !== -1) {
+            var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
+            this.titulo_youtube = youtubecleaned;
+          }
+          else{
+            this.titulo_youtube = this.notaParaEditar[0].youtube;
+          }     
           this.selectSeccionNotaDisabled = true;
-
-
           var part2limpieza = this.notaParaEditar[0].part2.search("<div class=");
           var part2cleaned = this.notaParaEditar[0].part2.substring(0, part2limpieza);
 
@@ -5610,6 +5660,14 @@ export class PanelAdminComponent implements OnInit {
           this.buttondisabled = "none";
           this.buttonActualizaDisabled = "block";
           this.titulo5 = this.notaParaEditar[0].tittle;
+          var youtubelimpieza = this.notaParaEditar[0].youtube.search("embed/");
+          if (youtubelimpieza !== -1) {
+            var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
+            this.titulo_youtube = youtubecleaned;
+          }
+          else{
+            this.titulo_youtube = this.notaParaEditar[0].youtube;
+          }  
           this.selectSeccionNotaDisabled = true;
 
           var part2limpieza = this.notaParaEditar[0].part2.search("<div class=");
@@ -5652,59 +5710,144 @@ export class PanelAdminComponent implements OnInit {
           this.editarNota = true;
         }
         if (this.notaParaEditar[0].plantilla === "6") {
-         /* console.log("OLLAAA 6");
-          console.log(this.notaParaEditar[0]);
-          this.changeSection('RE6');
-          this.buttondisabled = "none";
-          this.buttonActualizaDisabled = "block";
-          console.log(this.buttonActualizaDisabled)
-          this.titulo6 = this.notaParaEditar[0].tittle;
-          this.selectSeccionNotaDisabled = true;
+          this.noticiasService.getNoteToEdit(this.seccionSelected[0], this.keysSelected[0]).snapshotChanges().subscribe(item => {
+            this.notaParaEditar6 = [];
+            item.forEach(element => {
+              let json = element.payload.toJSON();
+              json["$key"] = element.key;
+              this.notaParaEditar6.push(json as NoticiasPlantilla6);
+            });
 
-          var part2limpieza = this.notaParaEditar[0].part2.search("<div class=");
-          var part2cleaned = this.notaParaEditar[0].part2.substring(0, part2limpieza);
+            console.log(this.notaParaEditar6[0]);
+            this.changeSection('RE6');
+            this.buttondisabled = "none";
+            this.buttonActualizaDisabled = "block";
+            console.log(this.buttonActualizaDisabled)
+            this.titulo6 = this.notaParaEditar6[0].tittle;
+            var youtubelimpieza = this.notaParaEditar6[0].youtube.search("embed/");
+          if (youtubelimpieza !== -1) {
+            var youtubecleaned = this.notaParaEditar6[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar6[0].youtube.length);
+            this.titulo_youtube = youtubecleaned;
+          }
+          else{
+            this.titulo_youtube = this.notaParaEditar[0].youtube;
+          }  
+            this.selectSeccionNotaDisabled = true;
 
-          var part2limpieza2 = this.notaParaEditar[0].part2.search("</div>");
-          var part2cleaned2 = this.notaParaEditar[0].part2.substring(part2limpieza2 + 6, this.notaParaEditar[0].part1.length);
+            var part2limpieza = this.notaParaEditar6[0].part2.search("<div class=");
+            var part2cleaned = this.notaParaEditar6[0].part2.substring(0, part2limpieza);
+            var part2limpieza2 = this.notaParaEditar6[0].part2.search("</div>");
+            var part2cleaned2 = this.notaParaEditar6[0].part2.substring(part2limpieza2 + 6, this.notaParaEditar6[0].part2.length);
+            var izquierda2 = this.notaParaEditar6[0].part2.search("plantilla6-derecha");
+            var derecha2 = this.notaParaEditar6[0].part2.search("plantilla6-izquierda");
+            if (izquierda2 !== -1) {
+              var part2CleanFull = part2cleaned + "-image-" + part2cleaned2;
+            }
+            if (derecha2 !== -1) {
+              var part2CleanFull = part2cleaned + "-image2-" + part2cleaned2;
+            }
 
-          var part2CleanFull = part2cleaned + "-image-" + part2cleaned2;
+            var part3limpieza = this.notaParaEditar6[0].part3.search("<div class=");
+            var part3cleaned = this.notaParaEditar6[0].part3.substring(0, part3limpieza);
+            var part3limpieza2 = this.notaParaEditar6[0].part3.search("</div>");
+            var part3cleaned2 = this.notaParaEditar6[0].part3.substring(part3limpieza2 + 6, this.notaParaEditar6[0].part3.length);
+            var izquierda3 = this.notaParaEditar6[0].part3.search("plantilla6-derecha");
+            var derecha3 = this.notaParaEditar6[0].part3.search("plantilla6-izquierda");
+            if (izquierda3 !== -1) {
+              var part3CleanFull = part3cleaned + "-image-" + part3cleaned2;
+            }
+            if (derecha3 !== -1) {
+              var part3CleanFull = part3cleaned + "-image2-" + part3cleaned2;
+            }
 
-          var part4limpieza = this.notaParaEditar[0].part2.search("></div>");
-          var part4cleaned = this.notaParaEditar[0].part2.substring(part4limpieza + 8, this.notaParaEditar[0].part2.length);
+            var part4limpieza = this.notaParaEditar6[0].part4.search("<div class=");
+            var part4cleaned = this.notaParaEditar6[0].part4.substring(0, part4limpieza);
+            var part4limpieza2 = this.notaParaEditar6[0].part4.search("</div>");
+            var part4cleaned2 = this.notaParaEditar6[0].part4.substring(part4limpieza2 + 6, this.notaParaEditar6[0].part4.length);
+            var izquierda4 = this.notaParaEditar6[0].part4.search("plantilla6-derecha");
+            var derecha4 = this.notaParaEditar6[0].part4.search("plantilla6-izquierda");
+            if (izquierda4 !== -1) {
+              var part4CleanFull = part4cleaned + "-image-" + part4cleaned2;
+            }
+            if (derecha4 !== -1) {
+              var part4CleanFull = part4cleaned + "-image2-" + part4cleaned2;
+            }
 
-          this.editorForm = new FormGroup({
-            'editor': new FormControl(this.notaParaEditar[0].phrase)
+            var part5limpieza = this.notaParaEditar6[0].part5.search("<div class=");
+            var part5cleaned = this.notaParaEditar6[0].part5.substring(0, part5limpieza);
+            var part5limpieza2 = this.notaParaEditar6[0].part5.search("</div>");
+            var part5cleaned2 = this.notaParaEditar6[0].part5.substring(part5limpieza2 + 6, this.notaParaEditar6[0].part5.length);
+            var izquierda5 = this.notaParaEditar6[0].part5.search("plantilla6-derecha");
+            var derecha5 = this.notaParaEditar6[0].part5.search("plantilla6-izquierda");
+            if (izquierda5 !== -1) {
+              var part5CleanFull = part5cleaned + "-image-" + part5cleaned2;
+            }
+            if (derecha5 !== -1) {
+              var part5CleanFull = part5cleaned + "-image2-" + part5cleaned2;
+            }
+
+            var part6limpieza = this.notaParaEditar6[0].part6.search("<div class=");
+            var part6cleaned = this.notaParaEditar6[0].part6.substring(0, part6limpieza);
+            var part6limpieza2 = this.notaParaEditar6[0].part6.search("</div>");
+            var part6cleaned2 = this.notaParaEditar6[0].part6.substring(part6limpieza2 + 6, this.notaParaEditar6[0].part6.length);
+            var izquierda6 = this.notaParaEditar6[0].part6.search("plantilla6-derecha");
+            var derecha6 = this.notaParaEditar6[0].part6.search("plantilla6-izquierda");
+            if (izquierda6 !== -1) {
+              var part6CleanFull = part6cleaned + "-image-" + part6cleaned2;
+            }
+            if (derecha6 !== -1) {
+              var part6CleanFull = part6cleaned + "-image2-" + part6cleaned2;
+            }
+
+            this.editorForm = new FormGroup({
+              'editor': new FormControl(this.notaParaEditar6[0].phrase)
+            })
+            this.editorForm2 = new FormGroup({
+              'editor2': new FormControl(this.notaParaEditar6[0].part1)
+            })
+            this.editorForm3 = new FormGroup({
+              'editor3': new FormControl(part2CleanFull)
+            })
+            this.editorForm4 = new FormGroup({
+              'editor4': new FormControl(part3CleanFull)
+            })
+            this.editorForm5 = new FormGroup({
+              'editor5': new FormControl(part4CleanFull)
+            })
+            this.editorForm6 = new FormGroup({
+              'editor6': new FormControl(part5CleanFull)
+            })
+            this.editorForm7 = new FormGroup({
+              'editor7': new FormControl(part6CleanFull)
+            })
+            this.editorForm8 = new FormGroup({
+              'editor8': new FormControl(this.notaParaEditar6[0].part7)
+            })
+
+            this.selectedItem = this.seccionSelected[0];
+            this.autor6 = this.notaParaEditar6[0].autor;
+            this.notaParaEditar6[0].date;
+            var posicion = this.notaParaEditar6[0].date.search("-");
+
+            var var1 = this.notaParaEditar6[0].date.substring(0, posicion);
+            this.selectedItemDia = var1;
+            var var2 = this.notaParaEditar6[0].date.substring(posicion + 1, this.notaParaEditar6[0].date.length);
+            var var3 = var2.substring(0, 2);
+            var var4 = var2.substring(3, 7)
+            this.reverttMonths(var3);
+            this.selectedItemAnio = var4;
+            this.fileToUpload1Name1_6 = "Imagen ya cargada";
+            this.fileToUpload1Name2_6 = "Imagen ya cargada";
+            this.fileToUpload1Name3_6 = "Imagen ya cargada";
+            this.fileToUpload1Name4_6 = "Imagen ya cargada";
+            this.fileToUpload1Name5_6 = "Imagen ya cargada";
+            this.fileToUpload1Name6_6 = "Imagen ya cargada";
+            this.fileToUpload1Name4 = "Imagen ya cargada";
+            this.editarNota = true;
+
           })
-          this.editorForm2 = new FormGroup({
-            'editor2': new FormControl(this.notaParaEditar[0].part1)
-          })
-          this.editorForm3 = new FormGroup({
-            'editor3': new FormControl(part2CleanFull)
-          }) */
-          /*
-          this.editorForm4 = new FormGroup({
-            'editor4': new FormControl(this.notaParaEditar[0].part3)
-          })
-          this.selectedItem = this.seccionSelected[0];
-          this.autor = this.notaParaEditar[0].autor;
-          this.notaParaEditar[0].date;
-          var posicion = this.notaParaEditar[0].date.search("-");
-
-          var var1 = this.notaParaEditar[0].date.substring(0, posicion);
-          this.selectedItemDia = var1;
-          var var2 = this.notaParaEditar[0].date.substring(posicion + 1, this.notaParaEditar[0].date.length);
-          var var3 = var2.substring(0, 2);
-          var var4 = var2.substring(3, 7)
-          this.reverttMonths(var3);
-          this.selectedItemAnio = var4;
-          this.fileToUpload1Name1 = "Imagen ya cargada";
-          this.fileToUpload1Name2 = "Imagen ya cargada";
-          this.fileToUpload1Name3 = "Imagen ya cargada";
-          this.fileToUpload1Name4 = "Imagen ya cargada";
-          this.editarNota = true;
-          console.log("nota" + this.editarNota)
-          */
         }
+
       });
     }
     else if (this.keyToEdit === "") {
@@ -5723,7 +5866,12 @@ export class PanelAdminComponent implements OnInit {
       this.noticiasObject.autor = this.autor;
       this.noticiasObject.part3 = this.editorContent4;
       this.noticiasObject.plantilla = '1';
-
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
 
       this.convertMonths(this.selectedItemMes + '');
       this.currentDate = this.selectedItemDia + '-' + this.selectedItemMes + '-' + this.selectedItemAnio;
@@ -5742,7 +5890,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent = this.editorForm.get('editor').value;
       this.editorContent2 = this.editorForm2.get('editor2').value;
       this.editorContent3 = this.editorForm3.get('editor3').value;
-
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
       this.noticiasObject.tittle = this.titulo2;
       this.noticiasObject.autor = this.autor2;
       this.noticiasObject.plantilla = '2';
@@ -5766,7 +5919,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent3 = this.editorForm3.get('editor3').value;
       this.editorContent4 = this.editorForm4.get('editor4').value;
       this.editorContent5 = this.editorForm5.get('editor5').value;
-
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
       this.noticiasObject.tittle = this.titulo3;
       this.noticiasObject.part2 = this.editorContent3;
       this.noticiasObject.part4 = this.editorContent5;
@@ -5794,7 +5952,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent5 = this.editorForm5.get('editor5').value;
       this.editorContent6 = this.editorForm6.get('editor6').value;
       this.noticiasObject.tittle = this.titulo4;
-      this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
       this.noticiasObject.phrase = this.editorContent;
       this.noticiasObject.part1 = this.editorContent2;
       this.noticiasObject.part5 = this.editorContent6;
@@ -5826,7 +5989,12 @@ export class PanelAdminComponent implements OnInit {
       this.editorContent2 = this.editorContent2;
       this.noticiasObject.part1 = this.editorContent2;
       this.noticiasObject.part3 = this.editorContent4;
-
+      if (this.titulo_youtube !== "") {
+        this.noticiasObject.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObject.youtube = "";
+      }
 
       this.noticiasObject.plantilla = '5';
       this.noticiasObject.autor = this.autor5;
@@ -5841,13 +6009,38 @@ export class PanelAdminComponent implements OnInit {
       this.cleanSpacesEditor3(this.editorContent3);
       this.cleanSpacesEditor4(this.editorContent4);
       this.cleanSpacesEditor5(this.editorContent5);
-
-
       this.subirimagen1_5().then(res => this.subirimagen2_5().then(res => this.subirImagenPrincipal()));
 
+    }
+    else if (this.notaParaEditar[0].plantilla === '6') {
+      this.editorContent = this.editorForm.get('editor').value;
+      this.editorContent2 = this.editorForm2.get('editor2').value;
+      this.editorContent3 = this.editorForm3.get('editor3').value;
+      this.editorContent4 = this.editorForm4.get('editor4').value;
+      this.editorContent5 = this.editorForm5.get('editor5').value;
+      this.editorContent6 = this.editorForm6.get('editor6').value;
+      this.editorContent7 = this.editorForm7.get('editor7').value;
+      this.editorContent8 = this.editorForm8.get('editor8').value;
+      if (this.titulo_youtube !== "") {
+        this.noticiasObjectPlantilla6.youtube = "https://www.youtube.com/embed/" + this.titulo_youtube;
+      }
+      else {
+        this.noticiasObjectPlantilla6.youtube = "";
+      }
+      this.noticiasObjectPlantilla6.tittle = this.titulo6;
+      this.noticiasObjectPlantilla6.part1 = this.editorContent2;
+      this.noticiasObjectPlantilla6.part7 = this.editorContent8;
+      this.noticiasObjectPlantilla6.plantilla = '6';
+      this.noticiasObjectPlantilla6.autor = this.autor6;
 
+      this.convertMonths(this.selectedItemMes + '');
+      this.currentDate = this.selectedItemDia + '-' + this.selectedItemMes + '-' + this.selectedItemAnio;
+      this.noticiasObjectPlantilla6.date = this.currentDate;
+      this.noticiasObjectPlantilla6.phrase = this.editorContent;
 
+      console.log(this.noticiasObjectPlantilla6)
 
+      this.subirimagen1_6().then(res => this.subirimagen2_6().then(res => this.subirimagen3_6().then(res => this.subirimagen4_6().then(res => this.subirimagen5_6().then(res => this.subirimagen6_6().then(res => this.subirImagenPrincipalPlantilla6()))))));
     }
   }
   subirimagen1_1() {
@@ -6496,7 +6689,6 @@ export class PanelAdminComponent implements OnInit {
       if (this.fileToUpload1Name2 === "Imagen ya cargada") {
         this.noticiasObject.part4 = '<div class="plantilla5-2" style="background-image: url(' + this.notaParaEditar[0].image2 + ');"></div> ' + this.editorContent5;
         this.noticiasObject.image2 = this.notaParaEditar[0].image2;
-        console.log(this.noticiasObject.part4);
         resolve();
       }
       else {
@@ -6522,6 +6714,481 @@ export class PanelAdminComponent implements OnInit {
       }
     });
 
+  }
+  subirimagen1_6() {
+    return new Promise((resolve, reject) => {
+
+      if (this.fileToUpload1Name1_6 === "Imagen ya cargada") {
+        var posicion = this.editorContent3.search("-image-");
+        var posicion2 = this.editorContent3.search("-image2-");
+
+        if (posicion !== -1 || posicion2 !== -1) {
+          console.log("ola1.1")
+          if (posicion !== -1) {
+            var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.notaParaEditar6[0].image1 + ');"> </div>'
+            this.editorContent3 = [this.editorContent3.slice(0, posicion), b, this.editorContent3.slice(posicion)].join('');
+            posicion = this.editorContent3.search("-image-");
+            var var1 = this.editorContent3.substring(0, posicion);
+            var var2 = this.editorContent3.substring(posicion + 7, this.editorContent3.length);
+            this.editorContent3 = var1 + var2;
+            this.noticiasObjectPlantilla6.part2 = this.editorContent3;
+            this.noticiasObjectPlantilla6.image1 = this.notaParaEditar6[0].image1;
+            resolve();
+          }
+          else if (posicion2 !== -1) {
+            var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.notaParaEditar6[0].image1 + ');"> </div>'
+            this.editorContent3 = [this.editorContent3.slice(0, posicion2), b, this.editorContent3.slice(posicion2)].join('');
+            posicion2 = this.editorContent3.search("-image2-");
+            var var1 = this.editorContent3.substring(0, posicion2);
+            var var2 = this.editorContent3.substring(posicion2 + 8, this.editorContent3.length);
+            this.editorContent3 = var1 + var2;
+            this.noticiasObjectPlantilla6.part2 = this.editorContent3;
+            this.noticiasObjectPlantilla6.image1 = this.notaParaEditar6[0].image1;
+            resolve();
+          }
+        }
+        else {
+          this.noticiasObjectPlantilla6.part2 = this.editorContent3;
+          this.noticiasObjectPlantilla6.image1 = this.notaParaEditar6[0].image1;
+          resolve();
+        }
+        
+      }
+      else {
+        console.log("ola1.2")
+        console.log("imagen a eliminar:")
+        console.log(this.notaParaEditar6[0].image1)
+        this.storage.storage.refFromURL(this.notaParaEditar6[0].image1).delete();
+        console.log("eliminado")
+        const id = Math.random().toString(36).substring(2);
+        const filePath = `plantilla6Imagenes/${id}`;
+        const ref = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, this.fileToUpload1);
+        this.image1UploadPercent = task.percentageChanges();
+        this.statusUploadImage1 = "Actualizando imagen 1"
+        task.snapshotChanges().pipe(
+          finalize(() => {
+            ref.getDownloadURL().subscribe(url => {
+              this.urlImage1 = url;
+              var posicion = this.editorContent3.search("-image-");
+              var posicion2 = this.editorContent3.search("-image2-");
+             
+              if (posicion !== -1 || posicion2 !== -1) {
+                if (posicion !== -1) {
+                  var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.urlImage1 + ');"> </div>'
+                  this.editorContent3 = [this.editorContent3.slice(0, posicion), b, this.editorContent3.slice(posicion)].join('');
+                  posicion = this.editorContent3.search("-image-");
+                  var var1 = this.editorContent3.substring(0, posicion);
+                  var var2 = this.editorContent3.substring(posicion + 7, this.editorContent3.length);
+                  this.editorContent3 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part2 = this.editorContent3;
+                  this.noticiasObjectPlantilla6.image1 = this.urlImage1;
+                  resolve();
+                }
+                else if (posicion2 !== -1) {
+                  var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.urlImage1 + ');"> </div>'
+                  this.editorContent3 = [this.editorContent3.slice(0, posicion2), b, this.editorContent3.slice(posicion2)].join('');
+                  console.log(this.editorContent3);
+                  posicion2 = this.editorContent3.search("-image2-");
+                  var var1 = this.editorContent3.substring(0, posicion2);
+                  var var2 = this.editorContent3.substring(posicion2 + 8, this.editorContent3.length);
+                  this.editorContent3 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part2 = this.editorContent3;
+                  this.noticiasObjectPlantilla6.image1 = this.urlImage1;
+                  resolve();
+                }
+              }
+              else {
+                this.noticiasObjectPlantilla6.part2 = this.editorContent3;
+                this.noticiasObjectPlantilla6.image1 = this.urlImage1;
+                resolve();
+              }
+              
+            });
+          })
+        ).subscribe();
+      }
+    });
+  }
+  subirimagen2_6() {
+    return new Promise((resolve, reject) => {
+      if (this.fileToUpload1Name2_6 === "Imagen ya cargada") {
+        console.log("ola2.1")
+        var posicion = this.editorContent4.search("-image-");
+        var posicion2 = this.editorContent4.search("-image2-");
+        if (posicion !== -1 || posicion2 !== -1) {
+          if (posicion !== -1) {
+            var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.notaParaEditar6[0].image2 + ');"> </div>'
+            this.editorContent4 = [this.editorContent4.slice(0, posicion), b, this.editorContent4.slice(posicion)].join('');
+            posicion = this.editorContent4.search("-image-");
+            var var1 = this.editorContent4.substring(0, posicion);
+            var var2 = this.editorContent4.substring(posicion + 7, this.editorContent4.length);
+            this.editorContent4 = var1 + var2;
+            this.noticiasObjectPlantilla6.part3 = this.editorContent4;
+            this.noticiasObjectPlantilla6.image2 = this.notaParaEditar6[0].image2;
+            resolve();
+          }
+          else if (posicion2 !== -1) {
+            var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.notaParaEditar6[0].image2 + ');"> </div>'
+            this.editorContent4 = [this.editorContent4.slice(0, posicion2), b, this.editorContent4.slice(posicion2)].join('');
+            posicion2 = this.editorContent4.search("-image2-");
+            var var1 = this.editorContent4.substring(0, posicion2);
+            var var2 = this.editorContent4.substring(posicion2 + 8, this.editorContent4.length);
+            this.editorContent4 = var1 + var2;
+            this.noticiasObjectPlantilla6.part3 = this.editorContent4;
+            this.noticiasObjectPlantilla6.image2 = this.notaParaEditar6[0].image2;
+            resolve();
+          }
+        }
+        else {
+          console.log("ola2.2")
+          this.noticiasObjectPlantilla6.part3 = this.editorContent4;
+          this.noticiasObjectPlantilla6.image2 = this.notaParaEditar6[0].image2;
+          resolve();
+        }
+      }
+      else {
+        this.storage.storage.refFromURL(this.notaParaEditar6[0].image2).delete();
+        const id2 = Math.random().toString(36).substring(2);
+        const filePath2 = `plantilla6Imagenes/${id2}`;
+        const ref2 = this.storage.ref(filePath2);
+        const task2 = this.storage.upload(filePath2, this.fileToUpload2);
+        this.image1UploadPercent = task2.percentageChanges();
+        this.statusUploadImage1 = "Subiendo imagen 2"
+        task2.snapshotChanges().pipe(
+          finalize(() => {
+            ref2.getDownloadURL().subscribe(url => {
+              this.urlImage2 = url;
+              var posicion = this.editorContent4.search("-image-");
+              var posicion2 = this.editorContent4.search("-image2-");
+              if (posicion !== -1 || posicion2 !== -1) {
+                if (posicion !== -1) {
+                  var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.urlImage2 + ');"> </div>'
+                  this.editorContent4 = [this.editorContent4.slice(0, posicion), b, this.editorContent4.slice(posicion)].join('');
+                  posicion = this.editorContent4.search("-image-");
+                  var var1 = this.editorContent4.substring(0, posicion);
+                  var var2 = this.editorContent4.substring(posicion + 7, this.editorContent4.length);
+                  this.editorContent4 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part3 = this.editorContent4;
+                  this.noticiasObjectPlantilla6.image2 = this.urlImage2;
+                  resolve();
+                }
+                else if (posicion2 !== -1) {
+                  var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.urlImage2 + ');"> </div>'
+                  this.editorContent4 = [this.editorContent4.slice(0, posicion2), b, this.editorContent4.slice(posicion2)].join('');
+                  posicion2 = this.editorContent4.search("-image2-");
+                  var var1 = this.editorContent4.substring(0, posicion2);
+                  var var2 = this.editorContent4.substring(posicion2 + 8, this.editorContent4.length);
+                  this.editorContent4 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part3 = this.editorContent4;
+                  this.noticiasObjectPlantilla6.image2 = this.urlImage2;
+                  resolve();
+                }
+              }
+              else {
+                this.noticiasObjectPlantilla6.part3 = this.editorContent4;
+                this.noticiasObjectPlantilla6.image2 = this.urlImage2;
+                resolve();
+              }
+            });
+          })
+        ).subscribe();
+      }
+    });
+  }
+  subirimagen3_6() {
+    return new Promise((resolve, reject) => {
+      if (this.fileToUpload1Name3_6 === "Imagen ya cargada") {
+        console.log("ola3.1")
+        var posicion = this.editorContent5.search("-image-");
+        var posicion2 = this.editorContent5.search("-image2-");
+        if (posicion !== -1 || posicion2 !== -1) {
+          if (posicion !== -1) {
+            var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.notaParaEditar6[0].image3 + ');"> </div>'
+            this.editorContent5 = [this.editorContent5.slice(0, posicion), b, this.editorContent5.slice(posicion)].join('');
+            posicion = this.editorContent5.search("-image-");
+            var var1 = this.editorContent5.substring(0, posicion);
+            var var2 = this.editorContent5.substring(posicion + 7, this.editorContent5.length);
+            this.editorContent5 = var1 + var2;
+            this.noticiasObjectPlantilla6.part4 = this.editorContent5;
+            this.noticiasObjectPlantilla6.image3 = this.notaParaEditar6[0].image3;
+            resolve();
+          }
+          else if (posicion2 !== -1) {
+            var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.notaParaEditar6[0].image3 + ');"> </div>'
+            this.editorContent5 = [this.editorContent5.slice(0, posicion2), b, this.editorContent5.slice(posicion2)].join('');
+            posicion2 = this.editorContent5.search("-image2-");
+            var var1 = this.editorContent5.substring(0, posicion2);
+            var var2 = this.editorContent5.substring(posicion2 + 8, this.editorContent5.length);
+            this.editorContent5 = var1 + var2;
+            this.noticiasObjectPlantilla6.part4 = this.editorContent5;
+            this.noticiasObjectPlantilla6.image3 = this.notaParaEditar6[0].image3;
+            resolve();
+          }
+        }
+        else {
+          
+          this.noticiasObjectPlantilla6.part4 = this.editorContent5;
+          this.noticiasObjectPlantilla6.image3 = this.notaParaEditar6[0].image3;
+          resolve();
+        }
+      }
+      else {
+        console.log("ola3.2")
+        this.storage.storage.refFromURL(this.notaParaEditar6[0].image3).delete();
+        const id3 = Math.random().toString(36).substring(2);
+        const filePath3 = `plantilla6Imagenes/${id3}`;
+        const ref3 = this.storage.ref(filePath3);
+        const task3 = this.storage.upload(filePath3, this.fileToUpload3);
+        this.image1UploadPercent = task3.percentageChanges();
+        this.statusUploadImage1 = "Subiendo imagen 3"
+        task3.snapshotChanges().pipe(
+          finalize(() => {
+            ref3.getDownloadURL().subscribe(url => {
+              this.urlImage3 = url;
+              var posicion = this.editorContent5.search("-image-");
+              var posicion2 = this.editorContent5.search("-image2-");
+              if (posicion !== -1 || posicion2 !== -1) {
+                if (posicion !== -1) {
+                  var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.urlImage3 + ');"> </div>'
+                  this.editorContent5 = [this.editorContent5.slice(0, posicion), b, this.editorContent5.slice(posicion)].join('');
+                  posicion = this.editorContent5.search("-image-");
+                  var var1 = this.editorContent5.substring(0, posicion);
+                  var var2 = this.editorContent5.substring(posicion + 7, this.editorContent5.length);
+                  this.editorContent5 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part4 = this.editorContent5;
+                  this.noticiasObjectPlantilla6.image3 = this.urlImage3;
+                  resolve();
+                }
+                else if (posicion2 !== -1) {
+                  var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.urlImage3 + ');"> </div>'
+                  this.editorContent5 = [this.editorContent5.slice(0, posicion2), b, this.editorContent5.slice(posicion2)].join('');
+                  posicion2 = this.editorContent5.search("-image2-");
+                  var var1 = this.editorContent5.substring(0, posicion2);
+                  var var2 = this.editorContent5.substring(posicion2 + 8, this.editorContent5.length);
+                  this.editorContent5 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part4 = this.editorContent5;
+                  this.noticiasObjectPlantilla6.image3 = this.urlImage3;
+                  resolve();
+                }
+              }
+              else {
+                this.noticiasObjectPlantilla6.part4 = this.editorContent5;
+                this.noticiasObjectPlantilla6.image3 = this.urlImage3;
+                resolve();
+              }
+            });
+          })
+        ).subscribe();
+      }
+    });
+  }
+  subirimagen4_6() {
+    return new Promise((resolve, reject) => {
+
+      if (this.fileToUpload1Name4_6 === "Imagen ya cargada") {
+        console.log("ola4.1")
+        var posicion = this.editorContent6.search("-image-");
+        var posicion2 = this.editorContent6.search("-image2-");
+        if (posicion !== -1 || posicion2 !== -1) {
+          if (posicion !== -1) {
+            var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.notaParaEditar6[0].image4 + ');"> </div>'
+            this.editorContent6 = [this.editorContent6.slice(0, posicion), b, this.editorContent6.slice(posicion)].join('');
+            posicion = this.editorContent6.search("-image-");
+            var var1 = this.editorContent6.substring(0, posicion);
+            var var2 = this.editorContent6.substring(posicion + 7, this.editorContent6.length);
+            this.editorContent6 = var1 + var2;
+            this.noticiasObjectPlantilla6.part5 = this.editorContent6;
+            this.noticiasObjectPlantilla6.image4 = this.notaParaEditar6[0].image4;
+            resolve();
+          }
+          else if (posicion2 !== -1) {
+            var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.notaParaEditar6[0].image4 + ');"> </div>'
+            this.editorContent6 = [this.editorContent6.slice(0, posicion2), b, this.editorContent6.slice(posicion2)].join('');
+            posicion2 = this.editorContent6.search("-image2-");
+            var var1 = this.editorContent6.substring(0, posicion2);
+            var var2 = this.editorContent6.substring(posicion2 + 8, this.editorContent6.length);
+            this.editorContent6 = var1 + var2;
+            this.noticiasObjectPlantilla6.part5 = this.editorContent6;
+            this.noticiasObjectPlantilla6.image4 = this.notaParaEditar6[0].image4;
+            resolve();
+          }
+        }
+        else {
+          this.noticiasObjectPlantilla6.part5 = this.editorContent6;
+          this.noticiasObjectPlantilla6.image4 = this.notaParaEditar6[0].image4;
+          resolve();
+        }
+      }
+      else {
+        console.log("ola4.2")
+        this.storage.storage.refFromURL(this.notaParaEditar6[0].image4).delete();
+        const id4 = Math.random().toString(36).substring(2);
+        const filePath4 = `plantilla6Imagenes/${id4}`;
+        const ref4 = this.storage.ref(filePath4);
+        const task4 = this.storage.upload(filePath4, this.fileToUpload4_6);
+        this.image1UploadPercent = task4.percentageChanges();
+        this.statusUploadImage1 = "Subiendo imagen 4"
+        task4.snapshotChanges().pipe(
+          finalize(() => {
+            ref4.getDownloadURL().subscribe(url => {
+              this.urlImage4 = url;
+              var posicion = this.editorContent6.search("-image-");
+              var posicion2 = this.editorContent6.search("-image2-");
+              if (posicion !== -1 || posicion2 !== -1) {
+                if (posicion !== -1) {
+                  var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.urlImage4 + ');"> </div>'
+                  this.editorContent6 = [this.editorContent6.slice(0, posicion), b, this.editorContent6.slice(posicion)].join('');
+                  posicion = this.editorContent6.search("-image-");
+                  var var1 = this.editorContent6.substring(0, posicion);
+                  var var2 = this.editorContent6.substring(posicion + 7, this.editorContent6.length);
+                  this.editorContent6 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part5 = this.editorContent6;
+                  this.noticiasObjectPlantilla6.image4 = this.urlImage4;
+                  resolve();
+                }
+                else if (posicion2 !== -1) {
+                  var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.urlImage4 + ');"> </div>'
+                  this.editorContent6 = [this.editorContent6.slice(0, posicion2), b, this.editorContent6.slice(posicion2)].join('');
+                  posicion2 = this.editorContent6.search("-image2-");
+                  var var1 = this.editorContent6.substring(0, posicion2);
+                  var var2 = this.editorContent6.substring(posicion2 + 8, this.editorContent6.length);
+                  this.editorContent6 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part5 = this.editorContent6;
+                  this.noticiasObjectPlantilla6.image4 = this.urlImage4;
+                  resolve();
+                }
+              }
+              else {
+                this.noticiasObjectPlantilla6.part5 = this.editorContent6;
+                this.noticiasObjectPlantilla6.image4 = this.urlImage4;
+                resolve();
+              }
+            });
+          })
+        ).subscribe();
+      }
+    });
+  }
+  subirimagen5_6() {
+    return new Promise((resolve, reject) => {
+
+      if (this.fileToUpload1Name5_6 === "Imagen ya cargada") {
+        console.log("ola5.1")
+        var posicion = this.editorContent7.search("-image-");
+        var posicion2 = this.editorContent7.search("-image2-");
+        if (posicion !== -1 || posicion2 !== -1) {
+          if (posicion !== -1) {
+            var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.notaParaEditar6[0].image5 + ');"> </div>'
+            this.editorContent7 = [this.editorContent7.slice(0, posicion), b, this.editorContent7.slice(posicion)].join('');
+            posicion = this.editorContent7.search("-image-");
+            var var1 = this.editorContent7.substring(0, posicion);
+            var var2 = this.editorContent7.substring(posicion + 7, this.editorContent7.length);
+            this.editorContent7 = var1 + var2;
+            this.noticiasObjectPlantilla6.part6 = this.editorContent7;
+            this.noticiasObjectPlantilla6.image5 = this.notaParaEditar6[0].image5;
+            resolve();
+          }
+          else if (posicion2 !== -1) {
+            var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.notaParaEditar6[0].image5 + ');"> </div>'
+            this.editorContent7 = [this.editorContent7.slice(0, posicion2), b, this.editorContent7.slice(posicion2)].join('');
+            posicion2 = this.editorContent7.search("-image2-");
+            var var1 = this.editorContent7.substring(0, posicion2);
+            var var2 = this.editorContent7.substring(posicion2 + 8, this.editorContent7.length);
+            this.editorContent7 = var1 + var2;
+            this.noticiasObjectPlantilla6.part6 = this.editorContent7;
+            this.noticiasObjectPlantilla6.image5 = this.notaParaEditar6[0].image5;
+            resolve();
+          }
+        }
+        else {
+          this.noticiasObjectPlantilla6.part6 = this.editorContent7;
+          this.noticiasObjectPlantilla6.image5 = this.notaParaEditar6[0].image5;
+          resolve();
+        }
+      }
+      else {
+        console.log("ola5.2")
+        this.storage.storage.refFromURL(this.notaParaEditar6[0].image5).delete();
+        const id5 = Math.random().toString(36).substring(2);
+        const filePath5 = `plantilla6Imagenes/${id5}`;
+        const ref5 = this.storage.ref(filePath5);
+        const task5 = this.storage.upload(filePath5, this.fileToUpload5_6);
+        this.image1UploadPercent = task5.percentageChanges();
+        this.statusUploadImage1 = "Subiendo imagen 5"
+        task5.snapshotChanges().pipe(
+          finalize(() => {
+            ref5.getDownloadURL().subscribe(url => {
+              this.urlImage5 = url;
+              var posicion = this.editorContent7.search("-image-");
+              var posicion2 = this.editorContent7.search("-image2-");
+              if (posicion !== -1 || posicion2 !== -1) {
+                if (posicion !== -1) {
+                  var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.urlImage5 + ');"> </div>'
+                  this.editorContent7 = [this.editorContent7.slice(0, posicion), b, this.editorContent7.slice(posicion)].join('');
+                  posicion = this.editorContent7.search("-image-");
+                  var var1 = this.editorContent7.substring(0, posicion);
+                  var var2 = this.editorContent7.substring(posicion + 7, this.editorContent7.length);
+                  this.editorContent7 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part6 = this.editorContent7;
+                  this.noticiasObjectPlantilla6.image5 = this.urlImage5;
+                  resolve();
+                }
+                else if (posicion2 !== -1) {
+                  var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.urlImage5 + ');"> </div>'
+                  this.editorContent7 = [this.editorContent7.slice(0, posicion2), b, this.editorContent7.slice(posicion2)].join('');
+                  posicion2 = this.editorContent7.search("-image2-");
+                  var var1 = this.editorContent7.substring(0, posicion2);
+                  var var2 = this.editorContent7.substring(posicion2 + 8, this.editorContent7.length);
+                  this.editorContent7 = var1 + var2;
+                  this.noticiasObjectPlantilla6.part6 = this.editorContent7;
+                  this.noticiasObjectPlantilla6.image5 = this.urlImage5;
+                  resolve();
+                }
+              }
+              else {
+                this.noticiasObjectPlantilla6.part6 = this.editorContent7;
+                this.noticiasObjectPlantilla6.image5 = this.urlImage5;
+                resolve();
+              }
+            });
+          })
+        ).subscribe();
+      }
+    });
+  }
+  subirimagen6_6() {
+    return new Promise((resolve, reject) => {
+
+      if (this.fileToUpload1Name6_6 === "Imagen ya cargada") {
+        console.log("ola6.1")
+        this.editorContent8 = '<div class="plantilla1-2" style="background-image: url(' + this.notaParaEditar6[0].image6 + ');"></div> ' + this.editorContent8;
+        this.noticiasObjectPlantilla6.part7 = this.editorContent8;
+        this.noticiasObjectPlantilla6.image6 = this.notaParaEditar6[0].image6;
+        resolve();
+      }
+      else {
+        console.log("ola6.2")
+        this.storage.storage.refFromURL(this.notaParaEditar6[0].image1).delete();
+        const id6 = Math.random().toString(36).substring(2);
+        const filePath6 = `plantilla6Imagenes/${id6}`;
+        const ref6 = this.storage.ref(filePath6);
+        const task6 = this.storage.upload(filePath6, this.fileToUpload6_6);
+        this.image1UploadPercent = task6.percentageChanges();
+        this.statusUploadImage1 = "Subiendo imagen 6"
+        task6.snapshotChanges().pipe(
+          finalize(() => {
+            ref6.getDownloadURL().subscribe(url => {
+              this.urlImage6 = url;
+              this.editorContent8 = '<div class="plantilla1-2" style="background-image: url(' + this.urlImage6 + ');"></div> ' + this.editorContent8;
+              this.noticiasObjectPlantilla6.part7 = this.editorContent8;
+              this.noticiasObjectPlantilla6.image6 = this.urlImage6;
+              resolve();
+            });
+          })
+        ).subscribe();
+      }
+    });
   }
   subirImagenPrincipal() {
     if (this.fileToUpload1Name4 === "Imagen ya cargada") {
@@ -6758,6 +7425,239 @@ export class PanelAdminComponent implements OnInit {
     }
 
   }
+
+  subirImagenPrincipalPlantilla6() {
+    if (this.fileToUpload1Name4 === "Imagen ya cargada") {
+      console.log("olaprincipaal")
+      this.noticiasObjectPlantilla6.principalImage = this.notaParaEditar6[0].principalImage;
+      this.noticiasObjectPlantilla6.$key = this.notaParaEditar6[0].$key;
+      var seccion = this.seccionSelected[0];
+      if (seccion === "Noticias") {
+        console.log("VA A ACTUALIZAR EN NOTICIAS ESTO:");
+        console.log(this.noticiasObjectPlantilla6)
+        this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Noticias").then(res => {
+          this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+          this.noticiasNodoGeneralObject.seccion = "Noticias";
+          this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+          this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+          this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+          this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+            window.alert('Nota actualizada con éxito');
+            this.changeSection("S")
+            this.restartAll();
+            console.log("ola")
+          });
+        });
+      }
+      else if (seccion === "Ciencia") {
+        console.log("esta en ciencia");
+        this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Ciencia").then(res => {
+          this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+          this.noticiasNodoGeneralObject.seccion = "Ciencia";
+          this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+          this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+          this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+          this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+            window.alert('Nota actualizada con éxito');
+            this.changeSection("S")
+            this.restartAll();
+            console.log("ola")
+          });
+        });
+      }
+      else if (seccion === "Arte") {
+        console.log("esta en arte");
+        this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Arte").then(res => {
+          this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+          this.noticiasNodoGeneralObject.seccion = "Arte";
+          this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+          this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+          this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+          this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+            window.alert('Nota actualizada con éxito');
+            this.changeSection("S")
+            this.restartAll();
+            console.log("ola")
+          });
+        });
+      }
+      else if (seccion === "Ocio") {
+        console.log("esta en ocio");
+        this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Ocio").then(res => {
+          this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+          this.noticiasNodoGeneralObject.seccion = "Ocio";
+          this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+          this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+          this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+          this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+            window.alert('Nota actualizada con éxito');
+            this.changeSection("S")
+            this.restartAll();
+            console.log("ola")
+          });
+        });
+      }
+      else if (seccion === "Descubre") {
+        console.log("esta en descubre");
+        this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Descubre").then(res => {
+          this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+          this.noticiasNodoGeneralObject.seccion = "Descubre";
+          this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+          this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+          this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+          this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+            window.alert('Nota actualizada con éxito');
+            this.changeSection("S")
+            this.restartAll();
+            console.log("ola")
+          });
+        });
+      }
+      else if (seccion === "Mocotips") {
+        console.log("esta en mocotis");
+        this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Mocotips").then(res => {
+          this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+          this.noticiasNodoGeneralObject.seccion = "Mocotips";
+          this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+          this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+          this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+          this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+            window.alert('Nota actualizada con éxito');
+            this.changeSection("S")
+            this.restartAll();
+            console.log("ola")
+          });
+        });
+      }
+    }
+    else {
+
+      this.storage.storage.refFromURL(this.notaParaEditar6[0].principalImage).delete();
+      const idPrincipal = Math.random().toString(36).substring(2);
+      const filePathPrincipal = `portadasNotas/${idPrincipal}`;
+      const refPrincipal = this.storage.ref(filePathPrincipal);
+      const taskPrincipal = this.storage.upload(filePathPrincipal, this.fileToUploadPrincipal);
+      this.image1UploadPercent = taskPrincipal.percentageChanges();
+      this.statusUploadImage1 = "Actualizando imagen principal"
+      taskPrincipal.snapshotChanges().pipe(
+        finalize(() => {
+          refPrincipal.getDownloadURL().subscribe(url => {
+            this.urlImagePrincipal = url;
+            this.noticiasObjectPlantilla6.principalImage = this.urlImagePrincipal;
+            this.noticiasObjectPlantilla6.$key = this.notaParaEditar6[0].$key;
+            var seccion = this.seccionSelected[0];
+            if (seccion === "Noticias") {
+              console.log("esta en noticias");
+              this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Noticias").then(res => {
+                this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+                this.noticiasNodoGeneralObject.seccion = "Noticias";
+                this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+                this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+                this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+                this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+                  window.alert('Nota actualizada con éxito');
+                  this.changeSection("S")
+                  this.restartAll();
+                });
+              });
+            }
+            else if (seccion === "Ciencia") {
+              console.log("esta en ciencia")
+              this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Ciencia").then(res => {
+
+                this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+                this.noticiasNodoGeneralObject.seccion = "Ciencia";
+                this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+                this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+                this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+                this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+                  window.alert('Nota actualizada con éxito');
+                  this.changeSection("S")
+                  this.restartAll();
+                });
+              });
+            }
+            else if (seccion === "Arte") {
+              console.log("esta en arte");
+              this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Arte").then(res => {
+
+                this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+                this.noticiasNodoGeneralObject.seccion = "Arte";
+                this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+                this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+                this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+                this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+                  window.alert('Nota actualizada con éxito');
+                  this.changeSection("S")
+                  this.restartAll();
+                });
+              });
+            }
+            else if (seccion === "Ocio") {
+              console.log("esta en ocio");
+              this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Ocio").then(res => {
+
+                this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+                this.noticiasNodoGeneralObject.seccion = "Ocio";
+                this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+                this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+                this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+                this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+                  window.alert('Nota actualizada con éxito');
+                  this.changeSection("S")
+                  this.restartAll();
+                });
+              });
+            }
+            else if (seccion === "Descubre") {
+              console.log("esta en descubre");
+              this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Descubre").then(res => {
+
+                this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+                this.noticiasNodoGeneralObject.seccion = "Descubre";
+                this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+                this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+                this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+                this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+                  window.alert('Nota actualizada con éxito');
+                  this.changeSection("S")
+                  this.restartAll();
+                });
+              });
+            }
+            else if (seccion === "Mocotips") {
+              console.log("esta en mocotis");
+              this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Mocotips").then(res => {
+
+                this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
+                this.noticiasNodoGeneralObject.seccion = "Mocotips";
+                this.noticiasNodoGeneralObject.tittle = this.noticiasObjectPlantilla6.tittle;
+                this.noticiasNodoGeneralObject.id_noticia = this.notaParaEditar6[0].$key;
+                this.noticiasNodoGeneralObject.$key = this.nodoGeneralSelected[0];
+
+                this.noticiasService.updatetNoticiasEnNodoGeneral(this.noticiasNodoGeneralObject).then(res => {
+                  window.alert('Nota actualizada con éxito');
+                  this.changeSection("S")
+                  this.restartAll();
+                });
+              });
+            }
+          });
+        })
+      ).subscribe();
+
+    }
+
+  }
   eliminarNoticia() {
     this.noticiasService.getNoteToEdit(this.seccionSelected[0], this.keysSelected[0]).snapshotChanges().subscribe(item => {
       this.notaParaEditar = [];
@@ -6780,7 +7680,7 @@ export class PanelAdminComponent implements OnInit {
     })
   }
   eliminarEspecial() {
- this.noticiasService.getEspecialSelected(this.nodoGeneralSelected[0]).snapshotChanges().subscribe(item => {
+    this.noticiasService.getEspecialSelected(this.nodoGeneralSelected[0]).snapshotChanges().subscribe(item => {
       this.especialParaEditar = [];
       item.forEach(element => {
         let json = element.payload.toJSON();

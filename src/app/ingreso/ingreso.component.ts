@@ -115,8 +115,8 @@ export class IngresoComponent implements OnInit {
       this.botonDisabled = "hidden";
      this.storage.storage.ref("private/users/"+uID+"/profile").getDownloadURL().then((url) => {
         this.authService.getUserData(uID).subscribe(item =>{
-         console.log(item.payload.data()['user'])
           this.cookie.set("image", url);
+          
           this.cookie.set("username", item.payload.data()['user']);
           window.location.reload(); 
         })

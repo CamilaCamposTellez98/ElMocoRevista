@@ -13,7 +13,6 @@ export class AuthService {
     //return this.db.collection('users', ref => ref.where('email', '==', email).where('password', '==', password)).snapshotChanges();
   }
   loginAdmin(user, password){
-    console.log("ola")
     return this.db.collection('admin-users', ref => ref.where('username', '==', user).where('password', '==', password)).snapshotChanges();
     //return this.db.collection('users', ref => ref.where('email', '==', email).where('password', '==', password)).snapshotChanges();
   }
@@ -22,16 +21,12 @@ export class AuthService {
     return new Promise((resolve) => {
     this.afAuth.auth.signInWithEmailAndPassword(user, password).then(data=>
       {
-        console.log('user dign in success ',data)
-
-        console.log(this.afAuth.auth.currentUser.uid)
         resolve();
     })
   });
   }
   getUid() {
     if(this.afAuth.auth.currentUser === null){
-      console.log("no se encontró");
       return "no";   
     }
     else{
@@ -42,11 +37,9 @@ export class AuthService {
     var status = "Ds";
     this.afAuth.auth.onAuthStateChanged((user) => {
       if (user) {
-       console.log("CHI")
         return status;
       } 
       else {
-        console.log("ño")
         return status;
       } 
      
@@ -55,9 +48,7 @@ export class AuthService {
   }
   resetPassword(mail : string){
     this.afAuth.auth.sendPasswordResetEmail(mail).then(function() {
-     console.log("SI funciono") // Email sent.
     }).catch(function(error) {
-      console.log("no funciono") // Email s// An error happened.
       console.log(error)
     });
   }
@@ -69,7 +60,6 @@ export class AuthService {
   getUserData(uid) {
     return this.db.collection('users').doc(uid).snapshotChanges();
   }
-
   registerRevista(data){
     return this.db.collection('revista-digital').add(data)
   }
