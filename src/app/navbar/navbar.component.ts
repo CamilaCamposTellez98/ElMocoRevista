@@ -172,7 +172,6 @@ export class NavbarComponent implements OnInit {
         this.portadaEspecialDelMes = this.especialDelMesPortada1;
         this.especialDelMesID = this.especialDelMes[0].$key;
       })
-      console.log(this.especialDelMesID);
     });
     this.noticiasService.getPatrocinadores().snapshotChanges().subscribe(item => {
       this.patrocinadoresList = [];
@@ -203,8 +202,6 @@ export class NavbarComponent implements OnInit {
         this.patrocinador4Url = this.patrocinadoresList[0].patrocinador4Url;
       }
       this.appRef.tick();
-      console.log(this.patrocinador1);
-      console.log(this.patrocinador2);
     });
   
     this.activatedRoute.queryParams.subscribe(params => {
@@ -212,7 +209,6 @@ export class NavbarComponent implements OnInit {
       if (this.queryParam === 'noticias') {
         this.noticiasParamsSection  = ["noticias", "noticias", "noticias", "noticias", "noticias", "noticias", "noticias", "noticias"];
         this.changeSection("N");
-        console.log("entroksjdalksd")
       }
       else if (this.queryParam === 'ciencia') {     
         this.changeSection("C")
@@ -288,7 +284,6 @@ export class NavbarComponent implements OnInit {
               });
             }
             else if (this.seccionPrincipal === "Ciencia") {
-              console.log("ola ciencia")
               this.noticiasService.getLastScienceNew().snapshotChanges().subscribe(item => {
                 this.noticiasListScience = [];
                 item.forEach(element => {
@@ -316,7 +311,6 @@ export class NavbarComponent implements OnInit {
               });
             }
             else if (this.seccionPrincipal === "Arte") {
-              console.log("ola arte")
               this.noticiasService.getLastArtNew().snapshotChanges().subscribe(item => {
                 this.noticiasListArt = [];
                 item.forEach(element => {
@@ -344,7 +338,6 @@ export class NavbarComponent implements OnInit {
               });
             }
             else if (this.seccionPrincipal === "Ocio") {
-              console.log("ola ocio")
               this.noticiasService.getLastFunNew().snapshotChanges().subscribe(item => {
                 this.noticiasListFun = [];
                 item.forEach(element => {
@@ -440,7 +433,6 @@ export class NavbarComponent implements OnInit {
       this.noticiasParamsSection  = ["noticias", "noticias", "noticias", "noticias", "noticias", "noticias", "noticias", "noticias"];
     }
     else if (section === "C") { /* CIENCIA */
-      console.log("ciencia")
       this.search25News("ciencia");
       this.bannerClass = 'structure-science-selected';
       this.principalMenu = false;
@@ -508,7 +500,6 @@ export class NavbarComponent implements OnInit {
       this.noticiasParamsSection  = ["noticias", "ciencia", "arte", "ocio", "descubre", "", "", ""];
       
       this.bannerRouterLink = "news";
-      console.log("menu")
      
     }
 
@@ -640,7 +631,6 @@ export class NavbarComponent implements OnInit {
         })
         var contadorPaginas = this.contadorPaginas[0];
         if (this.noticias25List.length > 0) {
-          console.log(contadorPaginas + " - 3 = "+ (contadorPaginas - 3))
           this.contadorPaginas[0] = contadorPaginas - 3;
          
           if( this.contadorPaginas[0] === 1){
@@ -655,12 +645,10 @@ export class NavbarComponent implements OnInit {
         if (this.noticias25List.length > 8) {
           this.noticiasPagina2Existe = true;
           this.noticiasPagina3Existe = false;
-          console.log(contadorPaginas + " - 3 = "+ (contadorPaginas - 1))
           this.contadorPaginas[1] = contadorPaginas - 2;
         }
         if (this.noticias25List.length > 16) {
           this.noticiasPagina3Existe = true;
-          console.log(contadorPaginas + " - 3 = "+ (contadorPaginas - 2))
           this.contadorPaginas[2] = contadorPaginas - 1;
         }
         if (this.noticias25List.length > 24) {
@@ -793,7 +781,6 @@ export class NavbarComponent implements OnInit {
     this.verificarAnchura();
   }
   ola(){
-    console.log("ola")
   }
   verificarAnchura(){
     if(this.width < 670){
@@ -815,7 +802,6 @@ export class NavbarComponent implements OnInit {
     }
   }
   onResized(event: ResizedEvent) {
-  // console.log("Entro a width")
     this.width = event.newWidth;
     this.verificarAnchura();
   }

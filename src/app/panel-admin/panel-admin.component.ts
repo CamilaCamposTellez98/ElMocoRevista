@@ -52,7 +52,9 @@ export class PanelAdminComponent implements OnInit {
               '#1b1919', '#6d6e6d', '#9e9f9e', 'white']
           }, { 'background': [] }],          // dropdown with defaults from theme
           [{ 'align': [] }],
-          ['clean']                                         // remove formatting button                                // remove formatting button
+          ['clean'],  
+          ['image'],      
+          ['link'],                                  // remove formatting button                                // remove formatting button
         ]
     }
 
@@ -497,7 +499,6 @@ export class PanelAdminComponent implements OnInit {
     if (cookie === true) {
       this.usuarioLogueado = false;
       this.ingresoSesion = "CERRAR SESIÓN";
-      console.log("si entro")
     }
     else {
       this.usuarioLogueado = true;
@@ -507,26 +508,19 @@ export class PanelAdminComponent implements OnInit {
     this.currentYear = this.myDate.getFullYear();
     this.currentMonth = this.myDate.getMonth() + 1;
     this.currentDay = this.myDate.getDate();
-
     for (let i = this.currentYear; i >= 2010; i--) {
       this.selectedAnio.push(i);
     }
     for (let i = 1; i <= 31; i++) {
       this.selectedDia.push(i);
     }
-
     if (this.currentMonth === 13) {
       this.currentMonth = 12;
     }
     this.currentDate = this.currentYear + '-' + this.currentMonth + '-' + this.currentDay;
-    console.log(this.currentDate)
-
-    // this.dataSource.paginator = this.paginator;
-
     this.dataSource.paginator = this.paginator.toArray()[0];
     this.dataSourceRevista.paginator = this.paginator.toArray()[1];
     this.dataSourceRevistaMocotips.paginator = this.paginator.toArray()[3];
-
   }
   register(e: any) {
     this.usuario = e.target.user_name.value;
@@ -534,7 +528,6 @@ export class PanelAdminComponent implements OnInit {
     this.authService.loggeo(this.usuario, this.contra).then(r => this.getUserUid());
   }
   reestablecerContra() {
-    console.log(this.usuario);
     this.authService.resetPassword(this.usuario);
     this.olvidarcontra = false;
     this.mensajeError = "Correo enviado"
@@ -542,14 +535,11 @@ export class PanelAdminComponent implements OnInit {
   getUserUid() {
     var uID;
     if (this.authService.getUid() === "no") {
-      console.log("NO existo");
       this.mensajeError = "Correo o contraseña incorrectos";
       this.olvidarcontra = true;
     }
     else {
-
       uID = this.authService.getUid();
-      console.log(uID);
       this.mensajeError = "Cargando...";
       this.cookie.set("loggin-status", "true");
       window.location.reload();
@@ -585,7 +575,6 @@ export class PanelAdminComponent implements OnInit {
       this.keysSelected = [];
       this.seccionSelected = [];
       this.nodoGeneralSelected = [];
-      console.log(this.nodoGeneralSelected);
       this.editarVisibilidad = "hidden";
       this.eliminarVisibilidad = "hidden";
       this.selectSeccionNotaDisabled = false;
@@ -640,8 +629,6 @@ export class PanelAdminComponent implements OnInit {
       this.editarVisibilidad = "hidden";
       this.eliminarVisibilidad = "hidden";
       this.cloudfirestore.getRevistas().subscribe(item => {
-        console.log("olita")
-
         this.revistaDigital = [];
         item.forEach((revista: any) => {
 
@@ -726,7 +713,6 @@ export class PanelAdminComponent implements OnInit {
 
       this.revistaMocotips = true;
       this.cloudfirestore.getRevistasMocotips().subscribe(item => {
-        console.log("olita")
         this.revistaDigitalMocotips = [];
         item.forEach((revista: any) => {
           this.revistaDigitalMocotips.push({
@@ -739,13 +725,11 @@ export class PanelAdminComponent implements OnInit {
             numero: revista.payload.doc.data().numero,
             tittle: revista.payload.doc.data().tittle,
             idioma: revista.payload.doc.data().idioma,
-            //tittle: revista.payload.doc.id,
           });
         })
         this.dataSourceRevistaMocotips = new MatTableDataSource(this.revistaDigitalMocotips);
         this.dataSourceRevistaMocotips.paginator = this.paginator.toArray()[3];
       })
-      console.log(this.revistaMocotips)
     }
     else if (section === "T") {
       this.restartAll();
@@ -797,7 +781,6 @@ export class PanelAdminComponent implements OnInit {
       this.redactNuevaFalse();
       this.variableSinUsoMenu();
       this.entradaNueva = true;
-      console.log(this.entradaNueva);
       this.hideAllRevistaEditors();
     }
     else if (section === "RE1") {

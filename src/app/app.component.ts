@@ -12,11 +12,8 @@ export class AppComponent {
 
   }
   backendTest(){
-    console.log('Este es el test con el backend');
     this.rootService.connectionBack('este es el script').subscribe((res => {
     this.response = res;
-    console.log('** Respuesta **');
-    console.log(this.response);
     }));
 
   }

@@ -118,11 +118,8 @@ export class MocotipsPadresComponent implements OnInit {
         this.pibote = this.noticiasKey[24];        
         this.piboteSiguiente = this.noticiasKey[24];
         this.piboteAnterior = this.noticiasKey[24];
-       
-
         this.seccionActual = seccion;
       }
-      console.log(this.noticiasTitulo)
       this.changePage(1)
     });
   }
@@ -208,9 +205,7 @@ export class MocotipsPadresComponent implements OnInit {
         })
         var contadorPaginas = this.contadorPaginas[0];
         if (this.noticias25List.length > 0) {
-          console.log(contadorPaginas + " - 3 = "+ (contadorPaginas - 3))
-          this.contadorPaginas[0] = contadorPaginas - 3;
-         
+          this.contadorPaginas[0] = contadorPaginas - 3;   
           if( this.contadorPaginas[0] === 1){
             this.anteriores = false;
           }
@@ -223,12 +218,10 @@ export class MocotipsPadresComponent implements OnInit {
         if (this.noticias25List.length > 8) {
           this.noticiasPagina2Existe = true;
           this.noticiasPagina3Existe = false;
-          console.log(contadorPaginas + " - 3 = "+ (contadorPaginas - 1))
           this.contadorPaginas[1] = contadorPaginas - 2;
         }
         if (this.noticias25List.length > 16) {
           this.noticiasPagina3Existe = true;
-          console.log(contadorPaginas + " - 3 = "+ (contadorPaginas - 2))
           this.contadorPaginas[2] = contadorPaginas - 1;
         }
         if (this.noticias25List.length > 24) {
@@ -297,7 +290,6 @@ export class MocotipsPadresComponent implements OnInit {
   }
   verificarAnchura(){
     if(this.width < 670){
-      console.log(this.width +" <")
       for( var x = 0; x <= 7; x++){   
         if(this.arrayVisibility[x] === "hidden"){
           this.arrayDisplay[x] = "none";
@@ -308,7 +300,6 @@ export class MocotipsPadresComponent implements OnInit {
       }   
     }
     else if(this.width > 670){
-      console.log(this.width+" >")
       for( var x = 0; x <= 7; x++){    
         if(this.arrayDisplay[x] === "none"){
           this.arrayDisplay[x] = "";
@@ -317,7 +308,6 @@ export class MocotipsPadresComponent implements OnInit {
     }
   }
   onResized(event: ResizedEvent) {
-  // console.log("Entro a width")
     this.width = event.newWidth;
     this.verificarAnchura();
   }

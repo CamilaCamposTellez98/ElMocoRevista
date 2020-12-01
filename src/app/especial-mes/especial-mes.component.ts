@@ -127,6 +127,8 @@ export class EspecialMesComponent implements OnInit {
       uid: ''
     }
 
+    deletePermisson : boolean;
+    userKey : string = "";
   showScroll: boolean;
   showScrollHeight = 300;
   hideScrollHeight = 10;
@@ -151,14 +153,22 @@ export class EspecialMesComponent implements OnInit {
         this.comentariosAllow = true;
         this.MoconautaSuscribeteComentario = "¡Moconauta!";
         this.Suscribetee = "Queremos saber tu opinión, déjanos un comentario.";
+        if(this.userKey === "3yptKKtJeKbgkVNSvZKmOKxURHY2"){ //key de itzel
+          this.deletePermisson = true;
+        }
+        else if(this.userKey === "P7lq9Wlxe0f8ct3dXKntD5GB3he2"){ //key de paco
+          this.deletePermisson = true;
+        }
+        else {
+          this.deletePermisson = false;
+        }
          } 
          else {
        this.comentariosAllow = false;
         this.MoconautaSuscribeteComentario = "¡Suscríbete!";
         this.Suscribetee = "Si deseas dejar un comentario debes registrarte desde nuestra App.";
          }      
-      });  
-    
+      });     
     this.aFormGroup = this.formBuilder.group({
       recaptcha: ['', Validators.required]
     });
@@ -281,7 +291,6 @@ export class EspecialMesComponent implements OnInit {
                  this.comentariosEliminar.push("block")
                 }
                 else{ 
-                 console.log("no pertece "+ i + "uid "+ this.comentariosList[i].uid)
                  this.comentariosEliminar.push("none")
                 }
               }
@@ -289,7 +298,6 @@ export class EspecialMesComponent implements OnInit {
                this.comentariosEliminar.push("none")
               }
              }
-             console.log(this.comentariosList)
             this.numComentarios = this.comentariosList.length+"";
           }) 
         });
@@ -321,7 +329,6 @@ export class EspecialMesComponent implements OnInit {
           }
           else{
             this.anterior = true;
-            console.log(this.especialPrevious)
           }
        
         });
@@ -480,7 +487,6 @@ export class EspecialMesComponent implements OnInit {
 
   resolved(response: Event){
     this.repCaptcha = true;
-    console.log("ola "+response);
   }
   handleReset(){
     this.captchaElem.resetCaptcha();
@@ -493,7 +499,6 @@ export class EspecialMesComponent implements OnInit {
     this.comentarioObject.date = this.currentDate;
     this.comentarioObject.userPicture = this.userPicture;
     this.comentarioObject.uid = this.afAuth.auth.currentUser.uid;
-    console.log(this.comentarioObject)
     this.noticiasService.insertComentario(this.comentarioObject, "Especial");
 
       this.comentarioTextArea = "";
@@ -511,7 +516,6 @@ export class EspecialMesComponent implements OnInit {
     window.location.reload();
   }
   reverttMonths(mes: number) {
-    console.log(mes);
     if (mes === 0) {
       this.currentMonth = 'Enero';
     }
@@ -550,10 +554,7 @@ export class EspecialMesComponent implements OnInit {
     }
   }
   onResized(event: ResizedEvent) {
-    // console.log("Entro a width")
       this.height = event.newWidth;
-      console.log(this.height)
-
       if(event.newWidth < 35){
         this.porcentajeTop = this.height / 1.5;
       } 

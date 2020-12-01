@@ -47,7 +47,6 @@ export class IngresoComponent implements OnInit {
      this.classLogueado = "500px";
      this.userPicture =  this.cookie.get("image");
      this.userName =  this.cookie.get("username");
-     console.log(this.userPicture)
      this.Ingreso = "CERRAR SESIÓN"
      this.Moconauta =  this.cookie.get("username").toUpperCase()+" ";
     }
@@ -100,15 +99,12 @@ export class IngresoComponent implements OnInit {
     this.authService.loggeo(this.usuario, this.contra).then(r => this.getUserUid());
   }
   getUserUid(){
-    console.log("ola")
     var uID;
     if(this.authService.getUid() === "no"){
-      console.log("NO existo");
       this.ingresoColor = "darkred";
       this.ingresoTexto = "Correo o contraseña incorrectos";
     }
     else{
-      console.log(this.authService.getUid())
       uID = this.authService.getUid();
       this.ingresoColor = "green";
       this.ingresoTexto = "Cargando...";

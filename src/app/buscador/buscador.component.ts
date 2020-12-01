@@ -40,9 +40,7 @@ export class BuscadorComponent implements OnInit {
         json["$key"] = element.key;
         this.noticiasNodoGeneralList.push(json as noticiasNodoGeneral);
       });
-
       this.dataSource = new MatTableDataSource(this.noticiasNodoGeneralList);
-      console.log(this.noticiasNodoGeneralList)
     });
   }
   redirectTo(){

@@ -43,13 +43,10 @@ export class ContactanosComponent implements OnInit {
     });
   }
   public sendEmail(e: Event) {
-    console.log(e)
     e.preventDefault();
     emailjs.sendForm('service_13guwoc', 'template_c71563d', e.target as HTMLFormElement, 'user_OiZtB86H8xEdOTWVlLdXy')
       .then((result: EmailJSResponseStatus) => {
-        console.log(result.text);
       }, (error) => {
-        console.log(error.text);
       }); 
      this.correoEnviado = false; 
   }

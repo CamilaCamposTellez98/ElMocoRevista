@@ -266,7 +266,8 @@
           </div>
           <div class="comment-reply" [hidden]="!comentariosAllow" (click)="responderComentario(i)">RESPONDER</div>
           <div  class="comment-delete" [style.display]="comentariosEliminar[i]" (click)="eliminarComentario(i)">X ELIMINAR COMENTARIO</div>
-
+          <div *ngIf="deletePermisson" class="comment-delete" (click)="eliminarComentario(i)">X
+            Borrar comentario como admin</div>
         </div>
       </a>
     </div>

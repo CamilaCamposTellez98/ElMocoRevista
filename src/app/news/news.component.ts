@@ -178,7 +178,7 @@ export class NewsComponent implements OnInit {
         if(this.userKey === "3yptKKtJeKbgkVNSvZKmOKxURHY2"){ //key de itzel
           this.deletePermisson = true;
         }
-        else if(this.userKey === "aR8oNVjracU8Ul47DmukHPNfyht1"){ //key de paco
+        else if(this.userKey === "P7lq9Wlxe0f8ct3dXKntD5GB3he2"){ //key de paco
           this.deletePermisson = true;
         }
         else {
@@ -241,6 +241,9 @@ export class NewsComponent implements OnInit {
             if (this.noticiasList[0].youtube !== "") {
               this.youtubeVisible = true;
               this.youtube_url = this.noticiasList[0].youtube;
+            }
+            else{
+              this.youtubeVisible = false;
             }
             this.imagen1 = this.noticiasList[0].image1;
             this.imagen2 = this.noticiasList[0].image2;
@@ -313,6 +316,9 @@ export class NewsComponent implements OnInit {
               this.youtubeVisible = true;
               this.youtube_url = this.noticiasList[0].youtube;
             }
+            else{
+              this.youtubeVisible = false;
+            }
             this.newstittle = this.noticiasList[0].tittle;
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
@@ -384,6 +390,9 @@ export class NewsComponent implements OnInit {
               this.youtubeVisible = true;
               this.youtube_url = this.noticiasList[0].youtube;
             }
+            else{
+              this.youtubeVisible = false;
+            }
             this.newstittle = this.noticiasList[0].tittle;
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
@@ -451,6 +460,9 @@ export class NewsComponent implements OnInit {
             if (this.noticiasList[0].youtube !== "") {
               this.youtubeVisible = true;
               this.youtube_url = this.noticiasList[0].youtube;
+            }
+            else{
+              this.youtubeVisible = false;
             }
             this.newstittle = this.noticiasList[0].tittle;
             this.imagenPrincipal = this.noticiasList[0].principalImage;
@@ -523,6 +535,9 @@ export class NewsComponent implements OnInit {
               this.youtubeVisible = true;
               this.youtube_url = this.noticiasList[0].youtube;
             }
+            else{
+              this.youtubeVisible = false;
+            }
             this.newstittle = this.noticiasList[0].tittle;
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
@@ -592,6 +607,9 @@ export class NewsComponent implements OnInit {
             if (this.noticiasList[0].youtube !== "") {
               this.youtubeVisible = true;
               this.youtube_url = this.noticiasList[0].youtube;
+            }
+            else{
+              this.youtubeVisible = false;
             }
             this.newstittle = this.noticiasList[0].tittle;
             this.imagenPrincipal = this.noticiasList[0].principalImage;
