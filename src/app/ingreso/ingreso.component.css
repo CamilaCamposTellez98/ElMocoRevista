@@ -16,7 +16,7 @@ html {
   width:100%;
   height:100%;
   left: calc(50% - 750px);
-  background-image:linear-gradient(rgba(144, 207, 19, 0.5), rgba(144, 207, 19, 0.5)),  url("./../../assets/images/Backround_Lines.jpg");
+ 
 }
 a {text-decoration: none;}
 @media all and (max-width: 1500px) {
@@ -1060,7 +1060,7 @@ text-align: center;
 }
 .second-news .latest-news {
   width: auto; 
-  height: 600px;
+  height: 550px;
   margin-left: 5%;
   margin-right:  5%;
   display: flex;
@@ -1766,6 +1766,9 @@ padding-left: 3rem;
 }
 .footer .text-box{ 
   right: 7%;
+}
+.structure {
+  min-height: 600px;
 }
 }
 @media all and (max-width: 450px) {

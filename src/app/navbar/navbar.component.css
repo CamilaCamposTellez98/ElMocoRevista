@@ -925,8 +925,6 @@ font-size: 120%;
   /*Estilo inicial al entrar al sitio*/
   .second-news{
     display: block;
- 
-
   }
   .second-news .latest-news {
     width: auto; 
@@ -1026,10 +1024,12 @@ font-size: 120%;
   .second-news .latest-news .paginacion .anteriores{   
     background-image: url("./../../assets/images/anteriores.png");
     left: 0%;
+    cursor: pointer;
   }
   .second-news .latest-news .paginacion .siguientes{
     background-image: url("./../../assets/images/siguientes.png");
     right: 0%;
+    cursor: pointer;
   }
   .second-news .latest-news .paginacion .paginas{
     right: 35%;
@@ -1055,6 +1055,7 @@ font-size: 120%;
     text-decoration: none; /* Remove underline from links */
     text-align: center;
     padding-top: 2%;
+    cursor: pointer;
   }
 
   .second-news .latest-news a .new-name{

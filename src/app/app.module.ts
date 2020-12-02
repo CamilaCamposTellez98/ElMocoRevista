@@ -58,6 +58,7 @@ import { AngularResizedEventModule } from 'angular-resize-event';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { BuscadorComponent } from './buscador/buscador.component';
+import { SuscribeteComponent } from './suscribete/suscribete.component';
 
 
 
@@ -78,9 +79,8 @@ const routes: Routes = [
   { path: 'avisos' , component: AvisosComponent},
   { path: 'especial-mes' , component: EspecialMesComponent},
   { path: 'ingreso' , component: IngresoComponent},
-  { path: 'buscador' , component: BuscadorComponent}
-
-  
+  { path: 'suscribete' , component: SuscribeteComponent},
+  { path: 'buscador' , component: BuscadorComponent},
 ];
   
 @NgModule({
@@ -104,7 +104,8 @@ const routes: Routes = [
     SafeHtmlPipe,
     SafeUrlPipe,
     IngresoComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    SuscribeteComponent
   ],
   imports: [
     BrowserModule,

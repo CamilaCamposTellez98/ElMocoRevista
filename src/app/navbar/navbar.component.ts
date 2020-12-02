@@ -127,7 +127,7 @@ export class NavbarComponent implements OnInit {
   smallNewsLogoStyles: string[] = ['new-top-moco-design-new', 'new-top-moco-design-science', 'new-top-moco-design-art', 'new-top-moco-design-fun', 'new-top-moco-design-find'];
   hoverStyles: string[] = ['read-orange-hover', 'read-blue-hover', 'read-pink-hover', 'read-yellow-hover', 'read-purple-hover'];
   principalMenu = true;
-  photo = "./../../assets/images/Barrafranjas_Header.png";
+  photo = "./../../assets/images/Backround_Lines.jpg";
   newsPhoto = "./../../assets/images/NoticiaTrump.png";
 
   newsPhoto2 = "./../../assets/images/Imagen_PlanetaGigante.png";

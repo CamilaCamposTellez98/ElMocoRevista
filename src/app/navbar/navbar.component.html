@@ -116,7 +116,7 @@
 
     </div>
  </div>
- <div class="second-news" [ngStyle]="{background: 'linear-gradient( rgba(' + photoColor + ') , rgba(' + photoColor + ') ), url(' + photo + ')' }" >
+ <div class="second-news" [ngStyle]="{'background-image': 'linear-gradient( rgba(' + photoColor + ') , rgba(' + photoColor + ') ), url(' + photo + ')' }" >
   <div class="latest-news"  > 
     <a routerLink="/news" [queryParams]="{ news: noticiasParamsSection[0], id: noticiasKey[arrayIndexNoticia[0]]}" [style.visibility]="arrayVisibility[0]" [style.display]="arrayDisplay[0]">  
       <div class="new-image" [ngStyle]="{'background-image': 'url(' + noticiasImage[arrayIndexNoticia[0]] + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover'}"></div>
@@ -185,7 +185,7 @@
 
 
 
-  <div *ngIf="principalMenu" class="latest-news">
+  <div *ngIf="principalMenu" class="latest-news" style="padding-bottom: 40px;">
     <a routerLink="/news" [queryParams]="{ news: noticiasParamsSection[4], id: noticiasKey[arrayIndexNoticia[4]]}" [style.visibility]="arrayVisibility[4]" [style.display]="arrayDisplay[4]">
       <div class="new-image" [ngStyle]="{'background-image': 'url(' + noticiasImage[arrayIndexNoticia[4]] + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover'}"></div>
       <div class="new-top-design-find"></div>
