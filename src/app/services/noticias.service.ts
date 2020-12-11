@@ -4,7 +4,7 @@ import { Noticias, NoticiasPlantilla6 } from '../models/noticias';
 import { noticiasNodoGeneral } from '../models/noticiasNodoGeneral';
 import { Comentarios } from '../models/comentarios';
 import { especialDelMes } from '../models/especialDelMes';
-import { patrocinadores } from '../models/patrocinadores';
+import { patrocinadores, bannerTrimestral } from '../models/patrocinadores';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +23,7 @@ export class NoticiasService {
   comentarioList: AngularFireList<any>;
   especialDelMesList: AngularFireList<any>;
   patrocinadoresList: AngularFireList<any>;
+  bannerList: AngularFireList<any>;
   key: string;
 
 
@@ -509,7 +510,6 @@ export class NoticiasService {
     this.firebase.object('/especialDelMes/'+keyNodo).remove();
   }
   insertPatrocinadores(patrocinador: patrocinadores) {
-    /*Inserta datos básicos dentro de la base de datos Firebase sin importar en qué sección esté la noticia*/
     this.patrocinadoresList = this.firebase.list('/patrocinadores');
     if (patrocinador) {
       this.patrocinadoresList.push({
@@ -546,6 +546,41 @@ export class NoticiasService {
   }
   getPatrocinadores() {
     return this.firebase.list('/patrocinadores', ref => ref.orderByKey());
+  }
+  insertBanner(banner: bannerTrimestral) {
+    console.log(banner);
+    this.bannerList = this.firebase.list('/bannerTrimestral');
+    if (bannerTrimestral) {
+      this.bannerList.push({
+        banner1Image: banner.banner1Image,
+        banner2Image: banner.banner2Image,
+        banner3Image: banner.banner3Image,
+        banner1Url: banner.banner1Url,
+        banner2Url: banner.banner2Url,
+        banner3Url: banner.banner3Url,
+      }).then(() => {
+      });
+    }
+  }
+  updateBanner(banner: bannerTrimestral) {
+    return new Promise((resolve, reject) => {
+      this.bannerList = this.firebase.list('/bannerTrimestral');
+      if (banner) {
+        this.bannerList.update(banner.$key, {
+          banner1Image: banner.banner1Image,
+          banner2Image: banner.banner2Image,
+          banner3Image: banner.banner3Image,
+          banner1Url: banner.banner1Url,
+          banner2Url: banner.banner2Url,
+          banner3Url: banner.banner3Url,
+        }).then(() => {
+          resolve();
+        });
+      }
+    });
+  }
+  getBanner() {
+    return this.firebase.list('/bannerTrimestral', ref => ref.orderByKey());
   }
   insertComentario(comentario: Comentarios, seccion: string) {
     /*Inserta un comentario en una noticia*/

@@ -30,8 +30,8 @@ html {
       background-color: white;
     }
   }
-
-
+  
+  
   .bg-moco-menu{
     background-color:#00758b!important;
     padding: .0rem 0rem;
@@ -283,7 +283,7 @@ html {
       background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   
     }
- 
+  
     .el-moco-banner {
       height: 275px;
       position: relative;
@@ -487,9 +487,16 @@ html {
     position: relative;
     left: 5%;
     font-family: 'Varela Round';
-    color: rgb(66, 142, 19);
+    color: rgb(34, 52, 31);
     font-size:200%;
     text-align: center;
+  }
+  .structure .first-news .register-box  .form-box .labels{
+    padding-left: 10px;
+    font-family: 'Anaheim';
+    color: black;
+    font-size:150%;
+    text-align: left;
   }
   .structure .first-news .register-box  .form-box .name,
   .structure .first-news .register-box  .form-box .usuario,
@@ -508,14 +515,14 @@ html {
     display: inline-block;
   }
   .structure .first-news .register-box  .form-box .button .button_class{
-  background-color: rgb(95, 181, 50);
+  background-color: rgb(136, 189, 50);
   text-decoration: none;
-  font-family: 'Varela Round';
+  font-family: 'Anaheim'; /*fuente personalizada importada con @font-face*/
   width: 100%;
   border: none;
   padding: 2.5%;
   border-radius: 50px;
-  font-size: 300%;
+  font-size: 200%;
   text-align: center;
   color: rgb(255, 255, 255);
   }
@@ -527,7 +534,7 @@ html {
     position: absolute;
     top: -12%;
     z-index: 10;
-
+  
   }
   .structure .first-news .register-box .form-box .photo .photo-input{
     background-repeat: no-repeat;
@@ -536,22 +543,29 @@ html {
     width: 100%;
     height: 100%;
     position: absolute;
+    background-color: white;
     border-radius: 50%;
-    -webkit-box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.74);
-    -moz-box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.74);
-    box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.74);
-    transition: all 1s;
-    cursor: pointer;
+    border: solid 5px rgb(136, 189, 50);
   }
   .structure .first-news .register-box .form-box .photo .photo-delete{
-    width: auto;
-    height: auto;
+    width: 30%;
+    height: 30%;
     position: absolute;
     right: 0%;
-    top: 0%;
+    bottom: 0%;
+    background-color: rgb(192, 148, 56); 
+    border-radius: 50%;
+    background-image: url('./../../assets/images/lapiz_icon.png');
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-box-shadow: 2px 2px 10px -2px rgba(0,0,0,0.69);
+    -moz-box-shadow: 2px 2px 10px -2px rgba(0,0,0,0.69);
+    box-shadow: 2px 2px 10px -2px rgba(0,0,0,0.69);
+    cursor: pointer;
   }
-  .structure .first-news .register-box .form-box .photo .photo-input:hover{
-  transform: scale(1.1);
+  .structure .first-news .register-box .form-box .photo .photo-delete:hover{
+  transform: scale(1.2);
   }
   .structure .first-news .register-box  .form-box .name-input,
   .structure .first-news .register-box  .form-box .usuario-input,
@@ -572,7 +586,8 @@ html {
     color: rgb(0, 0, 0); 
     font-size:150%;
     text-align: left;
-    border: none;
+    border-radius: 25px;
+    border: solid rgb(127, 179, 66);
     padding:2.5%;
     padding-left: 4rem;
     background-position-x: 1rem;
@@ -632,7 +647,8 @@ html {
   font-family: 'Anaheim'; /*fuente personalizada importada con @font-face*/
   color: rgb(0, 0, 0); 
   text-align: center;
-  border: none;
+  border: solid 3px rgb(136, 189, 50);
+  border-radius: 25px;
   padding:2.5%;
   margin-top: 0px;
   }
@@ -704,7 +720,7 @@ html {
     width: 18%;
     height: 100%;
   }
-
+  
   .structure .options .vertical-menu a.options .quienes,
   .structure .options .vertical-menu a.options .moco-shop,
   .structure .options .vertical-menu a.options .moco-app,
@@ -1147,7 +1163,7 @@ html {
       background-image: url("./../../assets/images/Backround_Lines.jpg");
       background-size: 200%, 100%;     
     }
-
+  
   }
   @media all and (max-width: 700px) {
      .structure .first-news .new-line {
@@ -1169,7 +1185,7 @@ html {
     .footer .text-box{ 
       right: 20%;
     }
-
+  
      .structure .first-news .register-box {
       width: 90%;
       left: 5%;
@@ -1195,7 +1211,7 @@ html {
     left: 35%;
     bottom: 5%;
   }
-
+  
   }
   @media all and (max-width: 608px) {
   .footer .logo{ 
@@ -1213,7 +1229,7 @@ html {
   .footer .text-box{ 
     right: 15%;
   }
-
+  
   }
   @media all and (max-width: 575px) {
     .el-moco-banner {
@@ -1256,7 +1272,7 @@ html {
       .structure .first-news .text-olvidaste{
       font-size: 100%;
       }
-
+  
   }
   @media all and (max-width: 480px) {
   .footer .logo{ 
@@ -1280,7 +1296,7 @@ html {
   }
   }
   @media all and (max-width: 450px) {
-
+  
     .el-moco-banner {
       height: 140px;
     }

@@ -9,3 +9,12 @@ export class patrocinadores {
     patrocinador3Url: string;
     patrocinador4Url: string;
 }
+export class bannerTrimestral {
+    $key: string;
+    banner1Image: string;
+    banner2Image: string;
+    banner3Image: string;
+    banner1Url: string;
+    banner2Url: string;
+    banner3Url: string;
+}

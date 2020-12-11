@@ -9,10 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatRadioModule} from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewsComponent } from './news/news.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
@@ -59,6 +63,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { SuscribeteComponent } from './suscribete/suscribete.component';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
+import { SuscripcionesComponent } from './suscripciones/suscripciones.component';
 
 
 
@@ -81,6 +87,8 @@ const routes: Routes = [
   { path: 'ingreso' , component: IngresoComponent},
   { path: 'suscribete' , component: SuscribeteComponent},
   { path: 'buscador' , component: BuscadorComponent},
+  { path: 'editar-perfil' , component: EditarPerfilComponent},
+  { path: 'suscripciones' , component: SuscripcionesComponent},
 ];
   
 @NgModule({
@@ -105,7 +113,9 @@ const routes: Routes = [
     SafeUrlPipe,
     IngresoComponent,
     BuscadorComponent,
-    SuscribeteComponent
+    SuscribeteComponent,
+    EditarPerfilComponent,
+    SuscripcionesComponent
   ],
   imports: [
     BrowserModule,
@@ -115,11 +125,15 @@ const routes: Routes = [
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
+    MatSnackBarModule,
     MatButtonModule,
+    MatProgressBarModule,
     MatSidenavModule,
     MatIconModule,
+    MatRadioModule,
     MatListModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
     MatTableModule,
     MatInputModule,
     MatPaginatorModule,

@@ -348,8 +348,7 @@ export class EspecialMesComponent implements OnInit {
     });
   }
   app() {
-    window.open('https://apps.apple.com/mx/app/el-moco/id1528073445');
-    window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
+    this.router.navigate(['/suscribete']);
   }
   fb() {
 
