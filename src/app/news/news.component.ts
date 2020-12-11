@@ -103,8 +103,6 @@ export class NewsComponent implements OnInit {
   noticia6_new: string;
   noticia7_new: string;
 
-  appStore : string;
-
   seccion: string = "";
   seccion2: string = "";
 
@@ -153,6 +151,11 @@ export class NewsComponent implements OnInit {
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private afAuth: AngularFireAuth, public noticiasService: NoticiasService, public meta: Meta, public title: Title, private cookie: CookieService, private formBuilder: FormBuilder, public router: Router) { }
   @ViewChild('scroll', { read: ElementRef }) public scroll: ElementRef<any>;
   ngOnInit(): void {
+
+    /* this.aFormGroup = new FormGroup({
+       'recaptcha': new FormControl(null)
+     }) */
+
     var month = this.myDate.getMonth();
     var day = this.myDate.getDate();
     var hour = this.myDate.getHours();
@@ -900,9 +903,12 @@ export class NewsComponent implements OnInit {
     }
   }
   inicioSesion() {
-    this.router.navigate(['/ingreso']);
+    this.router.navigate(['/ingreso'])
   }
-
+  app() {
+    window.open('https://apps.apple.com/mx/app/el-moco/id1528073445');
+    window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
+  }
   fb() {
 
     let url = window.location.href;
@@ -1041,10 +1047,6 @@ export class NewsComponent implements OnInit {
     else if (event.newWidth > 35) {
       this.porcentajeTop = this.height / 3;
     }
-
-  }
-  app() {
-    this.router.navigate(['/suscribete']);
   }
   onResizedComments(event: ResizedEvent) {
     this.comentsHeight = event.newHeight;

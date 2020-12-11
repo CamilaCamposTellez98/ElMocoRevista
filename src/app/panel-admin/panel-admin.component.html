@@ -16,16 +16,13 @@
           <div class="especial"></div>ESPECIAL DEL MES
         </a>
         <a class="option" (click)="changeSection('R')" [hidden]="usuarioLogueado">
-          <div class="revista"></div>REVISTA DIGITAL
+          <div class="revista"></div>REVISTA
         </a>
         <a class="option" (click)="changeSection('P')" [hidden]="usuarioLogueado">
-          <div class="mocotips"></div>MOCOTIPS DIGITAL
+          <div class="mocotips"></div>MOCOTIPS PARA PADRES
         </a>
         <a class="option" (click)="changeSection('T')" [hidden]="usuarioLogueado">
           <div class="moco-shop"></div>PATROCINADORES
-        </a>
-        <a class="option" (click)="changeSection('BA')" [hidden]="usuarioLogueado">
-          <div class="banner"></div>BANNER TRIMESTRAL
         </a>
         <a class="option"(click)="changeSection('C')" >
           <div class="quienes"></div>{{ingresoSesion}}
@@ -1021,6 +1018,157 @@
       </div>
 
     </article>
+   <!-- <article *ngIf="revistaMocotips1" [hidden]="secciones" class="first-news-entrada-nueva">
+      <div class="text-box"> Usted está editando la sección <span class="num-parte"> {{parteRevistaMocotips}}</span>
+      </div>
+      <div class="new-entrada-nueva-banner">
+        <input *ngIf="seccionRevista1" class="titulo-input" [(ngModel)]="tituloRevistaMocotips" maxlength="65"
+          type="text" placeholder="Título del mocotip introducción...">
+        <input *ngIf="seccionRevista2" class="titulo-input" [(ngModel)]="tituloRevistaMocotips2" maxlength="65"
+          type="text" placeholder="Título del mocotip especial...">
+        <input *ngIf="seccionRevista3" class="titulo-input" [(ngModel)]="tituloRevistaMocotips3" maxlength="65"
+          type="text" placeholder="Título del mocotip">
+        <input *ngIf="seccionRevista4" class="titulo-input" [(ngModel)]="tituloRevistaMocotips4" maxlength="65"
+          type="text" placeholder="Título del mocotip">
+        <input *ngIf="seccionRevista5" class="titulo-input" [(ngModel)]="tituloRevistaMocotips5" maxlength="65"
+          type="text" placeholder="Título del mocotip">
+        <input *ngIf="seccionRevista6" class="titulo-input" [(ngModel)]="tituloRevistaMocotips6" maxlength="65"
+          type="text" placeholder="Título del mocotip">
+        <input *ngIf="seccionRevista7" class="titulo-input" [(ngModel)]="tituloRevistaMocotips7" maxlength="65"
+          type="text" placeholder="Título del mocotip">
+        <input *ngIf="seccionRevista8" class="titulo-input" [(ngModel)]="tituloRevistaMocotips8" maxlength="65"
+          type="text" placeholder="Título del mocotip">
+        <input *ngIf="seccionRevista9" class="titulo-input" [(ngModel)]="tituloRevistaMocotips9" maxlength="65"
+          type="text" placeholder="Título del mocotip">
+        <input *ngIf="seccionRevista10" class="titulo-input" [(ngModel)]="tituloRevistaMocotips10" maxlength="65"
+          type="text" placeholder="Título del mocotip">
+
+        <div class="rich-text-box">
+          <form *ngIf="seccionRevista1" [formGroup]="editorFormRevista">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista2" [formGroup]="editorFormRevista2">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista2"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista3" [formGroup]="editorFormRevista3">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista3"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista4" [formGroup]="editorFormRevista4">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista4"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista5" [formGroup]="editorFormRevista5">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista5"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista6" [formGroup]="editorFormRevista6">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista6"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista7" [formGroup]="editorFormRevista7">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista7"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista8" [formGroup]="editorFormRevista8">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista8"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista9" [formGroup]="editorFormRevista9">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista9"></quill-editor>
+            </div>
+          </form>
+          <form *ngIf="seccionRevista10" [formGroup]="editorFormRevista10">
+            <div class="form-group">
+              <quill-editor [modules]="editorOptions" [placeholder]="'Redacte su sección aquí'" [styles]="editorStyle"
+                formControlName="editorRevista10"></quill-editor>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="seccionRevista1" class="plantilla1-revista1"></div>
+        <div *ngIf="seccionRevista2" class="plantilla1-revista2"></div>
+        <div *ngIf="seccionRevista3" class="plantilla1-revista3"></div>
+        <div *ngIf="seccionRevista4" class="plantilla1-revista4"></div>
+        <div *ngIf="seccionRevista5" class="plantilla1-revista5"></div>
+        <div *ngIf="seccionRevista6" class="plantilla1-revista6"></div>
+        <div *ngIf="seccionRevista7" class="plantilla1-revista7"></div>
+        <div *ngIf="seccionRevista8" class="plantilla1-revista8"></div>
+        <div *ngIf="seccionRevista9" class="plantilla1-revista9"></div>
+        <div *ngIf="seccionRevista10" class="plantilla1-revista10"></div>
+        
+        <div *ngIf="seccionRevista1">
+          <div class="siguiente" (click)="changeRevistaMocotips(2)"></div>
+        </div>
+      
+        <div *ngIf="seccionRevista2">
+          <div class="anterior" (click)="changeRevistaMocotips(1)"></div>
+          <div class="siguiente" (click)="changeRevistaMocotips(3)"></div>
+        </div>
+       
+        <div *ngIf="seccionRevista3">
+          <div class="anterior" (click)="changeRevistaMocotips(2)"></div>
+          <div class="siguiente" (click)="changeRevistaMocotips(4)"></div>
+        </div>
+      
+        <div *ngIf="seccionRevista4">
+          <div class="anterior" (click)="changeRevistaMocotips(3)"></div>
+          <div class="siguiente" (click)="changeRevistaMocotips(5)"></div>
+        </div>
+     
+        <div *ngIf="seccionRevista5">
+          <div class="anterior" (click)="changeRevistaMocotips(4)"></div>
+          <div class="siguiente" (click)="changeRevistaMocotips(6)"></div>
+        </div>
+       
+        <div *ngIf="seccionRevista6">
+          <div class="anterior" (click)="changeRevistaMocotips(5)"></div>
+          <div class="siguiente" (click)="changeRevistaMocotips(7)"></div>
+        </div>
+        
+        <div *ngIf="seccionRevista7">
+          <div class="anterior" (click)="changeRevistaMocotips(6)"></div>
+          <div class="siguiente" (click)="changeRevistaMocotips(8)"></div>
+        </div>
+       
+        <div *ngIf="seccionRevista8">
+          <div class="anterior" (click)="changeRevistaMocotips(7)"></div>
+          <div class="siguiente" (click)="changeRevistaMocotips(9)"></div>
+        </div>
+  
+        <div *ngIf="seccionRevista9">
+          <div class="anterior" (click)="changeRevistaMocotips(8)"></div>
+          <div class="siguiente" (click)="changeRevistaMocotips(10)"></div>
+        </div>
+    
+        <div *ngIf="seccionRevista10">
+          <div class="anterior" (click)="changeRevistaMocotips(9)"></div>
+          <div class="subir-parte" (click)="continueDatosMocotips()"></div>
+        </div>
+
+      </div>
+
+    </article>
+  -->
     <article *ngIf="seccionRevista1" [hidden]="secciones" class="first-news-entrada-nueva">
       <div class="text-box"> Usted está editando la sección <span class="num-parte"> {{parteRevistaMocotips}}</span>
       </div>
@@ -1515,10 +1663,10 @@
           </div>
           
           <div class="descripcionRevistaMocotips">Descripción:</div>
+          <div class="keyStoreRevista">Identificador</div>
         <input [(ngModel)]="descripcionRevistaMocotipsPrincipal"  class="descripcionRevistaMocotipsInput"
           type="text" placeholder="Descripción">
-          <div class="keyStoreRevista">Identificador</div>
-          <input [(ngModel)]="identificadorUnico"  class="identificadorInput"
+          <input [(ngModel)]="descripcionRevistaMocotipsPrincipal"  class="identificadorInput"
           type="text" placeholder="Clave única">
         <div class="anioRevistaMocotips">Año:</div>
         <input [(ngModel)]="anioRevistaMocotipsPrincipal" maxlength="100" class="anioRevistaMocotipsInput" type="text"
@@ -1574,9 +1722,7 @@
           <div class="descripcionRevistaMocotips">Descripción:</div>
         <input [(ngModel)]="descripcionRevistaMocotipsPrincipal"  class="descripcionRevistaMocotipsInput"
           type="text" placeholder="Descripción">
-          <div class="keyStoreRevista">Identificador</div>
-          <input [(ngModel)]="identificadorUnico"  class="identificadorInput"
-          type="text" placeholder="Clave única">
+
         <div class="anioRevistaMocotips">Año:</div>
         <input [(ngModel)]="anioRevistaMocotipsPrincipal" maxlength="100" class="anioRevistaMocotipsInput" type="text"
           placeholder="Año">
@@ -1724,56 +1870,7 @@
        
         
         <div class="publicarButtonRevistaMocotips" [ngStyle]="{'display': buttondisabled}"
-          (click)="publicarPatrocinadores()"></div>
-
-      </div>
-    </article>
-    <article *ngIf="bannerTrimestral" [hidden]="seccionEspecialDelMes" class="first-news-entrada-nueva">
-      <div class="text-box"> Favor de llenar los siguientes campos</div>
-      <div class="new-entrada-nueva-banner">
-        <div class="uploadFirstPatreonText">Imágen del banner:</div>
-        <div class="uploadFirstPatreon">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" (change)="addImages1($event)">
-            <label class="custom-file-label" for="customFile">{{fileToUpload1Name1}}</label>
-          </div>
-        </div>
-        <div class="uploadFirstPatreon2">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" (change)="addImages2($event)">
-            <label class="custom-file-label" for="customFile">{{fileToUpload1Name2}}</label>
-          </div>
-        </div>
-        <div class="uploadFirstPatreon3">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" (change)="addImages3($event)">
-            <label class="custom-file-label" for="customFile">{{fileToUpload1Name3}}</label>
-          </div>
-        </div>
-        <div class="uploadFirstPatreonUrlText">Url de la revista en mocoshop:</div>
-        <input [(ngModel)]="urlBanner1" maxlength="100" class="uploadFirstPatreonUrl"
-          type="text" placeholder="LINK">
-          <div class="deletePatreon1" [hidden]="!urlBanner1Delete" (click)="borrarBanner('1')"></div>
-          <input [(ngModel)]="urlBanner2" maxlength="100" class="uploadFirstPatreonUrl2"
-          type="text" placeholder="LINK">
-          <div class="deletePatreon2" [hidden]="!urlBanner2Delete" (click)="borrarBanner('2')"></div>
-          <input [(ngModel)]="urlBanner3" maxlength="100" class="uploadFirstPatreonUrl3"
-          type="text" placeholder="LINK">
-          <div class="deletePatreon3" [hidden]="!urlBanner3Delete" (click)="borrarBanner('3')"></div>
-
-         
-          <div class="progress-bar-box-revista">
-            <div class="progress">
-              <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
-                [style.width.%]="(image1UploadPercent | async)"></div>
-            </div>
-          </div>
-          <div class="progress-bar-text-revista">{{statusUploadImage1}}</div> 
-         
-       
-        
-        <div class="publicarButtonRevistaMocotips" [ngStyle]="{'display': buttondisabled}"
-          (click)="publicarBanner()"></div>
+          (click)="publicarPatrocinadores('editar')"></div>
 
       </div>
     </article>

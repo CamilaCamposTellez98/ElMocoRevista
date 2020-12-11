@@ -82,99 +82,47 @@
         </nav>
     </div>
     <div class="structure">
-        <div class="first-news" [style.padding-top]="padding_photo+'px'">
+        <div class="first-news">
             <div class="register-box">
 
-                <div class="form-box" (resized)="onResizedForm($event)" [style.padding-top]="padding+'px'">
-                    <div class="photo" (resized)="onResizedPhoto($event)" [style.width]="width+'px'"
-                        [style.left]="left+'px'">
-                        <label class="photo-input" [ngStyle]="{'background-image': 'url(' + profilePic + ')'}">
-                            <input style="display: none;" type="file" id="myFile" name="filename"
-                                (change)="addProfilePic($event)" value="./../../assets/images/aniadir_foto.jpg">
-                        </label>
-                        <div *ngIf="profilePic !== './../../assets/images/aniadir_foto.jpg'" class="photo-delete">
-                            <button mat-mini-fab color="warn" (click)="deletePic()">
-                                <mat-icon>delete_forever</mat-icon>
-                            </button>
-                        </div>
-                    </div>
+                <div class="form-box" (resized)="onResizedForm($event)">
+                    <div class="photo" (resized)="onResizedPhoto($event)" [style.width]="width+'px'" [style.left]="left+'px'"></div>
                     <div class="tittle">
                         <div class="row h-100">
-                            <div class="col-sm-12 my-auto">
-                                REGISTRO DE ACCESO
-                            </div>
+                        <div class="col-sm-12 my-auto">
+                            REGISTRO DE ACCESO
+                        </div>
+                    </div> 
+                </div>
+                    <div class="name"> <input class="name-input" name="user_name" type="text"  placeholder="Nombre"></div>
+                    <div class="usuario"> <input class="usuario-input" name="user_name" type="text"  placeholder="Usuario"></div>
+                    <div class="email"> <input class="email-input" name="user_name" type="text"  placeholder="Email"></div>
+                    <div class="age"> 
+                        <div class="gender-input"> 
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male" style="margin-left: 10px;">Hombre</label><br>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female" style="margin-left: 10px;">Mujer</label><br>
                         </div>
                     </div>
-                  
-
-                    <form [formGroup]="registroForm">
-                        <div class="name"> <input type="text" class="name-input" name="name" id="name" formControlName="name" placeholder="Nombre"></div>
-                        <span class="text-danger name" *ngIf="(registroForm.get('name').touched || submitted) && registroForm.get('name').errors?.required">
-                            Por favor, ingresa tu nombre.</span>
-                        <div class="usuario"> <input type="text" class="usuario-input" maxlength="8" name="user_name" id="user_name" formControlName="user_name" placeholder="Usuario"></div>
-                        <span class="text-danger name" *ngIf="(registroForm.get('user_name').touched || submitted) && registroForm.get('user_name').errors?.required">
-                            Por favor, ingresa tu usuario.</span>
-                        <div class="email"> <input type="text" class="email-input" name="mail" id="mail" formControlName="mail" placeholder="Email"></div>
-                        <span class="text-danger name" *ngIf="(registroForm.get('mail').touched || submitted) && registroForm.get('mail').errors?.email">
-                            Por favor, ingresa un correo válido.</span>
-                        <div class="age" style="display: flex;">
-                            <div class="gender-input">
-                                <mat-radio-group aria-label="Select an option" name="gender" id="gender" formControlName="gender">
-                                    <mat-radio-button color="warn" value="male" style="font-family: 'Anaheim';
-                                font-size:100%; display: block;" >Hombre</mat-radio-button>
-                                    <mat-radio-button color="warn" value="female" style="font-family: 'Anaheim';
-                                font-size:100%; display: block;">Mujer</mat-radio-button>
-                                </mat-radio-group>
+                    <div class="country"> <input class="country-input" name="user_name" type="text"  placeholder="País"></div>
+                    <div class="pass1"> <input class="pass1-input" name="user_name" type="text"  placeholder="Contraseña"></div>
+                    <div class="pass2"> <input class="pass2-input" name="user_name" type="text"  placeholder="Confirmar Contraseña"></div>
+                    <div class="condiciones"> 
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1" style="margin-left: 10px;">
+                            <div class="row h-100">
+                            <div class="col-sm-12 my-auto">
+                                Acepto las condiciones y Políticas de privacidad
                             </div>
-                            <div class="age-input" style="text-align: left;">
-                                <label class="age-label">Edad</label>
-                                <input type="number" class="age" name="age" id="age" formControlName="age">
-                            </div>
-                        </div>
-                        <span class="text-danger name"*ngIf="((registroForm.get('gender').touched || submitted) && registroForm.get('gender').errors?.required) || 
-                        ((registroForm.get('age').touched || submitted) && registroForm.get('age').errors?.required)">
-                            Por favor, completa estos campos.</span>
-                        <div class="country"> 
-                            <input type="text" class="country-input" name="country" id="country" formControlName="country" placeholder="País">
-                        </div>
-                        <span class="text-danger name" *ngIf="(registroForm.get('country').touched || submitted) && registroForm.get('country').errors?.required">
-                            Por favor, ingresa tu país.</span>
-                        <div class="pass1"> 
-                            <input type="text" class="pass1-input" name="pass1" id="pass1" formControlName="pass1" placeholder="Contraseña">
-                        </div>
-                        <span class="text-danger name"  *ngIf="(registroForm.get('pass1').touched || submitted) && registroForm.get('pass1').errors?.minlength">
-                            Se requiere una contraseña de más de 6 carácteres.</span>
-                        <div class="pass2"> 
-                            <input type="text" class="pass2-input" name="pass2" id="pass2" formControlName="pass2" placeholder="Confirmar Contraseña">
-                        </div>
-                        <span class="text-danger name"  *ngIf="(registroForm.get('pass2').touched || submitted) && registroForm.get('pass2').errors?.minlength">
-                            Se requiere una contraseña de más de 6 carácteres.</span>
-                        <span class="text-danger name" *ngIf="(registroForm.get('pass1').value !== registroForm.get('pass2').value )">
-                            Las contraseñas no coinciden.</span>
-                        <div class="condiciones">
-                            <input type="checkbox" id="tycs" name="tycs" formControlName="tycs">
-                            <label for="vehicle1" style="margin-left: 10px;">
-                                <div class="row h-100">
-                                    <div class="col-sm-12 my-auto">
-                                        Acepto las <a style="color: rgb(96, 183, 51); text-decoration: underline;"
-                                            href="https://www.elmoco.com.mx/#/terminos" target="_blank">Condiciones</a>
-                                        y
-                                        <a style="color:rgb(96, 183, 51); text-decoration: underline;"
-                                            href="https://www.elmoco.com.mx/#/avisos" target="_blank">Políticas de
-                                            privacidad</a>
-                                    </div>
-                                </div>
-                            </label><br>
-                        </div>
-                        <span class="text-danger name" *ngIf="(registroForm.get('tycs').touched || submitted) && registroForm.get('tycs').errors?.required">
-                            Acepta los términos y condiciones para continuar.</span>
-                        <div class="button" style="margin-bottom: 10px;" *ngIf="submitted === false">
-                            <button class="button_class" (click)="register()">¡Regístrate!</button>
-                        </div>
-                        <mat-progress-bar mode="indeterminate" style="width: 80%;
-                        margin-left: 10%;" *ngIf="submitted === true"></mat-progress-bar>
-
-                    </form>
+                        </div> 
+                    </label><br>
+                    </div>
+                    <div class="button" style="margin-bottom: 10px;">
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1" style="margin-left: 10px;"> 
+                            Acepto las condiciones y Políticas de privacidad</label><br>
+                    </div>
                 </div>
             </div>
 

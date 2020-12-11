@@ -15,7 +15,7 @@ import { EspecialDelMesInterface } from '../interfaces/EspecialDelMes';
 import { AuthService } from '../services/auth.service';
 import { revistaDigital } from '../models/revistaDigital';
 import { especialDelMes } from '../models/especialDelMes';
-import { patrocinadores, bannerTrimestral } from '../models/patrocinadores';
+import { patrocinadores } from '../models/patrocinadores';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -138,7 +138,6 @@ export class PanelAdminComponent implements OnInit {
   /*Variables para la definición de revistas*/
   tituloRevistaMocotipsPrincipal: string = "";
   descripcionRevistaMocotipsPrincipal: string = "";
-  identificadorUnico: string = "";
   anioRevistaMocotipsPrincipal: string = "";
   numeroRevistaMocotipsPrincipal: string = "";
   costoRevistaMocotipsPrincipal: string = "";
@@ -151,13 +150,6 @@ export class PanelAdminComponent implements OnInit {
   urlPatrocinador2Delete: boolean = false;
   urlPatrocinador3Delete: boolean = false;
   urlPatrocinador4Delete: boolean = false;
-  /*Variables para los banners*/
-    urlBanner1: string = "";
-    urlBanner2: string = "";
-    urlBanner3: string = "";
-    urlBanner1Delete: boolean = false;
-    urlBanner2Delete: boolean = false;
-    urlBanner3Delete: boolean = false;
   /*Variable para saber en qué sección están de la revista para padres*/
   parteRevistaMocotips: string;
   /*Variables para inicializar la tabla de angular con las noticias creadas*/
@@ -189,7 +181,6 @@ export class PanelAdminComponent implements OnInit {
   seccionEspecialDelMes: boolean = false;
   especialDelMesImagenes: boolean = false;
   especialDelMesSubirImagen: boolean = false;
-  bannerTrimestral : boolean = false;
 
   tituloEspecial: string = "";
   autorEspecial: string = "";
@@ -455,7 +446,6 @@ export class PanelAdminComponent implements OnInit {
     anio: '',
     numero: '',
     costo: '',
-    store_key: '',
     imagenPrincipal: '',
     idioma: ''
   }
@@ -475,15 +465,6 @@ export class PanelAdminComponent implements OnInit {
     patrocinador3Url: '',
     patrocinador4Url: '',
   }
-  bannerObject = {
-    $key: '',
-    banner1Image: '',
-    banner2Image: '',
-    banner3Image: '',
-    banner1Url: '',
-    banner2Url: '',
-    banner3Url: '',
-  }
   imagenesRevistaObject = {
     key: '',
   }
@@ -498,7 +479,6 @@ export class PanelAdminComponent implements OnInit {
 
   especialDelMesList: especialDelMes[];
   patrocinadoresList: patrocinadores[];
-  bannerList: bannerTrimestral[];
   especialParaEditar: especialDelMes[];
   patrocinadoresParaEditar: patrocinadores[];
   revistaDigitalParaEditar: revistaDigital[];
@@ -658,7 +638,6 @@ export class PanelAdminComponent implements OnInit {
             anio: revista.payload.doc.data().anio,
             costo: revista.payload.doc.data().costo,
             description: revista.payload.doc.data().description,
-            store_key: revista.payload.doc.data().store_key,
             imagenPrincipal: revista.payload.doc.data().imagenPrincipal,
             numero: revista.payload.doc.data().numero,
             idioma: revista.payload.doc.data().idioma,
@@ -741,7 +720,6 @@ export class PanelAdminComponent implements OnInit {
             id: revista.payload.doc.id,
             anio: revista.payload.doc.data().anio,
             costo: revista.payload.doc.data().costo,
-            store_key: revista.payload.doc.data().store_key,
             description: revista.payload.doc.data().description,
             imagenPrincipal: revista.payload.doc.data().imagenPrincipal,
             numero: revista.payload.doc.data().numero,
@@ -758,7 +736,6 @@ export class PanelAdminComponent implements OnInit {
       this.hideAllRevistaEditors();
       this.seccionesFalse();
       this.patrocinador = true;
-      this.bannerTrimestral = false;
       this.redactNuevaFalse();
       this.variableSinUsoMenu();
       this.noticiasService.getPatrocinadores().snapshotChanges().subscribe(item => {
@@ -789,38 +766,6 @@ export class PanelAdminComponent implements OnInit {
         this.urlPatrocinador3 = this.patrocinadoresList[0].patrocinador3Url;
         this.urlPatrocinador4 = this.patrocinadoresList[0].patrocinador4Url;
 
-      });
-    }
-    else if (section === "BA") {
-      this.restartAll();
-      this.hideAllRevistaEditors();
-      this.seccionesFalse();
-      this.patrocinador = false;
-      this.bannerTrimestral = true;
-      this.redactNuevaFalse();
-      this.variableSinUsoMenu();
-      this.noticiasService.getBanner().snapshotChanges().subscribe(item => {
-        this.bannerList = [];
-        item.slice().reverse().forEach(element => {
-          let json = element.payload.toJSON();
-          json["$key"] = element.key;
-          this.bannerList.push(json as bannerTrimestral);
-        });
-        if (this.bannerList[0].banner1Image !== "") {
-          this.fileToUpload1Name1 = "Imagen ya cargada";
-          this.urlBanner1Delete = true;
-        }
-        if (this.bannerList[0].banner2Image !== "") {
-          this.fileToUpload1Name2 = "Imagen ya cargada";
-          this.urlBanner2Delete = true;
-        }
-        if (this.bannerList[0].banner3Image !== "") {
-          this.fileToUpload1Name3 = "Imagen ya cargada";
-          this.urlBanner3Delete = true;
-        }
-        this.urlBanner1 = this.bannerList[0].banner1Url;
-        this.urlBanner2 = this.bannerList[0].banner2Url;
-        this.urlBanner3 = this.bannerList[0].banner3Url;
       });
     }
     else if (section === "C") {
@@ -984,7 +929,6 @@ export class PanelAdminComponent implements OnInit {
     this.mocotips = false;
     this.entradaNueva = false;
     this.patrocinador = false;
-    this.bannerTrimestral = false;
   }
   redactNuevaFalse() {
     this.redactarNueva = false;
@@ -1021,12 +965,13 @@ export class PanelAdminComponent implements OnInit {
     this.crearRevistaDigitalMocotips = false;
     this.revistaImagenes = false;
   }
-  publicarPatrocinadores() {
+  publicarPatrocinadores(opcion: string) {
     this.patrocinadoresObject.patrocinador1Url = this.urlPatrocinador1;
     this.patrocinadoresObject.patrocinador2Url = this.urlPatrocinador2;
     this.patrocinadoresObject.patrocinador3Url = this.urlPatrocinador3;
     this.patrocinadoresObject.patrocinador4Url = this.urlPatrocinador4;
     this.subirimagenPatrocinador_1().then(res => this.subirimagenPatrocinador_2().then(res => this.subirimagenPatrocinador_3().then(res => this.subirimagenPatrocinador_4().then(res => {
+      if (opcion === "editar") {
         this.patrocinadoresObject.$key = this.patrocinadoresList[0].$key;
         this.buttondisabled = "none";
         this.noticiasService.updatePatrocinadores(this.patrocinadoresObject).then(res => {
@@ -1034,6 +979,7 @@ export class PanelAdminComponent implements OnInit {
           this.changeSection("T")
           this.restartAll();
         });
+      }
     }))));
   }
   borrarPatrocinadores(opcion: string) {
@@ -1091,6 +1037,7 @@ export class PanelAdminComponent implements OnInit {
     }
   }
   subirimagenPatrocinador_1() {
+
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name1 === "Imagen ya cargada") {
         console.log("la imagen ya estaba cargada no se modificará");
@@ -1253,162 +1200,6 @@ export class PanelAdminComponent implements OnInit {
       }
     });
   }
-  publicarBanner() {
-    this.bannerObject.banner1Url = this.urlBanner1;
-    this.bannerObject.banner2Url = this.urlBanner2;
-    this.bannerObject.banner3Url = this.urlBanner3;
-    console.log(this.urlBanner2)
-    console.log(this.urlBanner3)
-    this.subirimagenBanner_1().then(res => this.subirimagenBanner_2().then(res => this.subirimagenBanner_3().then(res => {
-       this.bannerObject.$key = this.bannerList[0].$key;
-        this.buttondisabled = "none";
-        this.noticiasService.updateBanner(this.bannerObject);
-        window.alert('Banner actualizado con éxito');
-          this.changeSection("BA")
-          this.restartAll();
-    })));
-  }
-  borrarBanner(opcion: string) {
-    this.bannerObject.banner1Url = this.urlBanner1;
-    this.bannerObject.banner2Url = this.urlBanner2;
-    this.bannerObject.banner3Url = this.urlBanner3;
-    this.bannerObject.banner1Image = this.bannerList[0].banner1Image;
-    this.bannerObject.banner2Image = this.bannerList[0].banner2Image;
-    this.bannerObject.banner3Image = this.bannerList[0].banner3Image;
-    if (opcion === "1") {
-      this.bannerObject.banner1Url = "";
-      this.bannerObject.banner1Image = "";
-      this.bannerObject.$key = this.bannerList[0].$key;
-      this.buttondisabled = "none";
-      this.noticiasService.updateBanner(this.bannerObject).then(res => {
-        window.alert('Banner actualizados con éxito');
-        this.changeSection("BA");
-        this.restartAll();
-      });
-    }
-    if (opcion === "2") {
-      this.bannerObject.banner2Url = "";
-      this.bannerObject.banner2Image = "";
-      this.bannerObject.$key = this.bannerList[0].$key;
-      this.buttondisabled = "none";
-      this.noticiasService.updateBanner(this.bannerObject).then(res => {
-        window.alert('Banner actualizados con éxito');
-        this.changeSection("BA");
-        this.restartAll();
-      });
-    }
-    if (opcion === "3") {
-      this.bannerObject.banner3Url = "";
-      this.bannerObject.banner3Image = "";
-      this.bannerObject.$key = this.bannerList[0].$key;
-      this.buttondisabled = "none";
-      this.noticiasService.updateBanner(this.bannerObject).then(res => {
-        window.alert('Banner actualizados con éxito');
-        this.changeSection("BA");
-        this.restartAll();
-      });
-    }
-  }
-  subirimagenBanner_1() {
-    return new Promise((resolve, reject) => {
-      if (this.fileToUpload1Name1 === "Imagen ya cargada") {
-        this.bannerObject.banner1Image = this.bannerList[0].banner1Image;
-        resolve();
-      }
-      else if (this.fileToUpload1Name1 !== "Selecciona una imagen") {
-        if (this.bannerList[0] !== undefined) {
-          if (this.bannerList[0].banner1Image !== "") {
-            this.storage.storage.refFromURL(this.bannerList[0].banner1Image).delete();
-          }
-        }
-        const id = Math.random().toString(36).substring(2);
-        const filePath = `bannerTrimestral/${id}`;
-        const ref = this.storage.ref(filePath);
-        const task = this.storage.upload(filePath, this.fileToUpload1);
-        this.image1UploadPercent = task.percentageChanges();
-        this.statusUploadImage1 = "Actualizando banner 1"
-        task.snapshotChanges().pipe(
-          finalize(() => {
-            ref.getDownloadURL().subscribe(url => {
-              this.urlImage1 = url;
-              this.bannerObject.banner1Image = this.urlImage1;
-              resolve();
-            });
-          })
-        ).subscribe();
-      }
-      else {
-        resolve();
-      }
-    });
-  }
-  subirimagenBanner_2() {
-    return new Promise((resolve, reject) => {
-      if (this.fileToUpload1Name2 === "Imagen ya cargada") {
-        this.bannerObject.banner2Image = this.bannerList[0].banner2Image;
-        resolve();
-      }
-      else if (this.fileToUpload1Name2 !== "Selecciona una imagen") {
-        if (this.bannerList[0] !== undefined) {
-          if (this.bannerList[0].banner2Image !== "") {
-            this.storage.storage.refFromURL(this.bannerList[0].banner2Image).delete();
-          }
-        }
-        const id2 = Math.random().toString(36).substring(2);
-        const filePath2 = `bannerTrimestral/${id2}`;
-        const ref2 = this.storage.ref(filePath2);
-        const task2 = this.storage.upload(filePath2, this.fileToUpload2);
-        this.image1UploadPercent = task2.percentageChanges();
-        this.statusUploadImage1 = "Actualizando banner 2"
-        task2.snapshotChanges().pipe(
-          finalize(() => {
-            ref2.getDownloadURL().subscribe(url => {
-              this.urlImage2 = url;
-              this.bannerObject.banner2Image = this.urlImage2;
-              resolve();
-            });
-          })
-        ).subscribe();
-      }
-      else {
-        resolve();
-      }
-    });
-  }
-  subirimagenBanner_3() {
-    return new Promise((resolve, reject) => {
-      if (this.fileToUpload1Name3 === "Imagen ya cargada") {
-        this.bannerObject.banner3Image = this.bannerList[0].banner3Image;
-        resolve();
-      }
-      else if (this.fileToUpload1Name3 !== "Selecciona una imagen") {
-        if (this.bannerList[0] !== undefined) {
-          if (this.bannerList[0].banner3Image !== "") {
-            this.storage.storage.refFromURL(this.bannerList[0].banner3Image).delete();
-          }
-        }
-        const id3 = Math.random().toString(36).substring(2);
-        const filePath3 = `bannerTrimestral/${id3}`;
-        const ref3 = this.storage.ref(filePath3);
-        const task3 = this.storage.upload(filePath3, this.fileToUpload3);
-        this.image1UploadPercent = task3.percentageChanges();
-        this.statusUploadImage1 = "Actualizando banner 3"
-        task3.snapshotChanges().pipe(
-          finalize(() => {
-            ref3.getDownloadURL().subscribe(url => {
-              this.urlImage3 = url;
-              this.bannerObject.banner3Image = this.urlImage3;
-              resolve();
-            });
-          })
-        ).subscribe();
-      }
-      else {
-        resolve();
-      }
-    });
-  }
-
   seleccionarSeccionRevista() {
     this.revista = false;
     this.revistaImagenes = false;
@@ -1416,7 +1207,6 @@ export class PanelAdminComponent implements OnInit {
     this.revistaMocotipsElegir = false;
     this.crearRevistaDigital = true;
     this.patrocinador = false;
-    this.bannerTrimestral = false;
     this.revistaMocotips = false;
     this.crearRevistaDigitalMocotips = false;
   }
@@ -1427,7 +1217,6 @@ export class PanelAdminComponent implements OnInit {
     this.revistaMocotipsElegir = false;
     this.crearRevistaDigital = false;
     this.patrocinador = false;
-    this.bannerTrimestral = false;
     this.revistaMocotips = false;
     this.crearRevistaDigitalMocotips = true;
   }
@@ -1435,7 +1224,6 @@ export class PanelAdminComponent implements OnInit {
     this.revista = false;
     this.revistaImagenes = false;
     this.patrocinador = false;
-    this.bannerTrimestral = false;
     this.revistaImagenesElegir = true;
     this.revistaMocotipsElegir = false;
     this.crearRevistaDigital = false;
@@ -1599,7 +1387,6 @@ export class PanelAdminComponent implements OnInit {
     this.revista = false;
     this.revistaImagenes = false;
     this.patrocinador = false;
-    this.bannerTrimestral = false;
     this.revistaImagenesElegir = false;
     this.revistaMocotipsElegir = true;
     this.crearRevistaDigital = false;
@@ -2793,8 +2580,7 @@ export class PanelAdminComponent implements OnInit {
   publicarRevistaDigital() {
 
     this.revistaDigitalObject.tittle = this.tituloRevistaMocotipsPrincipal;
-    this.revistaDigitalObject.store_key = this.identificadorUnico;
-    this.revistaDigitalObject.description = this.descripcionRevistaMocotipsPrincipal; 
+    this.revistaDigitalObject.description = this.descripcionRevistaMocotipsPrincipal;
     this.revistaDigitalObject.anio = this.anioRevistaMocotipsPrincipal;
     this.revistaDigitalObject.numero = this.numeroRevistaMocotipsPrincipal;
     this.revistaDigitalObject.costo = this.costoRevistaMocotipsPrincipal;
@@ -2840,7 +2626,6 @@ export class PanelAdminComponent implements OnInit {
   }
   publicarRevistaDigitalMocotips() {
     this.revistaDigitalObject.tittle = this.tituloRevistaMocotipsPrincipal;
-    this.revistaDigitalObject.store_key = this.identificadorUnico;
     this.revistaDigitalObject.description = this.descripcionRevistaMocotipsPrincipal;
     this.revistaDigitalObject.anio = this.anioRevistaMocotipsPrincipal;
     this.revistaDigitalObject.numero = this.numeroRevistaMocotipsPrincipal;
@@ -5159,7 +4944,6 @@ export class PanelAdminComponent implements OnInit {
 
     this.tituloRevistaMocotipsPrincipal = "";
     this.descripcionRevistaMocotipsPrincipal = "";
-    this.identificadorUnico = "";
     this.anioRevistaMocotipsPrincipal = "";
     this.numeroRevistaMocotipsPrincipal = "";
     this.costoRevistaMocotipsPrincipal = "";
@@ -5505,7 +5289,6 @@ export class PanelAdminComponent implements OnInit {
           anio: revista.payload.doc.data().anio,
           costo: revista.payload.doc.data().costo,
           description: revista.payload.doc.data().description,
-          store_key: revista.payload.doc.data().store_key,
           imagenPrincipal: revista.payload.doc.data().imagenPrincipal,
           numero: revista.payload.doc.data().numero,
           tittle: revista.payload.doc.data().tittle,
@@ -5516,7 +5299,6 @@ export class PanelAdminComponent implements OnInit {
       })
       this.tituloRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].tittle;
       this.descripcionRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].description;
-      this.identificadorUnico = this.revistaDigitalParaEditar[0].store_key;
       this.anioRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].anio;
       this.numeroRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].numero;
       this.costoRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].costo;
@@ -5539,7 +5321,6 @@ export class PanelAdminComponent implements OnInit {
           anio: revista.payload.doc.data().anio,
           costo: revista.payload.doc.data().costo,
           description: revista.payload.doc.data().description,
-          store_key: revista.payload.doc.data().store_key,
           imagenPrincipal: revista.payload.doc.data().imagenPrincipal,
           numero: revista.payload.doc.data().numero,
           tittle: revista.payload.doc.data().tittle,
@@ -5550,7 +5331,6 @@ export class PanelAdminComponent implements OnInit {
       })
       this.tituloRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].tittle;
       this.descripcionRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].description;
-      this.identificadorUnico = this.revistaDigitalParaEditar[0].store_key;
       this.anioRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].anio;
       this.numeroRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].numero;
       this.costoRevistaMocotipsPrincipal = this.revistaDigitalParaEditar[0].costo;
@@ -5563,14 +5343,15 @@ export class PanelAdminComponent implements OnInit {
     console.log(this.revistastKey[0]);
     this.revistaDigitalObject.tittle = this.tituloRevistaMocotipsPrincipal;
     this.revistaDigitalObject.description = this.descripcionRevistaMocotipsPrincipal;
-    this.revistaDigitalObject.store_key = this.identificadorUnico;
     this.revistaDigitalObject.anio = this.anioRevistaMocotipsPrincipal;
     this.revistaDigitalObject.numero = this.numeroRevistaMocotipsPrincipal;
     this.revistaDigitalObject.costo = this.costoRevistaMocotipsPrincipal;
     this.revistaDigitalObject.key = this.revistaDigitalParaEditar[0].key;
     this.revistaDigitalObject.idioma = this.selectedItem;
+
     if (this.fileToUpload1Name1 === "Imagen ya cargada") {
       this.revistaDigitalObject.imagenPrincipal = this.revistaDigitalParaEditar[0].imagenPrincipal;
+      console.log("ola 1")
       if (option === 1) {
         this.cloudfirestore.updateRevistaDigital(this.revistaDigitalObject, this.revistastKey[0]).then(response => {
           window.alert('Revista actualizada con éxito');

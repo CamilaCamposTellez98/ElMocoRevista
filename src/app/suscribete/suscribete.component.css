@@ -30,8 +30,6 @@ html {
       background-color: white;
     }
   }
-
-
   .bg-moco-menu{
     background-color:#00758b!important;
     padding: .0rem 0rem;
@@ -171,10 +169,6 @@ html {
     background-position: center;
     background-size: contain; 
     border: 0.5px solid #ffffff;
-    background-size: cover;
-    background-position: center;
-    background-size: cover;
-    background-position: center;
   }
   .navbar-moco .navbar-nav .nav-link-moconauta .opciones{
   color:rgb(141, 150, 61);
@@ -199,17 +193,7 @@ html {
   
   
   
-    ::ng-deep .mat-progress-bar-fill::after {
-      background-color: #3e8106;
-  }
   
-  ::ng-deep .mat-progress-bar-buffer {
-      background: #99d38b;
-  }
-  
-  ::ng-deep .mat-progress-bar {
-      border-radius: 2px;
-  }
   
   
   
@@ -288,7 +272,7 @@ html {
       height: 275px;
       position: relative;
       background-position: center;
-      background-size: cover;
+      background-size: 100%, 100%;
       background-repeat: no-repeat; 
       background-image:  url("./../../assets/images/banner-sin-moco.png");
     }
@@ -466,6 +450,7 @@ html {
     height:auto;
     position: relative;
     left: 15%;
+    background-color: red;
     padding-bottom: 5%;
   }
   .structure .first-news .register-box  .form-box {
@@ -487,9 +472,10 @@ html {
     position: relative;
     left: 5%;
     font-family: 'Varela Round';
-    color: rgb(66, 142, 19);
+    color: rgb(50, 99, 10); 
     font-size:200%;
     text-align: center;
+    background-color: rgb(102, 196, 118);
   }
   .structure .first-news .register-box  .form-box .name,
   .structure .first-news .register-box  .form-box .usuario,
@@ -504,54 +490,20 @@ html {
     height: auto;
     position: relative;
     left: 5%;
+    background-color: rgb(102, 196, 118);
     margin-top: 1rem;
-    display: inline-block;
   }
-  .structure .first-news .register-box  .form-box .button .button_class{
-  background-color: rgb(95, 181, 50);
-  text-decoration: none;
-  font-family: 'Varela Round';
-  width: 100%;
-  border: none;
-  padding: 2.5%;
-  border-radius: 50px;
-  font-size: 300%;
-  text-align: center;
-  color: rgb(255, 255, 255);
-  }
-  .structure .first-news .register-box  .form-box .button .button_class:hover{
-    background-color: rgb(56, 138, 12);
-  }
+
   .structure .first-news .register-box .form-box .photo{
     height: 20%;
     position: absolute;
     top: -12%;
+    background-color: rgb(29, 53, 33);
     z-index: 10;
-
-  }
-  .structure .first-news .register-box .form-box .photo .photo-input{
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position:center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
     border-radius: 50%;
-    -webkit-box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.74);
-    -moz-box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.74);
-    box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.74);
-    transition: all 1s;
-    cursor: pointer;
-  }
-  .structure .first-news .register-box .form-box .photo .photo-delete{
-    width: auto;
-    height: auto;
-    position: absolute;
-    right: 0%;
-    top: 0%;
-  }
-  .structure .first-news .register-box .form-box .photo .photo-input:hover{
-  transform: scale(1.1);
+    -webkit-box-shadow: 2px 2px 10px -2px rgba(0,0,0,0.69);
+    -moz-box-shadow: 2px 2px 10px -2px rgba(0,0,0,0.69);
+    box-shadow: 2px 2px 10px -2px rgba(0,0,0,0.69);
   }
   .structure .first-news .register-box  .form-box .name-input,
   .structure .first-news .register-box  .form-box .usuario-input,
@@ -598,8 +550,8 @@ html {
   .structure .first-news .register-box  .form-box .pass2-input{
     background-image: url("./../../assets/images/icono5.png");
   }
-  .structure .first-news .register-box  .form-box .age .gender-input,
-  .structure .first-news .register-box  .form-box .age .age-input{
+  .structure .first-news .register-box  .form-box .age .gender-input{
+    width: 60%;
     height: auto;
     position: relative;
     left: 0%;
@@ -611,30 +563,7 @@ html {
     text-align: left;
     border: none;
     padding-left: 1rem;
-    padding-top: 4%;
-    margin-top: 0px;
-  }
-  .structure .first-news .register-box  .form-box .age .gender-input{
-    width: 60%;
-    background-color: rgb(201, 221, 150);
-  }
-  .structure .first-news .register-box  .form-box .age .age-input{
-    width: 40%;
-    background-color: rgb(201, 221, 150);
-  }
-  .structure .first-news .register-box  .form-box .age .age-input .age{
-  width: 100%;
-  height: auto;
-  position: relative;
-  left: 0%;
-  background-color:rgb(231, 238, 212);
-  text-decoration: none; 
-  font-family: 'Anaheim'; /*fuente personalizada importada con @font-face*/
-  color: rgb(0, 0, 0); 
-  text-align: center;
-  border: none;
-  padding:2.5%;
-  margin-top: 0px;
+    margin-top: 1rem;
   }
   .structure .options{
     margin: 4px;
@@ -643,13 +572,9 @@ html {
     -webkit-flex: 1 6 20%;
             flex: 1 6 20%;
     -webkit-order: 3;
-            order: 3;       
-  }
-  .structure .first-news .register-box  .form-box .age .age-input .age-label{
-    vertical-align: middle;
-    width: 100%;
-    text-align: center;
-    display: inline-block;
+            order: 3;
+            
+           
   }
   .structure .options .vertical-menu{
     width: 300px; 
@@ -892,11 +817,7 @@ html {
     .structure .options .vertical-menu{
       margin-top: 10px;
     }
-    .structure .first-news .register-box  .form-box {
-      width: 60%;
-      left: 20%;
-      padding-top: 15%;
-    }
+  
   }
   @media all and (max-width: 1080px) {
   .footer .logo{ 
@@ -1014,16 +935,11 @@ html {
     display: block;
    }
    .structure .first-news{
-    padding-top: 15%;
-    }
-   
-   .structure .first-news .register-box {
-    width: 90%;
-    left: 5%;
-  }
-  .structure .first-news .register-box  .form-box {
-    padding-top: 10%;
-  }
+       -webkit-order: 0;
+               order: 0;
+      background-size: contain;
+      height: 700px;
+      }
       .structure {
                 background-size: cover;             
       }
@@ -1150,6 +1066,9 @@ html {
 
   }
   @media all and (max-width: 700px) {
+    .structure .first-news{
+     height: 550px;
+     }
      .structure .first-news .new-line {
       font-size:200%; 
     }
@@ -1169,19 +1088,12 @@ html {
     .footer .text-box{ 
       right: 20%;
     }
-
-     .structure .first-news .register-box {
-      width: 90%;
-      left: 5%;
-    }
-    .structure .first-news .register-box  .form-box {
-      padding-top: 15%;
-      width: 90%;
-      left: 5%;
-    }
-    .structure .first-news .register-box  .form-box .button .button_class{
-      font-size: 200%;
-      }
+    .structure .first-news .user-box,
+  .structure .first-news .pass-box{
+  
+  font-size: 120%;
+  
+  }
   }
   @media all and (max-width: 650px) {
     .el-moco-banner {
