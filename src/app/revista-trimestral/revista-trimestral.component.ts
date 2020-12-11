@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-
+import { NoticiasService } from '../services/noticias.service';
+import { bannerTrimestral } from '../models/patrocinadores';
 @Component({
   selector: 'app-revista-trimestral',
   templateUrl: './revista-trimestral.component.html',
@@ -25,10 +26,21 @@ export class RevistaTrimestralComponent implements OnInit {
   revista_elementos: number[] = [];
   elementos : number;
   top_medida : number;
+  bannerList: bannerTrimestral[];
+  banner1 : boolean = false;
+  banner2 : boolean = false;
+  banner3 : boolean = false;
 
+  banner1Image : string = "";
+  banner2Image : string = "";
+  banner3Image : string = "";
+
+  banner1Url : string = "";
+  banner2Url : string = "";
+  banner3Url : string = "";
 
   images = ["./../../assets/images/Revista_Banner.png", "./../../assets/images/Revista_Banner.png", "./../../assets/images/Revista_Banner.png"];
-  constructor(private cookie: CookieService, public router: Router) { }
+  constructor(private cookie: CookieService, public router: Router, public noticiasService: NoticiasService) { }
 
   ngOnInit(): void {
     var cookie = this.cookie.check("username");
@@ -47,9 +59,31 @@ export class RevistaTrimestralComponent implements OnInit {
       this.top_medida = i + 1;
       this.eje_top.push(i+'9rem');
     } 
+    this.noticiasService.getBanner().snapshotChanges().subscribe(item => {
+      this.bannerList = [];
+        item.slice().reverse().forEach(element => {
+          let json = element.payload.toJSON();
+          json["$key"] = element.key;
+          this.bannerList.push(json as bannerTrimestral);
+        });
+      
+      if(this.bannerList[0].banner1Image !== ""){
+        this.banner1 = true;
+        this.banner1Image = this.bannerList[0].banner1Image;
+        this.banner1Url = this.bannerList[0].banner1Url;
+      }
+      if(this.bannerList[0].banner2Image !== ""){
+        this.banner2 = true;
+        this.banner2Image = this.bannerList[0].banner2Image;
+        this.banner2Url = this.bannerList[0].banner2Url;
+      }
+      if(this.bannerList[0].banner3Image !== ""){
+        this.banner3 = true;
+        this.banner3Image = this.bannerList[0].banner3Image;
+        this.banner3Url = this.bannerList[0].banner3Url;
+      }
 
-    console.log("medidas: :v");
-    console.log(this.eje_top);
+    });
   }
   primeraColumna(number : any) {
     

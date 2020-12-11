@@ -169,6 +169,8 @@ a {text-decoration: none;}
   background-position: center;
   background-size: contain; 
   border: 0.5px solid #ffffff;
+    background-size: cover;
+    background-position: center;
 }
 .navbar-moco .navbar-nav .nav-link-moconauta .opciones{
 color:rgb(141, 150, 61);
@@ -296,7 +298,7 @@ font-size: 120%;
     height: 275px;
     position: relative;
     background-position: center;
-    background-size: 100%, 100%;
+    background-size: cover;
     background-repeat: no-repeat; 
     background-image:  url("./../../assets/images/banner-sin-moco.png");
   }
@@ -470,17 +472,19 @@ font-size: 120%;
 }
 .structure .first-news .usuario-foto{
   width: 80%;
-  height: 50%;
+  height: 70%;
   position: absolute;
-  top: 45%;
+  top: 30%;
   left: 15%;
+
 }
 .structure .first-news .usuario-foto .picture{
   width: 100%;
-  height: 40%;
+  height: 30%;
   position: absolute;
   top: 0%;
   left: 0%;
+
 }
 .structure .first-news .usuario-foto .picture .box-picture{
   width: 30%;
@@ -502,11 +506,10 @@ border: 0.1875em solid #0f3f1d;
 }
 .structure .first-news .usuario-foto .name{
   width: 100%;
-  height: 30%;
+  height: 10%;
   position: absolute;
-  top: 40%;
+  top: 32%;
   left: 0%;
-
 }
 .structure .first-news .usuario-foto .name .box-name{
   width: 60%;
@@ -521,11 +524,58 @@ border: 0.1875em solid #0f3f1d;
 }
 .structure .first-news .usuario-foto .cerrar{
   width: 100%;
-  height: 20%;
+  height: 10%;
   position: absolute;
-  top: 70%;
+  top: 80%;
   left: 0%;
-
+}
+.structure .first-news .usuario-foto .subscribe{
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  top: 62.5%;
+  left: 0%;
+}
+.structure .first-news .usuario-foto .edit{
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  top: 45%;
+  left: 0%;
+}
+.structure .first-news .usuario-foto .edit .button_class, 
+.structure .first-news .usuario-foto .subscribe .button_class, 
+.structure .first-news .usuario-foto .cerrar .button_class{
+text-decoration: none;
+font-family: 'Anaheim';
+width: 50%;
+height: 100%;
+left: 25%;
+position: absolute;
+border: none;
+padding: 1%;
+border-radius: 50px;
+font-size: 200%;
+text-align: center;
+color: rgb(255, 255, 255);
+}
+.structure .first-news .usuario-foto .cerrar .button_class{
+  background-color: rgb(181, 109, 50);
+}
+.structure .first-news .usuario-foto .subscribe .button_class{
+  background-color: rgb(135, 181, 50);
+}
+.structure .first-news .usuario-foto .edit .button_class{
+  background-color: rgb(95, 181, 50);
+}
+.structure .first-news .usuario-foto .cerrar .button_class:hover{
+  background-color: rgb(163, 84, 19);
+}
+.structure .first-news .usuario-foto .subscribe .button_class:hover{
+  background-color: rgb(106, 153, 18);
+}
+.structure .first-news .usuario-foto .edit .button_class:hover{
+  background-color: rgb(65, 151, 18);
 }
 .structure .first-news .usuario-foto .cerrar .box-cerrar{
   width: 60%;
@@ -539,10 +589,10 @@ border: 0.1875em solid #0f3f1d;
   background-image: url("./../../assets/images/CerrarSesion.png");
 }
 .structure .first-news .usuario-new-line {
-  width:80%;
-  height:30%;
+  width: 80%;
+  height: 25%;
   position: absolute;
-  top: 10%;
+  top: 3%;
   left: 15%;
   background-image: url("./../../assets/images/LogoMoconauta.png");
   background-repeat: no-repeat;
@@ -634,13 +684,17 @@ background-position: center;*/
   height:100%;
   position: absolute;
   left: 25%;
-background-image: url("./../../assets/images/entrarMoconauta.png");
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
+background-color: rgb(90, 165, 51);
+text-decoration: none;
+font-family: 'Varela Round';
+padding: 1%;
+border-radius: 50px;
+font-size: 200%;
+text-align: center;
+color: rgb(255, 255, 255);
 }
 .structure .first-news .ingresar-button .login_btn:hover {
-  background-image: url("./../../assets/images/entrarMoconautaHover.png");
+  background-color: rgb(52, 117, 17);
 }
 .structure .first-news .text-olvidaste{
   width:80%;
@@ -672,7 +726,7 @@ padding-right: 20%;
   width:80%;
   height:20%;
   position: absolute;
-  top: 155%;
+  top: 145%;
   left: 15%;
 background-image: url("./../../assets/images/suscribeteMoconauta.png");
 background-repeat: no-repeat;
@@ -1285,7 +1339,7 @@ text-align: center;
         padding-right: 10%;
       }
       .structure .first-news .suscribete-button{
-        top: 80%;
+        top: 82%;
         height: 15%;
       }
   .structure .first-news .candado{
@@ -1425,7 +1479,9 @@ text-align: center;
     .structure .first-news .text-2{
       font-size: 130%;
     }
-  
+    .structure .first-news .ingresar-button .login_btn {
+    font-size: 170%;
+    }
 
 }
 @media all and (max-width: 950px) {
@@ -1619,6 +1675,18 @@ font-size: 120%;
   .structure .first-news .text-2{
     font-size: 120%;
   }
+.structure .first-news .usuario-foto .edit .button_class, 
+.structure .first-news .usuario-foto .subscribe .button_class, 
+.structure .first-news .usuario-foto .cerrar .button_class{
+width: 100%;
+left: 0%;
+}
+.structure .first-news .usuario-foto{
+  height: 80%;
+}
+.structure .first-news .ingresar-button .login_btn {
+  font-size: 130%;
+  }
 }
 @media all and (max-width: 650px) {
   .el-moco-banner {
@@ -1794,6 +1862,7 @@ padding-left: 3rem;
       }
       .structure .first-news .ingresar-button{
         height: 10%;
+        width: ;
       }
   .el-moco-banner {
     height: 140px;
@@ -1871,6 +1940,11 @@ padding-left: 3rem;
     .structure .first-news .confirmacion-2{
       font-size: 130%;
     }
+    .structure .first-news .ingresar-button .login_btn {
+      font-size: 110%;
+      width: 90%;
+      left: 5%;
+      }
 }
 @media all and (max-width: 400px) {
   .el-moco-banner {

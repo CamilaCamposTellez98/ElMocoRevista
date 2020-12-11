@@ -177,6 +177,8 @@ a {text-decoration: none;}
   background-position: center;
   background-size: contain; 
   border: 0.5px solid #ffffff;
+    background-size: cover;
+    background-position: center;
 }
 .navbar-moco .navbar-nav .nav-link-moconauta .opciones{
 color:rgb(141, 150, 61);
@@ -439,7 +441,7 @@ font-size: 120%;
       height: 275px;
       position: relative;
       background-position: center;
-      background-size: 100%, 100%;
+      background-size: cover;
       background-repeat: no-repeat; 
       background-image:  url("./../../assets/images/banner-sin-moco.png");
     }

@@ -5,19 +5,27 @@ import { ResizedEvent } from 'angular-resize-event';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
-  selector: 'app-suscribete',
-  templateUrl: './suscribete.component.html',
-  styleUrls: ['./suscribete.component.css']
+  selector: 'app-suscripciones',
+  templateUrl: './suscripciones.component.html',
+  styleUrls: ['./suscripciones.component.css']
 })
-export class SuscribeteComponent implements OnInit {
+export class SuscripcionesComponent implements OnInit {
+
   userPicture : string = "";
   userName : string = "";
   Moconauta : string = "MOCONAUTA ";
   Ingreso : string = "INGRESO";
   fileToUpload1: File = null;
   registroForm: FormGroup;
+  incioSesion: FormGroup;
+  editForm: FormGroup;
   submitted = false;
+  private mail : string;
+  private pass : string;
+
+  logged : boolean = false;;
 
   porcentajeTop: number;
   width: number;
@@ -55,6 +63,13 @@ export class SuscribeteComponent implements OnInit {
       pass2: ['', [Validators.minLength(6), Validators.required]],
       tycs: ['', [Validators.requiredTrue]],
     });
+    this.incioSesion = this.formBuilder.group({
+      mail: ['', [Validators.email, Validators.required]],
+      pass: ['', [Validators.required]],
+    });
+    this.editForm = this.formBuilder.group({
+      mail: ['', [Validators.email, Validators.required]],
+    });
   }
   redirectTo():void{
     this.router.navigate(['/home'])
@@ -69,9 +84,6 @@ export class SuscribeteComponent implements OnInit {
     else if(this.registroForm.value.pass1 !== this.registroForm.value.pass2){
       this.showSnackbar('Las contraseñas no coinciden', '', 3000);
     }
-    else if(this.fileToUpload1 === null){
-      this.showSnackbar('Favor de seleccionar una foto de perfil', '', 3000);
-    }
     else{
       let user = {
         age : this.registroForm.value.age,
@@ -81,13 +93,33 @@ export class SuscribeteComponent implements OnInit {
         user : this.registroForm.value.user_name,
       }
       this.submitted = true;
-     this.authService.createUser(this.registroForm.value.mail, this.registroForm.value.pass1, user, this.fileToUpload1).then( r => {
-      if(r.code){
-        this.submitted = false;
-      }
-      
-     });
+     this.authService.createUser(this.registroForm.value.mail, this.registroForm.value.pass1, user, this.fileToUpload1);
     }
+    console.log(this.fileToUpload1);
+  }
+  iniciarSesion():void{
+    if(this.incioSesion.valid === false){
+      this.showSnackbar('Favor de ingresar sus datos completos', '', 3000);
+    }
+    else{
+      this.authService.loggeo(this.incioSesion.value.mail, this.incioSesion.value.pass).then(r => {
+        if(r.code === "auth/wrong-password"){
+          this.showSnackbar('La contraseña es incorrecta', '', 4000);
+        }
+        else if (r.user){
+          this.showSnackbar('Ingreso exitoso', '', 2000);
+          this.logged = true;
+          this.mail = this.incioSesion.value.mail;
+          this.pass = this.incioSesion.value.pass;
+        } 
+        else{
+          this.showSnackbar('Ocurrió un error, por favor intenta más tarde', '', 3000);
+        } 
+      });
+    }
+  }
+  reestablecerMail():void{
+    
   }
   onResizedPhoto(event: ResizedEvent):void {
     this.width = event.newHeight;
@@ -98,7 +130,6 @@ export class SuscribeteComponent implements OnInit {
     this.padding_photo = this.width - (this.width / 4) 
   }
   onResizedForm(event: ResizedEvent):void {
-    console.log("ola")
     this.heigth = event.newWidth;
     let square = this.width / 2;
     let form = this.heigth / 2;
