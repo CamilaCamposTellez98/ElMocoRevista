@@ -98,6 +98,7 @@ export class IngresoComponent implements OnInit {
     this.authService.SignOut();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.authService.loggeo(this.usuario, this.contra).then(r => {
       if(r.code === "auth/wrong-password" || r.code === "auth/user-not-found"){
         this.ingresoColor = "darkred";
@@ -144,12 +145,22 @@ export class IngresoComponent implements OnInit {
     var uID;
     if(this.authService.getUid() === "no"){
 >>>>>>> parent of f22f970... proyecto terminado
+=======
+    this.authService.loggeo(this.usuario, this.contra).then(r => this.getUserUid());
+  }
+  getUserUid(){
+    var uID;
+    if(this.authService.getUid() === "no"){
+>>>>>>> parent of f22f970... proyecto terminado
       this.ingresoColor = "darkred";
       this.ingresoTexto = "Correo o contraseña incorrectos";
     }
     else{
 <<<<<<< HEAD
+<<<<<<< HEAD
       console.log(this.authService.getUid())
+=======
+>>>>>>> parent of f22f970... proyecto terminado
 =======
 >>>>>>> parent of f22f970... proyecto terminado
       uID = this.authService.getUid();
@@ -159,8 +170,13 @@ export class IngresoComponent implements OnInit {
      this.storage.storage.ref("private/users/"+uID+"/profile").getDownloadURL().then((url) => {
         this.authService.getUserData(uID).subscribe(item =>{
 <<<<<<< HEAD
+<<<<<<< HEAD
          console.log(item.payload.data()['user'])
           this.cookie.set("image", url);
+=======
+          this.cookie.set("image", url);
+          
+>>>>>>> parent of f22f970... proyecto terminado
 =======
           this.cookie.set("image", url);
           
@@ -171,7 +187,10 @@ export class IngresoComponent implements OnInit {
       });  
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
+=======
+>>>>>>> parent of f22f970... proyecto terminado
 =======
 >>>>>>> parent of f22f970... proyecto terminado
   }

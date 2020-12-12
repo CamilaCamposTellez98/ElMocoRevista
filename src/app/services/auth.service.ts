@@ -14,6 +14,7 @@ export class AuthService {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   loginAdmin(user, password) {
 =======
   loginAdmin(user, password){
@@ -22,11 +23,15 @@ export class AuthService {
 =======
   loginAdmin(user, password){
 >>>>>>> parent of f22f970... proyecto terminado
+=======
+  loginAdmin(user, password){
+>>>>>>> parent of f22f970... proyecto terminado
     return this.db.collection('admin-users', ref => ref.where('username', '==', user).where('password', '==', password)).snapshotChanges();
     //return this.db.collection('users', ref => ref.where('email', '==', email).where('password', '==', password)).snapshotChanges();
   }
  //camila.campos.tellez@gmail.com
   loggeo(user, password) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return this.afAuth.auth.signInWithEmailAndPassword(user, password).then(data => {
@@ -67,6 +72,18 @@ export class AuthService {
     if(this.afAuth.auth.currentUser === null){
       return "no";   
 >>>>>>> parent of f22f970... proyecto terminado
+=======
+    return new Promise((resolve) => {
+    this.afAuth.auth.signInWithEmailAndPassword(user, password).then(data=>
+      {
+        resolve();
+    })
+  });
+  }
+  getUid() {
+    if(this.afAuth.auth.currentUser === null){
+      return "no";   
+>>>>>>> parent of f22f970... proyecto terminado
     }
     else{
       return this.afAuth.auth.currentUser.uid;
@@ -87,6 +104,7 @@ export class AuthService {
     });
     
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   updateImage(uid: string, file : File){
@@ -127,6 +145,12 @@ export class AuthService {
     }).catch(function(error) {
       console.log(error)
 >>>>>>> parent of f22f970... proyecto terminado
+=======
+  resetPassword(mail : string){
+    this.afAuth.auth.sendPasswordResetEmail(mail).then(function() {
+    }).catch(function(error) {
+      console.log(error)
+>>>>>>> parent of f22f970... proyecto terminado
     });
   }
   SignOut() {
@@ -139,11 +163,15 @@ export class AuthService {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   registerRevista(data) {
 =======
 
   registerRevista(data){
 >>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
+=======
+  registerRevista(data){
+>>>>>>> parent of f22f970... proyecto terminado
 =======
   registerRevista(data){
 >>>>>>> parent of f22f970... proyecto terminado

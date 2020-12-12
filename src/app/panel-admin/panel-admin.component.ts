@@ -5349,6 +5349,10 @@ export class PanelAdminComponent implements OnInit {
       this.revistaDigitalObject.imagenPrincipal = this.revistaDigitalParaEditar[0].imagenPrincipal;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      console.log("ola 1")
+>>>>>>> parent of f22f970... proyecto terminado
 =======
       console.log("ola 1")
 >>>>>>> parent of f22f970... proyecto terminado

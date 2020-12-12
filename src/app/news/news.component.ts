@@ -101,8 +101,11 @@ export class NewsComponent implements OnInit {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   appStore : string;
 
+=======
+>>>>>>> parent of f22f970... proyecto terminado
 =======
 >>>>>>> parent of f22f970... proyecto terminado
   seccion: string = "";
@@ -151,6 +154,7 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
    /* this.aFormGroup = new FormGroup({
@@ -159,11 +163,16 @@ export class NewsComponent implements OnInit {
 
 >>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
 =======
+=======
+>>>>>>> parent of f22f970... proyecto terminado
 
     /* this.aFormGroup = new FormGroup({
        'recaptcha': new FormControl(null)
      }) */
 
+<<<<<<< HEAD
+>>>>>>> parent of f22f970... proyecto terminado
+=======
 >>>>>>> parent of f22f970... proyecto terminado
     var month = this.myDate.getMonth();
     var day = this.myDate.getDate();
@@ -969,6 +978,7 @@ export class NewsComponent implements OnInit {
 <<<<<<< HEAD
   inicioSesion() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.router.navigate(['/ingreso']);
 =======
   app() {
@@ -976,11 +986,16 @@ export class NewsComponent implements OnInit {
     window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
 >>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
 =======
+=======
+>>>>>>> parent of f22f970... proyecto terminado
     this.router.navigate(['/ingreso'])
   }
   app() {
     window.open('https://apps.apple.com/mx/app/el-moco/id1528073445');
     window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
+<<<<<<< HEAD
+>>>>>>> parent of f22f970... proyecto terminado
+=======
 >>>>>>> parent of f22f970... proyecto terminado
   }
   fb() {
@@ -1135,10 +1150,13 @@ export class NewsComponent implements OnInit {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   }
   app() {
     this.router.navigate(['/suscribete']);
+=======
+>>>>>>> parent of f22f970... proyecto terminado
 =======
 >>>>>>> parent of f22f970... proyecto terminado
   }
