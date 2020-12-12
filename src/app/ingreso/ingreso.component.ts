@@ -5,7 +5,6 @@ import { ResizedEvent } from 'angular-resize-event';
 import { Router } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
-
 @Component({
   selector: 'app-ingreso',
   templateUrl: './ingreso.component.html',
@@ -68,7 +67,8 @@ export class IngresoComponent implements OnInit {
     });
   }
   openTwoLink(){
-    this.router.navigate(['/suscribete']);
+    window.open('https://apps.apple.com/mx/app/el-moco/id1528073445');
+    window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
   }
   changeSection(section : number){
     if(section === 0){
@@ -94,9 +94,9 @@ export class IngresoComponent implements OnInit {
   }
   register(e: any){
     this.usuario = e.target.user_name.value;
-    console.log(this.usuario)
     this.contra = e.target.pass_name.value;
     this.authService.SignOut();
+<<<<<<< HEAD
 <<<<<<< HEAD
     this.authService.loggeo(this.usuario, this.contra).then(r => {
       if(r.code === "auth/wrong-password" || r.code === "auth/user-not-found"){
@@ -137,25 +137,43 @@ export class IngresoComponent implements OnInit {
     var uID;
     if(this.authService.getUid() === "no"){
       console.log("NO existo");
+=======
+    this.authService.loggeo(this.usuario, this.contra).then(r => this.getUserUid());
+  }
+  getUserUid(){
+    var uID;
+    if(this.authService.getUid() === "no"){
+>>>>>>> parent of f22f970... proyecto terminado
       this.ingresoColor = "darkred";
       this.ingresoTexto = "Correo o contraseña incorrectos";
     }
     else{
+<<<<<<< HEAD
       console.log(this.authService.getUid())
+=======
+>>>>>>> parent of f22f970... proyecto terminado
       uID = this.authService.getUid();
       this.ingresoColor = "green";
       this.ingresoTexto = "Cargando...";
       this.botonDisabled = "hidden";
      this.storage.storage.ref("private/users/"+uID+"/profile").getDownloadURL().then((url) => {
         this.authService.getUserData(uID).subscribe(item =>{
+<<<<<<< HEAD
          console.log(item.payload.data()['user'])
           this.cookie.set("image", url);
+=======
+          this.cookie.set("image", url);
+          
+>>>>>>> parent of f22f970... proyecto terminado
           this.cookie.set("username", item.payload.data()['user']);
           window.location.reload(); 
         })
       });  
     }
+<<<<<<< HEAD
 >>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
+=======
+>>>>>>> parent of f22f970... proyecto terminado
   }
   reestablecerContra(){
     this.authService.resetPassword(this.emailRecovery);
@@ -165,12 +183,6 @@ export class IngresoComponent implements OnInit {
     this.authService.SignOut();
     window.location.reload();
   }
-  suscribete(){
-    this.router.navigate(['/suscripciones']);
-  }
-  editar(){
-    this.router.navigate(['/editar-perfil']);
-  }
   onResized(event: ResizedEvent) {
       this.height = event.newHeight;
       var width = event.newWidth;
@@ -179,5 +191,4 @@ export class IngresoComponent implements OnInit {
       var porcentajeFinal = (100 - porcentaje) / 2;
       this.porcentajeLeft = porcentajeFinal.toFixed(1);
     }
-   
 }

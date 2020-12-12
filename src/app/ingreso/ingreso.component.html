@@ -98,16 +98,9 @@
                       </div>
                 </div>
             </div>
-            <div class="edit">
-                    <button class="button_class" (click)="editar()">Edita tu perfil</button>      
+            <div class="cerrar" (click)="cerrarSesion()">
+                <div class="box-cerrar"></div>
             </div>
-            <div class="subscribe">
-                <button class="button_class" (click)="suscribete()">¡Suscríbete!</button> 
-            </div>
-            <div class="cerrar">
-                <button class="button_class" (click)="cerrarSesion()">Cerrar sesión</button> 
-            </div>
-            
         </div>
     </div>
     <div *ngIf="ingreso" class="first-news">
@@ -127,9 +120,7 @@
             <input class="pass-input"  name="pass_name" type="password" placeholder="Contraseña">
         </div>
         <div class="ingresar-button">
-            <button name="button" class="btn login_btn" [style.visibility]="botonDisabled" style="border-radius: 15rem;" type="submit" value="Send">
-            INICIAR SESIÓN
-            </button>
+            <button name="button" class="btn login_btn" [style.visibility]="botonDisabled" style="border-radius: 15rem;" type="submit" value="Send"></button>
         </div>
        
         </form>

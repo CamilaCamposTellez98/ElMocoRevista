@@ -321,8 +321,7 @@ table {
   .structure .options .vertical-menu a.option .especial,
   .structure .options .vertical-menu a.option .revista,
   .structure .options .vertical-menu a.option .mocotips,
-  .structure .options .vertical-menu a.option .secciones,
-  .structure .options .vertical-menu a.option .banner{
+  .structure .options .vertical-menu a.option .secciones{
     background-repeat: no-repeat;
     background-size: 50%, 50%;
     background-position: center;
@@ -349,9 +348,6 @@ table {
   }
   .structure .options .vertical-menu a.option .secciones{
     background-image: url("./../../assets/images/secciones_icono.png");
-  }
-  .structure .options .vertical-menu a.option .banner{
-    background-image: url("./../../assets/images/banner_icon.png");
   }
   .structure .first-news .new-image-banner{ 
     background-repeat: no-repeat;

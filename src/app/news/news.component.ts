@@ -100,8 +100,11 @@ export class NewsComponent implements OnInit {
   noticia7_new: string;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   appStore : string;
 
+=======
+>>>>>>> parent of f22f970... proyecto terminado
   seccion: string = "";
   seccion2: string = "";
 =======
@@ -147,6 +150,7 @@ export class NewsComponent implements OnInit {
   @ViewChild('scroll', { read: ElementRef }) public scroll: ElementRef<any>;
   ngOnInit(): void {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
    /* this.aFormGroup = new FormGroup({
@@ -154,6 +158,13 @@ export class NewsComponent implements OnInit {
     }) */
 
 >>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
+=======
+
+    /* this.aFormGroup = new FormGroup({
+       'recaptcha': new FormControl(null)
+     }) */
+
+>>>>>>> parent of f22f970... proyecto terminado
     var month = this.myDate.getMonth();
     var day = this.myDate.getDate();
     var hour = this.myDate.getHours();
@@ -957,14 +968,21 @@ export class NewsComponent implements OnInit {
   }
 <<<<<<< HEAD
   inicioSesion() {
+<<<<<<< HEAD
     this.router.navigate(['/ingreso']);
 =======
   app() {
     window.open('https://apps.apple.com/mx/app/el-moco/id1528073445');
     window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
 >>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
+=======
+    this.router.navigate(['/ingreso'])
   }
-
+  app() {
+    window.open('https://apps.apple.com/mx/app/el-moco/id1528073445');
+    window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
+>>>>>>> parent of f22f970... proyecto terminado
+  }
   fb() {
 
     let url = window.location.href;
@@ -1116,10 +1134,13 @@ export class NewsComponent implements OnInit {
       this.bannerHeight = event.newHeight;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   }
   app() {
     this.router.navigate(['/suscribete']);
+=======
+>>>>>>> parent of f22f970... proyecto terminado
   }
   onResizedComments(event: ResizedEvent) {
     this.comentsHeight = event.newHeight;
