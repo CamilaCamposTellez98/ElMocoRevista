@@ -1887,24 +1887,3 @@ a {text-decoration: none;}
         font-size:50%;
       } 
    }
-   @media all and (max-width: 330px) {
-        .navbar-moco .navbar-toggler{
-          background-position-x: 15%;
-        }
-        .el-moco-banner {
-          height: 110px;
-        }
-    
-        .footer .lema{ 
-          right: 3%;
-        }
-        .footer .redes-box{ 
-          right: 5%;
-        }   
-        .footer .avisos-ter-box{ 
-          right: 3%;   
-        }
-        .footer .text-box{ 
-          right: 3%;
-        }
-       }

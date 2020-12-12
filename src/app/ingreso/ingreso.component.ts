@@ -97,6 +97,7 @@ export class IngresoComponent implements OnInit {
     console.log(this.usuario)
     this.contra = e.target.pass_name.value;
     this.authService.SignOut();
+<<<<<<< HEAD
     this.authService.loggeo(this.usuario, this.contra).then(r => {
       if(r.code === "auth/wrong-password" || r.code === "auth/user-not-found"){
         this.ingresoColor = "darkred";
@@ -128,6 +129,33 @@ export class IngresoComponent implements OnInit {
         this.ingresoTexto = "Ocurrió un error, por favor inténtalo más tarde.";
       } 
     });
+=======
+    this.authService.loggeo(this.usuario, this.contra).then(r => this.getUserUid());
+  }
+  getUserUid(){
+    console.log("ola")
+    var uID;
+    if(this.authService.getUid() === "no"){
+      console.log("NO existo");
+      this.ingresoColor = "darkred";
+      this.ingresoTexto = "Correo o contraseña incorrectos";
+    }
+    else{
+      console.log(this.authService.getUid())
+      uID = this.authService.getUid();
+      this.ingresoColor = "green";
+      this.ingresoTexto = "Cargando...";
+      this.botonDisabled = "hidden";
+     this.storage.storage.ref("private/users/"+uID+"/profile").getDownloadURL().then((url) => {
+        this.authService.getUserData(uID).subscribe(item =>{
+         console.log(item.payload.data()['user'])
+          this.cookie.set("image", url);
+          this.cookie.set("username", item.payload.data()['user']);
+          window.location.reload(); 
+        })
+      });  
+    }
+>>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
   }
   reestablecerContra(){
     this.authService.resetPassword(this.emailRecovery);

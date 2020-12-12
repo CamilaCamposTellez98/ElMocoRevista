@@ -379,61 +379,6 @@ export class NoticiasService {
       }
     });
   }
-  updateNoticiaPlantilla6(noticia: NoticiasPlantilla6, seccion: string) {
-    return new Promise((resolve, reject) => {
-      if (seccion === "Noticias") {
-        /*Inserta en el link de noticias*/
-        this.noticiasList = this.firebase.list('/noticias');
-      }
-      else if (seccion === "Ciencia") {
-        /*Inserta en el link de ciencia*/
-        this.noticiasList = this.firebase.list('/ciencia');
-      }
-      else if (seccion === "Arte") {
-        /*Inserta en el link de arte*/
-        this.noticiasList = this.firebase.list('/arte');
-      }
-      else if (seccion === "Ocio") {
-        /*Inserta en el link de ocio*/
-        this.noticiasList = this.firebase.list('/ocio');
-      }
-      else if (seccion === "Descubre") {
-        /*Inserta en el link de descubre*/
-        this.noticiasList = this.firebase.list('/descubre');
-      }
-      else if (seccion === "Mocotips") {
-        /*Inserta en el link de mocotips*/
-        this.noticiasList = this.firebase.list('/mocotips');
-      }
-
-      if (noticia) {
-        this.noticiasList.update(noticia.$key, {
-        tittle: noticia.tittle,
-        phrase: noticia.phrase,
-        autor: noticia.autor,
-        plantilla: noticia.plantilla,
-        date: noticia.date,
-        part1: noticia.part1,
-        part2: noticia.part2,
-        part3: noticia.part3,
-        part4: noticia.part4,
-        part5: noticia.part5,
-        part6: noticia.part6,
-        part7: noticia.part7,
-        principalImage: noticia.principalImage,
-        image1: noticia.image1,
-        image2: noticia.image2,
-        image3: noticia.image3,
-        image4: noticia.image4,
-        image5: noticia.image5,
-        image6: noticia.image6,
-        youtube: noticia.youtube
-        }).then(() => {
-          resolve();
-        });
-      }
-    });
-  }
   updatetNoticiasEnNodoGeneral(noticiaNodoGeneral: noticiasNodoGeneral) {
     return new Promise((resolve, reject) => {
       this.noticiasNodoGeneralList = this.firebase.list('/todasLasNoticiasJuntas');

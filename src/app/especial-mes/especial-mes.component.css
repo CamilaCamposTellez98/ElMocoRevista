@@ -3590,33 +3590,3 @@ min-height: 300px;
     height: 120px;
   }
  }
- @media all and (max-width: 330px) {
-  .structure-news-selected .first-news .new-post-info,
-  .structure-science-selected .first-news .new-post-info,
-  .structure-art-selected .first-news .new-post-info,
-  .structure-fun-selected .first-news .new-post-info,
-  .structure-find-selected .first-news .new-post-info,
-  .structure-mocotips-selected .first-news .new-post-info{
-  width: 120%;
-  left: -7%;
-  }
-  .navbar-moco .navbar-toggler{
-    background-position-x: 15%;
-  }
-  .el-moco-banner {
-    height: 110px;
-  }
-
-  .footer1 .lema{ 
-    right: 5%;
-  }
-  .footer1 .redes-box{ 
-    right: 5%;
-  }   
-  .footer1 .avisos-ter-box{ 
-    right: 0%;
-  }
-  .footer1 .text-box{ 
-    right: 5%;
-  }
- }

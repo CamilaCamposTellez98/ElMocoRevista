@@ -123,15 +123,7 @@ export class RevistaTrimestralComponent implements OnInit {
       return styles;     
     }
   }
-  redirectRevista() {
-    var revista = window.open(
-      'https://mocoshop.mx/producto/la-locura/',
-    );
-    if (revista.focus) {
-      revista.focus();
-    }
-    return false;
-  }
+
 
   primeraColumnaDescripcion(number : any) {
     

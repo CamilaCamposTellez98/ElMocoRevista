@@ -344,8 +344,8 @@
             <label class="custom-file-label" for="validatedCustomFile">{{fileToUpload1Name4}}</label>
           </div>
         </div>
-        <div  class="uploadYoutubeText">YouTube Código:</div>
-        <input  [(ngModel)]="titulo_youtube" maxlength="65" class="titulo-input-youtube"
+        <div *ngIf="part3AndYoutubeImagenes" class="uploadYoutubeText">YouTube Código:</div>
+        <input *ngIf="part3AndYoutubeImagenes" [(ngModel)]="titulo_youtube" maxlength="65" class="titulo-input-youtube"
           type="text" placeholder="Únicamente el código del video">
        
         <div *ngIf="plantillaSubirImagen1" class="plantillaImagen1" style="background-color: white;"></div>

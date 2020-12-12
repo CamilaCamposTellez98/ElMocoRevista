@@ -24,12 +24,18 @@ export class AuthService {
     return this.db.collection('users', ref => ref.where('username', '==', user).where('password', '==', password)).snapshotChanges();
     //return this.db.collection('users', ref => ref.where('email', '==', email).where('password', '==', password)).snapshotChanges();
   }
+<<<<<<< HEAD
   loginAdmin(user, password) {
+=======
+  loginAdmin(user, password){
+    console.log("ola")
+>>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
     return this.db.collection('admin-users', ref => ref.where('username', '==', user).where('password', '==', password)).snapshotChanges();
     //return this.db.collection('users', ref => ref.where('email', '==', email).where('password', '==', password)).snapshotChanges();
   }
   //camila.campos.tellez@gmail.com
   loggeo(user, password) {
+<<<<<<< HEAD
     return this.afAuth.auth.signInWithEmailAndPassword(user, password).then(data => {
       return data;
     }).catch((error) => {
@@ -40,6 +46,22 @@ export class AuthService {
   getUid() {
     if (this.afAuth.auth.currentUser === null) {
       return "no";
+=======
+    return new Promise((resolve) => {
+    this.afAuth.auth.signInWithEmailAndPassword(user, password).then(data=>
+      {
+        console.log('user dign in success ',data)
+
+        console.log(this.afAuth.auth.currentUser.uid)
+        resolve();
+    })
+  });
+  }
+  getUid() {
+    if(this.afAuth.auth.currentUser === null){
+      console.log("no se encontró");
+      return "no";   
+>>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
     }
     else {
       return this.afAuth.auth.currentUser.uid;
@@ -49,9 +71,11 @@ export class AuthService {
     var status = "Ds";
     this.afAuth.auth.onAuthStateChanged((user) => {
       if (user) {
+       console.log("CHI")
         return status;
       }
       else {
+        console.log("ño")
         return status;
       }
     });
@@ -118,6 +142,7 @@ export class AuthService {
       user: data.user
     });
   }
+<<<<<<< HEAD
   updateImage(uid: string, file : File){
     this.storage.storage.ref("private/users/"+uid+"/profile").getDownloadURL().then((url) => {
     this.storage.storage.refFromURL(url).delete();
@@ -142,6 +167,14 @@ export class AuthService {
       this.router.navigate(['/ingreso']);
     }).catch(function (error) {
       this.showSnackbar('Ocurrió un error, por favor intenta más tarde', '', 3000);
+=======
+  resetPassword(mail : string){
+    this.afAuth.auth.sendPasswordResetEmail(mail).then(function() {
+     console.log("SI funciono") // Email sent.
+    }).catch(function(error) {
+      console.log("no funciono") // Email s// An error happened.
+      console.log(error)
+>>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
     });
   }
   SignOut() {
@@ -152,7 +185,12 @@ export class AuthService {
   getUserData(uid) {
     return this.db.collection('users').doc(uid).snapshotChanges();
   }
+<<<<<<< HEAD
   registerRevista(data) {
+=======
+
+  registerRevista(data){
+>>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
     return this.db.collection('revista-digital').add(data)
   }
   registerRevistaMocotips(data) {

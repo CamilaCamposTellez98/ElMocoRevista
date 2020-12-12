@@ -1369,31 +1369,6 @@ font-size: 120%;
     font-size: 160%;
   }
  }
- @media all and (max-width: 330px) {
-  .navbar-moco .navbar-toggler{
-    background-position-x: 15%;
-  }
-  .el-moco-banner {
-    height: 110px;
-  }
-
-  .footer .lema{ 
-    right: 3%;
-  }
-  .footer .redes-box{ 
-    right: 5%;
-  }   
-  .footer .avisos-ter-box{ 
-    right: 3%;   
-  }
-  .footer .text-box{ 
-    right: 3%;
-  }
-  .second-news .latest-news {
-    padding-top: 30px;
-    
-  }
- }
  @media all and (max-width: 320px) {
   .second-news .latest-news .big-new .button-publish{
     bottom:-5%;
@@ -1402,7 +1377,6 @@ font-size: 120%;
 
       .structure .first-news .new-line {
         font-size: 120%;
-        top: 15px;
       }
       .structure {
         background-size: 340%, 100%;  
