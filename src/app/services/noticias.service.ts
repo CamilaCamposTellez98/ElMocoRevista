@@ -4,7 +4,7 @@ import { Noticias, NoticiasPlantilla6 } from '../models/noticias';
 import { noticiasNodoGeneral } from '../models/noticiasNodoGeneral';
 import { Comentarios } from '../models/comentarios';
 import { especialDelMes } from '../models/especialDelMes';
-import { patrocinadores } from '../models/patrocinadores';
+import { patrocinadores, bannerTrimestral } from '../models/patrocinadores';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +23,7 @@ export class NoticiasService {
   comentarioList: AngularFireList<any>;
   especialDelMesList: AngularFireList<any>;
   patrocinadoresList: AngularFireList<any>;
+  bannerList: AngularFireList<any>;
   key: string;
 
 
@@ -378,6 +379,61 @@ export class NoticiasService {
       }
     });
   }
+  updateNoticiaPlantilla6(noticia: NoticiasPlantilla6, seccion: string) {
+    return new Promise((resolve, reject) => {
+      if (seccion === "Noticias") {
+        /*Inserta en el link de noticias*/
+        this.noticiasList = this.firebase.list('/noticias');
+      }
+      else if (seccion === "Ciencia") {
+        /*Inserta en el link de ciencia*/
+        this.noticiasList = this.firebase.list('/ciencia');
+      }
+      else if (seccion === "Arte") {
+        /*Inserta en el link de arte*/
+        this.noticiasList = this.firebase.list('/arte');
+      }
+      else if (seccion === "Ocio") {
+        /*Inserta en el link de ocio*/
+        this.noticiasList = this.firebase.list('/ocio');
+      }
+      else if (seccion === "Descubre") {
+        /*Inserta en el link de descubre*/
+        this.noticiasList = this.firebase.list('/descubre');
+      }
+      else if (seccion === "Mocotips") {
+        /*Inserta en el link de mocotips*/
+        this.noticiasList = this.firebase.list('/mocotips');
+      }
+
+      if (noticia) {
+        this.noticiasList.update(noticia.$key, {
+        tittle: noticia.tittle,
+        phrase: noticia.phrase,
+        autor: noticia.autor,
+        plantilla: noticia.plantilla,
+        date: noticia.date,
+        part1: noticia.part1,
+        part2: noticia.part2,
+        part3: noticia.part3,
+        part4: noticia.part4,
+        part5: noticia.part5,
+        part6: noticia.part6,
+        part7: noticia.part7,
+        principalImage: noticia.principalImage,
+        image1: noticia.image1,
+        image2: noticia.image2,
+        image3: noticia.image3,
+        image4: noticia.image4,
+        image5: noticia.image5,
+        image6: noticia.image6,
+        youtube: noticia.youtube
+        }).then(() => {
+          resolve();
+        });
+      }
+    });
+  }
   updatetNoticiasEnNodoGeneral(noticiaNodoGeneral: noticiasNodoGeneral) {
     return new Promise((resolve, reject) => {
       this.noticiasNodoGeneralList = this.firebase.list('/todasLasNoticiasJuntas');
@@ -454,7 +510,6 @@ export class NoticiasService {
     this.firebase.object('/especialDelMes/'+keyNodo).remove();
   }
   insertPatrocinadores(patrocinador: patrocinadores) {
-    /*Inserta datos básicos dentro de la base de datos Firebase sin importar en qué sección esté la noticia*/
     this.patrocinadoresList = this.firebase.list('/patrocinadores');
     if (patrocinador) {
       this.patrocinadoresList.push({
@@ -491,6 +546,41 @@ export class NoticiasService {
   }
   getPatrocinadores() {
     return this.firebase.list('/patrocinadores', ref => ref.orderByKey());
+  }
+  /*insertBanner(banner: bannerTrimestral) {
+    console.log(banner);
+    this.bannerList = this.firebase.list('/bannerTrimestral');
+    if (bannerTrimestral) {
+      this.bannerList.push({
+        banner1Image: banner.banner1Image,
+        banner2Image: banner.banner2Image,
+        banner3Image: banner.banner3Image,
+        banner1Url: banner.banner1Url,
+        banner2Url: banner.banner2Url,
+        banner3Url: banner.banner3Url,
+      }).then(() => {
+      });
+    }
+  }*/
+  updateBanner(banner: bannerTrimestral) {
+    return new Promise((resolve, reject) => {
+      this.bannerList = this.firebase.list('/bannerTrimestral');
+      if (banner) {
+        this.bannerList.update(banner.$key, {
+          banner1Image: banner.banner1Image,
+          banner2Image: banner.banner2Image,
+          banner3Image: banner.banner3Image,
+          banner1Url: banner.banner1Url,
+          banner2Url: banner.banner2Url,
+          banner3Url: banner.banner3Url,
+        }).then(() => {
+          resolve();
+        });
+      }
+    });
+  }
+  getBanner() {
+    return this.firebase.list('/bannerTrimestral', ref => ref.orderByKey());
   }
   insertComentario(comentario: Comentarios, seccion: string) {
     /*Inserta un comentario en una noticia*/

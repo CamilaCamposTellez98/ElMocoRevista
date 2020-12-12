@@ -5,12 +5,13 @@ import { Noticias, NoticiasPlantilla6 } from '../models/noticias';
 import { Meta, Title } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import {NgxCaptchaModule,ReCaptcha2Component} from 'ngx-captcha';
+import { NgxCaptchaModule, ReCaptcha2Component } from 'ngx-captcha';
 import { comentariosConNoticia } from '../models/comentarios';
 import { ResizedEvent } from 'angular-resize-event';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
@@ -18,13 +19,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class NewsComponent implements OnInit {
 
-  Moconauta : string = "MOCONAUTA ";
-  Ingreso : string = "INGRESO"
-  userPicture : string = "";
-  userName : string = "";
-  nombreUsuario : string = "";
+  Moconauta: string = "MOCONAUTA ";
+  Ingreso: string = "INGRESO"
+  userPicture: string = "";
+  userName: string = "";
+  nombreUsuario: string = "";
+  topComment : string = "38%";
+  userID : string = "";
 
-  porcentajeTop : number;
+  porcentajeTop: number;
   height: number;
   comentsHeight: number;
   latestHeight: number;
@@ -32,23 +35,24 @@ export class NewsComponent implements OnInit {
   menuHeight: number;
   bannerHeight: number;
 
-  comentariosAllow : boolean = false;
+  comentariosAllow: boolean = false;
 
-  MoconautaSuscribeteComentario : string = "MOCONAUTA";
-  Suscribetee : string = "";
-  siteKey : string = "6LdOrb4ZAAAAAJ6UhFDmj4SU2M_CiNfKsfoIfaI1"
-  size : string = "normal";
-  comentarioTextArea : string = "";
+  MoconautaSuscribeteComentario: string = "MOCONAUTA";
+  iniciaSesion: boolean = false;
+  Suscribetee: string = "";
+  siteKey: string = "6LdOrb4ZAAAAAJ6UhFDmj4SU2M_CiNfKsfoIfaI1"
+  size: string = "normal";
+  comentarioTextArea: string = "";
 
   comentariosList: comentariosConNoticia[];
-  comentariosEliminar : string [] = [];
-  numComentarios:string ="";
+  comentariosEliminar: string[] = [];
+  numComentarios: string = "";
 
   aFormGroup: FormGroup;
-  repCaptcha : boolean = false;
+  repCaptcha: boolean = false;
   @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
 
-  email : string = "";
+  email: string = "";
 
   noticiasList: NoticiasPlantilla6[];
 
@@ -67,16 +71,16 @@ export class NewsComponent implements OnInit {
 
   bannerPhoto = "./../../assets/images/noticias_trump.png"
 
-  newstittle : string = "";
+  newstittle: string = "";
 
-  plantilla1 : boolean = false;
-  plantilla2 : boolean = false;
-  plantilla3 : boolean = false;
-  plantilla4 : boolean = false;
-  plantilla5 : boolean = false;
-  plantilla6 : boolean = false;
+  plantilla1: boolean = false;
+  plantilla2: boolean = false;
+  plantilla3: boolean = false;
+  plantilla4: boolean = false;
+  plantilla5: boolean = false;
+  plantilla6: boolean = false;
 
-  youtube_url : string = '';
+  youtube_url: string = '';
 
   newsPhoto2 = "./../../assets/images/Imagen_PlanetaGigante.png";
   newsPhoto3 = "./../../assets/images/Noticia_Arte.png";
@@ -88,8 +92,8 @@ export class NewsComponent implements OnInit {
 
   phrase_new: string = '';
   autor: string = '';
-  fecha : string = "";
-  fechaarrary : string [];
+  fecha: string = "";
+  fechaarrary: string[];
 
   noticia1_new: string;
   noticia2_new: string;
@@ -99,21 +103,10 @@ export class NewsComponent implements OnInit {
   noticia6_new: string;
   noticia7_new: string;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   appStore : string;
 
-=======
->>>>>>> parent of f22f970... proyecto terminado
-=======
->>>>>>> parent of f22f970... proyecto terminado
   seccion: string = "";
   seccion2: string = "";
-=======
-  seccion : string = "";
-  seccion2 : string = "";
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
 
   imagen1: string;
   imagen2: string;
@@ -123,9 +116,13 @@ export class NewsComponent implements OnInit {
   imagen6: string;
   imagenPrincipal: string;
 
+  youtubeVisible: boolean;
+
   visibility1: boolean;
   visibility2: boolean;
   visibility3: boolean;
+
+  currentUrl: string = "";
 
   noticias3List: Noticias[];
 
@@ -133,10 +130,14 @@ export class NewsComponent implements OnInit {
   noticiasImage: string[] = ["", "", ""];
   noticiasKey: string[] = ["", "", ""];
 
-    /*Variables para conocer  la fecha actual*/
-    myDate: any = new Date();
-    currentDate: string; //Fecha final
-    currentMonth : string;
+  /*Variables para conocer  la fecha actual*/
+  myDate: any = new Date();
+  currentDate: string; //Fecha final
+  currentMonth: string;
+
+  deletePermisson : boolean;
+  userKey : string = "";
+
   comentarioObject = {
     $key: '',
     id_noticia: '',
@@ -146,45 +147,23 @@ export class NewsComponent implements OnInit {
     userPicture: '',
     uid: ''
   }
-///
+  ///
 
-  pruebita : string;
-  constructor(private activatedRoute: ActivatedRoute, private afAuth: AngularFireAuth,  public noticiasService: NoticiasService, public meta: Meta, public title: Title, private cookie: CookieService, private formBuilder: FormBuilder, public router: Router) { }
+  pruebita: string;
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private afAuth: AngularFireAuth, public noticiasService: NoticiasService, public meta: Meta, public title: Title, private cookie: CookieService, private formBuilder: FormBuilder, public router: Router) { }
   @ViewChild('scroll', { read: ElementRef }) public scroll: ElementRef<any>;
   ngOnInit(): void {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-   /* this.aFormGroup = new FormGroup({
-      'recaptcha': new FormControl(null)
-    }) */
-
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
-=======
-=======
->>>>>>> parent of f22f970... proyecto terminado
-
-    /* this.aFormGroup = new FormGroup({
-       'recaptcha': new FormControl(null)
-     }) */
-
-<<<<<<< HEAD
->>>>>>> parent of f22f970... proyecto terminado
-=======
->>>>>>> parent of f22f970... proyecto terminado
     var month = this.myDate.getMonth();
     var day = this.myDate.getDate();
     var hour = this.myDate.getHours();
     var minute = this.myDate.getMinutes();
     var year = this.myDate.getFullYear();
- 
+
     this.reverttMonths(month);
     var cookie = this.cookie.check("username");
-    this.currentDate = this.currentMonth.toUpperCase() + " " + day + ", "+ year + " A LAS " + hour + ":" + minute;
+  
+    this.currentDate = this.currentMonth.toUpperCase() + " " + day + ", " + year + " A LAS " + hour + ":" + minute;
     this.afAuth.auth.onAuthStateChanged((user) => {
-<<<<<<< HEAD
       if (user && cookie === true) {
         this.comentariosAllow = true;
         this.MoconautaSuscribeteComentario = "¡Moconauta!";
@@ -203,36 +182,35 @@ export class NewsComponent implements OnInit {
           this.deletePermisson = false;
         }
       }
-=======
-    if (user && cookie === true) {
-     this.comentariosAllow = true;
-     this.MoconautaSuscribeteComentario = "¡Moconauta!";
-     this.Suscribetee = "Queremos saber tu opinión, déjanos un comentario.";
-      } 
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
       else {
-    this.comentariosAllow = false;
-     this.MoconautaSuscribeteComentario = "¡Suscríbete!";
-     this.Suscribetee = "Si deseas dejar un comentario debes registrarte desde nuestra App.";
-      }     
-    });  
+        this.comentariosAllow = false;
+        this.MoconautaSuscribeteComentario = "¡Suscríbete!";
+        this.iniciaSesion = true;
+        this.topComment = "38%";
+        this.Suscribetee = "Si deseas dejar un comentario debes registrarte desde nuestra App.";
+      }
+    });
     this.aFormGroup = this.formBuilder.group({
       recaptcha: ['', Validators.required]
     });
-   if(cookie === true){
-    this.Moconauta = this.cookie.get("username").toUpperCase()+" ";
-    this.Ingreso = "CERRAR SESIÓN";
-    this.userPicture =  this.cookie.get("image");
-    this.userName =  this.cookie.get("username");
-    this.nombreUsuario = this.cookie.get("username");
-   }
-   else{
-    this.userPicture = "./../../assets/images/Boton_Moconauta.png";
-  }
+    if (cookie === true) {
+      this.Moconauta = this.cookie.get("username").toUpperCase() + " ";
+      this.Ingreso = "CERRAR SESIÓN";
+      this.userPicture = this.cookie.get("image");
+      this.userName = this.cookie.get("username");
+      this.nombreUsuario = this.cookie.get("username");
 
-   this.title.setTitle("Noticias - El moco");
+    }
+    else {
+      this.userPicture = "./../../assets/images/Boton_Moconauta.png";
+    }
+
+   
 
 
+    this.title.setTitle("Noticias - El moco");
+
+    this.currentUrl = window.location.href;
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.queryParam = params['news'];
@@ -246,14 +224,13 @@ export class NewsComponent implements OnInit {
             this.noticiasList.push(x as NoticiasPlantilla6);
             this.phrase_new = this.noticiasList[0].phrase;
             this.noticia1_new = this.noticiasList[0].part1
-            this.noticia2_new = this.noticiasList [0].part2;
-            this.noticia3_new = this.noticiasList [0].part3;
+            this.noticia2_new = this.noticiasList[0].part2;
+            this.noticia3_new = this.noticiasList[0].part3;
             this.noticia4_new = this.noticiasList[0].part4;
             this.noticia5_new = this.noticiasList[0].part5;
-            if(this.noticiasList[0].part6 !== undefined){
+            if (this.noticiasList[0].part6 !== undefined) {
               this.noticia6_new = this.noticiasList[0].part6;
               this.noticia7_new = this.noticiasList[0].part7;
-<<<<<<< HEAD
               this.imagen4 = this.noticiasList[0].image4;
               this.imagen5 = this.noticiasList[0].image5;
               this.imagen6 = this.noticiasList[0].image6;
@@ -265,25 +242,18 @@ export class NewsComponent implements OnInit {
             else{
               this.youtubeVisible = false;
             }
-=======
-              this.imagen4 = this.noticiasList[0].image1;
-              this.imagen5 = this.noticiasList[0].image2;
-              this.imagen6 = this.noticiasList[0].image3;
-            } 
-            this.youtube_url = this.noticiasList[0].youtube;
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
             this.imagen1 = this.noticiasList[0].image1;
             this.imagen2 = this.noticiasList[0].image2;
             this.imagen3 = this.noticiasList[0].image3;
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
             this.fecha = this.noticiasList[0].date;
-            
+
             var posicion = this.fecha.search("-");
             var contador = 1;
-            while(posicion !== -1){
+            while (posicion !== -1) {
               var var1 = this.fecha.substring(0, posicion);
-              var var2 = this.fecha.substring(posicion+1, this.fecha.length);
+              var var2 = this.fecha.substring(posicion + 1, this.fecha.length);
               this.fecha = var1 + ' ' + var2;
               var posicion = this.fecha.search("-");
             }
@@ -291,9 +261,9 @@ export class NewsComponent implements OnInit {
             this.cambiarMeses(this.fechaarrary[1]);
             this.fecha = this.fechaarrary[1] + " " + this.fechaarrary[0] + " de " + this.fechaarrary[2];
 
-            this.newstittle = this.noticiasList [0].tittle;
+            this.newstittle = this.noticiasList[0].tittle;
             this.meta.updateTag({ property: 'og:title', content: this.newstittle });
-            this.validatePlantilla(this.noticiasList[0].plantilla);   
+            this.validatePlantilla(this.noticiasList[0].plantilla);
           })
           this.noticiasService.getComentarioNoticias(this.queryParamID).snapshotChanges().subscribe(item => {
             this.comentariosList = [];
@@ -301,26 +271,26 @@ export class NewsComponent implements OnInit {
               let x = element.payload.toJSON();
               x["$key"] = element.key;
               this.comentariosList.push(x as comentariosConNoticia);
-              
+
             })
-          
-            for(let i = 0; i < this.comentariosList.length; i++){        
-             if(this.MoconautaSuscribeteComentario === "¡Moconauta!"){
-              if(this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid){
-                this.comentariosEliminar.push("block")
-               }
-               else{ 
-                console.log("no pertece "+ i + "uid "+ this.comentariosList[i].uid)
+
+            for (let i = 0; i < this.comentariosList.length; i++) {
+              if (this.MoconautaSuscribeteComentario === "¡Moconauta!") {
+                if (this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid) {
+                  this.comentariosEliminar.push("block")
+                }
+                else {
+                
+                  this.comentariosEliminar.push("none")
+                }
+              }
+              else {
                 this.comentariosEliminar.push("none")
-               }
-             }
-             else{ 
-              this.comentariosEliminar.push("none")
-             }
+              }
             }
-           
-            this.numComentarios = this.comentariosList.length+"";
-          }) 
+
+            this.numComentarios = this.comentariosList.length + "";
+          })
         });
         this.search25News("noticias");
       }
@@ -330,12 +300,11 @@ export class NewsComponent implements OnInit {
           this.comentariosList = [];
           item.forEach(element => {
             let x = element.payload.toJSON();
-            
+
             x["$key"] = element.key;
             this.noticiasList.push(x as NoticiasPlantilla6);
             this.phrase_new = this.noticiasList[0].phrase;
             this.noticia1_new = this.noticiasList[0].part1
-<<<<<<< HEAD
             this.noticia2_new = this.noticiasList[0].part2;
             this.noticia3_new = this.noticiasList[0].part3;
             this.noticia4_new = this.noticiasList[0].part4;
@@ -348,68 +317,60 @@ export class NewsComponent implements OnInit {
               this.youtubeVisible = false;
             }
             this.newstittle = this.noticiasList[0].tittle;
-=======
-            this.noticia2_new = this.noticiasList [0].part2;
-            this.noticia3_new = this.noticiasList [0].part3;
-            this.noticia4_new = this.noticiasList [0].part4;
-            this.noticia5_new = this.noticiasList [0].part5;
-            this.youtube_url = this.noticiasList[0].youtube;
-            this.newstittle = this.noticiasList [0].tittle;
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
             this.fecha = this.noticiasList[0].date;
-            if(this.noticiasList[0].part6 !== undefined){
+            if (this.noticiasList[0].part6 !== undefined) {
               this.noticia6_new = this.noticiasList[0].part6;
               this.noticia7_new = this.noticiasList[0].part7;
-              this.imagen4 = this.noticiasList[0].image1;
-              this.imagen5 = this.noticiasList[0].image2;
-              this.imagen6 = this.noticiasList[0].image3;
-            } 
+              this.imagen4 = this.noticiasList[0].image4;
+              this.imagen5 = this.noticiasList[0].image5;
+              this.imagen6 = this.noticiasList[0].image6;
+            }
             var posicion = this.fecha.search("-");
             var contador = 1;
-            while(posicion !== -1){
+            while (posicion !== -1) {
               var var1 = this.fecha.substring(0, posicion);
-              var var2 = this.fecha.substring(posicion+1, this.fecha.length);
+              var var2 = this.fecha.substring(posicion + 1, this.fecha.length);
               this.fecha = var1 + ' ' + var2;
               var posicion = this.fecha.search("-");
             }
             this.fechaarrary = this.fecha.split(" ");
             this.cambiarMeses(this.fechaarrary[1]);
             this.fecha = this.fechaarrary[1] + " " + this.fechaarrary[0] + " de " + this.fechaarrary[2];
-            this.validatePlantilla(this.noticiasList[0].plantilla);  
+            this.validatePlantilla(this.noticiasList[0].plantilla);
           })
-         
-      
+
+
           this.noticiasService.getComentarioCiencia(this.queryParamID).snapshotChanges().subscribe(item => {
             this.comentariosList = [];
             item.forEach(element => {
               let x = element.payload.toJSON();
               x["$key"] = element.key;
               this.comentariosList.push(x as comentariosConNoticia);
-            }) 
-            for(let i = 0; i < this.comentariosList.length; i++){        
-              if(this.MoconautaSuscribeteComentario === "¡Moconauta!"){
-               if(this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid){
-                 this.comentariosEliminar.push("block")
+            })
+            for (let i = 0; i < this.comentariosList.length; i++) {
+              if (this.MoconautaSuscribeteComentario === "¡Moconauta!") {
+                if (this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid) {
+                  this.comentariosEliminar.push("block")
                 }
-                else{ 
-                 console.log("no pertece "+ i + "uid "+ this.comentariosList[i].uid)
-                 this.comentariosEliminar.push("none")
+                else {
+                 
+                  this.comentariosEliminar.push("none")
                 }
               }
-              else{ 
-               this.comentariosEliminar.push("none")
+              else {
+                this.comentariosEliminar.push("none")
               }
-             }
-            this.numComentarios = this.comentariosList.length+"";
-          }) 
+            }
+            this.numComentarios = this.comentariosList.length + "";
+          })
         });
-       
+
         this.search25News("ciencia");
       }
       else if (this.queryParam === 'arte' || this.queryParam === 'Arte') {
-    
+
         this.noticiasService.getArtSelected(this.queryParamID).snapshotChanges().subscribe(item => {
           this.noticiasList = [];
           item.forEach(element => {
@@ -418,7 +379,6 @@ export class NewsComponent implements OnInit {
             this.noticiasList.push(x as NoticiasPlantilla6);
             this.phrase_new = this.noticiasList[0].phrase;
             this.noticia1_new = this.noticiasList[0].part1
-<<<<<<< HEAD
             this.noticia2_new = this.noticiasList[0].part2;
             this.noticia3_new = this.noticiasList[0].part3;
             this.noticia4_new = this.noticiasList[0].part4;
@@ -431,37 +391,29 @@ export class NewsComponent implements OnInit {
               this.youtubeVisible = false;
             }
             this.newstittle = this.noticiasList[0].tittle;
-=======
-            this.noticia2_new = this.noticiasList [0].part2;
-            this.noticia3_new = this.noticiasList [0].part3;
-            this.noticia4_new = this.noticiasList [0].part4;
-            this.noticia5_new = this.noticiasList [0].part5;
-            this.youtube_url = this.noticiasList[0].youtube;
-            this.newstittle = this.noticiasList [0].tittle;
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
             this.fecha = this.noticiasList[0].date;
-            
-            if(this.noticiasList[0].part6 !== undefined){
+
+            if (this.noticiasList[0].part6 !== undefined) {
               this.noticia6_new = this.noticiasList[0].part6;
               this.noticia7_new = this.noticiasList[0].part7;
-              this.imagen4 = this.noticiasList[0].image1;
-              this.imagen5 = this.noticiasList[0].image2;
-              this.imagen6 = this.noticiasList[0].image3;
-            } 
+              this.imagen4 = this.noticiasList[0].image4;
+              this.imagen5 = this.noticiasList[0].image5;
+              this.imagen6 = this.noticiasList[0].image6;
+            }
             var posicion = this.fecha.search("-");
             var contador = 1;
-            while(posicion !== -1){
+            while (posicion !== -1) {
               var var1 = this.fecha.substring(0, posicion);
-              var var2 = this.fecha.substring(posicion+1, this.fecha.length);
+              var var2 = this.fecha.substring(posicion + 1, this.fecha.length);
               this.fecha = var1 + ' ' + var2;
               var posicion = this.fecha.search("-");
             }
             this.fechaarrary = this.fecha.split(" ");
             this.cambiarMeses(this.fechaarrary[1]);
             this.fecha = this.fechaarrary[1] + " " + this.fechaarrary[0] + " de " + this.fechaarrary[2];
-            this.validatePlantilla(this.noticiasList[0].plantilla);   
+            this.validatePlantilla(this.noticiasList[0].plantilla);
           })
           this.noticiasService.getComentarioArte(this.queryParamID).snapshotChanges().subscribe(item => {
             this.comentariosList = [];
@@ -469,23 +421,23 @@ export class NewsComponent implements OnInit {
               let x = element.payload.toJSON();
               x["$key"] = element.key;
               this.comentariosList.push(x as comentariosConNoticia);
-            }) 
-            for(let i = 0; i < this.comentariosList.length; i++){        
-              if(this.MoconautaSuscribeteComentario === "¡Moconauta!"){
-               if(this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid){
-                 this.comentariosEliminar.push("block")
+            })
+            for (let i = 0; i < this.comentariosList.length; i++) {
+              if (this.MoconautaSuscribeteComentario === "¡Moconauta!") {
+                if (this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid) {
+                  this.comentariosEliminar.push("block")
                 }
-                else{ 
-                 console.log("no pertece "+ i + "uid "+ this.comentariosList[i].uid)
-                 this.comentariosEliminar.push("none")
+                else {
+                  
+                  this.comentariosEliminar.push("none")
                 }
               }
-              else{ 
-               this.comentariosEliminar.push("none")
+              else {
+                this.comentariosEliminar.push("none")
               }
-             }
-            this.numComentarios = this.comentariosList.length+"";
-          }) 
+            }
+            this.numComentarios = this.comentariosList.length + "";
+          })
         });
         this.search25News("arte");
       }
@@ -498,7 +450,6 @@ export class NewsComponent implements OnInit {
             this.noticiasList.push(x as NoticiasPlantilla6);
             this.phrase_new = this.noticiasList[0].phrase;
             this.noticia1_new = this.noticiasList[0].part1
-<<<<<<< HEAD
             this.noticia2_new = this.noticiasList[0].part2;
             this.noticia3_new = this.noticiasList[0].part3;
             this.noticia4_new = this.noticiasList[0].part4;
@@ -511,29 +462,21 @@ export class NewsComponent implements OnInit {
               this.youtubeVisible = false;
             }
             this.newstittle = this.noticiasList[0].tittle;
-=======
-            this.noticia2_new = this.noticiasList [0].part2;
-            this.noticia3_new = this.noticiasList [0].part3;
-            this.noticia4_new = this.noticiasList [0].part4;
-            this.noticia5_new = this.noticiasList [0].part5;
-            this.youtube_url = this.noticiasList[0].youtube;
-            this.newstittle = this.noticiasList [0].tittle;
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
             this.fecha = this.noticiasList[0].date;
-            if(this.noticiasList[0].part6 !== undefined){
+            if (this.noticiasList[0].part6 !== undefined) {
               this.noticia6_new = this.noticiasList[0].part6;
               this.noticia7_new = this.noticiasList[0].part7;
-              this.imagen4 = this.noticiasList[0].image1;
-              this.imagen5 = this.noticiasList[0].image2;
-              this.imagen6 = this.noticiasList[0].image3;
-            } 
+              this.imagen4 = this.noticiasList[0].image4;
+              this.imagen5 = this.noticiasList[0].image5;
+              this.imagen6 = this.noticiasList[0].image6;
+            }
             var posicion = this.fecha.search("-");
             var contador = 1;
-            while(posicion !== -1){
+            while (posicion !== -1) {
               var var1 = this.fecha.substring(0, posicion);
-              var var2 = this.fecha.substring(posicion+1, this.fecha.length);
+              var var2 = this.fecha.substring(posicion + 1, this.fecha.length);
               this.fecha = var1 + ' ' + var2;
               var posicion = this.fecha.search("-");
             }
@@ -542,8 +485,8 @@ export class NewsComponent implements OnInit {
             this.fecha = this.fechaarrary[1] + " " + this.fechaarrary[0] + " de " + this.fechaarrary[2];
 
 
-            this.validatePlantilla(this.noticiasList[0].plantilla);   
-          
+            this.validatePlantilla(this.noticiasList[0].plantilla);
+
           })
           this.noticiasService.getComentarioOcio(this.queryParamID).snapshotChanges().subscribe(item => {
             this.comentariosList = [];
@@ -551,24 +494,24 @@ export class NewsComponent implements OnInit {
               let x = element.payload.toJSON();
               x["$key"] = element.key;
               this.comentariosList.push(x as comentariosConNoticia);
-            }) 
-            for(let i = 0; i < this.comentariosList.length; i++){        
-              if(this.MoconautaSuscribeteComentario === "¡Moconauta!"){
-               if(this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid){
-                 this.comentariosEliminar.push("block")
+            })
+            for (let i = 0; i < this.comentariosList.length; i++) {
+              if (this.MoconautaSuscribeteComentario === "¡Moconauta!") {
+                if (this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid) {
+                  this.comentariosEliminar.push("block")
                 }
-                else{ 
-                 console.log("no pertece "+ i + "uid "+ this.comentariosList[i].uid)
-                 this.comentariosEliminar.push("none")
+                else {
+                  
+                  this.comentariosEliminar.push("none")
                 }
               }
-              else{ 
-               this.comentariosEliminar.push("none")
+              else {
+                this.comentariosEliminar.push("none")
               }
-             }
-            this.numComentarios = this.comentariosList.length+"";
-           
-          }) 
+            }
+            this.numComentarios = this.comentariosList.length + "";
+
+          })
         });
         this.search25News("ocio");
       }
@@ -581,7 +524,6 @@ export class NewsComponent implements OnInit {
             this.noticiasList.push(x as NoticiasPlantilla6);
             this.phrase_new = this.noticiasList[0].phrase;
             this.noticia1_new = this.noticiasList[0].part1
-<<<<<<< HEAD
             this.noticia2_new = this.noticiasList[0].part2;
             this.noticia3_new = this.noticiasList[0].part3;
             this.noticia4_new = this.noticiasList[0].part4;
@@ -594,29 +536,21 @@ export class NewsComponent implements OnInit {
               this.youtubeVisible = false;
             }
             this.newstittle = this.noticiasList[0].tittle;
-=======
-            this.noticia2_new = this.noticiasList [0].part2;
-            this.noticia3_new = this.noticiasList [0].part3;
-            this.noticia4_new = this.noticiasList [0].part4;
-            this.noticia5_new = this.noticiasList [0].part5;
-            this.youtube_url = this.noticiasList[0].youtube;
-            this.newstittle = this.noticiasList [0].tittle;
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
             this.fecha = this.noticiasList[0].date;
-            if(this.noticiasList[0].part6 !== undefined){
+            if (this.noticiasList[0].part6 !== undefined) {
               this.noticia6_new = this.noticiasList[0].part6;
               this.noticia7_new = this.noticiasList[0].part7;
-              this.imagen4 = this.noticiasList[0].image1;
-              this.imagen5 = this.noticiasList[0].image2;
-              this.imagen6 = this.noticiasList[0].image3;
-            } 
+              this.imagen4 = this.noticiasList[0].image4;
+              this.imagen5 = this.noticiasList[0].image5;
+              this.imagen6 = this.noticiasList[0].image6;
+            }
             var posicion = this.fecha.search("-");
             var contador = 1;
-            while(posicion !== -1){
+            while (posicion !== -1) {
               var var1 = this.fecha.substring(0, posicion);
-              var var2 = this.fecha.substring(posicion+1, this.fecha.length);
+              var var2 = this.fecha.substring(posicion + 1, this.fecha.length);
               this.fecha = var1 + ' ' + var2;
               var posicion = this.fecha.search("-");
             }
@@ -625,7 +559,7 @@ export class NewsComponent implements OnInit {
             this.fecha = this.fechaarrary[1] + " " + this.fechaarrary[0] + " de " + this.fechaarrary[2];
 
 
-            this.validatePlantilla(this.noticiasList[0].plantilla);   
+            this.validatePlantilla(this.noticiasList[0].plantilla);
           })
           this.noticiasService.getComentarioDescubre(this.queryParamID).snapshotChanges().subscribe(item => {
             this.comentariosList = [];
@@ -633,24 +567,24 @@ export class NewsComponent implements OnInit {
               let x = element.payload.toJSON();
               x["$key"] = element.key;
               this.comentariosList.push(x as comentariosConNoticia);
-            }) 
-            for(let i = 0; i < this.comentariosList.length; i++){        
-              if(this.MoconautaSuscribeteComentario === "¡Moconauta!"){
-               if(this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid){
-                 this.comentariosEliminar.push("block")
+            })
+            for (let i = 0; i < this.comentariosList.length; i++) {
+              if (this.MoconautaSuscribeteComentario === "¡Moconauta!") {
+                if (this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid) {
+                  this.comentariosEliminar.push("block")
                 }
-                else{ 
-                 console.log("no pertece "+ i + "uid "+ this.comentariosList[i].uid)
-                 this.comentariosEliminar.push("none")
+                else {
+                 
+                  this.comentariosEliminar.push("none")
                 }
               }
-              else{ 
-               this.comentariosEliminar.push("none")
+              else {
+                this.comentariosEliminar.push("none")
               }
-             }
-            this.numComentarios = this.comentariosList.length+"";
-           
-          }) 
+            }
+            this.numComentarios = this.comentariosList.length + "";
+
+          })
         });
         this.search25News("descubre");
       }
@@ -663,7 +597,6 @@ export class NewsComponent implements OnInit {
             this.noticiasList.push(x as NoticiasPlantilla6);
             this.phrase_new = this.noticiasList[0].phrase;
             this.noticia1_new = this.noticiasList[0].part1
-<<<<<<< HEAD
             this.noticia2_new = this.noticiasList[0].part2;
             this.noticia3_new = this.noticiasList[0].part3;
             this.noticia4_new = this.noticiasList[0].part4;
@@ -676,38 +609,30 @@ export class NewsComponent implements OnInit {
               this.youtubeVisible = false;
             }
             this.newstittle = this.noticiasList[0].tittle;
-=======
-            this.noticia2_new = this.noticiasList [0].part2;
-            this.noticia3_new = this.noticiasList [0].part3;
-            this.noticia4_new = this.noticiasList [0].part4;
-            this.noticia5_new = this.noticiasList [0].part5;
-            this.youtube_url = this.noticiasList[0].youtube;
-            this.newstittle = this.noticiasList [0].tittle;
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
             this.imagenPrincipal = this.noticiasList[0].principalImage;
             this.autor = this.noticiasList[0].autor;
             this.fecha = this.noticiasList[0].date;
-            if(this.noticiasList[0].part6 !== undefined){
+            if (this.noticiasList[0].part6 !== undefined) {
               this.noticia6_new = this.noticiasList[0].part6;
               this.noticia7_new = this.noticiasList[0].part7;
-              this.imagen4 = this.noticiasList[0].image1;
-              this.imagen5 = this.noticiasList[0].image2;
-              this.imagen6 = this.noticiasList[0].image3;
-            } 
+              this.imagen4 = this.noticiasList[0].image4;
+              this.imagen5 = this.noticiasList[0].image5;
+              this.imagen6 = this.noticiasList[0].image6;
+            }
             var posicion = this.fecha.search("-");
             var contador = 1;
-            while(posicion !== -1){
+            while (posicion !== -1) {
               var var1 = this.fecha.substring(0, posicion);
-              var var2 = this.fecha.substring(posicion+1, this.fecha.length);
+              var var2 = this.fecha.substring(posicion + 1, this.fecha.length);
               this.fecha = var1 + ' ' + var2;
               var posicion = this.fecha.search("-");
             }
             this.fechaarrary = this.fecha.split(" ");
             this.cambiarMeses(this.fechaarrary[1]);
-         
+
             this.fecha = this.fechaarrary[1] + " " + this.fechaarrary[0] + " de " + this.fechaarrary[2];
-            
-            this.validatePlantilla(this.noticiasList[0].plantilla);   
+
+            this.validatePlantilla(this.noticiasList[0].plantilla);
           })
           this.noticiasService.getComentarioMocotips(this.queryParamID).snapshotChanges().subscribe(item => {
             this.comentariosList = [];
@@ -715,31 +640,31 @@ export class NewsComponent implements OnInit {
               let x = element.payload.toJSON();
               x["$key"] = element.key;
               this.comentariosList.push(x as comentariosConNoticia);
-            }) 
-            for(let i = 0; i < this.comentariosList.length; i++){        
-              if(this.MoconautaSuscribeteComentario === "¡Moconauta!"){
-               if(this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid){
-                 this.comentariosEliminar.push("block")
+            })
+            for (let i = 0; i < this.comentariosList.length; i++) {
+              if (this.MoconautaSuscribeteComentario === "¡Moconauta!") {
+                if (this.comentariosList[i].uid === this.afAuth.auth.currentUser.uid) {
+                  this.comentariosEliminar.push("block")
                 }
-                else{ 
-                 console.log("no pertece "+ i + "uid "+ this.comentariosList[i].uid)
-                 this.comentariosEliminar.push("none")
+                else {
+                
+                  this.comentariosEliminar.push("none")
                 }
               }
-              else{ 
-               this.comentariosEliminar.push("none")
+              else {
+                this.comentariosEliminar.push("none")
               }
-             }
-            this.numComentarios = this.comentariosList.length+"";
-       
-            
-          }) 
-         
+            }
+            this.numComentarios = this.comentariosList.length + "";
+
+
+          })
+
         });
         this.search25News("mocotips");
       }
-      
-   
+
+
     });
 
 
@@ -836,14 +761,14 @@ export class NewsComponent implements OnInit {
 
 
   }
-  redirectTo(){
+  redirectTo() {
     this.router.navigate(['/home'])
-    .then(() => {
-      window.location.reload();
-    });
+      .then(() => {
+        window.location.reload();
+      });
   }
 
-  search25News(seccion : string){
+  search25News(seccion: string) {
     var contador = 0;
     this.noticiasService.getFirst3News(seccion, this.queryParamID).snapshotChanges().subscribe(item => {
       var lengthItem = 0;
@@ -852,30 +777,29 @@ export class NewsComponent implements OnInit {
         let x = element.payload.toJSON();
         x["$key"] = element.key;
         this.noticias3List.push(x as Noticias);
-          this.noticiasTitulo[lengthItem] = this.noticias3List[contador].tittle;
-          this.noticiasImage[lengthItem] = this.noticias3List[contador].principalImage;
-          this.noticiasKey[lengthItem] = this.noticias3List[contador].$key;    
+        this.noticiasTitulo[lengthItem] = this.noticias3List[contador].tittle;
+        this.noticiasImage[lengthItem] = this.noticias3List[contador].principalImage;
+        this.noticiasKey[lengthItem] = this.noticias3List[contador].$key;
         contador++;
         lengthItem++;
-        console.log("OLA "+lengthItem)
+       
       })
-      console.log(this.noticiasTitulo[1])
-      if(this.noticiasTitulo[0] === "" || this.noticiasTitulo[0] === this.newstittle){
+      if (this.noticiasTitulo[0] === "" || this.noticiasTitulo[0] === this.newstittle) {
         this.visibility1 = false;
       }
-      else{
+      else {
         this.visibility1 = true;
       }
-      if(this.noticiasTitulo[1] === "" || this.noticiasTitulo[1] === this.newstittle){
+      if (this.noticiasTitulo[1] === "" || this.noticiasTitulo[1] === this.newstittle) {
         this.visibility2 = false;
       }
-      else{
+      else {
         this.visibility2 = true;
       }
-      if(this.noticiasTitulo[2] === "" || this.noticiasTitulo[2] === this.newstittle){
+      if (this.noticiasTitulo[2] === "" || this.noticiasTitulo[2] === this.newstittle) {
         this.visibility3 = false;
       }
-      else{
+      else {
         this.visibility3 = true;
       }
     });
@@ -883,50 +807,50 @@ export class NewsComponent implements OnInit {
   public scrollToTop() {
     this.scroll.nativeElement.scrollTop = 0;
   }
-  public scrollToComments(scroll : number) {
+  public scrollToComments(scroll: number) {
     this.scroll.nativeElement.scrollTop = scroll;
   }
-  cambiarMeses(mes : string){
+  cambiarMeses(mes: string) {
 
-    if(mes === "01"){
+    if (mes === "01") {
       this.fechaarrary[1] = "enero";
     }
-    else if (mes === "02"){
+    else if (mes === "02") {
       this.fechaarrary[1] = "febrero";
     }
-    else if (mes === "03"){
+    else if (mes === "03") {
       this.fechaarrary[1] = "marzo";
     }
-    else if (mes === "04"){
+    else if (mes === "04") {
       this.fechaarrary[1] = "abril";
     }
-    else if (mes === "05"){
+    else if (mes === "05") {
       this.fechaarrary[1] = "mayo";
     }
-    else if (mes === "06"){
+    else if (mes === "06") {
       this.fechaarrary[1] = "junio";
     }
-    else if (mes === "07"){
+    else if (mes === "07") {
       this.fechaarrary[1] = "julio";
     }
-    else if (mes === "08"){
+    else if (mes === "08") {
       this.fechaarrary[1] = "agosto";
     }
-    else if (mes === "09"){
+    else if (mes === "09") {
       this.fechaarrary[1] = "septiembre";
     }
-    else if (mes === "10"){
+    else if (mes === "10") {
       this.fechaarrary[1] = "octubre";
     }
-    else if (mes === "11"){
+    else if (mes === "11") {
       this.fechaarrary[1] = "noviembre";
     }
-    else if (mes === "12"){
+    else if (mes === "12") {
       this.fechaarrary[1] = "diciembre";
     }
-    }
-  validatePlantilla(plantilla : string){
-    if(plantilla === '1'){
+  }
+  validatePlantilla(plantilla: string) {
+    if (plantilla === '1') {
       this.plantilla1 = true;
       this.plantilla2 = false;
       this.plantilla3 = false;
@@ -934,7 +858,7 @@ export class NewsComponent implements OnInit {
       this.plantilla5 = false;
       this.plantilla6 = false;
     }
-    else if(plantilla === '2'){
+    else if (plantilla === '2') {
       this.plantilla1 = false;
       this.plantilla2 = true;
       this.plantilla3 = false;
@@ -942,15 +866,15 @@ export class NewsComponent implements OnInit {
       this.plantilla5 = false;
       this.plantilla6 = false;
     }
-    else if(plantilla === '3'){
+    else if (plantilla === '3') {
       this.plantilla1 = false;
       this.plantilla2 = false;
       this.plantilla3 = true;
       this.plantilla4 = false;
       this.plantilla5 = false;
-      
+
     }
-    else if(plantilla === '4'){
+    else if (plantilla === '4') {
       this.plantilla1 = false;
       this.plantilla2 = false;
       this.plantilla3 = false;
@@ -958,7 +882,7 @@ export class NewsComponent implements OnInit {
       this.plantilla5 = false;
       this.plantilla6 = false;
     }
-    else if(plantilla === '5'){
+    else if (plantilla === '5') {
       this.plantilla1 = false;
       this.plantilla2 = false;
       this.plantilla3 = false;
@@ -966,7 +890,7 @@ export class NewsComponent implements OnInit {
       this.plantilla5 = true;
       this.plantilla6 = false;
     }
-    else if(plantilla === '6'){
+    else if (plantilla === '6') {
       this.plantilla1 = false;
       this.plantilla2 = false;
       this.plantilla3 = false;
@@ -975,41 +899,22 @@ export class NewsComponent implements OnInit {
       this.plantilla6 = true;
     }
   }
-<<<<<<< HEAD
   inicioSesion() {
-<<<<<<< HEAD
-<<<<<<< HEAD
     this.router.navigate(['/ingreso']);
-=======
-  app() {
-    window.open('https://apps.apple.com/mx/app/el-moco/id1528073445');
-    window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
-=======
-=======
->>>>>>> parent of f22f970... proyecto terminado
-    this.router.navigate(['/ingreso'])
   }
-  app() {
-    window.open('https://apps.apple.com/mx/app/el-moco/id1528073445');
-    window.open('https://play.google.com/store/apps/developer?id=El+Moco&hl=es_MX');
-<<<<<<< HEAD
->>>>>>> parent of f22f970... proyecto terminado
-=======
->>>>>>> parent of f22f970... proyecto terminado
-  }
+
   fb() {
 
     let url = window.location.href;
     var facebookWindow = window.open(
-      'https://www.facebook.com/sharer/sharer.php?u='+url,
+      'https://www.facebook.com/sharer/sharer.php?u=' + url,
     );
     if (facebookWindow.focus) {
       facebookWindow.focus();
     }
     return false;
   }
-  tw(){
+  tw() {
     var val = window.location.href;
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
@@ -1025,15 +930,15 @@ export class NewsComponent implements OnInit {
     window.alert("¡Enlace copiado! Compártelo en Twitter.");
 
     var twitterWindow = window.open(
-      'https://twitter.com/intent/tweet?text=',   
+      'https://twitter.com/intent/tweet?text=',
     );
     if (twitterWindow.focus) {
       twitterWindow.focus();
     }
-    return false; 
-    
+    return false;
+
   }
-  mail(){
+  mail() {
     let url = window.location.href;
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
@@ -1049,40 +954,44 @@ export class NewsComponent implements OnInit {
     window.alert("¡Enlace copiado! Compártelo en tu Correo.");
 
     var mail = window.open(
-      'mailto:example@gmail.com?subject=¡Mira%20la%20noticia%20que%20encontre!&body='+url,
+      'mailto:example@gmail.com?subject=¡Mira%20la%20noticia%20que%20encontre!&body=' + url,
     );
     if (mail.focus) {
       mail.focus();
     }
-    return false; 
+    return false;
   }
-  resolved(response: Event){
+  resolved(response: Event) {
     this.repCaptcha = true;
   }
-  handleReset(){
+  handleReset() {
     this.captchaElem.resetCaptcha();
   }
-  publicarComentario(){
-    this.comentarioObject.id_noticia = this.queryParamID;
-    this.comentarioObject.username = this.nombreUsuario;
-    this.comentarioObject.comment = this.comentarioTextArea;
-    this.comentarioObject.date = this.currentDate;
-    this.comentarioObject.userPicture = this.userPicture;
-    this.comentarioObject.uid = this.afAuth.auth.currentUser.uid;
-    this.noticiasService.insertComentario(this.comentarioObject, this.seccion2);
-      this.comentarioTextArea = "";
-      this.captchaElem.resetCaptcha();
-      this.repCaptcha = false; 
-      window.location.reload();
-     
+
+  public sendEmail(e: Event, event: any) {
+    e.preventDefault();
+    emailjs.sendForm('service_guu0cbk', 'template_r62bg7y', e.target as HTMLFormElement, 'user_KU5JA3i9w7Cv2O85aNhrk')
+      .then((result: EmailJSResponseStatus) => {
+        this.comentarioObject.id_noticia = this.queryParamID;
+        this.comentarioObject.username = this.nombreUsuario;
+        this.comentarioObject.date = this.currentDate;
+        this.comentarioObject.userPicture = this.userPicture;
+        this.comentarioObject.comment = this.comentarioTextArea;
+        this.comentarioObject.uid = this.afAuth.auth.currentUser.uid;
+        this.noticiasService.insertComentario(this.comentarioObject, this.seccion2);
+        this.comentarioTextArea = "";
+        this.captchaElem.resetCaptcha();
+        this.repCaptcha = false;
+        window.location.reload();
+      });
   }
-  responderComentario(index : any){
+  responderComentario(index: any) {
     this.comentarioTextArea = "";
     var calculo = this.bannerHeight + this.menuHeight + this.structureHeight + this.latestHeight;
     this.scrollToComments(calculo);
-    this.comentarioTextArea = "Respondiendo al comentario de @"+this.comentariosList[index].username+"\n \n";
+    this.comentarioTextArea = "Respondiendo al comentario de @" + this.comentariosList[index].username + "\n \n";
   }
-  eliminarComentario(index : any){
+  eliminarComentario(index: any) {
     this.noticiasService.deleteComentario(this.queryParamID, this.seccion2, this.comentariosList[index].$key);
     window.location.reload();
   }
@@ -1125,40 +1034,17 @@ export class NewsComponent implements OnInit {
     }
   }
   onResized(event: ResizedEvent) {
-      this.height = event.newWidth;
-      if(event.newWidth < 35){
-        this.porcentajeTop = this.height / 1.5;
-      } 
-      else if(event.newWidth > 35){
-        this.porcentajeTop = this.height / 3;
-      }
+    this.height = event.newWidth;
+    if (event.newWidth < 35) {
+      this.porcentajeTop = this.height / 1.5;
     }
-    onResizedComments(event: ResizedEvent) {
-      this.comentsHeight = event.newHeight;
+    else if (event.newWidth > 35) {
+      this.porcentajeTop = this.height / 3;
     }
-    onResizedLatest(event: ResizedEvent) {
-      this.latestHeight = event.newHeight;
-    }
-    onResizedStructure(event: ResizedEvent) {
-      this.structureHeight = event.newHeight;
-    }
-    onResizedMenu(event: ResizedEvent) {
-      this.menuHeight = event.newHeight;
-    }
-    onResizedBanner(event: ResizedEvent) {
-      this.bannerHeight = event.newHeight;
-    }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
   }
   app() {
     this.router.navigate(['/suscribete']);
-=======
->>>>>>> parent of f22f970... proyecto terminado
-=======
->>>>>>> parent of f22f970... proyecto terminado
   }
   onResizedComments(event: ResizedEvent) {
     this.comentsHeight = event.newHeight;
@@ -1175,6 +1061,4 @@ export class NewsComponent implements OnInit {
   onResizedBanner(event: ResizedEvent) {
     this.bannerHeight = event.newHeight;
   }
-=======
->>>>>>> parent of 60b46f7... Moco Primera entrega COMPLETADA
 }

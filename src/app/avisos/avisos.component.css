@@ -169,6 +169,8 @@ a {text-decoration: none;}
     background-position: center;
     background-size: contain; 
     border: 0.5px solid #ffffff;
+    background-size: cover;
+    background-position: center;
   }
 .navbar-moco .navbar-nav .nav-link-moconauta .opciones{
   color:rgb(141, 150, 61);
@@ -299,7 +301,7 @@ a {text-decoration: none;}
       height: 275px;
       position: relative;
       background-position: center;
-      background-size: 100%, 100%;
+      background-size: cover;
       background-repeat: no-repeat; 
       background-image:  url("./../../assets/images/banner-sin-moco.png");
     }
@@ -1325,7 +1327,27 @@ a {text-decoration: none;}
       right: 7%;
     }
    }
-  
+   @media all and (max-width: 330px) {
+    .navbar-moco .navbar-toggler{
+      background-position-x: 15%;
+    }
+    .el-moco-banner {
+      height: 110px;
+    }
+
+    .footer .lema{ 
+      right: 3%;
+    }
+    .footer .redes-box{ 
+      right: 5%;
+    }   
+    .footer .avisos-ter-box{ 
+      right: 3%;   
+    }
+    .footer .text-box{ 
+      right: 3%;
+    }
+   }
    @media all and (max-width: 440px) {
     .second-news .latest-news .big-new .comments-opinion-text{
       font-size:120%;
@@ -1354,6 +1376,7 @@ a {text-decoration: none;}
       font-size: 160%;
     }
    }
+
    @media all and (max-width: 320px) {
     .second-news .latest-news .big-new .button-publish{
       bottom:-5%;
