@@ -1688,11 +1688,7 @@ left: 0%;
   font-size: 130%;
   }
 }
-@media all and (max-width: 650px) {
-  .el-moco-banner {
-    height: 170px;
-    background-image:  url("./../../assets/images/banner-sin-moco-pequeño.png");
-}
+
 .el-moco-banner .logo-hd{ 
   position: absolute;
   width:30%;
