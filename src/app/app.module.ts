@@ -149,7 +149,7 @@ const routes: Routes = [
     AngularResizedEventModule,
     AngularFireAuthModule,
     NgxCaptchaModule,
-    RouterModule.forRoot(routes, {useHash: true, scrollPositionRestoration: 'top'})
+    RouterModule.forRoot(routes)
   ],
   providers: [
     NoticiasService,
