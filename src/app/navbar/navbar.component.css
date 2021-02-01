@@ -1414,7 +1414,7 @@ font-size: 120%;
       left: 35%;
       bottom: 5%;
     }
-    }
+    
     @media all and (max-width: 575px) {
       .el-moco-banner {
         height: 160px;
