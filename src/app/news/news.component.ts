@@ -156,10 +156,9 @@ export class NewsComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.queryParam = params['news'];
       this.queryParamID = params['id'];
+      if (this.queryParam === 'noticias' || this.queryParam === 'Noticias') {
      this.noticiasService.getNoticiasSelected(this.queryParamID).snapshotChanges().subscribe(item => {
       this.noticiasList = [];
-      console.log("holaaa")
-      console.log(item)
       item.forEach(element => {
         let x = element.payload.toJSON();
         x["$key"] = element.key;
@@ -167,17 +166,38 @@ export class NewsComponent implements OnInit {
     this.meta.updateTag({ 'name': 'twitter:card', 'content': 'summary_large_image' });
     this.meta.updateTag({ 'name': 'twitter:title', 'content': this.noticiasList[0].tittle });
     this.meta.updateTag({ 'name': 'twitter:text:title', 'content': this.noticiasList[0].tittle});
-    this.meta.updateTag({ 'name': 'twitter:description', 'content': this.noticiasList[0].phrase });
+    this.meta.updateTag({ 'name': 'twitter:description', 'content': this.noticiasList[0].phrase.substring(3, (this.noticiasList[0].phrase.length-4)) });
     this.meta.updateTag({ 'name': 'twitter:image', 'content': this.noticiasList[0].principalImage });
     this.meta.updateTag({ 'name': 'twitter:image:alt', 'content': this.noticiasList[0].principalImage });
 
     this.meta.updateTag({ 'property': 'og:title', 'content': this.noticiasList[0].tittle });
     this.meta.updateTag({ 'property': 'og:image', 'content': this.noticiasList[0].principalImage });
     this.meta.updateTag({ 'property': 'og:image:alt', 'content': this.noticiasList[0].principalImage });
-    this.meta.updateTag({ 'property': 'og:description', 'content': this.noticiasList[0].phrase });
-
+    this.meta.updateTag({ 'property': 'og:description', 'content': this.noticiasList[0].phrase.substring(3, (this.noticiasList[0].phrase.length-4)) });
     })
   });
+}
+else if (this.queryParam === 'ciencia' || this.queryParam === 'Ciencia') {
+  this.noticiasService.getCienciaSelected(this.queryParamID).snapshotChanges().subscribe(item => {
+    this.noticiasList = [];
+    item.forEach(element => {
+      let x = element.payload.toJSON();
+      x["$key"] = element.key;
+      this.noticiasList.push(x as NoticiasPlantilla6);
+  this.meta.updateTag({ 'name': 'twitter:card', 'content': 'summary_large_image' });
+  this.meta.updateTag({ 'name': 'twitter:title', 'content': this.noticiasList[0].tittle });
+  this.meta.updateTag({ 'name': 'twitter:text:title', 'content': this.noticiasList[0].tittle});
+  this.meta.updateTag({ 'name': 'twitter:description', 'content': this.noticiasList[0].phrase.substring(3, (this.noticiasList[0].phrase.length-4)) });
+  this.meta.updateTag({ 'name': 'twitter:image', 'content': this.noticiasList[0].principalImage });
+  this.meta.updateTag({ 'name': 'twitter:image:alt', 'content': this.noticiasList[0].principalImage });
+
+  this.meta.updateTag({ 'property': 'og:title', 'content': this.noticiasList[0].tittle });
+  this.meta.updateTag({ 'property': 'og:image', 'content': this.noticiasList[0].principalImage });
+  this.meta.updateTag({ 'property': 'og:image:alt', 'content': this.noticiasList[0].principalImage });
+  this.meta.updateTag({ 'property': 'og:description', 'content': this.noticiasList[0].phrase.substring(3, (this.noticiasList[0].phrase.length-4)) });
+  })
+});
+}
 });
     var month = this.myDate.getMonth();
     var day = this.myDate.getDate();
