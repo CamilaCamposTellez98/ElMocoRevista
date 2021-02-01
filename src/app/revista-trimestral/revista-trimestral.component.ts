@@ -45,6 +45,21 @@ export class RevistaTrimestralComponent implements OnInit {
     private title: Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle("Revista Trimestral");
+  
+    this.meta.updateTag({ 'name': 'keywords', 'content': 'Revista Trimestral' });
+    this.meta.updateTag({ 'name': 'description', 'content': 'Revista Trimestral' });
+    this.meta.updateTag({ 'name': 'twitter:card', 'content': 'summary_large_image' });
+    this.meta.updateTag({ 'name': 'twitter:title', 'content': '¡Conoce nuestra revista trimestral!' });
+    this.meta.updateTag({ 'name': 'twitter:text:title', 'content': '¡Conoce nuestra revista trimestral!'});
+    this.meta.updateTag({ 'name': 'twitter:description', 'content': 'Revista para mentes curiosas' });
+    this.meta.updateTag({ 'name': 'twitter:image', 'content': 'asd' });
+    this.meta.updateTag({ 'name': 'twitter:image:alt', 'content': 'asdasd' });
+    this.meta.updateTag({ 'property': 'og:title', 'content' : '¡Conoce nuestra revista trimestral!' });
+    this.meta.updateTag({ 'property': 'og:image', 'content': 'asdsad' });
+    this.meta.updateTag({ 'property': 'og:image:alt', 'content': 'asdasd' });
+    this.meta.updateTag({ 'property': 'og:description', 'content': 'Revista para mentes curiosas' });
+
     var cookie = this.cookie.check("username");
     if(cookie === true){
      this.userPicture =  this.cookie.get("image");
@@ -88,20 +103,7 @@ export class RevistaTrimestralComponent implements OnInit {
     });
   }
   setMetaTags():void{
-    this.title.setTitle("Revista Trimestral");
   
-    this.meta.updateTag({ 'name': 'keywords', 'content': 'Revista Trimestral' });
-    this.meta.updateTag({ 'name': 'description', 'content': 'Revista Trimestral' });
-    this.meta.updateTag({ 'name': 'twitter:card', 'content': 'summary_large_image' });
-    this.meta.updateTag({ 'name': 'twitter:title', 'content': '¡Conoce nuestra revista trimestral!' });
-    this.meta.updateTag({ 'name': 'twitter:text:title', 'content': '¡Conoce nuestra revista trimestral!'});
-    this.meta.updateTag({ 'name': 'twitter:description', 'content': 'Revista para mentes curiosas' });
-    this.meta.updateTag({ 'name': 'twitter:image', 'content': this.bannerList[0].banner1Url });
-    this.meta.updateTag({ 'name': 'twitter:image:alt', 'content': this.bannerList[0].banner1Url });
-    this.meta.updateTag({ 'property': 'og:title', 'content' : '¡Conoce nuestra revista trimestral!' });
-    this.meta.updateTag({ 'property': 'og:image', 'content': this.bannerList[0].banner1Url });
-    this.meta.updateTag({ 'property': 'og:image:alt', 'content': this.bannerList[0].banner1Url });
-    this.meta.updateTag({ 'property': 'og:description', 'content': 'Revista para mentes curiosas' });
   }
   primeraColumna(number : any) {
     
