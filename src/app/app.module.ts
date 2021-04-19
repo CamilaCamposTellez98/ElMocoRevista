@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,14 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule} from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewsComponent } from './news/news.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
@@ -29,12 +29,12 @@ import { ContactanosComponent } from './contactanos/contactanos.component';
 import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 
 
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { QuillModule } from 'ngx-quill';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table'; 
+import {MatInputModule} from '@angular/material/input';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {QuillModule} from 'ngx-quill';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -69,28 +69,28 @@ import { SuscripcionesComponent } from './suscripciones/suscripciones.component'
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: NavbarComponent },
-  { path: 'news', component: NewsComponent },
-  { path: 'quienes-somos', component: QuienesSomosComponent },
-  { path: 'historia', component: HistoriaComponent },
-  { path: 'moco-shop', component: MocoShopComponent },
-  { path: 'moco-app', component: MocoAppComponent },
-  { path: 'revista-trimestral', component: RevistaTrimestralComponent },
-  { path: 'mocotips-padres', component: MocotipsPadresComponent },
-  { path: 'contactanos', component: ContactanosComponent },
-  { path: 'panel-admin', component: PanelAdminComponent },
-  { path: 'nuestro-equipo', component: NuestroEquipoComponent },
-  { path: 'terminos', component: TerminosComponent },
-  { path: 'avisos', component: AvisosComponent },
-  { path: 'especial-mes', component: EspecialMesComponent },
-  { path: 'ingreso', component: IngresoComponent },
-  { path: 'suscribete', component: SuscribeteComponent },
-  { path: 'buscador', component: BuscadorComponent },
-  { path: 'editar-perfil', component: EditarPerfilComponent },
-  { path: 'suscripciones', component: SuscripcionesComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home' , component: NavbarComponent},
+  { path: 'news' , component: NewsComponent},
+  { path: 'quienes-somos' , component: QuienesSomosComponent},
+  { path: 'historia' , component: HistoriaComponent},
+  { path: 'moco-shop' , component: MocoShopComponent},
+  { path: 'moco-app' , component: MocoAppComponent},
+  { path: 'revista-trimestral' , component: RevistaTrimestralComponent},
+  { path: 'mocotips-padres' , component: MocotipsPadresComponent},
+  { path: 'contactanos' , component: ContactanosComponent},
+  { path: 'panel-admin' , component: PanelAdminComponent},
+  { path: 'nuestro-equipo' , component: NuestroEquipoComponent},
+  { path: 'terminos' , component: TerminosComponent},
+  { path: 'avisos' , component: AvisosComponent},
+  { path: 'especial-mes' , component: EspecialMesComponent},
+  { path: 'ingreso' , component: IngresoComponent},
+  { path: 'suscribete' , component: SuscribeteComponent},
+  { path: 'buscador' , component: BuscadorComponent},
+  { path: 'editar-perfil' , component: EditarPerfilComponent},
+  { path: 'suscripciones' , component: SuscripcionesComponent},
 ];
-
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -149,7 +149,7 @@ const routes: Routes = [
     AngularResizedEventModule,
     AngularFireAuthModule,
     NgxCaptchaModule,
-    RouterModule.forRoot(routes, { useHash: true, scrollPositionRestoration: 'top' })
+    RouterModule.forRoot(routes)
   ],
   providers: [
     NoticiasService,

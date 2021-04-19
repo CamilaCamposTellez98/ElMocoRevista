@@ -92,7 +92,7 @@ export class NoticiasService {
   }
 
 
-  getFirst3News(seccion: string, id: string) {
+  getFirst3News(seccion: string, id : string) {
     if (seccion === "noticias") {
       return this.firebase.list('/noticias', ref => ref.orderByKey().endAt(id).limitToLast(4));
     }
@@ -107,11 +107,11 @@ export class NoticiasService {
     }
     else if (seccion === "descubre") {
       return this.firebase.list('/descubre', ref => ref.orderByKey().endAt(id).limitToLast(4));
-
+   
     }
     else if (seccion === "mocotips") {
       return this.firebase.list('/mocotips', ref => ref.orderByKey().endAt(id).limitToLast(4));
-
+   
     }
   }
   getFirst25News(seccion: string) {
@@ -168,11 +168,11 @@ export class NoticiasService {
       return this.firebase.list('/ocio', ref => ref.orderByKey().startAt(pibote).limitToFirst(25));
     }
     else if (seccion === "descubre") {
-      return this.firebase.list('/descubre', ref => ref.orderByKey().startAt(pibote).limitToFirst(25));
+     return this.firebase.list('/descubre', ref => ref.orderByKey().startAt(pibote).limitToFirst(25));
     }
     else if (seccion === "mocotips") {
       return this.firebase.list('/mocotips', ref => ref.orderByKey().startAt(pibote).limitToFirst(25));
-    }
+     }
   }
   insertNoticias(noticia: Noticias, seccion: string) { /*Inserta la noticia en una sección especifica dentro de la base de datos Firebase*/
 
@@ -299,34 +299,34 @@ export class NoticiasService {
       }).then(() => {
       });
     }
-  }
-
-  deleteNoticia(key: string, seccion: string, keyNodo: string) {
+  } 
+ 
+  deleteNoticia(key : string, seccion : string, keyNodo : string){
     if (seccion === "Noticias") {
       /*Elimina en el link de noticias*/
-      this.firebase.object('/noticias/' + key).remove();
+      this.firebase.object('/noticias/'+key).remove();
     }
     else if (seccion === "Ciencia") {
       /*Elimina en el link de ciencia*/
-      this.firebase.object('/ciencia/' + key).remove();
+      this.firebase.object('/ciencia/'+key).remove();
     }
     else if (seccion === "Arte") {
       /*Elimina en el link de arte*/
-      this.firebase.object('/arte/' + key).remove();
+      this.firebase.object('/arte/'+key).remove();
     }
     else if (seccion === "Ocio") {
       /*Elimina en el link de ocio*/
-      this.firebase.object('/ocio/' + key).remove();
+      this.firebase.object('/ocio/'+key).remove();
     }
     else if (seccion === "Descubre") {
       /*Elimina en el link de descubre*/
-      this.firebase.object('/descubre/' + key).remove();
+      this.firebase.object('/descubre/'+key).remove();
     }
     else if (seccion === "Mocotips") {
       /*Elimina en el link de mocotips*/
-      this.firebase.object('/mocotips/' + key).remove();
+      this.firebase.object('/mocotips/'+key).remove();
     }
-    this.firebase.object('/todasLasNoticiasJuntas/' + keyNodo).remove();
+    this.firebase.object('/todasLasNoticiasJuntas/'+keyNodo).remove();
   }
 
   updateNoticia(noticia: Noticias, seccion: string) {
@@ -408,26 +408,26 @@ export class NoticiasService {
 
       if (noticia) {
         this.noticiasList.update(noticia.$key, {
-          tittle: noticia.tittle,
-          phrase: noticia.phrase,
-          autor: noticia.autor,
-          plantilla: noticia.plantilla,
-          date: noticia.date,
-          part1: noticia.part1,
-          part2: noticia.part2,
-          part3: noticia.part3,
-          part4: noticia.part4,
-          part5: noticia.part5,
-          part6: noticia.part6,
-          part7: noticia.part7,
-          principalImage: noticia.principalImage,
-          image1: noticia.image1,
-          image2: noticia.image2,
-          image3: noticia.image3,
-          image4: noticia.image4,
-          image5: noticia.image5,
-          image6: noticia.image6,
-          youtube: noticia.youtube
+        tittle: noticia.tittle,
+        phrase: noticia.phrase,
+        autor: noticia.autor,
+        plantilla: noticia.plantilla,
+        date: noticia.date,
+        part1: noticia.part1,
+        part2: noticia.part2,
+        part3: noticia.part3,
+        part4: noticia.part4,
+        part5: noticia.part5,
+        part6: noticia.part6,
+        part7: noticia.part7,
+        principalImage: noticia.principalImage,
+        image1: noticia.image1,
+        image2: noticia.image2,
+        image3: noticia.image3,
+        image4: noticia.image4,
+        image5: noticia.image5,
+        image6: noticia.image6,
+        youtube: noticia.youtube
         }).then(() => {
           resolve();
         });
@@ -506,8 +506,8 @@ export class NoticiasService {
       }
     });
   }
-  deleteEspecial(keyNodo: string) {
-    this.firebase.object('/especialDelMes/' + keyNodo).remove();
+  deleteEspecial(keyNodo : string){
+    this.firebase.object('/especialDelMes/'+keyNodo).remove();
   }
   insertPatrocinadores(patrocinador: patrocinadores) {
     this.patrocinadoresList = this.firebase.list('/patrocinadores');
@@ -530,14 +530,14 @@ export class NoticiasService {
       this.patrocinadoresList = this.firebase.list('/patrocinadores');
       if (patrocinador) {
         this.patrocinadoresList.update(patrocinador.$key, {
-          patrocinador1Image: patrocinador.patrocinador1Image,
-          patrocinador2Image: patrocinador.patrocinador2Image,
-          patrocinador3Image: patrocinador.patrocinador3Image,
-          patrocinador4Image: patrocinador.patrocinador4Image,
-          patrocinador1Url: patrocinador.patrocinador1Url,
-          patrocinador2Url: patrocinador.patrocinador2Url,
-          patrocinador3Url: patrocinador.patrocinador3Url,
-          patrocinador4Url: patrocinador.patrocinador4Url,
+        patrocinador1Image: patrocinador.patrocinador1Image,
+        patrocinador2Image: patrocinador.patrocinador2Image,
+        patrocinador3Image: patrocinador.patrocinador3Image,
+        patrocinador4Image: patrocinador.patrocinador4Image,
+        patrocinador1Url: patrocinador.patrocinador1Url,
+        patrocinador2Url: patrocinador.patrocinador2Url,
+        patrocinador3Url: patrocinador.patrocinador3Url,
+        patrocinador4Url: patrocinador.patrocinador4Url,
         }).then(() => {
           resolve();
         });
@@ -547,7 +547,21 @@ export class NoticiasService {
   getPatrocinadores() {
     return this.firebase.list('/patrocinadores', ref => ref.orderByKey());
   }
-
+  /*insertBanner(banner: bannerTrimestral) {
+    console.log(banner);
+    this.bannerList = this.firebase.list('/bannerTrimestral');
+    if (bannerTrimestral) {
+      this.bannerList.push({
+        banner1Image: banner.banner1Image,
+        banner2Image: banner.banner2Image,
+        banner3Image: banner.banner3Image,
+        banner1Url: banner.banner1Url,
+        banner2Url: banner.banner2Url,
+        banner3Url: banner.banner3Url,
+      }).then(() => {
+      });
+    }
+  }*/
   updateBanner(banner: bannerTrimestral) {
     return new Promise((resolve, reject) => {
       this.bannerList = this.firebase.list('/bannerTrimestral');
@@ -572,33 +586,33 @@ export class NoticiasService {
     /*Inserta un comentario en una noticia*/
     if (seccion === "Noticias") {
       /*Inserta en el link de noticias*/
-      this.comentarioList = this.firebase.list('/noticias/' + comentario.id_noticia + '/comentarios');
+      this.comentarioList = this.firebase.list('/noticias/'+comentario.id_noticia+'/comentarios');
     }
     else if (seccion === "Ciencia") {
       /*Inserta en el link de ciencia*/
-      this.comentarioList = this.firebase.list('/ciencia/' + comentario.id_noticia + '/comentarios');
+      this.comentarioList = this.firebase.list('/ciencia/'+comentario.id_noticia+'/comentarios');
     }
     else if (seccion === "Arte") {
       /*Inserta en el link de arte*/
-      this.comentarioList = this.firebase.list('/arte/' + comentario.id_noticia + '/comentarios');
+      this.comentarioList = this.firebase.list('/arte/'+comentario.id_noticia+'/comentarios');
     }
     else if (seccion === "Ocio") {
       /*Inserta en el link de ocio*/
-      this.comentarioList = this.firebase.list('/ocio/' + comentario.id_noticia + '/comentarios');
+      this.comentarioList = this.firebase.list('/ocio/'+comentario.id_noticia+'/comentarios');
     }
     else if (seccion === "Descubre") {
       /*Inserta en el link de descubre*/
-      this.comentarioList = this.firebase.list('/descubre/' + comentario.id_noticia + '/comentarios');
+      this.comentarioList = this.firebase.list('/descubre/'+comentario.id_noticia+'/comentarios');
     }
     else if (seccion === "Mocotips") {
       /*Inserta en el link de mocotips*/
-      this.comentarioList = this.firebase.list('/mocotips/' + comentario.id_noticia + '/comentarios');
+      this.comentarioList = this.firebase.list('/mocotips/'+comentario.id_noticia+'/comentarios');
     }
     else if (seccion === "Especial") {
       /*Inserta en el link de mocotips*/
-      this.comentarioList = this.firebase.list('/especialDelMes/' + comentario.id_noticia + '/comentarios');
+      this.comentarioList = this.firebase.list('/especialDelMes/'+comentario.id_noticia+'/comentarios');
     }
-
+    
     if (comentario) {
       this.comentarioList.push({
         username: comentario.username,
@@ -607,66 +621,66 @@ export class NoticiasService {
         userPicture: comentario.userPicture,
         uid: comentario.uid
       }).then(() => {
-
+       
       });
     }
   }
-  deleteComentario(noteKey: string, seccion: string, commentKey: string) {
+  deleteComentario(noteKey : string, seccion : string, commentKey : string){
     if (seccion === "Noticias") {
       /*Elimina en el link de noticias*/
-      this.firebase.object('/noticias/' + noteKey + '/comentarios/' + commentKey).remove();
+     this.firebase.object('/noticias/'+noteKey+'/comentarios/'+commentKey).remove();
     }
     else if (seccion === "Ciencia") {
       /*Elimina en el link de ciencia*/
-      this.firebase.object('/ciencia/' + noteKey + '/comentarios/' + commentKey).remove();
+      this.firebase.object('/ciencia/'+noteKey+'/comentarios/'+commentKey).remove();
     }
     else if (seccion === "Arte") {
       /*Elimina en el link de arte*/
-      this.firebase.object('/arte/' + noteKey + '/comentarios/' + commentKey).remove();
+      this.firebase.object('/arte/'+noteKey+'/comentarios/'+commentKey).remove();
     }
     else if (seccion === "Ocio") {
       /*Elimina en el link de ocio*/
-      this.firebase.object('/ocio/' + noteKey + '/comentarios/' + commentKey).remove();
+      this.firebase.object('/ocio/'+noteKey+'/comentarios/'+commentKey).remove();
     }
     else if (seccion === "Descubre") {
       /*Elimina en el link de descubre*/
-      this.firebase.object('/descubre/' + noteKey + '/comentarios/' + commentKey).remove();
+      this.firebase.object('/descubre/'+noteKey+'/comentarios/'+commentKey).remove();
     }
     else if (seccion === "Mocotips") {
       /*Elimina en el link de mocotips*/
-      this.firebase.object('/mocotips/' + noteKey + '/comentarios/' + commentKey).remove();
+      this.firebase.object('/mocotips/'+noteKey+'/comentarios/'+commentKey).remove();
     }
-
+    
   }
   getComentarioCiencia(id: string) {
-    return this.firebase.list('/ciencia/' + id + '/comentarios', ref => ref.orderByKey());
+    return this.firebase.list('/ciencia/'+id+'/comentarios', ref => ref.orderByKey());
   }
   getComentarioNoticias(id: string) {
-    return this.firebase.list('/noticias/' + id + '/comentarios', ref => ref.orderByKey());
+    return this.firebase.list('/noticias/'+id+'/comentarios', ref => ref.orderByKey());
   }
   getComentarioArte(id: string) {
-    return this.firebase.list('/arte/' + id + '/comentarios', ref => ref.orderByKey());
+    return this.firebase.list('/arte/'+id+'/comentarios', ref => ref.orderByKey());
   }
   getComentarioOcio(id: string) {
-    return this.firebase.list('/ocio/' + id + '/comentarios', ref => ref.orderByKey());
+    return this.firebase.list('/ocio/'+id+'/comentarios', ref => ref.orderByKey());
   }
   getComentarioDescubre(id: string) {
-    return this.firebase.list('/descubre/' + id + '/comentarios', ref => ref.orderByKey());
+    return this.firebase.list('/descubre/'+id+'/comentarios', ref => ref.orderByKey());
   }
   getComentarioMocotips(id: string) {
-    return this.firebase.list('/mocotips/' + id + '/comentarios', ref => ref.orderByKey());
+    return this.firebase.list('/mocotips/'+id+'/comentarios', ref => ref.orderByKey());
   }
   getComentarioEspecial(id: string) {
-    return this.firebase.list('/especialDelMes/' + id + '/comentarios', ref => ref.orderByKey());
+    return this.firebase.list('/especialDelMes/'+id+'/comentarios', ref => ref.orderByKey());
   }
 
-  deleteComentarioEspecial(noteKey: string, commentKey: string) {
+  deleteComentarioEspecial(noteKey : string, commentKey : string){
 
-    /*Elimina en el link de noticias*/
-    this.firebase.object('/especialDelMes/' + noteKey + '/comentarios/' + commentKey).remove();
-
+      /*Elimina en el link de noticias*/
+     this.firebase.object('/especialDelMes/'+noteKey+'/comentarios/'+commentKey).remove();
+    
   }
   searchNew(busqueda: string) {
-    return this.firebase.list('/todasLasNoticiasJuntas', ref => ref.orderByChild('tittle').startAt(busqueda).endAt(busqueda + '\uf8ff'));
+    return this.firebase.list('/todasLasNoticiasJuntas', ref => ref.orderByChild('tittle').startAt(busqueda).endAt(busqueda+'\uf8ff'));
   }
 }

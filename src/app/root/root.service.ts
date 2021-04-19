@@ -8,21 +8,22 @@ export class RootService {
 
   public url: any = null;
   public baseUrl = '';
-  constructor(private http: HttpClient) {
-
+  constructor(private http: HttpClient) { 
+    
     const host = window.location.hostname;
     if (host.indexOf('angularelmocodeploy.firebaseapp.com') > -1) {
-      this.baseUrl = 'https://expresselmocodeploy.firebaseapp.com/hello-cached';
-    }
+        this.baseUrl = 'https://expresselmocodeploy.firebaseapp.com/hello-cached';
+    } 
     else {
-      this.baseUrl = 'https://expresselmocodeploy.firebaseapp.com';
+        this.baseUrl = 'https://expresselmocodeploy.firebaseapp.com';
     }
   }
 
-  testRequest() {
+  testRequest(){
     return this.http.get('https://jsonplaceholder.typicode.com/users')
   }
-  connectionBack(testScript) {
+  connectionBack(testScript){
+    console.log(testScript);
     return this.http.get(this.baseUrl + '/hello-cached');
-  }
+   }
 }
