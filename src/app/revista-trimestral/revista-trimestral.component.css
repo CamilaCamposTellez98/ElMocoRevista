@@ -1,0 +1,2109 @@
+html {
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      rgba(144, 207, 19, 0.5),
+      rgba(144, 207, 19, 0.5)
+    ),
+    url("./../../assets/images/Backround_Lines.jpg");
+}
+.screen {
+  max-width: 1500px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: calc(50% - 750px);
+  background-color: white;
+}
+@media all and (max-width: 1500px) {
+  html {
+    margin-left: 0%;
+    margin-right: 0%;
+    background-image: none;
+  }
+  .screen {
+    left: 0%;
+    background-color: white;
+  }
+}
+.bg-moco-menu {
+  background-color: #00758b !important;
+  padding: 0rem 0rem;
+  -webkit-box-shadow: inset -12px 4px 56px -13px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: inset -12px 4px 56px -13px rgba(0, 0, 0, 0.35);
+  box-shadow: inset -12px 4px 56px -13px rgba(0, 0, 0, 0.35);
+}
+.navbar-moco .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.774);
+}
+/*News button styles*/
+.navbar-moco .navbar-nav .nav-link-news {
+  color: rgb(255, 255, 255);
+  display: block;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(245, 152, 19);
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,
+.nav-link-news:hover {
+  text-decoration: none;
+}
+.navbar-moco .navbar-nav .nav-link-news:focus,
+.navbar-moco .navbar-nav .nav-link-news:hover {
+  background-color: rgba(245, 151, 19, 0.856);
+}
+/*Science button styles*/
+.navbar-moco .navbar-nav .nav-link-science {
+  color: rgba(255, 255, 255);
+  display: block;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(34, 201, 225);
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,
+.nav-link-science:hover {
+  text-decoration: none;
+}
+.navbar-moco .navbar-nav .nav-link-science:focus,
+.navbar-moco .navbar-nav .nav-link-science:hover {
+  color: rgba(255, 255, 255);
+  background-color: rgba(34, 199, 225, 0.884);
+}
+/*Art button styles*/
+.navbar-moco .navbar-nav .nav-link-art {
+  color: rgba(255, 255, 255);
+  display: block;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(218, 97, 171);
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,
+.nav-link-art:hover {
+  text-decoration: none;
+}
+
+.navbar-moco .navbar-nav .nav-link-art:focus,
+.navbar-moco .navbar-nav .nav-link-art:hover {
+  color: rgba(255, 255, 255);
+  background-color: rgba(218, 97, 172, 0.877);
+}
+/*Fun button styles*/
+.navbar-moco .navbar-nav .nav-link-fun {
+  color: rgba(255, 255, 255);
+  display: block;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(239, 209, 4);
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,
+.nav-link-fun:hover {
+  text-decoration: none;
+}
+
+.navbar-moco .navbar-nav .nav-link-fun:focus,
+.navbar-moco .navbar-nav .nav-link-fun:hover {
+  color: rgba(255, 255, 255);
+  background-color: rgba(239, 208, 4, 0.877);
+}
+/*Find button styles*/
+.navbar-moco .navbar-nav .nav-link-find {
+  color: rgba(255, 255, 255);
+  display: block;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(168, 101, 202);
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+}
+.nav-link-news:focus,
+.nav-link-find:hover {
+  text-decoration: none;
+}
+
+.navbar-moco .navbar-nav .nav-link-find:focus,
+.navbar-moco .navbar-nav .nav-link-find:hover {
+  color: rgba(255, 255, 255);
+  background-color: rgba(168, 101, 202, 0.863);
+}
+.navbar-moco .navbar-nav .nav-link-input {
+  color: rgba(0, 0, 0, 0.774);
+  display: block;
+  margin: 0.25rem;
+}
+
+.navbar-moco .navbar-nav .nav-link-menu {
+  color: rgba(255, 255, 255, 0.774);
+  display: block;
+  padding: 0.9rem 1.5rem;
+  background-image: url("./../../assets/images/Home_WhiteIcon_Desactivado.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.navbar-moco .navbar-nav .nav-link-menu:focus,
+.navbar-moco .navbar-nav .nav-link-menu:hover {
+  background-image: url("./../../assets/images/HomeOrangeIcon_MouseOver.png");
+}
+
+.navbar-moco .navbar-nav .nav-link-search {
+  color: rgba(255, 255, 255, 0.774);
+  display: block;
+  padding: 1rem 1.5rem;
+  background-image: url("./../../assets/images/Lupa_Home.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.navbar-moco .navbar-nav .nav-link-moconauta {
+  color: rgb(255, 255, 255);
+  display: block;
+  padding: 0.4rem 2rem;
+  position: absolute;
+  margin: 0%;
+  font-family: "Arial";
+  font-size: 100%;
+}
+.navbar-moco .navbar-nav .nav-link-moconauta .profile-pic {
+  height: 19.3167px;
+  width: 19.3167px;
+  position: absolute;
+  left: 0rem;
+  top: 6.4px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 0.5px solid #ffffff;
+  background-size: cover;
+  background-position: center;
+}
+.navbar-moco .navbar-nav .nav-link-moconauta .opciones {
+  color: rgb(141, 150, 61);
+  font-family: "Anaheim";
+  font-size: 120%;
+}
+.nav-link-news:focus,
+.nav-link-moconauta:hover {
+  text-decoration: none;
+}
+
+.navbar-moco .navbar-nav .active > .nav-link,
+.navbar-moco .navbar-nav .nav-link.active,
+.navbar-moco .navbar-nav .nav-link.show,
+.navbar-moco .navbar-nav .show > .nav-link {
+  color: #fff;
+}
+.navbar-moco .navbar-toggler {
+  display: none;
+}
+.navbar-moco .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.bg-moco-second-menu {
+  background-color: rgb(145, 211, 32) !important;
+  padding: 0rem 0rem;
+  display: none;
+}
+.navbar-moco-second-menu .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.774);
+}
+.navbar-moco-second-menu .navbar-nav .nav-link-quienes-somos,
+.navbar-moco-second-menu .navbar-nav .nav-link-moco-shop,
+.navbar-moco-second-menu .navbar-nav .nav-link-moco-app,
+.navbar-moco-second-menu .navbar-nav .nav-link-revista-tri,
+.navbar-moco-second-menu .navbar-nav .nav-link-mocotips-padres,
+.navbar-moco-second-menu .navbar-nav .nav-link-contacto {
+  color: rgba(255, 255, 255, 0.774);
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  background-color: rgb(205, 148, 45);
+  display: block;
+  padding: 0.9rem 1.5rem;
+  padding-left: 3.6rem;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/*   */
+.navbar-moco-second-menu .navbar-nav .nav-link-quienes-somos {
+  background-image: url("./../../assets/images/quienes_verde.png");
+}
+.navbar-moco-second-menu .navbar-nav .nav-link-moco-shop {
+  background-image: url("./../../assets/images/carritobutton.png");
+}
+.navbar-moco-second-menu .navbar-nav .nav-link-moco-app {
+  background-image: url("./../../assets/images/telefonobutton.png");
+}
+.navbar-moco-second-menu .navbar-nav .nav-link-revista-tri {
+  background-image: url("./../../assets/images/revistabutton.png");
+}
+.navbar-moco-second-menu .navbar-nav .nav-link-mocotips-padres {
+  background-image: url("./../../assets/images/focobutton.png");
+}
+.navbar-moco-second-menu .navbar-nav .nav-link-contacto {
+  background-image: url("./../../assets/images/correitobutton.png");
+  margin-bottom: 1rem;
+}
+
+.navbar-moco-second-menu .navbar-nav .active > .nav-link,
+.navbar-moco-second-menu .navbar-nav .nav-link.active,
+.navbar-moco-second-menu .navbar-nav .nav-link.show,
+.navbar-moco-second-menu .navbar-nav .show > .nav-link {
+  color: #fff;
+}
+.navbar-moco-second-menu .navbar-toggler {
+  color: rgba(235, 220, 220, 0.5);
+  width: 100%;
+  float: none;
+  margin-right: 0;
+}
+.navbar-moco-second-menu .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.el-moco-banner {
+  height: 275px;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("./../../assets/images/banner-sin-moco.png");
+}
+.el-moco-banner .logo-hd {
+  position: absolute;
+  width: 20%;
+  height: 60%;
+  left: 40%;
+  bottom: 5%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("./../../assets/images/Logo_ElMoco.png");
+}
+
+.structure {
+  min-height: auto;
+  margin: 0px;
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row;
+  flex-flow: row;
+  background-image: linear-gradient(
+      rgba(26, 63, 1, 0.925),
+      rgba(26, 63, 1, 0.925)
+    ),
+    url("./../../assets/images/Franjas_FondoAzul_Bloque3.png");
+
+  background-size: 100%, 100%;
+}
+.structure .first-news {
+  position: relative;
+  -webkit-flex: 3 1 60%;
+  flex: 3 1 60%;
+  -webkit-order: 2;
+  order: 2;
+}
+
+.structure .first-news .new-image-banner {
+  /*  background-image: url("./../../assets/images/Revista_Banner.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;*/
+  width: 80%;
+  height: 90%;
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  border-radius: 5%;
+}
+.structure .first-news .new-line {
+  background-color: rgb(202, 124, 16);
+  width: 80%;
+  height: 7%;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  border-radius: 5px;
+  color: rgb(255, 255, 255); /* Black text color */
+  text-decoration: none; /* Remove underline from links */
+  font-family: Century Gothic;
+  font-size: 250%;
+  align-content: center;
+  padding: 0.5%;
+}
+
+.structure .first-news .new-line .new-line-moco {
+  background-image: url("./../../assets/images/Moco_Noticia.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 8%;
+  height: 85%;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+.structure .first-news .quienes-somos-text {
+  width: 80%;
+  height: 15%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  border-radius: 5px;
+  color: rgb(255, 255, 255); /* Black text color */
+  text-decoration: none; /* Remove underline from links */
+  font-family: "Gill Sans";
+  font-size: 400%;
+  text-align: center;
+}
+.structure .first-news .quienes-somos-text2 {
+  width: 80%;
+  height: 15%;
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  border-radius: 5px;
+  color: rgb(255, 255, 255); /* Black text color */
+  text-decoration: none; /* Remove underline from links */
+  font-family: Marker Felt;
+  font-size: 200%;
+  text-align: center;
+}
+
+.structure .first-news .new-post-info {
+  width: 80%;
+  height: 5%;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  display: flex;
+}
+.structure .first-news .new-post-info .text {
+  color: rgb(255, 255, 255); /* Black text color */
+  text-decoration: none; /* Remove underline from links */
+  font-family: verdana;
+  font-size: 120%;
+  text-align: left;
+  width: 25%;
+}
+.structure .first-news .new-post-info .section-icon {
+  background-image: url("./../../assets/images/Icono_Seccion.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 3%;
+  height: 80%;
+  position: relative;
+}
+.structure .first-news .new-post-info .profile-icon {
+  background-image: url("./../../assets/images/Icono_Perfil.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 3%;
+  height: 80%;
+  position: relative;
+}
+.structure .first-news .new-post-info .commentaries-icon {
+  background-image: url("./../../assets/images/Icono_Mensaje.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 3%;
+  height: 80%;
+  position: relative;
+}
+.structure .first-news .new-post-info .date-icon {
+  background-image: url("./../../assets/images/Icono_Reloj.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 3%;
+  height: 80%;
+  position: relative;
+}
+
+.structure .options {
+  margin: 4px;
+  padding: 5px;
+  position: relative;
+  -webkit-flex: 1 6 20%;
+  flex: 1 6 20%;
+  -webkit-order: 3;
+  order: 3;
+}
+.structure .options .vertical-menu {
+  width: 300px;
+  margin-top: 35px;
+  margin-left: 0px;
+}
+.structure .options .vertical-menu a.options {
+  background-image: url("./../../assets/images/Barra_Desactivado.png");
+  color: rgb(255, 255, 255);
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  display: block;
+  padding: 18px;
+  margin: 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  padding-left: 3.6rem;
+  position: relative;
+}
+.structure .options .vertical-menu a.options:hover {
+  background-image: url("./../../assets/images/Barra_MouseOver.png");
+}
+
+.structure .options .vertical-menu a.menu {
+  background-color: rgb(
+    14,
+    71,
+    16
+  ); /* Add a green color to the "active/current" link */
+  color: rgb(114, 192, 25);
+  text-align: center;
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  display: block;
+  padding: 18px;
+  margin: 15px;
+  border-radius: 15px;
+  border-radius: 5px;
+  position: relative;
+}
+.structure .options .vertical-menu a.menu .first-moco {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("./../../assets/images/Moco_Sorprendido.png");
+  position: absolute;
+  left: 5px;
+  top: -25%;
+  width: 18%;
+  height: 125%;
+}
+.structure .options .vertical-menu a.menu .second-moco {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("./../../assets/images/MocoDetalle.png");
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 18%;
+  height: 100%;
+}
+
+.structure .options .vertical-menu a.options .quienes,
+.structure .options .vertical-menu a.options .moco-shop,
+.structure .options .vertical-menu a.options .moco-app,
+.structure .options .vertical-menu a.options .revista,
+.structure .options .vertical-menu a.options .mocotips,
+.structure .options .vertical-menu a.options .contacto {
+  background-repeat: no-repeat;
+  background-size: 50%, 50%;
+  background-position: center;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 18%;
+  height: 100%;
+}
+.structure .options .vertical-menu a.options .quienes {
+  background-image: url("./../../assets/images/BaraQuienesSomos_Perfil_Icono.png");
+}
+.structure .options .vertical-menu a.options .moco-shop {
+  background-image: url("./../../assets/images/Carrito_IconoBlanco.png");
+}
+.structure .options .vertical-menu a.options .moco-app {
+  background-image: url("./../../assets/images/Telefono_IconoBlanco.png");
+}
+.structure .options .vertical-menu a.options .revista {
+  background-image: url("./../../assets/images/Revista_IconoBlanco.png");
+}
+.structure .options .vertical-menu a.options .mocotips {
+  background-image: url("./../../assets/images/Foco_IconoBlanco.png");
+}
+.structure .options .vertical-menu a.options .contacto {
+  background-image: url("./../../assets/images/Correo_IconoBlanco.png");
+}
+
+.banner {
+  display: block;
+  margin: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  min-height: 32px;
+}
+
+.contact {
+  display: block;
+  width: 100%;
+  min-height: 300px;
+  background-image: url("./../../assets/images/captura.png");
+  background-repeat: no-repeat;
+  background-size: 100%, 100%;
+}
+.footer {
+  min-height: 180px;
+  margin: 0px;
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row;
+  flex-flow: row;
+  background-image: url("./../../assets/images/Green_Footer.png");
+}
+.footer .logo {
+  width: 15rem;
+  height: 60%;
+  position: absolute;
+  top: 10%;
+  right: 70%;
+  background-image: url("./../../assets/images/LogoMoco_Header.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.footer .redes-box {
+  width: 20rem;
+  height: 40%;
+  position: absolute;
+  top: 30%;
+  right: 8.5%;
+}
+.footer .redes-box .fb {
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  background-image: url("./../../assets/images/Facebook_Icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.footer .redes-box .tw {
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  left: 27%;
+  background-image: url("./../../assets/images/Twitter_Icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.footer .redes-box .in {
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  right: 27%;
+  background-image: url("./../../assets/images/Instagram_Icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.footer .redes-box .yt {
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  background-image: url("./../../assets/images/Youtube_Icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.footer .avisos-ter-box {
+  width: 25rem;
+  height: 10%;
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  color: rgba(255, 255, 255, 0.774);
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  text-align: center;
+  font-size: 120%;
+}
+.footer .text-box,
+.footer .avisos-ter-box .avisos,
+.footer .avisos-ter-box .terminos,
+.footer .lema {
+  color: rgba(255, 255, 255, 0.774);
+  position: absolute;
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  text-align: center;
+  font-size: 100%;
+}
+
+.footer .lema {
+  width: 25rem;
+  height: 10%;
+  position: absolute;
+  bottom: 10%;
+  right: 63%;
+
+  font-size: 120%;
+}
+.footer .text-box {
+  width: 25rem;
+  height: 10%;
+  top: 10%;
+  right: 5%;
+
+  font-size: 120%;
+}
+.footer .avisos-ter-box .avisos {
+  width: 39%;
+  height: 100%;
+  left: 0%;
+}
+.footer .avisos-ter-box .franja {
+  width: 1%;
+  height: 100%;
+  position: absolute;
+  left: 39%;
+  background-color: rgb(45, 187, 2);
+}
+.footer .avisos-ter-box .terminos {
+  width: 60%;
+  height: 100%;
+  right: 0%;
+}
+
+.footer .avisos-ter-box .terminos:hover,
+.footer .avisos-ter-box .avisos:hover {
+  color: rgba(250, 185, 8, 0.774);
+}
+/*Estilo inicial al entrar al sitio*/
+.second-news {
+  display: block;
+  margin-top: 0px;
+  height: auto;
+}
+.second-news .latest-news {
+  width: auto;
+  height: auto;
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+}
+
+.second-news .latest-news .big-new {
+  /** SI SE USA **/
+
+  height: 1600px;
+  margin-left: 65px;
+  margin-right: 35px;
+  margin-top: 60px;
+  text-decoration: none;
+  border-radius: 10px;
+
+  width: 75%;
+
+  position: relative;
+  padding-top: 0px;
+}
+
+.second-news .latest-news .big-new .button-publish {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 20%;
+  border: none;
+  position: absolute;
+  bottom: 5%;
+  color: rgb(255, 255, 255);
+}
+.second-news .latest-news .big-new .comments-opinion-tittle,
+.second-news .latest-news .big-new .comments-opinion-tittle2,
+.second-news .latest-news .big-new .comments-opinion-tittle3,
+.second-news .latest-news .big-new .comments-opinion-text {
+  /* background-color: lightseagreen; */
+  text-decoration: none;
+  font-family: "Arial-Rounded"; /*fuente personalizada importada con @font-face*/
+  width: 100%;
+  position: absolute;
+}
+.second-news .latest-news .big-new .comments-opinion-text {
+  /*background-color: magenta;*/
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  height: 15%;
+  font-size: 150%;
+  text-align: left;
+  color: rgb(0, 0, 0);
+  top: 5%;
+}
+.second-news .latest-news .big-new .comments-opinion-tittle,
+.second-news .latest-news .big-new .comments-opinion-tittle2 {
+  color: rgb(139, 191, 52);
+  height: 5%;
+  font-size: 250%;
+  text-align: center;
+}
+.second-news .latest-news .big-new .comments-opinion-tittle {
+  top: 0;
+}
+.second-news .latest-news .big-new .comments-opinion-tittle2 {
+  top: 17.5%;
+}
+.second-news .latest-news .big-new .comments-opinion-tittle3 {
+  text-align: center;
+  top: 30%;
+  color: rgb(0, 0, 0);
+  font-size: 150%;
+}
+.second-news .latest-news .big-new .comments-opinion-box1 {
+  background-image: url("./../../assets/images/Boton_Especial.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 80%;
+  height: 5%;
+  position: absolute;
+  top: 22.5%;
+  left: 10%;
+}
+
+.second-news .latest-news .big-new .comments-opinion-AR {
+  width: 90%;
+  height: 60%;
+  position: absolute;
+  top: 35%;
+  left: 5%;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+.second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+.second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+.second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+.second-news .latest-news .big-new .comments-opinion-AR .bakterium,
+.second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+.second-news .latest-news .big-new .comments-opinion-AR .sePega,
+.second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+  background-repeat: no-repeat;
+  background-size: 90%, 100%;
+  background-position: center;
+  width: 14rem;
+  height: 8rem;
+  position: absolute;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .ecoMoco {
+  background-image: url("./../../assets/images/EcoMoco.png");
+  top: 0rem;
+  left: 1rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos {
+  background-image: url("./../../assets/images/HurgaDatos.png");
+  top: 0rem;
+  right: 6rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .bioAventura {
+  background-image: url("./../../assets/images/BioAventura.png");
+  background-size: 100%, 100%;
+  width: 17rem;
+  top: 15rem;
+  left: 2rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .arteMañas {
+  background-image: url("./../../assets/images/ArteYManias.png");
+  background-size: 100%, 100%;
+  top: 15rem;
+  right: 5rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+  background-image: url("./../../assets/images/DrBakterium.png");
+  background-size: 100%, 100%;
+  width: 17rem;
+  top: 30rem;
+  left: 2rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .puroCuento {
+  background-image: url("./../../assets/images/PuroCuento.png");
+  top: 30rem;
+  right: 5.5rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .sePega {
+  background-image: url("./../../assets/images/LoquesePega.png");
+  top: 45rem;
+  left: 1.5rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+  background-image: url("./../../assets/images/TuEspacio.png");
+  top: 45rem;
+  right: 6rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+.second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+.second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+.second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+.second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+.second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+.second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+.second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+  width: 19.2rem;
+  height: 7rem;
+  position: absolute;
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  font-size: 150%;
+  color: rgb(0, 0, 0);
+}
+.second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text {
+  top: 8rem;
+  left: 2rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text {
+  top: 8rem;
+  right: 0rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text {
+  top: 23rem;
+  left: 2rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text {
+  top: 23rem;
+  right: 0rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .bakterium-text {
+  top: 38rem;
+  left: 2rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text {
+  top: 38rem;
+  right: 0rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .sePega-text {
+  top: 53rem;
+  left: 2rem;
+}
+.second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+  top: 53rem;
+  right: 0rem;
+}
+
+.second-news .latest-news .big-new .comments-opinion-text .green-comment {
+  color: rgb(139, 191, 52);
+}
+.second-news .latest-news .big-new .comments-opinion-apple {
+  background-image: url("./../../assets/images/AppStore.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 20%;
+  height: 5%;
+  position: absolute;
+  top: 70%;
+  left: 30%;
+}
+.second-news .latest-news .big-new .comments-opinion-android {
+  background-image: url("./../../assets/images/GooglePlay.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 20%;
+  height: 5%;
+  position: absolute;
+  top: 80%;
+  left: 30%;
+}
+.second-news .latest-news .big-new .comments-opinion-kids {
+  background-image: url("./../../assets/images/Ninos_Moco.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  top: 68%;
+  left: 52%;
+}
+
+.second-news .latest-news .options {
+  /* background-color: lightblue; */
+  margin: 4px;
+  position: relative;
+  width: 25%;
+  -webkit-order: 3;
+  order: 3;
+}
+
+.second-news .latest-news .options .contactanos-box {
+  background-image: url("./../../assets/images/Boton_Contactanos.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  text-decoration: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 35%;
+  top: 55%;
+}
+.second-news .latest-news .options .contactanos-box:hover {
+  background-image: url("./../../assets/images/Aunciate_over.png");
+  opacity: 0.9;
+}
+
+.second-news .latest-news .options .AR-box {
+  background-image: url("./../../assets/images/MocoAR.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  text-decoration: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 15%;
+  top: 3%;
+}
+
+.second-news .latest-news .options .padre-box {
+  background-image: url("./../../assets/images/nuevo-guia-padres.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  text-decoration: none;
+  width: 100%;
+  height: 15%;
+  top: 30%;
+}
+.second-news .latest-news .options .AR-text {
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  font-size: 150%;
+  color: rgb(83, 158, 21);
+  position: absolute;
+  text-decoration: none;
+  width: 80%;
+  height: 5%;
+  top: 20%;
+  left: 15%;
+}
+.second-news .latest-news .options .padre-text {
+  font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+  font-size: 150%;
+  color: rgb(83, 158, 21);
+  position: absolute;
+  text-decoration: none;
+  width: 80%;
+  height: 5%;
+  top: 47%;
+  left: 15%;
+}
+@media all and (max-width: 1400px) {
+  .structure .first-news .new-image-banner {
+    width: 78%;
+    height: 87%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 140%;
+  }
+}
+
+@media all and (max-width: 1300px) {
+  .el-moco-banner {
+    height: 250px;
+  }
+}
+@media all and (max-width: 1260px) {
+  .el-moco-banner {
+    height: 230px;
+  }
+}
+@media all and (max-width: 1150px) {
+  .el-moco-banner {
+    height: 210px;
+  }
+}
+@media all and (max-width: 1050px) {
+  .el-moco-banner {
+    height: 190px;
+  }
+}
+@media all and (max-width: 950px) {
+  .el-moco-banner {
+    height: 170px;
+  }
+}
+@media all and (max-width: 850px) {
+  .el-moco-banner {
+    height: 150px;
+  }
+}
+@media all and (max-width: 750px) {
+  .el-moco-banner {
+    height: 130px;
+  }
+}
+
+.el-moco-banner .logo-hd {
+  position: absolute;
+  width: 30%;
+  height: 70%;
+  left: 35%;
+  bottom: 5%;
+}
+
+@media all and (max-width: 575px) {
+  .el-moco-banner {
+    height: 160px;
+  }
+}
+@media all and (max-width: 500px) {
+  .el-moco-banner {
+    height: 150px;
+  }
+}
+@media all and (max-width: 450px) {
+  .el-moco-banner {
+    height: 140px;
+  }
+  .el-moco-banner .logo-hd {
+    position: absolute;
+    width: 40%;
+    left: 30%;
+    bottom: 5%;
+  }
+}
+@media all and (max-width: 400px) {
+  .el-moco-banner {
+    height: 130px;
+  }
+}
+@media all and (max-width: 350px) {
+  .el-moco-banner {
+    height: 120px;
+  }
+}
+
+@media all and (max-width: 1300px) {
+  .structure .first-news .new-image-banner {
+    width: 80%;
+    height: 84%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 130%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 13rem;
+    height: 8rem;
+    position: absolute;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 16rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 145%;
+    right: -1rem;
+  }
+}
+@media all and (max-width: 1200px) {
+  .structure .first-news .new-image-banner {
+    width: 85%;
+    height: 75%;
+    bottom: 15%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 140%;
+  }
+
+  .second-news .latest-news .options .AR-box {
+    top: 3%;
+  }
+  .second-news .latest-news .options .AR-text {
+    top: 20%;
+  }
+  .second-news .latest-news .options .padre-box {
+    top: 29%;
+  }
+  .second-news .latest-news .options .padre-text {
+    top: 45%;
+  }
+  .second-news .latest-news .options .contactanos-box {
+    top: 47%;
+  }
+}
+
+@media all and (max-width: 1080px) {
+  .structure .first-news .new-image-banner {
+    width: 85%;
+    height: 70%;
+    bottom: 15%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 120%;
+  }
+
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 12rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 14rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 140%;
+    right: -2rem;
+  }
+  .footer .logo {
+    right: 65%;
+  }
+  .footer .lema {
+    right: 58%;
+  }
+}
+@media all and (max-width: 1024px) {
+  .structure .first-news .new-image-banner,
+  .structure-news-selected .first-news .new-image-banner,
+  .structure-science-selected .first-news .new-image-banner,
+  .structure-art-selected .first-news .new-image-banner,
+  .structure-fun-selected .first-news .new-image-banner,
+  .structure-find-selected .first-news .new-image-banner {
+    width: 82%;
+    height: 60%;
+    bottom: 20%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 130%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle,
+  .second-news .latest-news .big-new .comments-opinion-tittle2 {
+    font-size: 200%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 11rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 14rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 135%;
+    right: -2rem;
+    width: 18.2rem;
+  }
+}
+@media all and (max-width: 1050px) {
+  .second-news .latest-news .big-new .comments-opinion-apple {
+    width: 30%;
+    height: 5%;
+    top: 70%;
+    left: 20%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-android {
+    width: 30%;
+    height: 5%;
+    top: 80%;
+    left: 20%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-kids {
+    width: 25%;
+    height: 20%;
+    top: 68%;
+    left: 60%;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .navbar-moco .navbar-nav .nav-link-moconauta {
+    position: static;
+  }
+  .navbar-moco .navbar-nav .nav-link-moconauta .profile-pic {
+    position: relative;
+    left: -1.5rem;
+    top: 18px;
+  }
+
+  .navbar-moco .navbar-toggler {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+    font-size: 150%;
+    width: 100%;
+    float: none;
+    margin-right: 0;
+    height: 40px;
+    background-image: url("./../../assets/images/Moco_Sorprendido.png");
+    background-position-x: 25%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 130%;
+  }
+
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 10rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 12rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 130%;
+    right: 0rem;
+    width: 15.2rem;
+  }
+}
+@media all and (max-width: 950px) {
+  .structure .first-news .new-image-banner,
+  .structure-news-selected .first-news .new-image-banner,
+  .structure-science-selected .first-news .new-image-banner,
+  .structure-art-selected .first-news .new-image-banner,
+  .structure-fun-selected .first-news .new-image-banner,
+  .structure-find-selected .first-news .new-image-banner {
+    width: 80%;
+    height: 55%;
+    bottom: 23%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 120%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR {
+    width: 110%;
+    left: -10%;
+  }
+  .footer {
+    min-height: 360px;
+  }
+
+  .footer .logo {
+    width: 15rem;
+    height: 30%;
+    position: absolute;
+    top: 10%;
+    right: 35%;
+  }
+  .footer .lema {
+    width: 25rem;
+    height: 5%;
+    top: 40%;
+    right: 25%;
+  }
+  .footer .redes-box {
+    width: 20rem;
+    height: 20%;
+    top: 60%;
+    right: 29%;
+  }
+  .footer .avisos-ter-box {
+    width: 25rem;
+    height: 5%;
+    position: absolute;
+    bottom: 7%;
+    right: 25%;
+  }
+  .footer .text-box {
+    width: 25rem;
+    height: 5%;
+    top: 50%;
+    right: 25%;
+    font-size: 120%;
+  }
+}
+@media all and (max-width: 860px) {
+  .structure .first-news .new-image-banner,
+  .structure-news-selected .first-news .new-image-banner,
+  .structure-science-selected .first-news .new-image-banner,
+  .structure-art-selected .first-news .new-image-banner,
+  .structure-fun-selected .first-news .new-image-banner,
+  .structure-find-selected .first-news .new-image-banner {
+    width: 80%;
+    height: 45%;
+    bottom: 27%;
+  }
+}
+@media all and (max-width: 850px) {
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 120%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 110%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 9rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 11rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 110%;
+    right: 2rem;
+    width: 12.2rem;
+  }
+}
+@media all and (max-width: 835px) {
+  .structure .first-news .new-image-banner {
+    height: 44%;
+  }
+}
+@media all and (max-width: 800px) {
+  .structure .first-news .new-image-banner {
+    width: 80%;
+    height: 40%;
+    bottom: 27%;
+  }
+}
+@media all and (max-width: 770px) {
+  .structure .first-news .new-image-banner {
+    height: 37%;
+  }
+}
+@media all and (max-width: 760px) {
+  .bg-moco-second-menu {
+    background-color: rgb(145, 211, 32) !important;
+    padding: 0rem 0rem;
+    display: block;
+  }
+  .structure {
+    -webkit-flex-flow: column;
+    flex-flow: column;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 40%;
+    background-size: cover;
+  }
+
+  .structure .options .vertical-menu {
+    width: 100%;
+    -webkit-order: 0;
+    order: 0;
+    display: none;
+  }
+  .structure .options {
+    display: none;
+  }
+
+  .structure .options,
+  .structure .options .vertical-menu {
+    width: auto;
+    -webkit-order: 0;
+    order: 0;
+  }
+  .structure .first-news .new-image-banner {
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+  }
+  .structure .first-news,
+  .structure .options {
+    -webkit-order: 0;
+    order: 0;
+    background-size: contain;
+    max-height: 100%;
+  }
+
+  .structure .first-news .new-name {
+    font-size: 100%;
+  }
+  .structure .first-news .new-line {
+    font-size: 100%;
+  }
+  .structure .first-news .new-post-info .text {
+    font-size: 50%;
+  }
+
+  /*Área con las 5 noticias más recientes de cada sección*/
+
+  .second-news .latest-news {
+    width: auto;
+    height: auto;
+    -webkit-order: 0;
+    order: 0;
+    display: block;
+  }
+  .second-news .latest-news .options {
+    width: 70%;
+    height: 1000px;
+    -webkit-order: 0;
+    order: 0;
+    display: block;
+    margin-top: 0px;
+    margin-left: 15%;
+  }
+  .second-news .latest-news {
+    width: auto;
+    height: auto;
+    display: block;
+    padding-top: 20px;
+  }
+
+  .second-news .latest-news a {
+    width: auto;
+    height: 300px;
+    display: block;
+    margin-top: 0px;
+  }
+
+  .second-news .latest-news .big-new {
+    /*** SI SE USA ***/
+    width: auto;
+    height: 1500px;
+    display: block;
+    margin: 0px;
+  }
+  .second-news .latest-news .big-new .button-publish {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 10%;
+    border: none;
+    position: absolute;
+    bottom: 5%;
+    color: rgb(255, 255, 255);
+  }
+
+  /*Área con las 5 noticias más recientes de la sección seleccionada, incluye un elemento para cambiar de página*/
+  .second-news-section-selected .latest-news {
+    width: auto;
+    height: auto;
+    -webkit-order: 0;
+    order: 0;
+    display: block;
+  }
+  .second-news .latest-news .options .contactanos-box {
+    height: 25%;
+    top: 0%;
+  }
+  .second-news .latest-news .options .AR-box {
+    height: 20%;
+    top: 27%;
+  }
+  .second-news .latest-news .options .AR-text {
+    font-size: 120%;
+    top: 52%;
+  }
+  .second-news .latest-news .options .padre-box {
+    height: 19%;
+    top: 60%;
+  }
+  .second-news .latest-news .options .padre-text {
+    font-size: 120%;
+    top: 85%;
+  }
+
+  .second-news-section-selected .latest-news a {
+    width: auto;
+    height: 300px;
+    -webkit-order: 0;
+    order: 0;
+    display: block;
+  }
+
+  .second-news-section-selected .latest-news .big-new {
+    width: auto;
+    height: auto;
+
+    -webkit-order: 0;
+    order: 0;
+    display: block;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    text-decoration: none;
+    font-family: "Varela Round"; /*fuente personalizada importada con @font-face*/
+    border-radius: 10px;
+    width: 100%;
+    height: 17%;
+    position: absolute;
+    font-size: 150%;
+
+    top: 4%;
+  }
+
+  .second-news .latest-news .big-new .comments-opinion-tittle2 {
+    top: 20%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle3 {
+    top: 30%;
+  }
+
+  .second-news .latest-news .big-new .comments-opinion-AR {
+    width: 80%;
+    left: 10%;
+  }
+
+  .contact {
+    display: block;
+    width: 100%;
+    min-height: 80px;
+    background-image: url("./../../assets/images/captura.png");
+    background-repeat: no-repeat;
+    background-size: 100%, 100%;
+  }
+}
+@media all and (max-width: 700px) {
+  .structure {
+    height: 35%;
+  }
+  .structure .first-news .new-image-banner {
+    width: 90%;
+    left: 5%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR {
+    width: 85%;
+    left: 7.5%;
+  }
+  .footer .logo {
+    right: 32%;
+  }
+  .footer .lema {
+    right: 20%;
+  }
+  .footer .redes-box {
+    right: 24%;
+  }
+  .footer .avisos-ter-box {
+    right: 20%;
+  }
+  .footer .text-box {
+    right: 20%;
+  }
+}
+
+@media all and (max-width: 650px) {
+  .structure {
+    height: 40%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 130%;
+  }
+
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 110%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR {
+    width: 110%;
+    left: -5%;
+  }
+}
+@media all and (max-width: 608px) {
+  .footer .logo {
+    right: 27%;
+  }
+  .footer .lema {
+    right: 15%;
+  }
+  .footer .redes-box {
+    right: 19%;
+  }
+  .footer .avisos-ter-box {
+    right: 15%;
+  }
+  .footer .text-box {
+    right: 15%;
+  }
+}
+@media all and (max-width: 575px) {
+  .structure {
+    height: 40%;
+  }
+}
+@media all and (max-width: 550px) {
+  .footer .logo {
+    right: 25%;
+  }
+  .footer .lema {
+    right: 10%;
+  }
+  .footer .redes-box {
+    right: 14%;
+  }
+  .footer .avisos-ter-box {
+    right: 10%;
+  }
+  .footer .text-box {
+    right: 10%;
+  }
+}
+@media all and (max-width: 540px) {
+  .structure {
+    height: 30%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 120%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle,
+  .second-news .latest-news .big-new .comments-opinion-tittle2,
+  .second-news .latest-news .big-new .comments-opinion-tittle3 {
+    font-size: 150%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR {
+    width: 115%;
+    left: -5%;
+  }
+}
+@media all and (max-width: 500px) {
+  .structure {
+    height: 35%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    height: 9%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle {
+    top: 2%;
+    height: 1%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle2 {
+    top: 13%;
+    height: 1%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle3 {
+    top: 20%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-box1 {
+    top: 15%;
+  }
+  .second-news .latest-news .big-new {
+    /*** SI SE USA ***/
+    height: 2900px;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR {
+    width: 90%;
+    height: 75%;
+    left: 5%;
+    top: 25%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 15rem;
+    left: 4rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas {
+    width: 16rem;
+    left: 4rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco {
+    top: 0rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos {
+    top: 17rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura {
+    top: 34rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas {
+    top: 51rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 16rem;
+    left: 4rem;
+    top: 68rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento {
+    top: 85rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega {
+    top: 102rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    top: 119rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 150%;
+    left: 5rem;
+    width: 18rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text {
+    top: 9rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text {
+    top: 26rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text {
+    top: 43rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text {
+    top: 60rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text {
+    top: 77rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text {
+    top: 94rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text {
+    top: 111rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    top: 128rem;
+  }
+  .second-news .latest-news .options .AR-text {
+    font-size: 100%;
+    width: 100%;
+  }
+  .second-news .latest-news .options .padre-text {
+    font-size: 100%;
+    width: 100%;
+    left: 5%;
+  }
+}
+@media all and (max-width: 480px) {
+  .footer .logo {
+    right: 25%;
+  }
+  .footer .lema {
+    right: 7%;
+  }
+  .footer .redes-box {
+    right: 13%;
+  }
+  .footer .avisos-ter-box {
+    right: 7%;
+  }
+  .footer .text-box {
+    right: 7%;
+  }
+}
+@media all and (max-width: 450px) {
+  .structure {
+    height: 35%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 110%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 100%;
+  }
+
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 12rem;
+    left: 3.5rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas {
+    width: 14rem;
+    left: 4rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 14rem;
+    left: 4rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 130%;
+    left: 4rem;
+    width: 14rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-box1 {
+    width: 90%;
+    height: 5%;
+    left: 5%;
+  }
+
+  .footer .logo {
+    width: 10rem;
+    height: 30%;
+    position: absolute;
+    top: 10%;
+    right: 30%;
+  }
+  .footer .lema {
+    width: 20rem;
+    height: 5%;
+    top: 40%;
+    right: 10%;
+    font-size: 100%;
+  }
+  .footer .redes-box {
+    width: 15rem;
+    height: 20%;
+    top: 60%;
+    right: 20%;
+  }
+  .footer .avisos-ter-box {
+    width: 20rem;
+    height: 5%;
+    position: absolute;
+    bottom: 7%;
+    right: 10%;
+  }
+  .footer .text-box {
+    width: 20rem;
+    height: 5%;
+    top: 50%;
+    right: 10%;
+    font-size: 120%;
+  }
+  .footer .avisos-ter-box .franja {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+@media all and (max-width: 415px) {
+  .structure {
+    height: 25%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle {
+    top: 0%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    top: 1.5%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle2 {
+    top: 9%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-box1 {
+    height: 1.5%;
+    top: 10.5%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-tittle3 {
+    top: 13%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR {
+    top: 16%;
+  }
+  .second-news .latest-news .options .contactanos-box {
+    top: 60%;
+  }
+  .second-news .latest-news .options .AR-box {
+    top: -25%;
+  }
+  .second-news .latest-news .options .padre-box {
+    top: 15%;
+  }
+  .second-news .latest-news .options .AR-text {
+    top: 0%;
+    font-size: 150%;
+  }
+  .second-news .latest-news .options .padre-text {
+    top: 42%;
+    font-size: 150%;
+  }
+}
+@media all and (max-width: 400px) {
+  .structure {
+    height: 23%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 100%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 90%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 10rem;
+    left: 3.5rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas {
+    width: 11rem;
+    left: 4rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 11rem;
+    left: 4rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 120%;
+    left: 4rem;
+    width: 11rem;
+  }
+
+  .footer .logo {
+    right: 25%;
+  }
+  .footer .lema {
+    right: 5%;
+  }
+  .footer .redes-box {
+    right: 15%;
+  }
+  .footer .avisos-ter-box {
+    right: 5%;
+  }
+  .footer .text-box {
+    right: 5%;
+  }
+}
+@media all and (max-width: 375px) {
+  .structure {
+    height: 27%;
+  }
+}
+@media all and (max-width: 350px) {
+  .structure {
+    height: 26%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-text {
+    font-size: 90%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .textAR {
+    font-size: 80%;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos,
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio {
+    width: 9rem;
+    left: 2rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas {
+    width: 10rem;
+    left: 2rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium {
+    width: 10rem;
+    left: 2rem;
+  }
+  .second-news .latest-news .big-new .comments-opinion-AR .ecoMoco-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .hurgaDatos-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bioAventura-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .arteMañas-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .bakterium-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .puroCuento-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .sePega-text,
+  .second-news .latest-news .big-new .comments-opinion-AR .tuEspacio-text {
+    font-size: 120%;
+    left: 3rem;
+    width: 10rem;
+  }
+  .footer .logo {
+    right: 22%;
+  }
+  .footer .lema {
+    right: 10%;
+    width: 16rem;
+  }
+  .footer .redes-box {
+    right: 15%;
+  }
+  .footer .avisos-ter-box {
+    right: 10%;
+    font-size: 80%;
+    width: 16rem;
+  }
+  .footer .text-box {
+    right: 10%;
+    width: 16rem;
+  }
+}
+@media all and (max-width: 330px) {
+  .navbar-moco .navbar-toggler {
+    background-position-x: 15%;
+  }
+  .el-moco-banner {
+    height: 110px;
+  }
+
+  .footer .lema {
+    right: 3%;
+  }
+  .footer .redes-box {
+    right: 5%;
+  }
+  .footer .avisos-ter-box {
+    right: 3%;
+  }
+  .footer .text-box {
+    right: 3%;
+  }
+}

@@ -1,0 +1,233 @@
+<html lang="en">
+
+
+<div class="screen">
+    <div class="el-moco-banner">
+        <div class="logo-hd"><a style="width: 100%; height: 100%; display: block;" (click)="redirectTo()"></a></div>
+    </div>
+
+
+    <div class="banner">
+
+
+        <nav class="navbar navbar-expand-lg navbar-moco bg-moco-menu ">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                SECCIONES
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link-menu" (click)="redirectTo()"></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link-news" routerLink="/home" [queryParams]="{ news: 'noticias'}">NOTICIAS</a>
+                    </li>
+                    <li class="nav-item-2">
+                        <a class="nav-link-science" routerLink="/home" [queryParams]="{ news: 'ciencia'}">CIENCIA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-art" routerLink="/home" [queryParams]="{ news: 'arte'}">ARTE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-fun" routerLink="/home" [queryParams]="{ news: 'ocio'}">OCIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-find" routerLink="/home" [queryParams]="{ news: 'descubre'}">DESCUBRE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-search" routerLink="/buscador"></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link-moconauta" routerLink="/ingreso">
+                            <div class="profile-pic" [style.background-image]="'url(' + userPicture + ')'"></div>
+                            {{Moconauta}} <span class="opciones">{{Ingreso}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-moco-second-menu bg-moco-second-menu ">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav2"
+                aria-controls="navbarNav2" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav2">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link-quienes-somos" routerLink="/quienes-somos">QUIÉNES SOMOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-moco-shop" href="https://www.mocoshop.mx/" target="_blank">MOCO SHOP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-moco-app" routerLink="/moco-app">MOCO APP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-revista-tri" routerLink="/revista-trimestral">REVISTA TRIMESTRAL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-mocotips-padres" routerLink="/mocotips-padres">MOCOTIPS PARA PADRES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-contacto" routerLink="/contactanos">CONTACTO</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="structure">
+        <div class="first-news" [style.padding-top]="padding_photo+'px'">
+            <div class="register-box">
+
+                <div class="form-box" (resized)="onResizedForm($event)" [style.padding-top]="padding+'px'">
+                    <div class="photo" (resized)="onResizedPhoto($event)" [style.width]="width+'px'"
+                        [style.left]="left+'px'">
+                        <label class="photo-input" [ngStyle]="{'background-image': 'url(' + profilePic + ')'}">
+                            <input style="display: none;" type="file" id="myFile" name="filename"
+                                (change)="addProfilePic($event)" value="./../../assets/images/aniadir_foto.jpg">
+                        </label>
+                        <div *ngIf="profilePic !== './../../assets/images/aniadir_foto.jpg'" class="photo-delete">
+                            <button mat-mini-fab color="warn" (click)="deletePic()">
+                                <mat-icon>delete_forever</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tittle">
+                        <div class="row h-100">
+                            <div class="col-sm-12 my-auto">
+                                REGISTRO DE ACCESO
+                            </div>
+                        </div>
+                    </div>
+                  
+
+                    <form [formGroup]="registroForm">
+                        <div class="name"> <input type="text" class="name-input" name="name" id="name" formControlName="name" placeholder="Nombre"></div>
+                        <span class="text-danger name" *ngIf="(registroForm.get('name').touched || submitted) && registroForm.get('name').errors?.required">
+                            Por favor, ingresa tu nombre.</span>
+                        <div class="usuario"> <input type="text" class="usuario-input" maxlength="8" name="user_name" id="user_name" formControlName="user_name" placeholder="Usuario"></div>
+                        <span class="text-danger name" *ngIf="(registroForm.get('user_name').touched || submitted) && registroForm.get('user_name').errors?.required">
+                            Por favor, ingresa tu usuario.</span>
+                        <div class="email"> <input type="text" class="email-input" name="mail" id="mail" formControlName="mail" placeholder="Email"></div>
+                        <span class="text-danger name" *ngIf="(registroForm.get('mail').touched || submitted) && registroForm.get('mail').errors?.email">
+                            Por favor, ingresa un correo válido.</span>
+                        <div class="age" style="display: flex;">
+                            <div class="gender-input">
+                                <mat-radio-group aria-label="Select an option" name="gender" id="gender" formControlName="gender">
+                                    <mat-radio-button color="warn" value="male" style="font-family: 'Anaheim';
+                                font-size:100%; display: block;" >Hombre</mat-radio-button>
+                                    <mat-radio-button color="warn" value="female" style="font-family: 'Anaheim';
+                                font-size:100%; display: block;">Mujer</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div class="age-input" style="text-align: left;">
+                                <label class="age-label">Edad</label>
+                                <input type="number" class="age" name="age" id="age" formControlName="age">
+                            </div>
+                        </div>
+                        <span class="text-danger name"*ngIf="((registroForm.get('gender').touched || submitted) && registroForm.get('gender').errors?.required) || 
+                        ((registroForm.get('age').touched || submitted) && registroForm.get('age').errors?.required)">
+                            Por favor, completa estos campos.</span>
+                        <div class="country"> 
+                            <input type="text" class="country-input" name="country" id="country" formControlName="country" placeholder="País">
+                        </div>
+                        <span class="text-danger name" *ngIf="(registroForm.get('country').touched || submitted) && registroForm.get('country').errors?.required">
+                            Por favor, ingresa tu país.</span>
+                        <div class="pass1"> 
+                            <input type="text" class="pass1-input" name="pass1" id="pass1" formControlName="pass1" placeholder="Contraseña">
+                        </div>
+                        <span class="text-danger name"  *ngIf="(registroForm.get('pass1').touched || submitted) && registroForm.get('pass1').errors?.minlength">
+                            Se requiere una contraseña de más de 6 carácteres.</span>
+                        <div class="pass2"> 
+                            <input type="text" class="pass2-input" name="pass2" id="pass2" formControlName="pass2" placeholder="Confirmar Contraseña">
+                        </div>
+                        <span class="text-danger name"  *ngIf="(registroForm.get('pass2').touched || submitted) && registroForm.get('pass2').errors?.minlength">
+                            Se requiere una contraseña de más de 6 carácteres.</span>
+                        <span class="text-danger name" *ngIf="(registroForm.get('pass1').value !== registroForm.get('pass2').value )">
+                            Las contraseñas no coinciden.</span>
+                        <div class="condiciones">
+                            <input type="checkbox" id="tycs" name="tycs" formControlName="tycs">
+                            <label for="vehicle1" style="margin-left: 10px;">
+                                <div class="row h-100">
+                                    <div class="col-sm-12 my-auto">
+                                        Acepto las <a style="color: rgb(96, 183, 51); text-decoration: underline;"
+                                            href="https://www.elmoco.com.mx/#/terminos" target="_blank">Condiciones</a>
+                                        y
+                                        <a style="color:rgb(96, 183, 51); text-decoration: underline;"
+                                            href="https://www.elmoco.com.mx/#/avisos" target="_blank">Políticas de
+                                            privacidad</a>
+                                    </div>
+                                </div>
+                            </label><br>
+                        </div>
+                        <span class="text-danger name" *ngIf="(registroForm.get('tycs').touched || submitted) && registroForm.get('tycs').errors?.required">
+                            Acepta los términos y condiciones para continuar.</span>
+                        <div class="button" style="margin-bottom: 10px;" *ngIf="submitted === false">
+                            <button class="button_class" (click)="register()">¡Regístrate!</button>
+                        </div>
+                        <mat-progress-bar mode="indeterminate" style="width: 80%;
+                        margin-left: 10%;" *ngIf="submitted === true"></mat-progress-bar>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="options">
+
+            <div class="vertical-menu">
+                <a class="menu">
+                    <div class="first-moco"></div> MENÚ <div class="second-moco"></div>
+                </a>
+                <a class="options" routerLink="/quienes-somos">
+                    <div class="quienes"></div>QUIÉNES SOMOS
+                </a>
+                <a class="options" href="https://www.mocoshop.mx/" target="_blank">
+                    <div class="moco-shop"></div>MOCO SHOP
+                </a>
+                <a class="options" routerLink="/moco-app">
+                    <div class="moco-app"></div>MOCO APP
+                </a>
+                <a class="options" routerLink="/revista-trimestral">
+                    <div class="revista"></div>REVISTA TRIMESTRAL
+                </a>
+                <a class="options" routerLink="/mocotips-padres">
+                    <div class="mocotips"></div>MOCOTIPS PARA PADRES
+                </a>
+                <a class="options" routerLink="/contactanos">
+                    <div class="contacto"></div>CONTACTO
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="footer">
+        <!--Aquí se cambia la clase dependiendo de la opción seleccionada en el navbar-->
+        <div class="logo">
+            <a style="width: 100%; height: 100%; display: block;" (click)="redirectTo()"></a>
+        </div>
+        <div class="lema">EL MOCO, SI LO LEES SE TE PEGA &#174; 2020</div>
+        <div class="redes-box">
+            <a class="fb" href="https://www.facebook.com/elmoco.mx" target="_blank"></a>
+            <a class="tw" href="https://twitter.com/elmocomx" target="_blank"></a>
+            <a class="in" href="https://www.instagram.com/elmocomx/" target="_blank"></a>
+            <a class="yt" href="https://www.youtube.com/channel/UCFEUx_LMDk2t1pptPR3gRow" target="_blank"></a>
+        </div>
+        <div class="text-box">SÍGUENOS EN</div>
+
+        <div class="avisos-ter-box">
+            <div class="avisos" routerLink="/avisos">AVISOS LEGALES</div>
+            <div class="franja"></div>
+            <a class="terminos" routerLink="/terminos">TÉRMINOS Y CONDICIONES</a>
+        </div>
+    </div>
+</div>
+
+</html>
