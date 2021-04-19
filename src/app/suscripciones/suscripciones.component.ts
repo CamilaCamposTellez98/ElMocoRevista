@@ -13,19 +13,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SuscripcionesComponent implements OnInit {
 
-  userPicture : string = "";
-  userName : string = "";
-  Moconauta : string = "MOCONAUTA ";
-  Ingreso : string = "INGRESO";
+  userPicture: string = "";
+  userName: string = "";
+  Moconauta: string = "MOCONAUTA ";
+  Ingreso: string = "INGRESO";
   fileToUpload1: File = null;
   registroForm: FormGroup;
   incioSesion: FormGroup;
   editForm: FormGroup;
   submitted = false;
-  private mail : string;
-  private pass : string;
+  private mail: string;
+  private pass: string;
 
-  logged : boolean = false;;
+  logged: boolean = false;;
 
   porcentajeTop: number;
   width: number;
@@ -34,24 +34,24 @@ export class SuscripcionesComponent implements OnInit {
   padding: number;
   padding_photo: number;
 
-  imagePath : any;
-  profilePic : any = "./../../assets/images/aniadir_foto.jpg";
-  constructor( public router: Router, private cookie: CookieService, private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private authService: AuthService) { }
+  imagePath: any;
+  profilePic: any = "./../../assets/images/aniadir_foto.jpg";
+  constructor(public router: Router, private cookie: CookieService, private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
     let cookie = this.cookie.check("username");
-    if(cookie === true){
-     this.userPicture =  this.cookie.get("image");
-     this.userName =  this.cookie.get("username");
-     this.Ingreso = "CERRAR SESIÓN"
-     this.Moconauta =  this.cookie.get("username").toUpperCase()+" ";
+    if (cookie === true) {
+      this.userPicture = this.cookie.get("image");
+      this.userName = this.cookie.get("username");
+      this.Ingreso = "CERRAR SESIÓN"
+      this.Moconauta = this.cookie.get("username").toUpperCase() + " ";
     }
-    else{
+    else {
       this.userPicture = "./../../assets/images/Boton_Moconauta.png";
     }
     this.createFormGroup();
   }
-  createFormGroup():void{
+  createFormGroup(): void {
     this.registroForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       user_name: ['', [Validators.maxLength(8), Validators.required]],
@@ -71,76 +71,74 @@ export class SuscripcionesComponent implements OnInit {
       mail: ['', [Validators.email, Validators.required]],
     });
   }
-  redirectTo():void{
+  redirectTo(): void {
     this.router.navigate(['/home'])
-    .then(() => {
-      window.location.reload();
-    });
+      .then(() => {
+        window.location.reload();
+      });
   }
   register(): void {
-    if(this.registroForm.valid === false){
+    if (this.registroForm.valid === false) {
       this.showSnackbar('Favor de completar todos los campos', '', 3000);
     }
-    else if(this.registroForm.value.pass1 !== this.registroForm.value.pass2){
+    else if (this.registroForm.value.pass1 !== this.registroForm.value.pass2) {
       this.showSnackbar('Las contraseñas no coinciden', '', 3000);
     }
-    else{
+    else {
       let user = {
-        age : this.registroForm.value.age,
-        country : this.registroForm.value.country,
-        gender : this.registroForm.value.gender,
-        name : this.registroForm.value.name,
-        user : this.registroForm.value.user_name,
+        age: this.registroForm.value.age,
+        country: this.registroForm.value.country,
+        gender: this.registroForm.value.gender,
+        name: this.registroForm.value.name,
+        user: this.registroForm.value.user_name,
       }
       this.submitted = true;
-     this.authService.createUser(this.registroForm.value.mail, this.registroForm.value.pass1, user, this.fileToUpload1);
+      this.authService.createUser(this.registroForm.value.mail, this.registroForm.value.pass1, user, this.fileToUpload1);
     }
-    console.log(this.fileToUpload1);
   }
-  iniciarSesion():void{
-    if(this.incioSesion.valid === false){
+  iniciarSesion(): void {
+    if (this.incioSesion.valid === false) {
       this.showSnackbar('Favor de ingresar sus datos completos', '', 3000);
     }
-    else{
+    else {
       this.authService.loggeo(this.incioSesion.value.mail, this.incioSesion.value.pass).then(r => {
-        if(r.code === "auth/wrong-password"){
+        if (r.code === "auth/wrong-password") {
           this.showSnackbar('La contraseña es incorrecta', '', 4000);
         }
-        else if (r.user){
+        else if (r.user) {
           this.showSnackbar('Ingreso exitoso', '', 2000);
           this.logged = true;
           this.mail = this.incioSesion.value.mail;
           this.pass = this.incioSesion.value.pass;
-        } 
-        else{
+        }
+        else {
           this.showSnackbar('Ocurrió un error, por favor intenta más tarde', '', 3000);
-        } 
+        }
       });
     }
   }
-  reestablecerMail():void{
-    
+  reestablecerMail(): void {
+
   }
-  onResizedPhoto(event: ResizedEvent):void {
+  onResizedPhoto(event: ResizedEvent): void {
     this.width = event.newHeight;
     let square = this.width / 2;
     let form = this.heigth / 2;
     this.left = form - square;
     this.padding = square + 10;
-    this.padding_photo = this.width - (this.width / 4) 
+    this.padding_photo = this.width - (this.width / 4)
   }
-  onResizedForm(event: ResizedEvent):void {
+  onResizedForm(event: ResizedEvent): void {
     this.heigth = event.newWidth;
     let square = this.width / 2;
     let form = this.heigth / 2;
     this.left = form - square;
   }
-  addProfilePic(files: any){
-    console.log(files.target.files[0].size)
+  addProfilePic(files: any) {
     if (files.length === 0)
       return;
     let mimeType = files.target.files[0].type;
-    
+
     if (mimeType.match(/image\/*/) == null) {
       this.showSnackbar('Favor de ingresar una imagen', '', 3000);
       return;
@@ -150,13 +148,13 @@ export class SuscripcionesComponent implements OnInit {
       return;
     }
     let reader = new FileReader();
-    reader.readAsDataURL(files.target.files[0]); 
-    reader.onload = (_event) => { 
-      this.profilePic = reader.result; 
+    reader.readAsDataURL(files.target.files[0]);
+    reader.onload = (_event) => {
+      this.profilePic = reader.result;
       this.fileToUpload1 = files.target.files[0];
     }
   }
-  deletePic():void{
+  deletePic(): void {
     this.profilePic = "./../../assets/images/aniadir_foto.jpg";
   }
   showSnackbar(message: string, action: string, ms: number): void {

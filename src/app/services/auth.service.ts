@@ -57,7 +57,6 @@ export class AuthService {
     });
   }
   emailVerification() {
-    console.log(this.afAuth.auth.currentUser.emailVerified);
   }
   emailUpdate(mail: string, pass: string, mailUpdate: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(mail, pass).then(data => {
@@ -66,7 +65,7 @@ export class AuthService {
         this.cookie.deleteAll();
         this.SignOut();
         this.router.navigate(['/ingreso']);
-        return res; 
+        return res;
       }).catch((error) => {
         this.showSnackbar('El correo ingresado ya ha sido registrado previamente', '', 3000);
         return error;
@@ -109,7 +108,7 @@ export class AuthService {
         return error;
       });
   }
-  updateUser(uid : string, data : any){
+  updateUser(uid: string, data: any) {
     return this.db.collection('users').doc(uid).update({
       age: data.age,
       country: data.country,
@@ -118,19 +117,19 @@ export class AuthService {
       user: data.user
     });
   }
-  updateImage(uid: string, file : File){
-    this.storage.storage.ref("private/users/"+uid+"/profile").getDownloadURL().then((url) => {
-    this.storage.storage.refFromURL(url).delete();
-    const filePath = `private/users/${uid}/profile`;
-    const ref = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-    task.snapshotChanges().pipe(
-      finalize(() => {
-        ref.getDownloadURL().subscribe(url => {
-          this.cookie.set("image", url);
-        });
-      })
-    ).subscribe();
+  updateImage(uid: string, file: File) {
+    this.storage.storage.ref("private/users/" + uid + "/profile").getDownloadURL().then((url) => {
+      this.storage.storage.refFromURL(url).delete();
+      const filePath = `private/users/${uid}/profile`;
+      const ref = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, file);
+      task.snapshotChanges().pipe(
+        finalize(() => {
+          ref.getDownloadURL().subscribe(url => {
+            this.cookie.set("image", url);
+          });
+        })
+      ).subscribe();
     });
   }
   getImage(): Observable<Blob> {
@@ -448,7 +447,6 @@ export class AuthService {
     return this.db.collection('revista-img-bio-aventura').doc(key).snapshotChanges();
   }
   getSeccionPromosImages(key) {
-    console.log(key)
     return this.db.collection('revista-img-promos-anuncios').doc(key).snapshotChanges();
   }
   getSeccionArteImages(key) {

@@ -52,8 +52,8 @@ export class PanelAdminComponent implements OnInit {
               '#1b1919', '#6d6e6d', '#9e9f9e', 'white']
           }, { 'background': [] }],          // dropdown with defaults from theme
           [{ 'align': [] }],
-          ['clean'],  
-          ['image'],      
+          ['clean'],
+          ['image'],
           ['link'],                                  // remove formatting button                                // remove formatting button
         ]
     }
@@ -152,12 +152,12 @@ export class PanelAdminComponent implements OnInit {
   urlPatrocinador3Delete: boolean = false;
   urlPatrocinador4Delete: boolean = false;
   /*Variables para los banners*/
-    urlBanner1: string = "";
-    urlBanner2: string = "";
-    urlBanner3: string = "";
-    urlBanner1Delete: boolean = false;
-    urlBanner2Delete: boolean = false;
-    urlBanner3Delete: boolean = false;
+  urlBanner1: string = "";
+  urlBanner2: string = "";
+  urlBanner3: string = "";
+  urlBanner1Delete: boolean = false;
+  urlBanner2Delete: boolean = false;
+  urlBanner3Delete: boolean = false;
   /*Variable para saber en qué sección están de la revista para padres*/
   parteRevistaMocotips: string;
   /*Variables para inicializar la tabla de angular con las noticias creadas*/
@@ -189,7 +189,7 @@ export class PanelAdminComponent implements OnInit {
   seccionEspecialDelMes: boolean = false;
   especialDelMesImagenes: boolean = false;
   especialDelMesSubirImagen: boolean = false;
-  bannerTrimestral : boolean = false;
+  bannerTrimestral: boolean = false;
 
   tituloEspecial: string = "";
   autorEspecial: string = "";
@@ -1027,13 +1027,13 @@ export class PanelAdminComponent implements OnInit {
     this.patrocinadoresObject.patrocinador3Url = this.urlPatrocinador3;
     this.patrocinadoresObject.patrocinador4Url = this.urlPatrocinador4;
     this.subirimagenPatrocinador_1().then(res => this.subirimagenPatrocinador_2().then(res => this.subirimagenPatrocinador_3().then(res => this.subirimagenPatrocinador_4().then(res => {
-        this.patrocinadoresObject.$key = this.patrocinadoresList[0].$key;
-        this.buttondisabled = "none";
-        this.noticiasService.updatePatrocinadores(this.patrocinadoresObject).then(res => {
-          window.alert('Patrocinadores actualizados con éxito');
-          this.changeSection("T")
-          this.restartAll();
-        });
+      this.patrocinadoresObject.$key = this.patrocinadoresList[0].$key;
+      this.buttondisabled = "none";
+      this.noticiasService.updatePatrocinadores(this.patrocinadoresObject).then(res => {
+        window.alert('Patrocinadores actualizados con éxito');
+        this.changeSection("T")
+        this.restartAll();
+      });
     }))));
   }
   borrarPatrocinadores(opcion: string) {
@@ -1093,21 +1093,15 @@ export class PanelAdminComponent implements OnInit {
   subirimagenPatrocinador_1() {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name1 === "Imagen ya cargada") {
-        console.log("la imagen ya estaba cargada no se modificará");
         this.patrocinadoresObject.patrocinador1Image = this.patrocinadoresList[0].patrocinador1Image;
         resolve();
       }
       else if (this.fileToUpload1Name1 !== "Selecciona una imagen") {
         if (this.patrocinadoresList[0] !== undefined) {
           if (this.patrocinadoresList[0].patrocinador1Image !== "") {
-            console.log("si se encontró un registro previo y se eliminará 1");
             this.storage.storage.refFromURL(this.patrocinadoresList[0].patrocinador1Image).delete();
           }
-          else {
-            console.log("no se encontró un registro previo 1");
-          }
         }
-        console.log("la imagen no existe, se creará");
         const id = Math.random().toString(36).substring(2);
         const filePath = `patrocinadores/${id}`;
         const ref = this.storage.ref(filePath);
@@ -1125,7 +1119,6 @@ export class PanelAdminComponent implements OnInit {
         ).subscribe();
       }
       else {
-        console.log("ola");
         resolve();
 
       }
@@ -1134,21 +1127,15 @@ export class PanelAdminComponent implements OnInit {
   subirimagenPatrocinador_2() {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name2 === "Imagen ya cargada") {
-        console.log("la imagen 2 ya estaba cargada no se modificará");
         this.patrocinadoresObject.patrocinador2Image = this.patrocinadoresList[0].patrocinador2Image;
         resolve();
       }
       else if (this.fileToUpload1Name2 !== "Selecciona una imagen") {
         if (this.patrocinadoresList[0] !== undefined) {
           if (this.patrocinadoresList[0].patrocinador2Image !== "") {
-            console.log("si se encontró un registro previo y se eliminará 2");
             this.storage.storage.refFromURL(this.patrocinadoresList[0].patrocinador2Image).delete();
           }
-          else {
-            console.log("no se encontró un registro previo 2");
-          }
         }
-        console.log("la imagen 2 no existe, se creará");
         const id2 = Math.random().toString(36).substring(2);
         const filePath2 = `patrocinadores/${id2}`;
         const ref2 = this.storage.ref(filePath2);
@@ -1166,7 +1153,6 @@ export class PanelAdminComponent implements OnInit {
         ).subscribe();
       }
       else {
-        console.log("ola no se subira nda 2");
         resolve();
       }
     });
@@ -1174,21 +1160,15 @@ export class PanelAdminComponent implements OnInit {
   subirimagenPatrocinador_3() {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name3 === "Imagen ya cargada") {
-        console.log("la imagen 3 ya estaba cargada no se modificará");
         this.patrocinadoresObject.patrocinador3Image = this.patrocinadoresList[0].patrocinador3Image;
         resolve();
       }
       else if (this.fileToUpload1Name3 !== "Selecciona una imagen") {
         if (this.patrocinadoresList[0] !== undefined) {
           if (this.patrocinadoresList[0].patrocinador3Image !== "") {
-            console.log("si se encontró un registro previo y se eliminará 3");
             this.storage.storage.refFromURL(this.patrocinadoresList[0].patrocinador3Image).delete();
           }
-          else {
-            console.log("no se encontró un registro previo 3");
-          }
         }
-        console.log("la imagen 3 no existe, se creará");
         const id3 = Math.random().toString(36).substring(2);
         const filePath3 = `patrocinadores/${id3}`;
         const ref3 = this.storage.ref(filePath3);
@@ -1199,7 +1179,6 @@ export class PanelAdminComponent implements OnInit {
           finalize(() => {
             ref3.getDownloadURL().subscribe(url => {
               this.urlImage3 = url;
-              console.log(this.urlImage3)
               this.patrocinadoresObject.patrocinador3Image = this.urlImage3;
               resolve();
             });
@@ -1207,7 +1186,6 @@ export class PanelAdminComponent implements OnInit {
         ).subscribe();
       }
       else {
-        console.log("ola no se subira nda 3");
         resolve();
       }
     });
@@ -1215,7 +1193,6 @@ export class PanelAdminComponent implements OnInit {
   subirimagenPatrocinador_4() {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name4 === "Imagen ya cargada") {
-        console.log("la imagen 4 ya estaba cargada no se modificará");
         this.patrocinadoresObject.patrocinador4Image = this.patrocinadoresList[0].patrocinador4Image;
         resolve();
 
@@ -1223,14 +1200,9 @@ export class PanelAdminComponent implements OnInit {
       else if (this.fileToUpload1Name4 !== "Selecciona una imagen") {
         if (this.patrocinadoresList[0] !== undefined) {
           if (this.patrocinadoresList[0].patrocinador4Image !== "") {
-            console.log("si se encontró un registro previo y se eliminará 4");
             this.storage.storage.refFromURL(this.patrocinadoresList[0].patrocinador4Image).delete();
           }
-          else {
-            console.log("no se encontró un registro previo 4");
-          }
         }
-        console.log("la imagen 4 no existe, se creará");
         const id4 = Math.random().toString(36).substring(2);
         const filePath4 = `patrocinadores/${id4}`;
         const ref4 = this.storage.ref(filePath4);
@@ -1248,7 +1220,6 @@ export class PanelAdminComponent implements OnInit {
         ).subscribe();
       }
       else {
-        console.log("ola no se subira nda 4");
         resolve();
       }
     });
@@ -1257,15 +1228,13 @@ export class PanelAdminComponent implements OnInit {
     this.bannerObject.banner1Url = this.urlBanner1;
     this.bannerObject.banner2Url = this.urlBanner2;
     this.bannerObject.banner3Url = this.urlBanner3;
-    console.log(this.urlBanner2)
-    console.log(this.urlBanner3)
     this.subirimagenBanner_1().then(res => this.subirimagenBanner_2().then(res => this.subirimagenBanner_3().then(res => {
-       this.bannerObject.$key = this.bannerList[0].$key;
-        this.buttondisabled = "none";
-        this.noticiasService.updateBanner(this.bannerObject);
-        window.alert('Banner actualizado con éxito');
-          this.changeSection("BA")
-          this.restartAll();
+      this.bannerObject.$key = this.bannerList[0].$key;
+      this.buttondisabled = "none";
+      this.noticiasService.updateBanner(this.bannerObject);
+      window.alert('Banner actualizado con éxito');
+      this.changeSection("BA")
+      this.restartAll();
     })));
   }
   borrarBanner(opcion: string) {
@@ -1441,8 +1410,6 @@ export class PanelAdminComponent implements OnInit {
     this.crearRevistaDigital = false;
     this.crearRevistaDigitalMocotips = false;
     this.revistaMocotips = false;
-    console.log("NODO GENERAL");
-    console.log(this.nodoGeneralSelected[0]);
     this.cloudfirestore.getSeccionPuroCuento(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
       item.forEach((revista: any) => {
@@ -1456,7 +1423,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[0] = "";
         this.imagenesSubidasColor[0] = "black";
       }
-      console.log("id se purocuento: " + this.idImagenesRevistaDig[0])
     })
     this.cloudfirestore.getSeccionEcoMoco(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1471,7 +1437,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[1] = "";
         this.imagenesSubidasColor[1] = "black";
       }
-      console.log("id se ecomoco: " + this.idImagenesRevistaDig[1])
     })
     this.cloudfirestore.getSeccionSePega(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1486,7 +1451,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[2] = "";
         this.imagenesSubidasColor[2] = "black";
       }
-      console.log("id se pega: " + this.idImagenesRevistaDig[2])
     })
     this.cloudfirestore.getSeccionHurgaDatos(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1501,7 +1465,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[3] = "";
         this.imagenesSubidasColor[3] = "black";
       }
-      console.log("id hurga: " + this.idImagenesRevistaDig[3])
     })
     this.cloudfirestore.getSeccionEspacio(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1516,7 +1479,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[4] = "";
         this.imagenesSubidasColor[4] = "black";
       }
-      console.log("id espacio: " + this.idImagenesRevistaDig[4])
     })
     this.cloudfirestore.getSeccionBioAventura(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1531,7 +1493,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[5] = "";
         this.imagenesSubidasColor[5] = "black";
       }
-      console.log("id bio: " + this.idImagenesRevistaDig[5])
     })
     this.cloudfirestore.getSeccionPromos(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1546,7 +1507,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[6] = "";
         this.imagenesSubidasColor[6] = "black";
       }
-      console.log("id promos: " + this.idImagenesRevistaDig[6]);
     })
     this.cloudfirestore.getSeccionArte(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1561,7 +1521,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[7] = "";
         this.imagenesSubidasColor[7] = "black";
       }
-      console.log("id arte y manias: " + this.idImagenesRevistaDig[7]);
     })
     this.cloudfirestore.getSeccionEspecial(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1576,7 +1535,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[8] = "";
         this.imagenesSubidasColor[8] = "black";
       }
-      console.log("id especiaal: " + this.idImagenesRevistaDig[8]);
     })
     this.cloudfirestore.getSeccionDoctor(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1591,7 +1549,6 @@ export class PanelAdminComponent implements OnInit {
         this.idImagenesRevistaDig[9] = "";
         this.imagenesSubidasColor[9] = "black";
       }
-      console.log("id doctor: " + this.idImagenesRevistaDig[9]);
       this.cargandoRevistas = "Elija la sección que desee (las secciones en verde ya contienen imágenes)"
     })
   }
@@ -1605,8 +1562,6 @@ export class PanelAdminComponent implements OnInit {
     this.crearRevistaDigital = false;
     this.crearRevistaDigitalMocotips = false;
     this.revistaMocotips = false;
-    console.log("NODO GENERAL");
-    console.log(this.nodoGeneralSelected[0]);
     this.cloudfirestore.getSeccionPuroCuentoTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
       item.forEach((revista: any) => {
@@ -1620,7 +1575,6 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[0] = "";
         this.imagenesSubidasColor[0] = "black";
       }
-      console.log("id se purocuento: " + this.idTipsRevistaDig[0])
     })
     this.cloudfirestore.getSeccionEcoMocoTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1635,7 +1589,6 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[1] = "";
         this.imagenesSubidasColor[1] = "black";
       }
-      console.log("id se ecomoco: " + this.idTipsRevistaDig[1])
     })
     this.cloudfirestore.getSeccionSePegaTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1650,7 +1603,6 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[2] = "";
         this.imagenesSubidasColor[2] = "black";
       }
-      console.log("id se pega: " + this.idTipsRevistaDig[2])
     })
     this.cloudfirestore.getSeccionHurgaDatosTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1665,7 +1617,6 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[3] = "";
         this.imagenesSubidasColor[3] = "black";
       }
-      console.log("id hurga: " + this.idTipsRevistaDig[3])
     })
     this.cloudfirestore.getSeccionIntroTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1680,7 +1631,6 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[4] = "";
         this.imagenesSubidasColor[4] = "black";
       }
-      console.log("id promos: " + this.idTipsRevistaDig[4]);
     })
     this.cloudfirestore.getSeccionBioAventuraTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1695,7 +1645,6 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[5] = "";
         this.imagenesSubidasColor[5] = "black";
       }
-      console.log("id bio: " + this.idTipsRevistaDig[5])
     })
     this.cloudfirestore.getSeccionConclusionTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1710,9 +1659,7 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[6] = "";
         this.imagenesSubidasColor[6] = "black";
       }
-      console.log("id espacio: " + this.idTipsRevistaDig[6])
     })
-
     this.cloudfirestore.getSeccionArteTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
       item.forEach((revista: any) => {
@@ -1726,7 +1673,6 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[7] = "";
         this.imagenesSubidasColor[7] = "black";
       }
-      console.log("id arte y manias: " + this.idTipsRevistaDig[7]);
     })
     this.cloudfirestore.getSeccionEspecialTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1741,7 +1687,6 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[8] = "";
         this.imagenesSubidasColor[8] = "black";
       }
-      console.log("id especiaal: " + this.idTipsRevistaDig[8]);
     })
     this.cloudfirestore.getSeccionDoctorTips(this.nodoGeneralSelected[0]).subscribe(item => {
       var id;
@@ -1756,20 +1701,16 @@ export class PanelAdminComponent implements OnInit {
         this.idTipsRevistaDig[9] = "";
         this.imagenesSubidasColor[9] = "black";
       }
-      console.log("id doctor: " + this.idTipsRevistaDig[9]);
       this.cargandoRevistas = "Elija la sección que desee (las secciones en verde ya contienen mocotips)";
     })
   }
   eliminarRevista() {
 
     this.editarVisibilidad = "hidden";
-    console.log("NODO GENERAL");
-    console.log(this.nodoGeneralSelected[0]);
     if (window.confirm("¿Estás seguro de eliminar la revista ?")) {
       this.eliminandoRevistas = "Eliminando revista ...";
       this.cloudfirestore.getSeccionPuroCuento(this.nodoGeneralSelected[0]).subscribe(item => {
         if (item.length !== 0) {
-          console.log("si se va a eliminar 1")
           var idSeccion;
           item.forEach((revista: any) => {
             idSeccion = revista.payload.doc.id;
@@ -1788,7 +1729,6 @@ export class PanelAdminComponent implements OnInit {
         }
         this.cloudfirestore.getSeccionEcoMoco(this.nodoGeneralSelected[0]).subscribe(item => {
           if (item.length !== 0) {
-            console.log("si se va a eliminar 2")
             var idSeccion;
             item.forEach((revista: any) => {
               idSeccion = revista.payload.doc.id;
@@ -1807,7 +1747,6 @@ export class PanelAdminComponent implements OnInit {
           }
           this.cloudfirestore.getSeccionSePega(this.nodoGeneralSelected[0]).subscribe(item => {
             if (item.length !== 0) {
-              console.log("si se va a eliminar 3")
               var idSeccion;
               item.forEach((revista: any) => {
                 idSeccion = revista.payload.doc.id;
@@ -1827,7 +1766,6 @@ export class PanelAdminComponent implements OnInit {
             }
             this.cloudfirestore.getSeccionHurgaDatos(this.nodoGeneralSelected[0]).subscribe(item => {
               if (item.length !== 0) {
-                console.log("si se va a eliminar 4")
                 var idSeccion;
                 item.forEach((revista: any) => {
                   idSeccion = revista.payload.doc.id;
@@ -1846,7 +1784,6 @@ export class PanelAdminComponent implements OnInit {
               }
               this.cloudfirestore.getSeccionEspacio(this.nodoGeneralSelected[0]).subscribe(item => {
                 if (item.length !== 0) {
-                  console.log("si se va a eliminar 5")
                   var idSeccion;
                   item.forEach((revista: any) => {
                     idSeccion = revista.payload.doc.id;
@@ -1865,7 +1802,6 @@ export class PanelAdminComponent implements OnInit {
                 }
                 this.cloudfirestore.getSeccionBioAventura(this.nodoGeneralSelected[0]).subscribe(item => {
                   if (item.length !== 0) {
-                    console.log("si se va a eliminar 6")
                     var idSeccion;
                     item.forEach((revista: any) => {
                       idSeccion = revista.payload.doc.id;
@@ -1885,7 +1821,6 @@ export class PanelAdminComponent implements OnInit {
 
                   this.cloudfirestore.getSeccionPromos(this.nodoGeneralSelected[0]).subscribe(item => {
                     if (item.length !== 0) {
-                      console.log("si se va a eliminar 7");
                       var idSeccion;
                       item.forEach((revista: any) => {
                         idSeccion = revista.payload.doc.id;
@@ -1904,7 +1839,6 @@ export class PanelAdminComponent implements OnInit {
                     }
                     this.cloudfirestore.getSeccionArte(this.nodoGeneralSelected[0]).subscribe(item => {
                       if (item.length !== 0) {
-                        console.log("si se va a eliminar 8")
                         var idSeccion;
                         item.forEach((revista: any) => {
                           idSeccion = revista.payload.doc.id;
@@ -1923,7 +1857,6 @@ export class PanelAdminComponent implements OnInit {
                       }
                       this.cloudfirestore.getSeccionEspecial(this.nodoGeneralSelected[0]).subscribe(item => {
                         if (item.length !== 0) {
-                          console.log("si se va a eliminar 9")
                           var idSeccion;
                           item.forEach((revista: any) => {
                             idSeccion = revista.payload.doc.id;
@@ -1942,7 +1875,6 @@ export class PanelAdminComponent implements OnInit {
                         }
                         this.cloudfirestore.getSeccionDoctor(this.nodoGeneralSelected[0]).subscribe(item => {
                           if (item.length !== 0) {
-                            console.log("si se va a eliminar 10")
                             var idSeccion;
                             item.forEach((revista: any) => {
                               idSeccion = revista.payload.doc.id;
@@ -1979,8 +1911,6 @@ export class PanelAdminComponent implements OnInit {
   eliminarRevistaMocotips() {
 
     this.editarVisibilidad = "hidden";
-    console.log("NODO GENERAL");
-    console.log(this.nodoGeneralSelected[0]);
     if (window.confirm("¿Estás seguro de eliminar la revista ?")) {
       this.eliminandoRevistasMocotips = "Eliminando revista ...";
       this.cloudfirestore.getSeccionPuroCuentoTips(this.nodoGeneralSelected[0]).subscribe(item => {
@@ -2270,12 +2200,10 @@ export class PanelAdminComponent implements OnInit {
         })
       }
     }
-    console.log(this.actualRevistaDigitalSection)
   }
   aniadirImagenRevista() {
     const id = Math.random().toString(36).substring(2);
     const filePath = this.actualRevistaDigitalSection + `/${id}`;
-    console.log(filePath)
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, this.fileToUpload1);
     this.image1UploadPercent = task.percentageChanges();
@@ -2284,7 +2212,6 @@ export class PanelAdminComponent implements OnInit {
       finalize(() => {
         ref.getDownloadURL().subscribe(url => {
           this.imagenesRevistaDigital.push(url);
-          console.log(this.imagenesRevistaDigital);
           this.statusUploadImage1 = "Imágen subida con éxito";
           this.numeroDeImagenesRevistaDigital = this.imagenesRevistaDigital.length + 1;
           this.restartAll();
@@ -2303,7 +2230,6 @@ export class PanelAdminComponent implements OnInit {
     this.seccionesRevistaDigital();
   }
   finalizarImagenesRevista() {
-    console.log(this.imagenesRevistaDigital);
     this.editarVisibilidad = "hidden";
     for (var i = 0; i < this.imagenesRevistaDigital.length; i++) {
       this.imagenesRevistaObject['image' + i] = this.imagenesRevistaDigital[i];
@@ -2311,16 +2237,12 @@ export class PanelAdminComponent implements OnInit {
     this.numeroDeImagenesRevistaDigital = 1;
     this.imagenesRevistaObject.key = this.nodoGeneralSelected[0];
     if (this.actualRevistaDigitalSection === "puro") {
-      console.log(this.imagenesRevistaObject);
       this.cloudfirestore.registerImagenesPuroCuento(this.imagenesRevistaObject).then(response => {
-        console.log("entro a promo")
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2329,13 +2251,11 @@ export class PanelAdminComponent implements OnInit {
     }
     else if (this.actualRevistaDigitalSection === "eco") {
       this.cloudfirestore.registerImagenesEcoMoco(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2344,13 +2264,11 @@ export class PanelAdminComponent implements OnInit {
     }
     else if (this.actualRevistaDigitalSection === "pega") {
       this.cloudfirestore.registerImagenesSePega(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2359,13 +2277,11 @@ export class PanelAdminComponent implements OnInit {
     }
     else if (this.actualRevistaDigitalSection === "hurga") {
       this.cloudfirestore.registerImagenesHurgaDatos(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2374,13 +2290,11 @@ export class PanelAdminComponent implements OnInit {
     }
     else if (this.actualRevistaDigitalSection === "espacio") {
       this.cloudfirestore.registerImagenesEspacio(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2389,13 +2303,11 @@ export class PanelAdminComponent implements OnInit {
     }
     else if (this.actualRevistaDigitalSection === "bio") {
       this.cloudfirestore.registerImagenesBioAventura(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2403,15 +2315,12 @@ export class PanelAdminComponent implements OnInit {
       })
     }
     else if (this.actualRevistaDigitalSection === "promo") {
-      console.log("entro a promo")
       this.cloudfirestore.registerImagenesPromos(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2420,13 +2329,11 @@ export class PanelAdminComponent implements OnInit {
     }
     else if (this.actualRevistaDigitalSection === "arte") {
       this.cloudfirestore.registerImagenesArte(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2435,17 +2342,13 @@ export class PanelAdminComponent implements OnInit {
     }
     else if (this.actualRevistaDigitalSection === "especial") {
       if (this.imagenesSubidasColor[0] === "greenyellow") {
-        console.log("entro" + this.nodoGeneralSelected)
-
       }
       this.cloudfirestore.registerImagenesEspecial(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2454,13 +2357,11 @@ export class PanelAdminComponent implements OnInit {
     }
     else if (this.actualRevistaDigitalSection === "dr") {
       this.cloudfirestore.registerImagenesDoctor(this.imagenesRevistaObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
         this.editarVisibilidad = "hidden";
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("R");
         this.imagenesRevistaDigital = [];
@@ -2794,7 +2695,7 @@ export class PanelAdminComponent implements OnInit {
 
     this.revistaDigitalObject.tittle = this.tituloRevistaMocotipsPrincipal;
     this.revistaDigitalObject.store_key = this.identificadorUnico;
-    this.revistaDigitalObject.description = this.descripcionRevistaMocotipsPrincipal; 
+    this.revistaDigitalObject.description = this.descripcionRevistaMocotipsPrincipal;
     this.revistaDigitalObject.anio = this.anioRevistaMocotipsPrincipal;
     this.revistaDigitalObject.numero = this.numeroRevistaMocotipsPrincipal;
     this.revistaDigitalObject.costo = this.costoRevistaMocotipsPrincipal;
@@ -2823,13 +2724,10 @@ export class PanelAdminComponent implements OnInit {
         ref.getDownloadURL().subscribe(url => {
           this.urlImagePrincipal = url;
           this.revistaDigitalObject.imagenPrincipal = this.urlImagePrincipal;
-          console.log(this.revistaDigitalObject);
           this.cloudfirestore.registerRevista(this.revistaDigitalObject).then(response => {
-            console.log(response);
             this.restartAll();
             this.changeSection("R");
           }, error => {
-            console.log(error)
             this.restartAll();
             this.changeSection("R");
           })
@@ -2867,13 +2765,10 @@ export class PanelAdminComponent implements OnInit {
         ref.getDownloadURL().subscribe(url => {
           this.urlImagePrincipal = url;
           this.revistaDigitalObject.imagenPrincipal = this.urlImagePrincipal;
-          console.log(this.revistaDigitalObject);
           this.cloudfirestore.registerRevistaMocotips(this.revistaDigitalObject).then(response => {
-            console.log(response);
             this.restartAll();
             this.changeSection("P");
           }, error => {
-            console.log(error)
             this.restartAll();
             this.changeSection("P");
           })
@@ -3676,7 +3571,6 @@ export class PanelAdminComponent implements OnInit {
       this.cleanSpacesEditor6(this.editorContent6);
       this.cleanSpacesEditor7(this.editorContent7);
       this.cleanSpacesEditor8(this.editorContent8);
-      console.log("editor 6: " + this.editorContent6)
       const id = Math.random().toString(36).substring(2);
       const filePath = `plantilla6Imagenes/${id}`;
       const ref = this.storage.ref(filePath);
@@ -3689,7 +3583,6 @@ export class PanelAdminComponent implements OnInit {
             this.urlImage1 = url;
             var posicion = this.editorContent3.search("-image-");
             var posicion2 = this.editorContent3.search("-image2-");
-            console.log("editor3: " + this.editorContent3)
             if (posicion !== -1 || posicion2 !== -1) {
               if (posicion !== -1) {
                 var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.urlImage1 + ');"> </div>'
@@ -3703,7 +3596,6 @@ export class PanelAdminComponent implements OnInit {
               else if (posicion2 !== -1) {
                 var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.urlImage1 + ');"> </div>'
                 this.editorContent3 = [this.editorContent3.slice(0, posicion2), b, this.editorContent3.slice(posicion2)].join('');
-                console.log(this.editorContent3);
                 posicion2 = this.editorContent3.search("-image2-");
                 var var1 = this.editorContent3.substring(0, posicion2);
                 var var2 = this.editorContent3.substring(posicion2 + 8, this.editorContent3.length);
@@ -3738,8 +3630,6 @@ export class PanelAdminComponent implements OnInit {
                       var var2 = this.editorContent4.substring(posicion + 7, this.editorContent4.length);
                       this.editorContent4 = var1 + var2;
                       this.noticiasObjectPlantilla6.part3 = this.editorContent4;
-                      console.log("detecto -image- en la parte 3:");
-                      console.log(this.noticiasObjectPlantilla6.part3);
                     }
                     else if (posicion2 !== -1) {
                       var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.urlImage2 + ');"> </div>'
@@ -3824,7 +3714,6 @@ export class PanelAdminComponent implements OnInit {
                               else {
                                 this.noticiasObjectPlantilla6.part5 = this.editorContent6;
                               }
-                              console.log(this.editorContent6)
                               //imagen 5
                               const id5 = Math.random().toString(36).substring(2);
                               const filePath5 = `plantilla6Imagenes/${id5}`;
@@ -3892,7 +3781,7 @@ export class PanelAdminComponent implements OnInit {
                                                 this.noticiasObjectPlantilla6.image5 = this.urlImage5;
                                                 this.noticiasObjectPlantilla6.image6 = this.urlImage6;
                                                 this.noticiasObjectPlantilla6.principalImage = this.urlImagePrincipal;
-                                                console.log(this.noticiasObjectPlantilla6);
+
                                                 if (this.selectedItem === 'Noticias') {
                                                   this.noticiasService.insertNoticiasPlantilla6(this.noticiasObjectPlantilla6, "Noticias");
                                                   window.alert('Nota publicada con éxito');
@@ -4271,7 +4160,6 @@ export class PanelAdminComponent implements OnInit {
       editor6 = var1 + ' ' + var2;
       var posicion = editor6.search("&amp;nbsp;");
     }
-    console.log(this.editorContent6)
     this.editorContent6 = editor6;
   }
   cleanSpacesEditor7(editor7: string) {
@@ -4484,9 +4372,7 @@ export class PanelAdminComponent implements OnInit {
   }
   changeRevistaMocotips(part: number) {
     this.subirDatosRevistaMocotips = false;
-    console.log(this.revistaMocotipsElegir)
     this.revistaMocotipsElegir = false;
-    console.log(this.revistaMocotipsElegir)
     if (part === 1) {
       this.seccionRevista1 = true;
       this.seccionRevista2 = false;
@@ -4882,11 +4768,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips;
       this.cloudfirestore.registerRevistaIntro(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -4896,11 +4780,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips2;
       this.cloudfirestore.registerRevistaEspecial(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -4910,11 +4792,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips3;
       this.cloudfirestore.registerRevistaHurgaDatos(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -4924,11 +4804,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips4;
       this.cloudfirestore.registerRevistaBioAventura(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -4938,11 +4816,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips5;
       this.cloudfirestore.registerRevistaEcoMoco(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -4952,11 +4828,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips6;
       this.cloudfirestore.registerRevistaArte(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -4966,11 +4840,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips7;
       this.cloudfirestore.registerRevistaPuroCuento(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -4980,11 +4852,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips8;
       this.cloudfirestore.registerRevistaSePega(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -4994,11 +4864,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips9;
       this.cloudfirestore.registerRevistaDoctor(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -5008,11 +4876,9 @@ export class PanelAdminComponent implements OnInit {
       this.mocotipsObject.key = this.nodoGeneralSelected[0];
       this.mocotipsObject.tittle = this.tituloRevistaMocotips10;
       this.cloudfirestore.registerRevistaConclusion(this.mocotipsObject).then(response => {
-        console.log(response);
         this.restartAll();
         this.changeSection("P");
       }, error => {
-        console.log(error)
         this.restartAll();
         this.changeSection("P");
       })
@@ -5314,8 +5180,6 @@ export class PanelAdminComponent implements OnInit {
       }
 
     }
-    console.log("key: " + this.revistastKey);
-    console.log("key nodo: " + this.nodoGeneralSelected);
   }
   selectRowEspecial($event, datatSourceEspecial) {
 
@@ -5382,8 +5246,6 @@ export class PanelAdminComponent implements OnInit {
     })
   }
   updateEspecial() {
-
-    console.log("se va a actualizar")
     this.editorContent = this.editorFormEspecial.get('editorEspecial').value;
     this.especialDelMesObject.description = this.editorContent;
     this.especialDelMesObject.tittle = this.tituloEspecial;
@@ -5402,7 +5264,6 @@ export class PanelAdminComponent implements OnInit {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name1 === "Imagen ya cargada") {
         this.especialDelMesObject.principalImage = this.especialParaEditar[0].principalImage;
-        console.log("no se subio la primera imagen")
         resolve();
       }
       else {
@@ -5429,11 +5290,9 @@ export class PanelAdminComponent implements OnInit {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name2 === "Imagen ya cargada") {
         this.especialDelMesObject.portada1 = this.especialParaEditar[0].portada1;
-        console.log("no se subio la segunda imagen")
         resolve();
       }
       else {
-        console.log(this.especialParaEditar[0].portada1)
         this.storage.storage.refFromURL(this.especialParaEditar[0].portada1).delete();
         const id2 = Math.random().toString(36).substring(2);
         const filePath2 = `portadas1/${id2}`;
@@ -5445,7 +5304,6 @@ export class PanelAdminComponent implements OnInit {
           finalize(() => {
             ref2.getDownloadURL().subscribe(url => {
               this.urlImage2 = url;
-              console.log(this.urlImage2)
               this.especialDelMesObject.portada1 = this.urlImage2;
               resolve();
             });
@@ -5478,7 +5336,6 @@ export class PanelAdminComponent implements OnInit {
           ref.getDownloadURL().subscribe(url => {
             this.urlImage3 = url;
             this.especialDelMesObject.portada2 = this.urlImage3;
-            console.log(this.especialDelMesObject)
             this.noticiasService.updatetEspecialDelMes(this.especialDelMesObject).then(res => {
               window.alert('Especial actualizado con éxito');
               this.changeSection("M")
@@ -5494,7 +5351,6 @@ export class PanelAdminComponent implements OnInit {
     this.seleccionarSeccionRevista();
     this.buttondisabled = "none";
     this.buttonActualizaDisabled = "block";
-    console.log(this.buttondisabled)
     this.cloudfirestore.getRevista(this.nodoGeneralSelected[0]).subscribe(item => {
       this.revistaDigitalParaEditar = [];
 
@@ -5528,7 +5384,6 @@ export class PanelAdminComponent implements OnInit {
     this.seleccionarSeccionRevistaMocotips();
     this.buttondisabled = "none";
     this.buttonActualizaDisabled = "block";
-    console.log(this.buttondisabled)
     this.cloudfirestore.getRevistaMocotips(this.nodoGeneralSelected[0]).subscribe(item => {
       this.revistaDigitalParaEditar = [];
 
@@ -5559,8 +5414,6 @@ export class PanelAdminComponent implements OnInit {
     })
   }
   updateRevista(option: number) {
-    console.log(option)
-    console.log(this.revistastKey[0]);
     this.revistaDigitalObject.tittle = this.tituloRevistaMocotipsPrincipal;
     this.revistaDigitalObject.description = this.descripcionRevistaMocotipsPrincipal;
     this.revistaDigitalObject.store_key = this.identificadorUnico;
@@ -5631,20 +5484,18 @@ export class PanelAdminComponent implements OnInit {
           this.notaParaEditar.push(json as Noticias);
         });
         if (this.notaParaEditar[0].plantilla === "1") {
-          console.log("OLLAAA")
           this.changeSection('RE1');
           this.buttondisabled = "none";
           this.buttonActualizaDisabled = "block";
-          console.log(this.buttonActualizaDisabled)
           this.titulo = this.notaParaEditar[0].tittle;
           var youtubelimpieza = this.notaParaEditar[0].youtube.search("embed/");
           if (youtubelimpieza !== -1) {
             var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
             this.titulo_youtube = youtubecleaned;
           }
-          else{
+          else {
             this.titulo_youtube = this.notaParaEditar[0].youtube;
-          }  
+          }
           this.selectSeccionNotaDisabled = true;
 
           var part2limpieza = this.notaParaEditar[0].part1.search("<div class=");
@@ -5687,7 +5538,6 @@ export class PanelAdminComponent implements OnInit {
           this.fileToUpload1Name3 = "Imagen ya cargada";
           this.fileToUpload1Name4 = "Imagen ya cargada";
           this.editarNota = true;
-          console.log("nota" + this.editarNota)
         }
         else if (this.notaParaEditar[0].plantilla === "2") {
           this.changeSection('RE2');
@@ -5699,12 +5549,10 @@ export class PanelAdminComponent implements OnInit {
             var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
             this.titulo_youtube = youtubecleaned;
           }
-          else{
+          else {
             this.titulo_youtube = this.notaParaEditar[0].youtube;
-          }  
+          }
           this.selectSeccionNotaDisabled = true;
-
-          console.log(this.notaParaEditar[0].part2);
           var part2limpieza = this.notaParaEditar[0].part1.search("<div class=");
           var part2cleaned = this.notaParaEditar[0].part1.substring(0, part2limpieza);
 
@@ -5749,12 +5597,10 @@ export class PanelAdminComponent implements OnInit {
             var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
             this.titulo_youtube = youtubecleaned;
           }
-          else{
+          else {
             this.titulo_youtube = this.notaParaEditar[0].youtube;
-          }  
+          }
           this.selectSeccionNotaDisabled = true;
-          console.log(this.notaParaEditar[0]);
-
           var part2limpieza = this.notaParaEditar[0].part1.search("<div class=");
           var part2cleaned = this.notaParaEditar[0].part1.substring(0, part2limpieza);
 
@@ -5804,9 +5650,9 @@ export class PanelAdminComponent implements OnInit {
             var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
             this.titulo_youtube = youtubecleaned;
           }
-          else{
+          else {
             this.titulo_youtube = this.notaParaEditar[0].youtube;
-          }     
+          }
           this.selectSeccionNotaDisabled = true;
           var part2limpieza = this.notaParaEditar[0].part2.search("<div class=");
           var part2cleaned = this.notaParaEditar[0].part2.substring(0, part2limpieza);
@@ -5867,9 +5713,9 @@ export class PanelAdminComponent implements OnInit {
             var youtubecleaned = this.notaParaEditar[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar[0].youtube.length);
             this.titulo_youtube = youtubecleaned;
           }
-          else{
+          else {
             this.titulo_youtube = this.notaParaEditar[0].youtube;
-          }  
+          }
           this.selectSeccionNotaDisabled = true;
 
           var part2limpieza = this.notaParaEditar[0].part2.search("<div class=");
@@ -5919,21 +5765,18 @@ export class PanelAdminComponent implements OnInit {
               json["$key"] = element.key;
               this.notaParaEditar6.push(json as NoticiasPlantilla6);
             });
-
-            console.log(this.notaParaEditar6[0]);
             this.changeSection('RE6');
             this.buttondisabled = "none";
             this.buttonActualizaDisabled = "block";
-            console.log(this.buttonActualizaDisabled)
             this.titulo6 = this.notaParaEditar6[0].tittle;
             var youtubelimpieza = this.notaParaEditar6[0].youtube.search("embed/");
-          if (youtubelimpieza !== -1) {
-            var youtubecleaned = this.notaParaEditar6[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar6[0].youtube.length);
-            this.titulo_youtube = youtubecleaned;
-          }
-          else{
-            this.titulo_youtube = this.notaParaEditar[0].youtube;
-          }  
+            if (youtubelimpieza !== -1) {
+              var youtubecleaned = this.notaParaEditar6[0].youtube.substring(youtubelimpieza + 6, this.notaParaEditar6[0].youtube.length);
+              this.titulo_youtube = youtubecleaned;
+            }
+            else {
+              this.titulo_youtube = this.notaParaEditar[0].youtube;
+            }
             this.selectSeccionNotaDisabled = true;
 
             var part2limpieza = this.notaParaEditar6[0].part2.search("<div class=");
@@ -6051,9 +5894,6 @@ export class PanelAdminComponent implements OnInit {
         }
 
       });
-    }
-    else if (this.keyToEdit === "") {
-      console.log("no esta seleccionado")
     }
   }
 
@@ -6239,9 +6079,6 @@ export class PanelAdminComponent implements OnInit {
       this.currentDate = this.selectedItemDia + '-' + this.selectedItemMes + '-' + this.selectedItemAnio;
       this.noticiasObjectPlantilla6.date = this.currentDate;
       this.noticiasObjectPlantilla6.phrase = this.editorContent;
-
-      console.log(this.noticiasObjectPlantilla6)
-
       this.subirimagen1_6().then(res => this.subirimagen2_6().then(res => this.subirimagen3_6().then(res => this.subirimagen4_6().then(res => this.subirimagen5_6().then(res => this.subirimagen6_6().then(res => this.subirImagenPrincipalPlantilla6()))))));
     }
   }
@@ -6305,7 +6142,6 @@ export class PanelAdminComponent implements OnInit {
         this.editorContent3 = '<div class="plantilla1-2" style="background-image: url(' + this.notaParaEditar[0].image2 + ');"></div> ' + this.editorContent3;
         this.noticiasObject.part2 = this.editorContent3;
         this.noticiasObject.image2 = this.notaParaEditar[0].image2;
-        console.log(this.noticiasObject.part4);
         resolve();
       }
       else {
@@ -6323,8 +6159,6 @@ export class PanelAdminComponent implements OnInit {
               this.editorContent3 = '<div class="plantilla1-2" style="background-image: url(' + this.urlImage2 + ');"></div> ' + this.editorContent3;
               this.noticiasObject.part2 = this.editorContent3;
               this.noticiasObject.image2 = this.urlImage2;
-              console.log(this.noticiasObject.part4);
-              //this.restartAll();
               resolve();
             });
           })
@@ -6339,7 +6173,6 @@ export class PanelAdminComponent implements OnInit {
 
       if (this.fileToUpload1Name1 === "Imagen ya cargada") {
         this.noticiasObject.image1 = this.notaParaEditar[0].image1;
-        console.log("SÍ se va a subir imagen")
         if (this.imagenTamanio1CSS === "chico") {
           if (this.imagenTamanio1Full === true) {
             this.editorContent2 = this.editorContent2 + '<div class="plantilla2-1-chica"  style="background-image: url(' + this.notaParaEditar[0].image1 + '); background-size: cover;"></div> ';
@@ -6371,7 +6204,6 @@ export class PanelAdminComponent implements OnInit {
         resolve();
       }
       else {
-        console.log("SI se va a subir imagen")
         this.storage.storage.refFromURL(this.notaParaEditar[0].image1).delete();
         const id = Math.random().toString(36).substring(2);
         const filePath = `plantilla2Imagenes/${id}`;
@@ -6423,7 +6255,6 @@ export class PanelAdminComponent implements OnInit {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name1 === "Imagen ya cargada") {
         this.noticiasObject.image2 = this.notaParaEditar[0].image2;
-        console.log("No se va a subir imagen")
         if (this.imagenTamanio2CSS === "chico") {
           if (this.imagenTamanio2Full === true) {
             this.editorContent3 = this.editorContent3 + '<div class="plantilla2-1-chica"  style="background-image: url(' + this.notaParaEditar[0].image2 + '); background-size: cover;"></div> ';
@@ -6455,7 +6286,6 @@ export class PanelAdminComponent implements OnInit {
         resolve();
       }
       else {
-        console.log("SI se va a subir imagen")
         this.storage.storage.refFromURL(this.notaParaEditar[0].image2).delete();
         const id = Math.random().toString(36).substring(2);
         const filePath = `plantilla2Imagenes/${id}`;
@@ -6622,7 +6452,6 @@ export class PanelAdminComponent implements OnInit {
 
   }
   subirimagen1_4() {
-    console.log(this.notaParaEditar[0].image1)
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name1 === "Imagen ya cargada") {
 
@@ -6630,7 +6459,6 @@ export class PanelAdminComponent implements OnInit {
         this.noticiasObject.part2 = this.editorContent3;
 
         this.noticiasObject.image1 = this.notaParaEditar[0].image1;
-        console.log("Imágen 1 ya cargada, no se subirá");
         resolve();
       }
       else {
@@ -6650,7 +6478,6 @@ export class PanelAdminComponent implements OnInit {
               this.noticiasObject.part2 = this.editorContent3;
 
               this.noticiasObject.image1 = this.urlImage1;
-              console.log("Imágen 1 se subirá");
               resolve();
             });
           })
@@ -6662,7 +6489,6 @@ export class PanelAdminComponent implements OnInit {
 
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name2 === "Imagen ya cargada") {
-        console.log("Imágen 2 ya cargada, no se subirá");
         var posicion = this.editorContent4.search("-image-");
         if (posicion !== -1) {
           var b = '<div class="plantilla4-2" style="background-image: url(' + this.notaParaEditar[0].image2 + ');"> </div>'
@@ -6677,7 +6503,6 @@ export class PanelAdminComponent implements OnInit {
           this.noticiasObject.part3 = this.editorContent4;
         }
         this.noticiasObject.image2 = this.notaParaEditar[0].image2;
-        console.log("entro 2");
         resolve();
       }
       else {
@@ -6688,7 +6513,6 @@ export class PanelAdminComponent implements OnInit {
         const task = this.storage.upload(filePath, this.fileToUpload2);
         this.image1UploadPercent = task.percentageChanges();
         this.statusUploadImage1 = "Actualizando imagen 2";
-        console.log("entro 2.2");
         task.snapshotChanges().pipe(
           finalize(() => {
             ref.getDownloadURL().subscribe(url => {
@@ -6707,7 +6531,6 @@ export class PanelAdminComponent implements OnInit {
                 this.noticiasObject.part3 = this.editorContent4;
               }
               this.noticiasObject.image2 = this.urlImage2;
-              console.log("Imágen 2 se subirá");
               resolve();
             });
           })
@@ -6719,8 +6542,6 @@ export class PanelAdminComponent implements OnInit {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name3 === "Imagen ya cargada") {
         this.noticiasObject.image3 = this.notaParaEditar[0].image3;
-        console.log("Imágen 3 ya cargada, no se subirá");
-
         if (this.imagenTamanio3CSS === "chico") {
           if (this.imagenTamanio3Full === true) {
             this.editorContent5 = this.editorContent5 + '<div class="plantilla2-1-chica"  style="background-image: url(' + this.notaParaEditar[0].image3 + '); background-size: cover;"></div> ';
@@ -6752,10 +6573,7 @@ export class PanelAdminComponent implements OnInit {
         resolve();
       }
       else {
-        console.log("Se eliminara:");
-        console.log(this.notaParaEditar[0].image3);
         this.storage.storage.refFromURL(this.notaParaEditar[0].image3).delete();
-        console.log("Se eliminó:");
         const id = Math.random().toString(36).substring(2);
         const filePath = `plantilla4Imagenes/${id}`;
         const ref = this.storage.ref(filePath);
@@ -6795,8 +6613,6 @@ export class PanelAdminComponent implements OnInit {
               }
               this.noticiasObject.part4 = this.editorContent5;
               this.noticiasObject.image3 = this.urlImage3;
-              console.log("Imágen 3 se subirá");
-              console.log(this.urlImage3);
               resolve();
             });
           })
@@ -6878,7 +6694,6 @@ export class PanelAdminComponent implements OnInit {
                 this.noticiasObject.part2 = this.editorContent3 + '<div class="plantilla5-1-mediana"  style="background-image: url(' + this.urlImage1 + '); background-size: contain;"></div>';
               }
               this.noticiasObject.image1 = this.urlImage1;
-              console.log(this.noticiasObject.part2);
               resolve();
             });
           })
@@ -6907,8 +6722,6 @@ export class PanelAdminComponent implements OnInit {
               this.urlImage2 = url;
               this.noticiasObject.part4 = '<div class="plantilla5-2" style="background-image: url(' + this.urlImage2 + ');"></div> ' + this.editorContent5;
               this.noticiasObject.image2 = this.urlImage2;
-              console.log(this.noticiasObject.part4);
-              //this.restartAll();
               resolve();
             });
           })
@@ -6925,7 +6738,6 @@ export class PanelAdminComponent implements OnInit {
         var posicion2 = this.editorContent3.search("-image2-");
 
         if (posicion !== -1 || posicion2 !== -1) {
-          console.log("ola1.1")
           if (posicion !== -1) {
             var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.notaParaEditar6[0].image1 + ');"> </div>'
             this.editorContent3 = [this.editorContent3.slice(0, posicion), b, this.editorContent3.slice(posicion)].join('');
@@ -6954,14 +6766,10 @@ export class PanelAdminComponent implements OnInit {
           this.noticiasObjectPlantilla6.image1 = this.notaParaEditar6[0].image1;
           resolve();
         }
-        
+
       }
       else {
-        console.log("ola1.2")
-        console.log("imagen a eliminar:")
-        console.log(this.notaParaEditar6[0].image1)
         this.storage.storage.refFromURL(this.notaParaEditar6[0].image1).delete();
-        console.log("eliminado")
         const id = Math.random().toString(36).substring(2);
         const filePath = `plantilla6Imagenes/${id}`;
         const ref = this.storage.ref(filePath);
@@ -6974,7 +6782,7 @@ export class PanelAdminComponent implements OnInit {
               this.urlImage1 = url;
               var posicion = this.editorContent3.search("-image-");
               var posicion2 = this.editorContent3.search("-image2-");
-             
+
               if (posicion !== -1 || posicion2 !== -1) {
                 if (posicion !== -1) {
                   var b = '<div class="plantilla6-derecha" style="background-image: url(' + this.urlImage1 + ');"> </div>'
@@ -6990,7 +6798,7 @@ export class PanelAdminComponent implements OnInit {
                 else if (posicion2 !== -1) {
                   var b = '<div class="plantilla6-izquierda" style="background-image: url(' + this.urlImage1 + ');"> </div>'
                   this.editorContent3 = [this.editorContent3.slice(0, posicion2), b, this.editorContent3.slice(posicion2)].join('');
-                  console.log(this.editorContent3);
+
                   posicion2 = this.editorContent3.search("-image2-");
                   var var1 = this.editorContent3.substring(0, posicion2);
                   var var2 = this.editorContent3.substring(posicion2 + 8, this.editorContent3.length);
@@ -7005,7 +6813,7 @@ export class PanelAdminComponent implements OnInit {
                 this.noticiasObjectPlantilla6.image1 = this.urlImage1;
                 resolve();
               }
-              
+
             });
           })
         ).subscribe();
@@ -7015,7 +6823,6 @@ export class PanelAdminComponent implements OnInit {
   subirimagen2_6() {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name2_6 === "Imagen ya cargada") {
-        console.log("ola2.1")
         var posicion = this.editorContent4.search("-image-");
         var posicion2 = this.editorContent4.search("-image2-");
         if (posicion !== -1 || posicion2 !== -1) {
@@ -7043,7 +6850,6 @@ export class PanelAdminComponent implements OnInit {
           }
         }
         else {
-          console.log("ola2.2")
           this.noticiasObjectPlantilla6.part3 = this.editorContent4;
           this.noticiasObjectPlantilla6.image2 = this.notaParaEditar6[0].image2;
           resolve();
@@ -7101,7 +6907,6 @@ export class PanelAdminComponent implements OnInit {
   subirimagen3_6() {
     return new Promise((resolve, reject) => {
       if (this.fileToUpload1Name3_6 === "Imagen ya cargada") {
-        console.log("ola3.1")
         var posicion = this.editorContent5.search("-image-");
         var posicion2 = this.editorContent5.search("-image2-");
         if (posicion !== -1 || posicion2 !== -1) {
@@ -7129,14 +6934,13 @@ export class PanelAdminComponent implements OnInit {
           }
         }
         else {
-          
+
           this.noticiasObjectPlantilla6.part4 = this.editorContent5;
           this.noticiasObjectPlantilla6.image3 = this.notaParaEditar6[0].image3;
           resolve();
         }
       }
       else {
-        console.log("ola3.2")
         this.storage.storage.refFromURL(this.notaParaEditar6[0].image3).delete();
         const id3 = Math.random().toString(36).substring(2);
         const filePath3 = `plantilla6Imagenes/${id3}`;
@@ -7189,7 +6993,6 @@ export class PanelAdminComponent implements OnInit {
     return new Promise((resolve, reject) => {
 
       if (this.fileToUpload1Name4_6 === "Imagen ya cargada") {
-        console.log("ola4.1")
         var posicion = this.editorContent6.search("-image-");
         var posicion2 = this.editorContent6.search("-image2-");
         if (posicion !== -1 || posicion2 !== -1) {
@@ -7223,7 +7026,6 @@ export class PanelAdminComponent implements OnInit {
         }
       }
       else {
-        console.log("ola4.2")
         this.storage.storage.refFromURL(this.notaParaEditar6[0].image4).delete();
         const id4 = Math.random().toString(36).substring(2);
         const filePath4 = `plantilla6Imagenes/${id4}`;
@@ -7276,7 +7078,6 @@ export class PanelAdminComponent implements OnInit {
     return new Promise((resolve, reject) => {
 
       if (this.fileToUpload1Name5_6 === "Imagen ya cargada") {
-        console.log("ola5.1")
         var posicion = this.editorContent7.search("-image-");
         var posicion2 = this.editorContent7.search("-image2-");
         if (posicion !== -1 || posicion2 !== -1) {
@@ -7310,7 +7111,6 @@ export class PanelAdminComponent implements OnInit {
         }
       }
       else {
-        console.log("ola5.2")
         this.storage.storage.refFromURL(this.notaParaEditar6[0].image5).delete();
         const id5 = Math.random().toString(36).substring(2);
         const filePath5 = `plantilla6Imagenes/${id5}`;
@@ -7363,14 +7163,12 @@ export class PanelAdminComponent implements OnInit {
     return new Promise((resolve, reject) => {
 
       if (this.fileToUpload1Name6_6 === "Imagen ya cargada") {
-        console.log("ola6.1")
         this.editorContent8 = '<div class="plantilla1-2" style="background-image: url(' + this.notaParaEditar6[0].image6 + ');"></div> ' + this.editorContent8;
         this.noticiasObjectPlantilla6.part7 = this.editorContent8;
         this.noticiasObjectPlantilla6.image6 = this.notaParaEditar6[0].image6;
         resolve();
       }
       else {
-        console.log("ola6.2")
         this.storage.storage.refFromURL(this.notaParaEditar6[0].image1).delete();
         const id6 = Math.random().toString(36).substring(2);
         const filePath6 = `plantilla6Imagenes/${id6}`;
@@ -7394,13 +7192,10 @@ export class PanelAdminComponent implements OnInit {
   }
   subirImagenPrincipal() {
     if (this.fileToUpload1Name4 === "Imagen ya cargada") {
-      console.log("entro al IF")
       this.noticiasObject.principalImage = this.notaParaEditar[0].principalImage;
       this.noticiasObject.$key = this.notaParaEditar[0].$key;
-      console.log(this.noticiasObject);
       var seccion = this.seccionSelected[0];
       if (seccion === "Noticias") {
-        console.log("esta en noticias");
         this.noticiasService.updateNoticia(this.noticiasObject, "Noticias").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
           this.noticiasNodoGeneralObject.seccion = "Noticias";
@@ -7412,12 +7207,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Ciencia") {
-        console.log("esta en ciencia");
         this.noticiasService.updateNoticia(this.noticiasObject, "Ciencia").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
           this.noticiasNodoGeneralObject.seccion = "Ciencia";
@@ -7428,12 +7221,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Arte") {
-        console.log("esta en arte");
         this.noticiasService.updateNoticia(this.noticiasObject, "Arte").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
           this.noticiasNodoGeneralObject.seccion = "Arte";
@@ -7444,12 +7235,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Ocio") {
-        console.log("esta en ocio");
         this.noticiasService.updateNoticia(this.noticiasObject, "Ocio").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
           this.noticiasNodoGeneralObject.seccion = "Ocio";
@@ -7461,12 +7250,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Descubre") {
-        console.log("esta en descubre");
         this.noticiasService.updateNoticia(this.noticiasObject, "Descubre").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
           this.noticiasNodoGeneralObject.seccion = "Descubre";
@@ -7478,12 +7265,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Mocotips") {
-        console.log("esta en mocotis");
         this.noticiasService.updateNoticia(this.noticiasObject, "Mocotips").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
           this.noticiasNodoGeneralObject.seccion = "Mocotips";
@@ -7495,7 +7280,6 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
@@ -7519,7 +7303,6 @@ export class PanelAdminComponent implements OnInit {
 
             var seccion = this.seccionSelected[0];
             if (seccion === "Noticias") {
-              console.log("esta en noticias");
               this.noticiasService.updateNoticia(this.noticiasObject, "Noticias").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
@@ -7536,7 +7319,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Ciencia") {
-              console.log("esta en ciencia")
               this.noticiasService.updateNoticia(this.noticiasObject, "Ciencia").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
@@ -7553,7 +7335,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Arte") {
-              console.log("esta en arte");
               this.noticiasService.updateNoticia(this.noticiasObject, "Arte").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
@@ -7570,7 +7351,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Ocio") {
-              console.log("esta en ocio");
               this.noticiasService.updateNoticia(this.noticiasObject, "Ocio").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
@@ -7587,7 +7367,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Descubre") {
-              console.log("esta en descubre");
               this.noticiasService.updateNoticia(this.noticiasObject, "Descubre").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
@@ -7604,7 +7383,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Mocotips") {
-              console.log("esta en mocotis");
               this.noticiasService.updateNoticia(this.noticiasObject, "Mocotips").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObject.date;
@@ -7630,13 +7408,10 @@ export class PanelAdminComponent implements OnInit {
 
   subirImagenPrincipalPlantilla6() {
     if (this.fileToUpload1Name4 === "Imagen ya cargada") {
-      console.log("olaprincipaal")
       this.noticiasObjectPlantilla6.principalImage = this.notaParaEditar6[0].principalImage;
       this.noticiasObjectPlantilla6.$key = this.notaParaEditar6[0].$key;
       var seccion = this.seccionSelected[0];
       if (seccion === "Noticias") {
-        console.log("VA A ACTUALIZAR EN NOTICIAS ESTO:");
-        console.log(this.noticiasObjectPlantilla6)
         this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Noticias").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
           this.noticiasNodoGeneralObject.seccion = "Noticias";
@@ -7648,12 +7423,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Ciencia") {
-        console.log("esta en ciencia");
         this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Ciencia").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
           this.noticiasNodoGeneralObject.seccion = "Ciencia";
@@ -7664,12 +7437,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Arte") {
-        console.log("esta en arte");
         this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Arte").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
           this.noticiasNodoGeneralObject.seccion = "Arte";
@@ -7680,12 +7451,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Ocio") {
-        console.log("esta en ocio");
         this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Ocio").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
           this.noticiasNodoGeneralObject.seccion = "Ocio";
@@ -7697,12 +7466,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Descubre") {
-        console.log("esta en descubre");
         this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Descubre").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
           this.noticiasNodoGeneralObject.seccion = "Descubre";
@@ -7714,12 +7481,10 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
       else if (seccion === "Mocotips") {
-        console.log("esta en mocotis");
         this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Mocotips").then(res => {
           this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
           this.noticiasNodoGeneralObject.seccion = "Mocotips";
@@ -7731,7 +7496,6 @@ export class PanelAdminComponent implements OnInit {
             window.alert('Nota actualizada con éxito');
             this.changeSection("S")
             this.restartAll();
-            console.log("ola")
           });
         });
       }
@@ -7753,7 +7517,6 @@ export class PanelAdminComponent implements OnInit {
             this.noticiasObjectPlantilla6.$key = this.notaParaEditar6[0].$key;
             var seccion = this.seccionSelected[0];
             if (seccion === "Noticias") {
-              console.log("esta en noticias");
               this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Noticias").then(res => {
                 this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
                 this.noticiasNodoGeneralObject.seccion = "Noticias";
@@ -7769,7 +7532,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Ciencia") {
-              console.log("esta en ciencia")
               this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Ciencia").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
@@ -7786,7 +7548,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Arte") {
-              console.log("esta en arte");
               this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Arte").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
@@ -7803,7 +7564,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Ocio") {
-              console.log("esta en ocio");
               this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Ocio").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
@@ -7820,7 +7580,7 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Descubre") {
-              console.log("esta en descubre");
+
               this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Descubre").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
@@ -7837,7 +7597,6 @@ export class PanelAdminComponent implements OnInit {
               });
             }
             else if (seccion === "Mocotips") {
-              console.log("esta en mocotis");
               this.noticiasService.updateNoticiaPlantilla6(this.noticiasObjectPlantilla6, "Mocotips").then(res => {
 
                 this.noticiasNodoGeneralObject.date = this.noticiasObjectPlantilla6.date;
