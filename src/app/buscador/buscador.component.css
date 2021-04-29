@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .banner {
   display: block;
   margin: 0px;
@@ -415,6 +416,8 @@
   .second-news .latest-news .big-new .comments-opinion-text {
     font-size: 140%;
 =======
+=======
+>>>>>>> parent of 915cacf (correccion3)
 html {
     overflow:auto;
     padding:0;
@@ -426,6 +429,9 @@ html {
     width: 100%;
     height: 100%;
     background-image:linear-gradient(rgba(144, 207, 19, 0.5), rgba(144, 207, 19, 0.5)),  url("./../../assets/images/Backround_Lines.jpg");
+<<<<<<< HEAD
+>>>>>>> parent of 915cacf (correccion3)
+=======
 >>>>>>> parent of 915cacf (correccion3)
   }
   table {
@@ -479,12 +485,21 @@ html {
   }
   .nav-link-news:focus,.nav-link-news:hover{
     text-decoration:none
+<<<<<<< HEAD
   }
   .navbar-moco .navbar-nav .nav-link-news:focus,
   .navbar-moco .navbar-nav .nav-link-news:hover{
   
     background-color: rgba(245, 151, 19, 0.856);
   }
+=======
+  }
+  .navbar-moco .navbar-nav .nav-link-news:focus,
+  .navbar-moco .navbar-nav .nav-link-news:hover{
+  
+    background-color: rgba(245, 151, 19, 0.856);
+  }
+>>>>>>> parent of 915cacf (correccion3)
   /*Science button styles*/
   .navbar-moco .navbar-nav .nav-link-science{
     color:rgba(255, 255, 255);
@@ -867,6 +882,7 @@ html {
   }
   .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Ciencia .Ciencia{
     background-image: url("./../../assets/images/cienciaSeccion.png");
+<<<<<<< HEAD
   }
   .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Arte .Arte{
     background-image: url("./../../assets/images/arteSeccion.png");
@@ -880,6 +896,21 @@ html {
   .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Mocotips .Mocotips{
     background-image: url("./../../assets/images/mocotipsSeccion.png");
   }
+=======
+  }
+  .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Arte .Arte{
+    background-image: url("./../../assets/images/arteSeccion.png");
+  }
+  .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Ocio .Ocio{
+    background-image: url("./../../assets/images/ocioSeccion.png");
+  }
+  .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Descubre .Descubre{
+    background-image: url("./../../assets/images/descubreSeccion.png");
+  }
+  .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Mocotips .Mocotips{
+    background-image: url("./../../assets/images/mocotipsSeccion.png");
+  }
+>>>>>>> parent of 915cacf (correccion3)
 
   .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Noticias .titulo,
   .structure .first-news .buscador-area .buscador-resultados .resultado .resultado-box-Ciencia .titulo,

@@ -293,6 +293,7 @@ font-size: 120%;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   font-size: 150%;
   color: rgb(0, 0, 0);
 }
@@ -334,12 +335,15 @@ font-size: 120%;
 }
 =======
 >>>>>>> parent of 915cacf (correccion3)
+=======
+>>>>>>> parent of 915cacf (correccion3)
 
 
 
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -390,6 +394,58 @@ font-size: 120%;
            
   }
 
+=======
+
+
+
+
+
+
+
+
+    .el-moco-banner {
+      height: 275px;
+      position: relative;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat; 
+      background-image:  url("./../../assets/images/banner-sin-moco.png");
+    }
+    .el-moco-banner .logo-hd{ 
+      position: absolute;
+      width:20%;
+      height:60%;
+      left: 40%;
+      bottom: 5%;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat; 
+      background-image:  url("./../../assets/images/Logo_ElMoco.png");
+    }
+
+  .structure {
+    min-height: auto;
+    margin: 0px;
+
+    display: -webkit-flex;
+    display:         flex;
+    -webkit-flex-flow: row;
+            flex-flow: row;
+            background-image:linear-gradient(rgba(146, 238, 84, 0.63), rgba(146, 238, 84, 0.63)),  url("./../../assets/images/Barrafranjas_Header.png");
+            background-repeat: no-repeat;
+            background-size: 100%, 100%;
+            
+  }
+  .structure .first-news {
+    position: relative;
+    -webkit-flex: 3 1 60%;
+            flex: 3 1 60%;
+    -webkit-order: 2;
+            order: 2;
+           
+  }
+
+>>>>>>> parent of 915cacf (correccion3)
   .structure .first-news .new-image-banner{ 
     background-image: url("./../../assets/images/Banner-App.png");
     background-repeat: no-repeat;
@@ -1624,6 +1680,7 @@ font-size: 120%;
   @media all and (max-width: 450px) {
     .el-moco-banner {
       height: 140px;
+<<<<<<< HEAD
     }
     .el-moco-banner .logo-hd{ 
       position: absolute;
@@ -1634,6 +1691,18 @@ font-size: 120%;
     .structure {
       height: 230px;
     }
+=======
+    }
+    .el-moco-banner .logo-hd{ 
+      position: absolute;
+      width:40%;
+      left: 30%;
+      bottom: 5%;
+    }
+    .structure {
+      height: 230px;
+    }
+>>>>>>> parent of 915cacf (correccion3)
       .second-news .latest-news .big-new .comments-opinion-text{
         font-size:110%;
       }
